@@ -1,3 +1,9 @@
+# Talent! / talent-webapp
+
+### Description
+
+This repository will serve to set up a different continuous integration process for Talent!'s webapp.
+
 # WebPlatformProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
