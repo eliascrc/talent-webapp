@@ -4,7 +4,7 @@ export class Capability {
 	
 	constructor(capability : any) {
 		this.name = capability.name;
-		if(capability.levelHierarchy) 
-			this.levelHierarchy = Object.assign([], capability.levelHierarchy);
+		
+		this.levelHierarchy = Object.assign([], capability.levelHierarchy);
 	}
 }
