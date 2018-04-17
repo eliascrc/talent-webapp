@@ -1,3 +1,5 @@
+import { CapabilityLevel } from './CapabilityLevel';
+
 export class Capability {
 	name : string;
 	levelHierarchy : Array<CapabilityLevel>;

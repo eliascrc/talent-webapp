@@ -1,13 +1,15 @@
+import { Skill } from './Skill';
+import { Organization } from './Organization';
+import { TechnicalResource } from './TechnicalResource';
+
 export class OrganizationSkill extends Skill{
 	organization : Organization;
-	category : OrganizationCategorySkill;
-	resources : Array<TechnicalResource>;
+	resources : Set<TechnicalResource>;
 
 	constructor(organizationSkill : any) {
 		super(organizationSkill);
 		this.organization = organizationSkill.organization;
-		this.category = organizationSkill.category;
 
-		this.resources = Object.assign([], organizationSkill.resources);
+		this.resources = new Set(organizationSkill.resources);
 	}
 }

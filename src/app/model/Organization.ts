@@ -1,3 +1,8 @@
+import { OrganizationState } from './OrganizationState';
+import { Project } from './Project';
+import { TechnicalResource } from './TechnicalResource';
+import { TechnicalManager } from './TechnicalManager';
+
 export class Organization {
 	uniqueIdentifier : string;
 	name : string;
@@ -5,13 +10,9 @@ export class Organization {
 	totalUsers : number;
 	domain : string;
 	state : OrganizationState;
-	userAuthenticationMethod : UserAuthenticationMethod;
-	capabilities : Array<OrganizationCapability>;
-	skillCategories: Array<OrganizationCategorySkill>;
-	projects : Array<Project>;
-	resources : Array<TechnicalResource>;
-	humanResourceManagers : Array<HumanResourceManager>;
-	technicalManagers : Array<TechnicalManager>;
+	projects : Set<Project>;
+	resources : Set<TechnicalResource>;
+	technicalManagers : Set<TechnicalManager>;
 	
 	
 	constructor(organization : any) {
@@ -21,18 +22,11 @@ export class Organization {
 		this.totalUsers = organization.totalUsers;
 		this.domain = organization.domain;
 		this.state  = organization.state;
-		this.userAuthenticationMethod = organization.userAuthenticationMethod;
-		
-		this.capabilities = Object.assign([], organization.capabilities);
-		
-		this.skillCategories = Object.assign([], organization.skillCategories);
 			
-		this.projects = Object.assign([], organization.projects);
+		this.projects = new Set(organization.projects);
 			
-		this.resources = Object.assign([], organization.resources);
+		this.resources = new Set(organization.resources);
 			
-		this.humanResourceManagers = Object.assign([], organization.humanResourceManagers);
-			
-		this.technicalManagers = Object.assign([], organization.technicalManagers);	
+		this.technicalManagers = new Set(organization.technicalManagers);	
 	}
 }

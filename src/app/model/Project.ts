@@ -1,19 +1,16 @@
+import { ProjectCapability } from './ProjectCapability';
+
 export class Project {
 	name : string;
 	startDate : Date;
 	endDate : Date;
-	projectCapabilities : Array<ProjectCapability>;
-	projectManagerHistory : Array<ProjectManagerPosition>;
-	
-	// ProjectState has not been added to the test data file 
-	//state : ProjectState;
+	projectCapabilities : Set<ProjectCapability>;
 	
 	constructor(project : any) {
 		this.name = project.name;
 		this.startDate = project.startDate;
 		this.endDate = project.endDate;
 		
-		this.projectCapabilities = Object.assign([], project.projectCapabilities);
-		this.projectManagerHistory = Object.assign([], project.projectManagerHistory);
+		this.projectCapabilities =  new Set(project.projectCapabilities);
 	}
 }

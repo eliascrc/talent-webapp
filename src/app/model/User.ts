@@ -6,5 +6,14 @@ export class User {
 	enabled : boolean;
 	passwordNeedsChange : boolean;
 	lastLoginTimestamp : Date;
-	// Other attributes are objects that have not been set up in the webapp
+	
+	constructor(user : any) {
+		this.username = user.username;
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.password = user.password;
+		this.enabled = user.enabled;
+		this.passwordNeedsChange = user.passwordNeedsChange;
+		this.lastLoginTimestamp  = user.lastLoginTimestamp ;
+	}
 }
