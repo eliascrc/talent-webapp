@@ -1,9 +1,9 @@
 import { Skill } from './Skill';
 
 export class CategorySkill extends Skill {
-	name : string;
+	name: string;
 	
-	constructor(categorySkill : any) {
+	constructor(categorySkill: any) {
 		super(categorySkill);
 		this.name = categorySkill.name;
 	}

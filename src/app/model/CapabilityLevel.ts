@@ -1,8 +1,8 @@
 export class CapabilityLevel {
-	name : string;
-	hierarchyPosition : number;
+	name: string;
+	hierarchyPosition: number;
 	
-	constructor(capabilityLevel : any) {
+	constructor(capabilityLevel: any) {
 		this.name = capabilityLevel.name;
 		this.hierarchyPosition = capabilityLevel.hierarchyPosition;
 	}

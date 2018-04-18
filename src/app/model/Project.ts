@@ -1,16 +1,17 @@
 import { ProjectCapability } from './ProjectCapability';
 
 export class Project {
-	name : string;
-	startDate : Date;
-	endDate : Date;
-	projectCapabilities : Set<ProjectCapability>;
+	name: string;
+	startDate: Date;
+	endDate: Date;
+	projectCapabilities: Set<ProjectCapability>;
 	
-	constructor(project : any) {
+	constructor(project: any) {
 		this.name = project.name;
-		this.startDate = project.startDate;
-		this.endDate = project.endDate;
+		this.startDate  = new Date(project.startDate.getTime());
+		this.endDate = new Date(project.endDate.getTime());
 		
-		this.projectCapabilities =  new Set(project.projectCapabilities);
+		this.projectCapabilities = new Set();
+		for(let projectCapability of project.projectCapabilities) this.projectCapabilities.add(new ProjectCapability(projectCapability));
 	}
 }

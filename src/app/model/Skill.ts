@@ -1,7 +1,7 @@
 export class Skill {
-	name : string;
+	name: string;
 	
-	constructor(skill : any) {
+	constructor(skill: any) {
 		this.name = skill.name;
 	}
 }

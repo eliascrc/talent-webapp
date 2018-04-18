@@ -3,18 +3,20 @@ import { Project } from './Project';
 import { ProjectCapability } from './ProjectCapability';
 
 export class ProjectPosition extends Position {
-	startDate : Date;
-	endDate : Date;
-	project : Project;
-	reviewed : boolean;
-	projectCapability : ProjectCapability;
+	startDate: Date;
+	endDate: Date;
+	project: Project;
+	reviewed: boolean;
+	projectCapability: ProjectCapability;
 	
-	constructor(projectPosition : any) {
+	constructor(projectPosition: any) {
 		super(projectPosition);
-		this.startDate = projectPosition.startDate;
-		this.endDate = projectPosition.endDate;
-		this.project = projectPosition.project;
+		
+		this.startDate  = new Date(projectPosition.startDate.getTime());
+		this.endDate = new Date(projectPosition.endDate.getTime());
+
+		this.project = new Project(projectPosition.project);
 		this.reviewed = projectPosition.reviewed;
-		this.projectCapability = projectPosition.projectCapability;
+		this.projectCapability = new ProjectCapability(projectPosition.projectCapability);
 	}
 }
