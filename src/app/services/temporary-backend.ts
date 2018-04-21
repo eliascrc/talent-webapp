@@ -39,6 +39,7 @@ export class TemporaryBackend implements HttpInterceptor {
 		
 		// handle createUser
         if (request.url.endsWith('/temporary-backend/users') && request.method === 'POST') {
+			window.alert('INTERCEPTED CREATE USER');
             // get the user from the post's body
             let newUser = request.body;
 
@@ -55,6 +56,35 @@ export class TemporaryBackend implements HttpInterceptor {
             return Observable.of(new HttpResponse({ status: 200 }));
         }
 
+		// handle login in the authenticate service
+		window.alert(request.url);
+		if(request.url.endsWith('temporary-backend/authenticate') && request.method === 'POST') {
+			// find in localStorage the user requesting login
+			
+			let requestedUser = users.filter(user => {
+				return user.username === request.body.username;
+			})
+			
+			// user exists
+			if (requestedUser.length === 1) {
+				// build the response
+				let user = requestedUser[0];
+				let body = {
+					username: user.username,
+					firstName: user.firstName,
+				    lastName: user.lastName,
+				};
+				
+				// return a 200 OK with the user
+				return Observable.of(new HttpResponse({
+					status: 200,
+					body: body,
+				}));
+			} else {
+				// user does not exist
+				return Observable.throw('User does not exist.');
+			}
+		}
     }
 	
 }
