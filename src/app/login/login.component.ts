@@ -11,9 +11,10 @@ import { User } from '../model/User';
 })
 
 export class LoginComponent implements OnInit {
-	loginUsername: any = {};
+	// loginUsername gets filled by the html
+	loginData: any = {};
 	loginMessage: string;
-	loggedUser: User;
+	fullName: string = "";
 	loggedIn: boolean;
 	
 	constructor(private router: Router, private authenticateService: AuthenticateService, private userService: UserService) {
@@ -24,23 +25,20 @@ export class LoginComponent implements OnInit {
 		this.logout();
 	}
 	
-	login(username) {
+	login() {
 		// attempt to log in
-		this.authenticateService.login(username).subscribe(
+		this.authenticateService.login(this.loginData.username).subscribe(
 			data => {
-				
+				this.loginMessage = 'Logged in as '+ data.username;
+				this.fullName = data.firstName + ' ' + data.lastName;
+				this.loggedIn = true;
 			},
 			error => {
-				
+				this.loginMessage = 'Failed to log in';
+				this.fullName = null;
+				this.loggedIn = false;
 			}
 		);
-		if(this.loggedUser) {
-			this.loginMessage = 'Logged in as '+ this.loggedUser.username;
-			this.loggedIn = true;
-		} else {
-			this.loginMessage = 'Failed to log in';
-			this.loggedIn = false;
-		}
 	}
 	
 	logout() {

@@ -10,20 +10,24 @@ import { UserService } from '../services/user.service';
 export class SignUpComponent implements OnInit {
 	// gets filled by the form in the html
 	newUserData: any = {};
+	triedToSignUp: boolean;
+	resultString: string = '';
 	
 	// inject a UserService instance to create the user
 	constructor(private userService: UserService) { }
 	
 	ngOnInit() {
+		this.triedToSignUp = false;
 	}
 	
 	signUp() {
+		this.triedToSignUp = true;
 		this.userService.create(this.newUserData).subscribe(
 			data => {
-				window.alert("User created!");
+				this.resultString = 'User created!';
 			},
 			error => {
-				window.alert("Error: " + error);
+				this.resultString = "Error: " + error;
 			}
 		);
 	}

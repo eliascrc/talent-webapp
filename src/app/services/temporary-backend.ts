@@ -39,7 +39,6 @@ export class TemporaryBackend implements HttpInterceptor {
 		
 		// handle createUser
         if (request.url.endsWith('/temporary-backend/users') && request.method === 'POST') {
-			window.alert('INTERCEPTED CREATE USER');
             // get the user from the post's body
             let newUser = request.body;
 
@@ -57,10 +56,8 @@ export class TemporaryBackend implements HttpInterceptor {
         }
 
 		// handle login in the authenticate service
-		window.alert(request.url);
 		if(request.url.endsWith('temporary-backend/authenticate') && request.method === 'POST') {
 			// find in localStorage the user requesting login
-			
 			let requestedUser = users.filter(user => {
 				return user.username === request.body.username;
 			})

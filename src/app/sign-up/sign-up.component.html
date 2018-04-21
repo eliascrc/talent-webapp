@@ -21,3 +21,8 @@
         </div>
     </form>
 </div>
+
+<!--Display user info if logged in-->
+<div [hidden]='!triedToSignUp'>
+    <p>{{resultString}}</p>
+</div>
