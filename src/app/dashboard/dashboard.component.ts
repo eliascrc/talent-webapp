@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+	fullName: string = "";
+	
+	constructor() { }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+	ngOnInit() {
+		let loggedUser: any = JSON.parse(localStorage.getItem('loggedUser'));
+		if(loggedUser) {
+			this.fullName = loggedUser.firstName + ' ' + loggedUser.lastName;
+		} else {
+			this.fullName = null;
+		}
+	}
 
 }

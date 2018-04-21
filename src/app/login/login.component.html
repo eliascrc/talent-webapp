@@ -1,6 +1,15 @@
-<p>{{mockLoginMessage}}</p>
-<p>
-	<button (click)="login()">Login</button>
-	<button (click)="logout()">Logout</button>
-</p>
-
+<div>
+	<p>{{loginMessage}}</p>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="loginData.username" #username="ngModel" required />
+            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+        </div>
+        <div class="form-group">
+            <button class="btn">Log in</button>
+        </div>
+    </form>
+	<button class="btn" (click)="logout()">Log out</button>
+	
+</div>

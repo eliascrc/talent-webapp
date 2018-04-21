@@ -1,35 +1,58 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticateService } from '../services/auth/authenticate.service';
+import { UserService } from '../services/user.service';
+import { User } from '../model/User';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+	selector: 'app-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.css']
 })
 
 export class LoginComponent implements OnInit {
-  mockLoginMessage: string;
-  
-  constructor(public router: Router, public authenticateService: AuthenticateService) {
-    if(this.authenticateService.mockLoginStatus) {
-		this.mockLoginMessage = 'You are logged in.';
-	} else {
-		this.mockLoginMessage = 'You are not logged in.';
+	// loginUsername gets filled by the html
+	loginData: any = {};
+	loginMessage: string;
+	fullName: string = "";
+	loggedIn: boolean;
+	
+	constructor(private router: Router, private authenticateService: AuthenticateService, private userService: UserService) {
 	}
-  }
-  
-  login() {
-    this.authenticateService.login();
-	this.mockLoginMessage = 'You are logged in.';
-  }
-  
-  logout() {
-    this.authenticateService.logout();
-	this.mockLoginMessage = 'You are not logged in.';
-  }
-
-  ngOnInit() {
-  }
+	
+	ngOnInit() {
+		let loggedUser: any = JSON.parse(localStorage.getItem('loggedUser'));
+		if(loggedUser) {
+			this.loginMessage = 'Logged in as '+ loggedUser.username;
+			this.fullName = loggedUser.firstName + ' ' + loggedUser.firstName;
+			this.loggedIn = true;
+		} else {
+			this.loginMessage = 'Not logged in';
+			this.fullName = null;
+			this.loggedIn = false;
+		}
+	}
+	
+	login() {
+		// attempt to log in
+		this.authenticateService.login(this.loginData.username).subscribe(
+			data => {
+				this.loginMessage = 'Logged in as '+ data.username;
+				this.fullName = data.firstName + ' ' + data.lastName;
+				this.loggedIn = true;
+			},
+			error => {
+				this.loginMessage = 'Failed to log in';
+				this.fullName = null;
+				this.loggedIn = false;
+			}
+		);
+	}
+	
+	logout() {
+		this.authenticateService.logout();
+		this.loginMessage = 'Not logged in';
+		this.loggedIn = false;
+	}
 
 }
