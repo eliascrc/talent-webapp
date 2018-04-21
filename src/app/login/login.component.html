@@ -1,5 +1,4 @@
 <div>
-    <h2>Log in</h2>
 	<p>{{loginMessage}}</p>
     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
@@ -13,9 +12,4 @@
     </form>
 	<button class="btn" (click)="logout()">Log out</button>
 	
-</div>
-
-<!--Display user info if logged in-->
-<div [hidden]='!loggedIn'>
-    <p>Welcome, {{fullName}}</p>
 </div>

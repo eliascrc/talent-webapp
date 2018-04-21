@@ -21,8 +21,16 @@ export class LoginComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		// this should not go on constructor because it might generate http requests
-		this.logout();
+		let loggedUser: any = JSON.parse(localStorage.getItem('loggedUser'));
+		if(loggedUser) {
+			this.loginMessage = 'Logged in as '+ loggedUser.username;
+			this.fullName = loggedUser.firstName + ' ' + loggedUser.firstName;
+			this.loggedIn = true;
+		} else {
+			this.loginMessage = 'Not logged in';
+			this.fullName = null;
+			this.loggedIn = false;
+		}
 	}
 	
 	login() {
