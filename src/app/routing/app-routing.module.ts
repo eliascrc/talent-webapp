@@ -5,9 +5,11 @@ import { LoginComponent } 			from '../login/login.component';
 import { SignUpComponent } 			from '../sign-up/sign-up.component';
 import { AboutComponent } 			from '../about/about.component';
 import { DashboardComponent } 		from '../dashboard/dashboard.component';
-import { AuthenticateGuard } 		from './authenticate-guard.service'
+import { AuthenticateGuard } 		from './authenticate-guard.service';
+import {LandingPageComponent} from '../landing-page/landing-page.component';
 
 const routes: Routes = [
+  { path: 'landing-page', component: LandingPageComponent},
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'about', component: AboutComponent},

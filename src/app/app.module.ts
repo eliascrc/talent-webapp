@@ -11,10 +11,11 @@ import { LoginComponent } from './login/login.component';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { AboutComponent } from './about/about.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserService } from './services/user.service';
 
 // For proof of concept sign-up
-import { temporaryBackend } from './services/temporary-backend'
+import { temporaryBackend } from './services/temporary-backend';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { temporaryBackend } from './services/temporary-backend'
 		LoginComponent,
 		AboutComponent,
 		SignUpComponent,
-		DashboardComponent
+		DashboardComponent,
+		LandingPageComponent
 	],
 	imports: [
 		BrowserModule,
@@ -35,7 +37,7 @@ import { temporaryBackend } from './services/temporary-backend'
 	],
 	providers: [
 		UserService,
-		
+
 		// For proof of concept sign-up
 		temporaryBackend
 	],
