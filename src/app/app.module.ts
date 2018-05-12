@@ -21,12 +21,6 @@ import { ContactUsComponent } from './components/company-information/contact-us/
 import { TermsOfUseComponent } from './components/company-information/terms-of-use/terms-of-use.component';
 
 import { UserService } from './services/user.service';
-import {PrivacyPolicyService} from './services/company-information/privacy-policy.service';
-import {TermsOfUseService} from './services/company-information/terms-of-use.service';
-import {ForgotPasswordService} from './services/authentication/forgot-password.service';
-
-import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.directive';
-import { SafePipe } from './shared/safe.pipe';
 
 // For proof of concept sign-up
 import { temporaryBackend } from './services/temporary-backend';
@@ -35,29 +29,29 @@ import { temporaryBackend } from './services/temporary-backend';
   declarations: [
     AppComponent,
     LoginComponent,
-		AboutComponent,
-		SignUpComponent,
-		DashboardComponent,
-		LandingPageComponent,
+    AboutComponent,
+    SignUpComponent,
+    DashboardComponent,
+    LandingPageComponent,
     PrivacyPolicyComponent,
-		ForgotPasswordComponent,
-		ResetPasswordComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
     ContactUsComponent,
     TermsOfUseComponent,
 	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		AppRoutingModule,
-		HttpClientModule,
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
     HttpModule,
-		NgbModule,
-		LoginRoutingModule
+    NgbModule,
+    LoginRoutingModule
 	],
 	providers: [
-		UserService,
-		// For proof of concept sign-up
-		temporaryBackend
+    UserService,
+    // For proof of concept sign-up
+    temporaryBackend
 	],
 	bootstrap: [AppComponent]
 })
