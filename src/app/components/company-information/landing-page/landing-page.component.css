@@ -1,3 +1,7 @@
+button {
+  border: none;
+}
+
 #container-fluid, #general-row, #container-row1, #container-row2{
   margin:0;
   padding:0;
@@ -9,9 +13,9 @@
   margin-right: 0;
 }
 
-@media only screen and (max-width: 2000px) {
+@media only screen and (max-width: 4000px) {
   #handshake {
-    height: 953px;
+    height: 97.48vh;
     width: 100%;
   }
 }
@@ -29,7 +33,7 @@
 }
 
 #signin-row {
-  margin-top: 30px;
+  margin-top: 2.92vh;
 }
 
 #signin-button {
@@ -55,35 +59,39 @@
 }
 
 #logo-row {
-  margin-top: 60px;
+  margin-top: 5.85vh;
 }
 
-@media only screen and (max-width: 2000px) {
+@media only screen and (max-width: 4000px) {
   #talent-logo {
-    height: 256px;
-    width: 302px;
-    margin-left: 33.57%;
+    height: 25vh;
+    margin-left: 36%;
   }
 }
 
 @media only screen and (max-width: 1000px) {
   #talent-logo {
-    height: 128px;
-    width: 151px;
-    margin-left: 15%;
+    height: 25vh;
+    margin-left: 40%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #talent-logo {
+    height: 25vh;
+    margin-left: 28%;
   }
 }
 
 #list-row {
-  margin-top: 84px;
+  margin-top: 8.2vh;
   width: auto;
   display: block;
 }
 
-@media only screen and (max-width: 2000px) {
+@media only screen and (max-width: 4000px) {
   .talent-arrow {
-    height: 61px;
-    width: 31px;
+    height: 5.95vh;
     margin-left: 14.64%;
     margin-right: 4.52%;
     vertical-align: middle;
@@ -93,16 +101,15 @@
 
 @media only screen and (max-width: 1000px) {
   .talent-arrow {
-    height: 30px;
-    width: 15px;
-    margin-left: 14.64%;
+    height: 5.95vh;
+    margin-left: 10%;
     margin-right: 3%;
     vertical-align: middle;
     display: inline;
   }
 }
 
-@media only screen and (max-width: 2000px) {
+@media only screen and (max-width: 4000px) {
   .text-content {
     vertical-align: middle;
     display: inline;
@@ -139,15 +146,25 @@
 }
 
 #list-row2, #list-row3 {
-  margin-top: 42px;
+  margin-top: 4.1vh;
   width: auto;
   display: block;
 }
 
-#join-now {
-  margin-top: 66px;
-  margin-left: 14.64%;
-  margin-bottom: 82px;
+@media only screen and (max-width: 4000px) {
+  #join-now {
+    margin-top: 6.44vh;
+    margin-left: 14.64%;
+    margin-bottom: 8vh;
+  }
+}
+
+@media only screen and (max-width: 4000px) {
+  #join-now {
+    margin-top: 6.44vh;
+    margin-left: 10%;
+    margin-bottom: 8vh;
+  }
 }
 
 #join-button {
@@ -169,12 +186,12 @@
 }
 
 #footer {
-  height: 34px;
+  height: 3.32vh;
 }
 
 #horizontal-line {
   box-sizing: border-box;
-  height: 2px;
+  height: 0.19vh;
   width: 100%;
   border: 1px solid #294261;
 }
@@ -238,8 +255,8 @@
 @media only screen and (max-width: 2000px) {
   .vertical-line {
     margin-right: 5.84%;
-    margin-top: 13.16px;
-    margin-bottom: 51.16px;
+    margin-top: 1.28vh;
+    margin-bottom: 4.99vh;
     box-sizing: border-box;
     height: 19.68px;
     width: 1px;
@@ -250,8 +267,8 @@
 @media only screen and (max-width: 1000px) {
   .vertical-line {
     margin-right: 4%;
-    margin-top: 13.16px;
-    margin-bottom: 51.16px;
+    margin-top: 1.28vh;
+    margin-bottom: 4.99vh;
     box-sizing: border-box;
     height: 19.68px;
     width: 1px;
@@ -262,8 +279,8 @@
 @media only screen and (max-width: 500px) {
   .vertical-line {
     margin-right: 1.5%;
-    margin-top: 13.16px;
-    margin-bottom: 51.16px;
+    margin-top: 1.28vh;
+    margin-bottom: 4.99vh;
     box-sizing: border-box;
     height: 19.68px;
     width: 1px;
@@ -271,7 +288,7 @@
   }
 }
 
-@media only screen and (max-width: 2000px) {
+@media only screen and (max-width: 4000px) {
   .footer-text-links {
     height: 17px;
     color: #294261;
@@ -279,7 +296,7 @@
     font-size: 14px;
     line-height: 17px;
     margin-right: 5.84%;
-    margin-top: 16px;
+    margin-top: 1.56vh;
   }
 }
 
@@ -291,7 +308,7 @@
     font-size: 10px;
     line-height: 17px;
     margin-right: 5%;
-    margin-top: 16px;
+    margin-top: 1.56vh;
   }
 }
 
@@ -303,14 +320,14 @@
     font-size: 9.5px;
     line-height: 17px;
     margin-right: 1.5%;
-    margin-top: 16px;
+    margin-top: 1.56vh;
   }
 }
 
 #copyright-row {
   margin-left: 45%;
   margin-right: 35%;
-  margin-top: 19px;
+  margin-top: 1.85vh;
 }
 
 @media only screen and (max-width: 2000px) {
