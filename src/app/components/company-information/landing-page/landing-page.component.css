@@ -13,17 +13,10 @@ button {
   margin-right: 0;
 }
 
-@media only screen and (max-width: 4000px) {
-  #handshake {
-    height: 97.48vh;
-    width: 100%;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  #handshake {
-    display: none;
-  }
+#container-row1 {
+  background: url(../../../../assets/images/handshake.png) no-repeat;
+  background-position: center;
+  background-size: cover
 }
 
 @media only screen and (max-width: 1000px) {
