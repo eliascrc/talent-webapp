@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from '../services/user.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,7 +22,8 @@ export class SignUpComponent implements OnInit {
 	}
 
 	signUp() {
-		this.triedToSignUp = true;
+	  console.log(this.newUserData.firstName);
+		/*this.triedToSignUp = true;
 		this.userService.create(this.newUserData).subscribe(
 			data => {
 				this.resultString = 'User created!';
@@ -30,7 +31,7 @@ export class SignUpComponent implements OnInit {
 			error => {
 				this.resultString = "Error: " + error;
 			}
-		);
+		);*/
 	}
 
 }

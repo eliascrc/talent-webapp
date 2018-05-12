@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticateService } from '../services/auth/authenticate.service';
-import { UserService } from '../services/user.service';
-import { User } from '../model/User';
+import { AuthenticateService } from '../../../services/authentication/authenticate.service';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../model/User';
 
 @Component({
 	selector: 'app-login',
@@ -16,10 +16,10 @@ export class LoginComponent implements OnInit {
 	loginMessage: string;
 	fullName: string = "";
 	loggedIn: boolean;
-	
+
 	constructor(private router: Router, private authenticateService: AuthenticateService, private userService: UserService) {
 	}
-	
+
 	ngOnInit() {
 		let loggedUser: any = JSON.parse(localStorage.getItem('loggedUser'));
 		if(loggedUser) {
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 			this.loggedIn = false;
 		}
 	}
-	
+
 	login() {
 		// attempt to log in
 		this.authenticateService.login(this.loginData.username).subscribe(
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 			}
 		);
 	}
-	
+
 	logout() {
 		this.authenticateService.logout();
 		this.loginMessage = 'Not logged in';
