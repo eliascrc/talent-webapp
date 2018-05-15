@@ -1,8 +1,0 @@
--#!/bin/sh      
-ssh admin@35.174.154.86 <<EOF        
- cd /var/www/webapp/
- git pull       
- npm install --production       
- pm2 restart all
- exit       
-EOF
