@@ -194,16 +194,20 @@
 }
 
 .input-label{
+  display: block;
   height: 25px;
-  width: 383.4px;
   color: #495057;
   font-size: 20px;
   letter-spacing: -0.35px;
   line-height: 23px;
+  width: 55.11%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .organization-logo-div {
-  max-width: 55.11%;
+  display: block;
   text-align: center;
   margin-top: 16.69vh;
   margin-bottom: 12.69vh;
@@ -216,7 +220,8 @@
 }
 
 #form-content {
-  margin-left: 17.38%;
+  display: block;
+  text-align: center;
   margin-top: 12.69vh;
 }
 
@@ -226,8 +231,8 @@
 
 #forgot-password-link {
   display: block;
+  text-align: center;
   margin-top: 1.93vh;
-  margin-left: 9.86vh;
   height: 24px;
 	width: 283px;
 	color: #4083FF;

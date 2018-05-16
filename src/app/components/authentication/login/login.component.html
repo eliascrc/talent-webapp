@@ -23,7 +23,6 @@
                 <div class="sign-in-error" [hidden]="!invalidCredentials">Wrong email or password.</div>
 
                 <form>
-
                     <p class="input-label">Email</p>
                     <input email type="email" [ngClass]="(emailIsValid)?'input':'input input-error'" #emailInput placeholder="Email" (blur)="validateEmail(emailInput.value)"
                     />
@@ -32,7 +31,7 @@
                     <p class="input-label password-label">Password</p>
                     <input class="input" #passwordInput placeholder="Password" type="password" />
 
-                    <a id="forgot-password-link">Forgot your password?</a>
+                    <p><a id="forgot-password-link">Forgot your password?</a></p>
 
                     <button id="enter-button" (click)="login(emailInput.value, passwordInput.value)">Enter</button>
                 </form>
