@@ -5,16 +5,16 @@ import { AuthenticateService } from '../services/authentication/authenticate.ser
 @Injectable()
 export class AuthenticateGuard implements CanActivate{
 	constructor(private authenticateService: AuthenticateService, private router: Router) {}
-
+  
 	canActivate() {
-		// check if loggedUser is set
-		if (localStorage.getItem('loggedUser')) {
-			// loggedUser is set, user is logged in
+		if (this.authenticateService.isLoggedIn().then(response => response)) {
 			return true;
+		} else {
+			this.router.navigate(['/login']);
+			return false;
 		}
-		// user is not logged, redirect to login
-		this.router.navigate(['/login']);
-		return false;
+		
+		
 	}
 
 }
