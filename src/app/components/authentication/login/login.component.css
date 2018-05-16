@@ -181,7 +181,10 @@
   position: absolute;
   color: #C4183C;
   margin-top: 1.17vh;
-  margin-left: 2px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:53.11%;
 }
 
 ::placeholder {
@@ -234,7 +237,6 @@
   text-align: center;
   margin-top: 1.93vh;
   height: 24px;
-	width: 283px;
 	color: #4083FF;
 	font-size: 18px;
 	line-height: 21px;
@@ -256,6 +258,10 @@
   line-height: 21px;
   margin-top: 6.64vh;
   margin-bottom: 3.71vh;
+  margin-left: auto;
+  margin-right: auto;
+  width:53.11%;
+  text-align: left;
 }
 
 .page-div {
