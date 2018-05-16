@@ -77,6 +77,12 @@ body {
   }
 }
 
+@media only screen and (max-width: 400px) {
+  #talent-logo {
+    margin-left: 15%;
+  }
+}
+
 #list-row {
   margin-top: 8.2vh;
   width: auto;
@@ -100,6 +106,13 @@ body {
   .talent-arrow {
     margin-left: 10%;
     margin-right: 3%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .talent-arrow {
+    margin-left: 1%;
+    margin-right: 0;
   }
 }
 
@@ -252,8 +265,8 @@ body {
 
 @media only screen and (max-width: 400px) {
   #footer-links {
-    margin-left: 9.5%;
-    margin-right: 10%;
+    margin-left: 6%;
+    margin-right: 0;
   }
 }
 
@@ -284,6 +297,12 @@ body {
   }
 }
 
+@media only screen and (max-width: 400px) {
+  .vertical-line {
+    margin-right: 1%;
+  }
+}
+
 .footer-text-links {
   height: 17px;
   color: #294261;
@@ -307,6 +326,12 @@ body {
 @media only screen and (max-width: 500px) {
   .footer-text-links {
     margin-right: 1.5%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .footer-text-links {
+    margin-right: 1%;
   }
 }
 
@@ -336,5 +361,11 @@ body {
   #copyright-row {
     margin-left: 41%;
     margin-right: 35%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #copyright-row {
+    margin-left: 37%;
   }
 }
