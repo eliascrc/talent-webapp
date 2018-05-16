@@ -10,7 +10,7 @@ import { AppRoutingModule } from './routing/app-routing.module';
 
 import { DashboardComponent } from './components/company-information/dashboard/dashboard.component';
 import { LoginComponent } from './components/authentication/login/login.component';
-import { LoginRoutingModule } from './components/authentication/login/login-routing.module';
+//import { LoginRoutingModule } from './components/authentication/login/login-routing.module';
 import { AboutComponent } from './components/company-information/about/about.component';
 import { SignUpComponent } from './components/authentication/sign-up/sign-up.component';
 import { LandingPageComponent } from './components/company-information/landing-page/landing-page.component';
@@ -23,7 +23,9 @@ import { TermsOfUseComponent } from './components/company-information/terms-of-u
 import { UserService } from './services/user.service';
 
 // For proof of concept sign-up
-import { temporaryBackend } from './services/temporary-backend';
+import { OrganizationSelectComponent } from './components/authentication/organization-select/organization-select.component';
+import { OrganizationService } from '@services/organization/organization.service';
+import { AuthenticateService } from '@services/authentication/authenticate.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { temporaryBackend } from './services/temporary-backend';
     ResetPasswordComponent,
     ContactUsComponent,
     TermsOfUseComponent,
+    OrganizationSelectComponent,
 	],
   imports: [
     BrowserModule,
@@ -46,12 +49,12 @@ import { temporaryBackend } from './services/temporary-backend';
     HttpClientModule,
     HttpModule,
     NgbModule,
-    LoginRoutingModule
+    //LoginRoutingModule
 	],
 	providers: [
     UserService,
-    // For proof of concept sign-up
-    temporaryBackend
+    OrganizationService,
+    AuthenticateService,
 	],
 	bootstrap: [AppComponent]
 })

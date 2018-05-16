@@ -1,17 +1,45 @@
-<div>
-	<p>{{loginMessage}}</p>
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="loginData.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+<div class="container-fluid page-div" id="container-fluid">
+    <div class="row" id="general-row">
+        <div class="d-xs-block d-sm-block d-md-block col-lg-5" id="handshake">
         </div>
-        <div class="form-group">
-            <button class="btn">Log in</button>
-        </div>
-    </form>
-  <a routerLink="/forgot-password" routerLinkActive="active">Forgot password?</a>
-  <a routerLink="/reset-password" routerLinkActive="active">Reset password</a>
-	<button class="btn" (click)="logout()">Log out</button>
 
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7" id="container-row2">
+            <img src="/assets/images/talent-logo.png" id="talent-logo">
+            <div id="sign-up-row">
+                <span id="sign-up-suggestion">Don't have an account?</span>
+                <a routerLink="/sign-up" routerLinkActive="active" id="signin-link">
+                    <button type="button" class="btn btn-primary" id="sign-up-button">
+                        Sign up
+                    </button>
+                </a>
+            </div>
+
+            <div id=form-content>
+
+                <div class="organization-logo-div">
+                    <img *ngIf="organization != null" id="organization-logo" [src]="organization.logo" />
+                </div>
+
+                <div class="sign-in-error" [hidden]="!invalidCredentials">Wrong email or password.</div>
+
+                <form>
+
+                    <p class="input-label">Email</p>
+                    <input email type="email" [ngClass]="(emailIsValid)?'input':'input input-error'" #emailInput placeholder="Email" (blur)="validateEmail(emailInput.value)"
+                    />
+                    <div class="email-error" [hidden]="emailIsValid">Invalid email.</div>
+
+                    <p class="input-label password-label">Password</p>
+                    <input class="input" #passwordInput placeholder="Password" type="password" />
+
+                    <a id="forgot-password-link">Forgot your password?</a>
+
+                    <button id="enter-button" (click)="login(emailInput.value, passwordInput.value)">Enter</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
 </div>

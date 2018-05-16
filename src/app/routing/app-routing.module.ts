@@ -12,10 +12,12 @@ import {ResetPasswordComponent} from '../components/authentication/reset-passwor
 import {PrivacyPolicyComponent} from '../components/company-information/privacy-policy/privacy-policy.component';
 import {ContactUsComponent} from '../components/company-information/contact-us/contact-us.component';
 import {TermsOfUseComponent} from '../components/company-information/terms-of-use/terms-of-use.component';
+import { OrganizationSelectComponent } from '../components/authentication/organization-select/organization-select.component';
 
 const routes: Routes = [
+  { path: '', component: LandingPageComponent},
   { path: 'landing-page', component: LandingPageComponent},
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: OrganizationSelectComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'about', component: AboutComponent},
   { path: 'contact-us', component: ContactUsComponent},
@@ -23,6 +25,7 @@ const routes: Routes = [
   { path: 'terms-of-use', component: TermsOfUseComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'reset-password', component: ResetPasswordComponent},
+  { path: 'login/:uniqueIdentifier', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard]},
 ];
 

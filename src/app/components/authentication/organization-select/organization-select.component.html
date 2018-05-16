@@ -1,0 +1,62 @@
+<div class="container-fluid" id="container-fluid">
+  <div class="row" id="general-row">
+    <div class="d-xs-block d-sm-block d-md-block col-lg-5" id="handshake">
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7" id="container-row2">
+      <div id="sign-up-row">
+        <span id="sign-up-suggestion">Don't have an account?</span>
+        <a routerLink="/sign-up" routerLinkActive="active" id="signin-link">
+          <button type="button" class="btn btn-primary" id="sign-up-button">
+            Sign up
+          </button>
+        </a>
+      </div>
+      <div id="logo-row">
+        <img src="/assets/images/talent-logo.png" id="talent-logo">
+      </div>
+
+      <form>
+        <div id="form-row">
+          <p id="id-label">Organization's id</p>
+          <input [ngClass]="(error == false)?'id-input':'id-input id-input-error'" #idInput placeholder="Organization's id" />
+          <span id="talent-domain">.talent.cr</span>
+          <div class="id-error" [hidden]="!error" >Invalid id.</div>
+        </div>
+        
+        <div id="next-button-div">
+          <button id="next-button" (click)="redirectToOrganization(idInput.value)">
+            Next
+            <img src="/assets/images/arrow.png" class="img-fluid" id="arrow" alt="Responsive image">
+          </button>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+  <footer id="footer">
+    <div id="horizontal-line"></div>
+    <div id="footer-links" class="row">
+      <div class="vertical-line"></div>
+      <a routerLink="/contact-us" routerLinkActive="active" class="footer-text-links">
+        <p>Contact us</p>
+      </a>
+      <div class="vertical-line"></div>
+      <a routerLink="/privacy-policy" routerLinkActive="active" class="footer-text-links">
+        <p>Privacy policy</p>
+      </a>
+      <div class="vertical-line"></div>
+      <a routerLink="/terms-of-use" routerLinkActive="active" class="footer-text-links">
+        <p>Terms of use</p>
+      </a>
+      <div class="vertical-line"></div>
+      <a routerLink="/about" routerLinkActive="active" class="footer-text-links">
+        <p>About</p>
+      </a>
+    </div>
+    <div id="copyright-row">
+      <p id="copyright">Talent!&copy; 2018
+    </div>
+  </footer>
+</div>

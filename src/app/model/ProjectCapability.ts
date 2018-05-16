@@ -6,11 +6,7 @@ export class ProjectCapability {
 	projectPositionHistory: Set<ProjectPosition>;
 	project: Project;
 	
-	constructor(projectCapability: any) {
-		this.currentProjectPosition = new ProjectPosition(projectCapability.currentProjectPosition);
-		this.project = new Project(projectCapability.project);
+	constructor() {
 		
-		this.projectPositionHistory = new Set();
-		for(let projectPosition of projectCapability.projectPositionHistory) this.projectPositionHistory.add(new ProjectPosition(projectPosition));
 	}
 }
