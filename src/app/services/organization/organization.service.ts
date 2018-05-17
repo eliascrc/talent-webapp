@@ -10,6 +10,10 @@ export class OrganizationService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Returns an observable of type organization for a given organization unique identifier
+   * @param uniqueIdentifier the unique identifier of the organization
+   */
   getOrganization(uniqueIdentifier: string): Observable<Organization> {
     return this.http.get<Organization>(this.url, {
       params: {

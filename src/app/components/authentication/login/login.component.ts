@@ -25,6 +25,9 @@ export class LoginComponent implements OnInit {
 		this.getOrganization();
 	}
 
+	/**
+	 * Uses the route to retrieve the organization for this component, important for setting the logo on the page
+	 */
 	getOrganization(): void {
 		const uniqueIdentifier: string = this.route.snapshot.paramMap.get('uniqueIdentifier');
 		this.organizationService.getOrganization(uniqueIdentifier)
@@ -35,6 +38,14 @@ export class LoginComponent implements OnInit {
 
 	}
 
+	/**
+	 * Tries to log in the user using the supplied email and password, redirects to the dashboard page on success
+	 * and stores the user on local storage, on error it sets invalid credentials to true so the error message is
+	 * displayed
+	 * on error it sets invalid credentials to true
+	 * @param email the email entered in the email field
+	 * @param password the password entered in the password field
+	 */
 	login(email: string, password: string) {
 		this.authenticateService.login(email, password)
 		.subscribe(() => { 
@@ -47,6 +58,10 @@ export class LoginComponent implements OnInit {
 
 	}
 
+	/**
+	 * Uses a regular expression to validate the email provided by the user
+	 * @param email the email the user entered in the email field
+	 */
 	validateEmail(email: string) {
 		this.emailIsValid = this.emailRegex.test(email);
 	}
