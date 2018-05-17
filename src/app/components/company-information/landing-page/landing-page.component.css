@@ -67,7 +67,7 @@ body {
 
 @media only screen and (max-width: 1000px) {
   #talent-logo {
-    margin-left: 40%;
+    margin-left: 33%;
   }
 }
 
@@ -237,7 +237,7 @@ body {
 
 @media only screen and (max-width: 1000px) {
   #footer-links {
-    margin-left: 30%;
+    margin-left: 23%;
     margin-right: 13%;
   }
 }

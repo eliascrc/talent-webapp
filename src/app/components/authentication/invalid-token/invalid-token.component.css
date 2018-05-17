@@ -47,6 +47,13 @@ body {
   }
 }
 
+
+@media only screen and (max-width: 4000px) {
+  #forgot-password-h {
+    margin-left: 37%;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   #forgot-password-h {
     margin-left: 20.16%;
@@ -56,7 +63,7 @@ body {
 @media only screen and (max-width: 400px) {
   #forgot-password-h {
     margin-top: 16vh;
-    margin-left: 6%;
+    margin-left: 19%;
   }
 }
 
@@ -75,6 +82,12 @@ body {
 @media only screen and (max-width: 4000px) {
   #confirmation-message {
     margin-left: 24.16%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #confirmation-message {
+    margin-left: 27%;
   }
 }
 
@@ -129,7 +142,7 @@ body {
 
 @media only screen and (max-width: 1000px) {
   #footer-links {
-    margin-left: 30%;
+    margin-left: 23%;
     margin-right: 13%;
   }
 }
