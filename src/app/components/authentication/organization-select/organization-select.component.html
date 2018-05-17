@@ -12,18 +12,21 @@
           </button>
         </a>
       </div>
-      <div id="logo-row">
-        <img src="/assets/images/talent-logo.png" id="talent-logo">
-      </div>
+
+      <a routerLink="/landing-page">
+        <div id="logo-row">
+          <img src="/assets/images/talent-logo.png" id="talent-logo">
+        </div>
+      </a>
 
       <form>
         <div id="form-row">
           <p id="id-label">Organization's id</p>
           <input [ngClass]="(error == false)?'id-input':'id-input id-input-error'" #idInput placeholder="Organization's id" />
           <span id="talent-domain">.talent.cr</span>
-          <div class="id-error" [hidden]="!error" >Invalid id.</div>
+          <div class="id-error" [hidden]="!error">Invalid id.</div>
         </div>
-        
+
         <div id="next-button-div">
           <button id="next-button" (click)="redirectToOrganization(idInput.value)">
             Next
