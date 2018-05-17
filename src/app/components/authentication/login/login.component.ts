@@ -49,8 +49,8 @@ export class LoginComponent implements OnInit {
 	login(email: string, password: string) {
 		this.authenticateService.login(email, password)
 		.subscribe(() => { 
-			this.router.navigate(['/dashboard']);
 			this.authenticateService.storeUser();
+			this.router.navigate(['/dashboard']);
 		}, () => this.invalidCredentials = true );
 	}
 
