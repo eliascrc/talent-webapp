@@ -25,7 +25,7 @@ export class ResetPasswordComponent implements OnInit {
     this.forgotPasswordService
       .validateToken(this.token)
       .catch(error => {
-        // this.router.navigate(['/invalid-token']);
+        this.router.navigate(['/invalid-token']);
       });
   }
 
