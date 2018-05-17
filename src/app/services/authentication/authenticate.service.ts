@@ -35,8 +35,8 @@ export class AuthenticateService {
 	/**
 	 * Stores the logged user in local storage using the authenticate web service
 	 */
-	storeUser() {
-		this.http.get<User>(this.authenticatedUrl, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, withCredentials: true } )
-		.subscribe(user => localStorage.setItem("loggedUser", JSON.stringify(user)));
+	storeUser(): Promise<any> {
+		return this.http.get<User>(this.authenticatedUrl, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, withCredentials: true } )
+		.toPromise().then(user => localStorage.setItem("loggedUser", JSON.stringify(user)));
 	}
 }

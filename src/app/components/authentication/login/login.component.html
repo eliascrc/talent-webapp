@@ -24,12 +24,12 @@
 
                 <form>
                     <p class="input-label">Email</p>
-                    <input email type="email" [ngClass]="(emailIsValid)?'input':'input input-error'" #emailInput placeholder="Email" (blur)="validateEmail(emailInput.value)"
+                    <input email type="email" [ngClass]="(emailIsValid)?'input':'input input-error'" #emailInput placeholder="Email" (blur)="validateEmail(emailInput.value, $event)" (keyup)="validateEmail(emailInput.value, $event); clearSignInError()"
                     />
                     <div class="email-error" [hidden]="emailIsValid">Invalid email.</div>
 
                     <p class="input-label password-label">Password</p>
-                    <input class="input" #passwordInput placeholder="Password" type="password" />
+                    <input class="input" #passwordInput placeholder="Password" type="password" (keyup)="clearSignInError()"/>
 
                     <p><a id="forgot-password-link" routerLink="/forgot-password">Forgot your password?</a></p>
 

@@ -5,7 +5,7 @@ import { UserService } from '@services/user.service';
 import { User } from '@model/User';
 import { Organization } from '@model/Organization';
 import { OrganizationService } from '@services/organization/organization.service';
-import {Http} from "@angular/http"
+import { Http } from "@angular/http"
 
 @Component({
 	selector: 'app-login',
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 	getOrganization(): void {
 		const uniqueIdentifier: string = this.route.snapshot.paramMap.get('uniqueIdentifier');
 		this.organizationService.getOrganization(uniqueIdentifier)
-		.subscribe( response => this.organization = response, error => this.router.navigate(["login/"]));
+			.subscribe(response => this.organization = response, error => this.router.navigate(["login/"]));
 	}
 
 	ngOnInit() {
@@ -48,10 +48,10 @@ export class LoginComponent implements OnInit {
 	 */
 	login(email: string, password: string) {
 		this.authenticateService.login(email, password)
-		.subscribe(() => { 
-			this.authenticateService.storeUser();
-			this.router.navigate(['/dashboard']);
-		}, () => this.invalidCredentials = true );
+			.subscribe(() => {
+				this.authenticateService.storeUser()
+				.then(() => this.router.navigate(['/dashboard']));
+			}, () => this.invalidCredentials = true);
 	}
 
 	logout() {
@@ -62,8 +62,20 @@ export class LoginComponent implements OnInit {
 	 * Uses a regular expression to validate the email provided by the user
 	 * @param email the email the user entered in the email field
 	 */
-	validateEmail(email: string) {
-		this.emailIsValid = this.emailRegex.test(email);
+	validateEmail(email: string, event: any) {
+		if (event.type == "keyup" && !this.emailIsValid) {
+			// only validate email on keyup if it has been identified as invalid
+			this.emailIsValid = this.emailRegex.test(email);
+		} else if (event.type == "blur") { // always validate the email on blur
+			this.emailIsValid = this.emailRegex.test(email);
+		}
+	}
+
+	/**
+	 * Clears the sign in error message, used when the email or password fields are updated
+	 */
+	clearSignInError() {
+		this.invalidCredentials = false;
 	}
 
 }
