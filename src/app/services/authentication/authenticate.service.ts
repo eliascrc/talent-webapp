@@ -33,7 +33,8 @@ export class AuthenticateService {
 	}
 
 	/**
-	 * Stores the logged user in local storage using the authenticate web service
+	 * Stores the logged user in local storage using the authenticate web service returns a promise so that the
+	 * login component can wait for the request to complete before redirecting
 	 */
 	storeUser(): Promise<any> {
 		return this.http.get<User>(this.authenticatedUrl, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, withCredentials: true } )
