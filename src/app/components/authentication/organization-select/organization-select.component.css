@@ -44,6 +44,7 @@
   width: 87px;
   border-radius: 10px;
   background-color: #294261;
+  border-width: 0px;
   padding: 0;
 }
 
@@ -61,11 +62,11 @@
 
 #logo-row {
   margin-top: 12.5vh;
+  text-align: center;
 }
 
 #talent-logo {
-  height: 32.12vh;
-  margin-left: 28.09%;
+  height: 25vh;
 }
 
 @media only screen and (max-width: 2000px) {
@@ -140,143 +141,11 @@
   width: 28px;
 }
 
-#footer {
-  height: 34px;
-}
-
 #horizontal-line {
   box-sizing: border-box;
   height: 2px;
   width: 100%;
   border: 1px solid #294261;
-}
-
-@media only screen {
-  #footer-links {
-    margin-left: 32.18%;
-    margin-right: 32.18%;
-    height: 34px;
-  }
-}
-
-@media only screen and (max-width: 1500px) {
-  #footer-links {
-    margin-left: 27%;
-    margin-right: 27%;
-    height: 34px;
-  }
-}
-
-@media only screen and (max-width: 1250px) {
-  #footer-links {
-    margin-left: 20%;
-    margin-right: 20%;
-    height: 34px;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  #footer-links {
-    margin-left: 30%;
-    margin-right: 13%;
-    height: 34px;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  #footer-links {
-    margin-left: 25%;
-    margin-right: 13%;
-    height: 34px;
-  }
-}
-
-@media only screen and (max-width: 650px) {
-  #footer-links {
-    margin-left: 20%;
-    margin-right: 13%;
-    height: 34px;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  #footer-links {
-    margin-left: 25%;
-    margin-right: 10%;
-    height: 34px;
-  }
-}
-
-@media only screen and (max-width: 2000px) {
-  .vertical-line {
-    margin-right: 5.84%;
-    margin-top: 13.16px;
-    margin-bottom: 51.16px;
-    box-sizing: border-box;
-    height: 19.68px;
-    width: 1px;
-    border: 1px solid #979797;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .vertical-line {
-    margin-right: 4%;
-    margin-top: 13.16px;
-    margin-bottom: 51.16px;
-    box-sizing: border-box;
-    height: 19.68px;
-    width: 1px;
-    border: 1px solid #979797;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .vertical-line {
-    margin-right: 1.5%;
-    margin-top: 13.16px;
-    margin-bottom: 51.16px;
-    box-sizing: border-box;
-    height: 19.68px;
-    width: 1px;
-    border: 1px solid #979797;
-  }
-}
-
-@media only screen {
-  .footer-text-links {
-    height: 17px;
-    color: #294261;
-    font-family: Helvetica, serif;
-    font-size: 14px;
-    line-height: 17px;
-    margin-right: 5.84%;
-    margin-top: 16px;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .footer-text-links {
-    height: 17px;
-    color: #294261;
-    font-family: Helvetica, serif;
-    font-size: 10px;
-    line-height: 17px;
-    margin-right: 5%;
-    margin-top: 16px;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .footer-text-links {
-    height: 17px;
-    color: #294261;
-    font-family: Helvetica, serif;
-    font-size: 9.5px;
-    line-height: 17px;
-    margin-right: 1.5%;
-    margin-top: 16px;
-  }
 }
 
 #copyright-row {
@@ -352,7 +221,6 @@
 
 #id-label {
   height: 25px;
-  width: 383.4px;
   color: #495057;
   font-family: Helvetica, serif;
   font-size: 20px;

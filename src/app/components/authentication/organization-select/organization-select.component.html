@@ -12,18 +12,21 @@
           </button>
         </a>
       </div>
-      <div id="logo-row">
-        <img src="/assets/images/talent-logo.png" id="talent-logo">
-      </div>
+
+      <a routerLink="/landing-page">
+        <div id="logo-row">
+          <img src="/assets/images/talent-logo.png" id="talent-logo">
+        </div>
+      </a>
 
       <form>
         <div id="form-row">
           <p id="id-label">Organization's id</p>
           <input [ngClass]="(error == false)?'id-input':'id-input id-input-error'" #idInput placeholder="Organization's id" />
           <span id="talent-domain">.talent.cr</span>
-          <div class="id-error" [hidden]="!error" >Invalid id.</div>
+          <div class="id-error" [hidden]="!error">Invalid id.</div>
         </div>
-        
+
         <div id="next-button-div">
           <button id="next-button" (click)="redirectToOrganization(idInput.value)">
             Next
@@ -35,28 +38,5 @@
     </div>
 
   </div>
-  <footer id="footer">
-    <div id="horizontal-line"></div>
-    <div id="footer-links" class="row">
-      <div class="vertical-line"></div>
-      <a routerLink="/contact-us" routerLinkActive="active" class="footer-text-links">
-        <p>Contact us</p>
-      </a>
-      <div class="vertical-line"></div>
-      <a routerLink="/privacy-policy" routerLinkActive="active" class="footer-text-links">
-        <p>Privacy policy</p>
-      </a>
-      <div class="vertical-line"></div>
-      <a routerLink="/terms-of-use" routerLinkActive="active" class="footer-text-links">
-        <p>Terms of use</p>
-      </a>
-      <div class="vertical-line"></div>
-      <a routerLink="/about" routerLinkActive="active" class="footer-text-links">
-        <p>About</p>
-      </a>
-    </div>
-    <div id="copyright-row">
-      <p id="copyright">Talent!&copy; 2018
-    </div>
-  </footer>
+
 </div>

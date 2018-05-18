@@ -4,7 +4,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7" id="container-row2">
-            <img src="/assets/images/talent-logo.png" id="talent-logo">
+            <a routerLink="/landing-page"> <img src="/assets/images/talent-logo.png" id="talent-logo" > </a>
             <div id="sign-up-row">
                 <span id="sign-up-suggestion">Don't have an account?</span>
                 <a routerLink="/sign-up" routerLinkActive="active" id="signin-link">
@@ -23,16 +23,15 @@
                 <div class="sign-in-error" [hidden]="!invalidCredentials">Wrong email or password.</div>
 
                 <form>
-
                     <p class="input-label">Email</p>
-                    <input email type="email" [ngClass]="(emailIsValid)?'input':'input input-error'" #emailInput placeholder="Email" (blur)="validateEmail(emailInput.value)"
+                    <input email type="email" [ngClass]="(emailIsValid)?'input':'input input-error'" #emailInput placeholder="Email" (blur)="validateEmail(emailInput.value, $event)" (keyup)="validateEmail(emailInput.value, $event); clearSignInError()"
                     />
                     <div class="email-error" [hidden]="emailIsValid">Invalid email.</div>
 
                     <p class="input-label password-label">Password</p>
-                    <input class="input" #passwordInput placeholder="Password" type="password" />
+                    <input class="input" #passwordInput placeholder="Password" type="password" (keyup)="clearSignInError()"/>
 
-                    <a id="forgot-password-link">Forgot your password?</a>
+                    <p><a id="forgot-password-link" routerLink="/forgot-password">Forgot your password?</a></p>
 
                     <button id="enter-button" (click)="login(emailInput.value, passwordInput.value)">Enter</button>
                 </form>

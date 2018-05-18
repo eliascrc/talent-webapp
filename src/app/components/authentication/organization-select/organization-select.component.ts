@@ -18,6 +18,11 @@ export class OrganizationSelectComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Tries to redirect the user to the login page for their organization, if the organization is not found
+   * or the id is not valid sets the error flag to true, so that the error message can be displayed
+   * @param uniqueIdentifier the unique identifier entered by the user in the field
+   */
   redirectToOrganization(uniqueIdentifier: string): void {
     this.organizationService.getOrganization(uniqueIdentifier)
       .subscribe(response => {
