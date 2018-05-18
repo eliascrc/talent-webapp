@@ -29,6 +29,7 @@ import {AuthenticateService} from '@services/authentication/authenticate.service
 import {InvalidTokenComponent} from './components/authentication/invalid-token/invalid-token.component';
 import {ForgotPasswordService} from '@services/authentication/forgot-password.service';
 import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.directive';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,9 +55,9 @@ import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.d
     HttpClientModule,
     HttpModule,
     NgbModule,
-    //LoginRoutingModule
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     UserService,
     OrganizationService,
     AuthenticateService,
