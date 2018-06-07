@@ -3,7 +3,7 @@ footer.container-fluid {
   min-width: 310px;
   width: 100%;
   padding: 0px;
-  font-size: 14px;
+  font-size: 91%;
   font-family: "Source Sans Pro", serif;
 }
 
@@ -55,5 +55,17 @@ footer.container-fluid {
 @media only screen and (max-width: 365px) {
   .footer-link {
     margin: 0 0.5vw 5px 0.5vw;
+  }
+}
+
+@media only screen and (device-width: 768px) {
+  footer.container-fluid {
+    font-size: 120%;
+  }
+}
+
+@media only screen and (device-width: 1024px) {
+  footer.container-fluid {
+    font-size: 185%;
   }
 }
