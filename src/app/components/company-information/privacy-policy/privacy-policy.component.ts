@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PrivacyPolicyService} from '../../../services/company-information/privacy-policy.service';
 
 @Component({
   selector: 'app-privacy-policy',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivacyPolicyComponent implements OnInit {
 
+  htmlSnippet: string;
 
-  constructor() {
+  constructor(private privacyPolicyService: PrivacyPolicyService) { }
 
+  ngOnInit() {
+    this.privacyPolicyService
+      .getContent()
+      .then(result => this.htmlSnippet = result._body)
+      .catch(error => console.log(error));
   }
-
-  ngOnInit() { }
 }
