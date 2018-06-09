@@ -31,6 +31,7 @@ import {InvalidTokenComponent} from './components/authentication/invalid-token/i
 import {ForgotPasswordService} from '@services/authentication/forgot-password.service';
 import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.directive';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { FooterComponent } from './components/footer/footer.component';
 
 import {SafePipe} from './shared/safe.pipe';
 
@@ -51,6 +52,7 @@ import {SafePipe} from './shared/safe.pipe';
     InvalidTokenComponent,
     ConfirmEqualValidatorDirective,
 	SafePipe
+    FooterComponent
   ],
   imports: [
     BrowserModule,
