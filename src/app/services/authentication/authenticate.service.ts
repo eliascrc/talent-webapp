@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpResponse } from "@angular/common/http";
-import { User } from "@model/User"
+import { User } from "@model/User";
+import { Http } from '@angular/http';
 
 @Injectable()
 export class AuthenticateService {
@@ -31,6 +32,14 @@ export class AuthenticateService {
 			.toPromise()
 			.then(response => response == true);
 	}
+
+  /**
+   * Returns a promise to return if the user is logged in or not it compares the string sent by the logged in
+   * web service to determine if the user is logged in
+   */
+  isUserLoggedIn() {
+    return this.http.get(this.loggedInUrl, { withCredentials: true });
+  }
 
 	/**
 	 * Stores the logged user in local storage using the authenticate web service returns a promise so that the

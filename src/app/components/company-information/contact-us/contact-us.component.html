@@ -1,1 +1,60 @@
-<p>Contact us works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="contact-us-title">Contact us</div>
+  </div>
+
+  <div class="row form-row">
+    <form (ngSubmit)="onSubmit(contactForm)" class="contact-us-form" #contactForm="ngForm">
+      <div *ngIf="!loggedIn">
+        <div class="form-group">
+          <p class="input-label">First name</p>
+          <input class="form-control" type="text" placeholder="First name" ngModel name="firstName" required/>
+        </div>
+
+        <div class="form-group">
+          <p class="input-label">Last name</p>
+          <input class="form-control" type="text" placeholder="Last name" ngModel name="lastName" required/>
+        </div>
+
+        <div class="form-group">
+          <p class="input-label">Email</p>
+          <input class="form-control" type="email" placeholder="Email" ngModel name="email" required email/>
+        </div>
+
+        <div class="form-group">
+          <p class="input-label">Issue type</p>
+          <select [ngModel]="'authenticationIssue'" name="issueType" required>
+            <option value="Authentication issues" selected>Authentication issues</option>
+            <option value="Account closing">Account closing</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <p class="input-label">Issue</p>
+          <textarea class="issue-input" name="issue" id="issue" ngModel required></textarea>
+        </div>
+      </div>
+
+      <div *ngIf="loggedIn">
+
+        <div class="form-group">
+          <p class="input-label">Issue type</p>
+          <select id="issueType" [ngModel]="'authenticationIssue'" name="issueType" required>
+            <option value="authenticationIssue" selected>Authentication issue</option>
+            <option value="paymentIssue">Payment issue</option>
+            <option value="technicalIssue">Technical issue</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <p class="input-label">Issue</p>
+          <textarea class="issue-input-loggedIn" name="issue" ngModel required></textarea>
+        </div>
+      </div>
+
+      <button class="btn btn-primary submit-button" type="submit" [disabled]="!contactForm.valid">Submit</button>
+    </form>
+  </div>
+</div>

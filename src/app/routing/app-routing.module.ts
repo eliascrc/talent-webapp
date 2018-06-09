@@ -14,6 +14,7 @@ import {ContactUsComponent} from '../components/company-information/contact-us/c
 import {TermsOfUseComponent} from '../components/company-information/terms-of-use/terms-of-use.component';
 import {OrganizationSelectComponent} from '../components/authentication/organization-select/organization-select.component';
 import {InvalidTokenComponent} from '../components/authentication/invalid-token/invalid-token.component';
+import {ContactUsScreenComponent} from '../components/company-information/contact-us-screen/contact-us-screen.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'sign-up', component: SignUpComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact-us', component: ContactUsComponent},
+  {path: 'contact-us-screen', component: ContactUsScreenComponent},
   {path: 'privacy-policy', component: PrivacyPolicyComponent},
   {path: 'terms-of-use', component: TermsOfUseComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},

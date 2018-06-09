@@ -1,0 +1,144 @@
+.container-fluid {
+  width: 82.22%;
+  min-width: 310px;
+  min-height: 90vh;
+  margin: 60px auto auto auto;
+  font-family: "Source Sans Pro", serif;
+}
+
+.contact-us-title {
+  color: #294261;
+  font-size: 36px;
+  letter-spacing: 3.6px;
+  line-height: 45px;
+  margin: auto;
+  display: block;
+}
+
+.form-row {
+  min-height: 85vh;
+  display: block;
+}
+.contact-us-form {
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 130px;
+  min-height: 808px;
+  display: block;
+}
+
+.form-group {
+  display: block;
+}
+
+.input-label {
+  color: #495057;
+  font-size: 20px;
+  letter-spacing: -0.35px;
+  line-height: 25px;
+  margin-top: 0.88%;
+}
+
+input, textarea, select, option {
+  height: 58px;
+  width: 100%;
+  border: 1px solid #BECAD6;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  padding-left: 1.94%;
+  font-size: 20px;
+}
+
+select {
+  -webkit-appearance: none;
+}
+
+select, option {
+  color: #B9BBBE;
+  font-size: 20px;
+  letter-spacing: -0.35px;
+  line-height: 25px;
+  padding-left: 1.70%;
+}
+
+::placeholder {
+  color: #B9BBBE;
+  font-size: 20px;
+  letter-spacing: -0.35px;
+  line-height: 25px;
+}
+
+textarea.issue-input {
+  height: 219px;
+}
+
+textarea.issue-input-loggedIn {
+  height: 533px;
+}
+
+.submit-button {
+  min-height: 39px;
+  width: 140px;
+  border-radius: 8px;
+  background-color: #EFA42F;
+  margin-top: 20px;
+  float: right;
+  border-style: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  letter-spacing: -0.4px;
+  line-height: 20px;
+  display: block;
+}
+
+button.btn[disabled] {
+  cursor: not-allowed;
+}
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+  border: 1px solid #C4183C;
+  box-shadow: 0 5px 11px 0 rgba(196,24,60,0.1);
+}
+
+@media only screen and (device-width: 1024px) {
+  .contact-us-title {
+    font-size: 72px;
+  }
+
+  .contact-us-form {
+    min-height: 1000px;
+    padding-bottom: 200px;
+  }
+
+  .input-label {
+    font-size: 40px;
+    margin-top: 3.88%;
+    margin-bottom: 2rem;
+  }
+
+  input, select {
+    height: 100px;
+    font-size: 35px;
+  }
+
+  textarea.issue-input {
+    height: 335px;
+    font-size: 35px;
+  }
+
+  textarea.issue-input-loggedIn {
+    height: 635px;
+    font-size: 35px;
+  }
+
+  ::placeholder {
+    font-size: 35px;
+  }
+
+  .submit-button {
+    min-height: 70px;
+    width: 220px;
+    margin-top: 25px;
+    font-size: 32px;
+  }
+}
