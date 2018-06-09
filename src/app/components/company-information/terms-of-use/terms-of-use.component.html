@@ -1,1 +1,30 @@
-<p>terms-of-use works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Talent! Terms of Service</title>
+</head>
+<body>
+<div class="container-fluid" id="container-fluid">
+  <div class="row" id="general-row">
+    <div class="row" id="nav-bar">
+      <a routerLink="/landing-page" routerLinkActive="active" id="logo">
+        <img src="/assets/images/talent-logo.png" class="img-fluid" id="talent-logo" alt="Responsive image">
+      </a>
+      <div id="signin-div">
+        <p id="signin-text">Already have an account?</p>
+        <a routerLink="/login" routerLinkActive="active" id="signin-link">
+          <button type="button" class="btn btn-primary" id="signin-button">
+            Sign in
+          </button>
+        </a>
+      </div>
+    </div>
+    <p id="title">Terms of Service</p>
+    <p id="text"[innerHtml]="htmlSnippet | safeHTML: 'html'"></p>
+    <p id="questions">
+      Have any questions? <a routerLink="/contact-us" routerLinkActive="active" id="contact-us">Contact us</a>
+    </p>
+  </div>
+</div>
+</body>
+</html>
