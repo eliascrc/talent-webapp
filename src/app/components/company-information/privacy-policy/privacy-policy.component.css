@@ -112,7 +112,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 465px) {
+@media only screen and (max-width: 471px) {
   #signin-text[_ngcontent-c1] {
     display: none;
   }
@@ -129,7 +129,7 @@ body {
 }
 
 
-@media only screen and (max-width: 465px) {  
+@media only screen and (max-width: 471px) {  
   #signin-button[_ngcontent-c1] {
     margin-left: 23%;
   }
@@ -142,7 +142,8 @@ body {
 }
 
 #talent-logo {
-  margin-top: 0.39vh;
+  margin-left: 1.40vh;
+  margin-top: 0.40vh;
   height: 69px;
 }
 
