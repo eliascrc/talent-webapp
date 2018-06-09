@@ -21,6 +21,7 @@ import {ContactUsComponent} from './components/company-information/contact-us/co
 import {TermsOfUseComponent} from './components/company-information/terms-of-use/terms-of-use.component';
 
 import {UserService} from './services/user.service';
+import {PrivacyPolicyService} from './services/company-information/privacy-policy.service';
 
 // For proof of concept sign-up
 import {OrganizationSelectComponent} from './components/authentication/organization-select/organization-select.component';
@@ -31,6 +32,8 @@ import {ForgotPasswordService} from '@services/authentication/forgot-password.se
 import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.directive';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
+
+import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,7 @@ import { FooterComponent } from './components/footer/footer.component';
     OrganizationSelectComponent,
     InvalidTokenComponent,
     ConfirmEqualValidatorDirective,
+	SanitizeHtmlPipe,
     FooterComponent
   ],
   imports: [
@@ -62,6 +66,7 @@ import { FooterComponent } from './components/footer/footer.component';
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     UserService,
     OrganizationService,
+	PrivacyPolicyService,
     AuthenticateService,
     ForgotPasswordService
   ],
