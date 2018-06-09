@@ -51,7 +51,7 @@ import {SafePipe} from './shared/safe.pipe';
     OrganizationSelectComponent,
     InvalidTokenComponent,
     ConfirmEqualValidatorDirective,
-	SafePipe
+	SafePipe,
     FooterComponent
   ],
   imports: [
