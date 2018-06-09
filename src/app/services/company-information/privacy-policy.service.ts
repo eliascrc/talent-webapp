@@ -24,7 +24,6 @@ export class PrivacyPolicyService {
   }
 
   private extractData(res: Response) {
-    console.log(res);
     const body = res; // .json();
     return body || {};
   }
