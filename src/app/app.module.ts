@@ -21,6 +21,7 @@ import {ContactUsComponent} from './components/company-information/contact-us/co
 import {TermsOfUseComponent} from './components/company-information/terms-of-use/terms-of-use.component';
 
 import {UserService} from './services/user.service';
+import {PrivacyPolicyService} from './services/company-information/privacy-policy.service';
 
 // For proof of concept sign-up
 import {OrganizationSelectComponent} from './components/authentication/organization-select/organization-select.component';
@@ -30,9 +31,11 @@ import {InvalidTokenComponent} from './components/authentication/invalid-token/i
 import {ForgotPasswordService} from '@services/authentication/forgot-password.service';
 import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.directive';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
-import { FooterComponent } from './components/footer/footer.component';
-import { ContactUsScreenComponent } from './components/company-information/contact-us-screen/contact-us-screen.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {ContactUsScreenComponent} from './components/company-information/contact-us-screen/contact-us-screen.component';
 import {ContactUsService} from '@services/company-information/contact-us.service';
+
+import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,8 @@ import {ContactUsService} from '@services/company-information/contact-us.service
     InvalidTokenComponent,
     ConfirmEqualValidatorDirective,
     FooterComponent,
-    ContactUsScreenComponent
+    ContactUsScreenComponent,
+    SanitizeHtmlPipe,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,7 @@ import {ContactUsService} from '@services/company-information/contact-us.service
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     UserService,
     OrganizationService,
+    PrivacyPolicyService,
     AuthenticateService,
     ForgotPasswordService,
     ContactUsService
