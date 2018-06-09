@@ -33,7 +33,7 @@ import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.d
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 
-import {SafePipe} from './shared/safe.pipe';
+import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import {SafePipe} from './shared/safe.pipe';
     OrganizationSelectComponent,
     InvalidTokenComponent,
     ConfirmEqualValidatorDirective,
-	SafePipe,
+	SanitizeHtmlPipe,
     FooterComponent
   ],
   imports: [
