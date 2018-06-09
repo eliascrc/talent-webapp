@@ -42,9 +42,7 @@ body {
 
 @media only screen and (max-width: 1300px) {
   #signin-div {
-    margin-top: 27px;
     margin-left: 60.87%;
-    width: 18%;
   }
 }
 
@@ -93,14 +91,6 @@ body {
   }
 }
 
-@media only screen and (max-width: 450px) {
-  #signin-div {
-    margin-top: 0;
-    margin-left: 30%;
-    width: 35%;
-  }
-}
-
 #signin-text {
   height: 18px;
   color: #294261;
@@ -122,10 +112,9 @@ body {
   }
 }
 
-@media only screen and (max-width: 450px) {
-  #signin-text {
-    margin-right: 5px;
-    font-size: 10px;
+@media only screen and (max-width: 465px) {
+  #signin-text[_ngcontent-c1] {
+    display: none;
   }
 }
 
@@ -139,15 +128,10 @@ body {
   display: inline;
 }
 
-@media only screen and (max-width: 700px) {
-  #signin-button{
-    margin-left: 0;
-  }
-}
 
-@media only screen and (max-width: 450px) {
-  #signin-button{
-    margin-left: 61%;
+@media only screen and (max-width: 465px) {  
+  #signin-button[_ngcontent-c1] {
+    margin-left: 23%;
   }
 }
 
@@ -197,19 +181,19 @@ body {
 
 @media only screen and (max-width: 600px) {
   #title {
-    margin-left: 25%;
+    margin-left: 30%;
   }
 }
 
 @media only screen and (max-width: 500px) {
   #title {
-    margin-left: 20%;
+    margin-left: 25%;
   }
 }
 
 @media only screen and (max-width: 400px) {
   #title {
-    margin-left: 16%;
+    margin-left: 24%;
   }
 }
 
