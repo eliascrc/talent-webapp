@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TermsOfUseService} from '../../../services/company-information/terms-of-use.service';
 
 @Component({
   selector: 'app-terms-of-use',
@@ -9,9 +10,12 @@ export class TermsOfUseComponent implements OnInit {
 
   htmlSnippet: string;
 
-  constructor() {
+  constructor(private termsOfUseService: TermsOfUseService) { }
 
+  ngOnInit() {
+    this.termsOfUseService
+      .getContent()
+      .then(result => this.htmlSnippet = result._body)
+      .catch(error => console.log(error));
   }
-
-  ngOnInit() { }
 }
