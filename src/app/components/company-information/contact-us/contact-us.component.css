@@ -49,8 +49,43 @@ input, textarea, select, option {
   font-size: 20px;
 }
 
+.dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #294261;
+  margin-top: 3%;
+  margin-left: 70%;
+  pointer-events: none;
+}
+
 select {
+  cursor: pointer;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+
+.select-arrow {
+  position: relative;
+}
+
+.select-arrow:after {
+  font-family: FontAwesome;
+  content: '\f0d7';
+  font-size: 42px;
+  position: absolute;
+  top: 2px;
+  right: 40px;
+  color: #294261;
+  pointer-events: none;
+}
+
+select::-ms-expand {
+  display: none;
 }
 
 select, option {
@@ -140,5 +175,11 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched, select.ng-invalid.n
     width: 220px;
     margin-top: 25px;
     font-size: 32px;
+  }
+
+  .select-arrow:after {
+    font-size: 72px;
+    top: 0px;
+    right: 40px;
   }
 }

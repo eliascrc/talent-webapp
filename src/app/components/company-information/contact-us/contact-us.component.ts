@@ -9,9 +9,14 @@ import {ContactUsService} from '@services/company-information/contact-us.service
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css']
 })
+/**
+ * Contact us component which displays and processes a different form for the user depending on his authentication state.
+ *
+ * @author Josue Leon Sarkis
+ */
 export class ContactUsComponent implements OnInit {
 
-  loggedIn: boolean;
+  loggedIn = false;
   formData = {
     firstName: '',
     lastName: '',
@@ -24,12 +29,17 @@ export class ContactUsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authenticateService.isUserLoggedIn().subscribe(
-      (response) => this.loggedIn = Boolean(response),
-      (error) => {}
-    );
+    this.authenticateService.isLoggedIn()
+      .then(response => {
+        this.loggedIn = response;
+        }
+      );
   }
 
+  /**
+   * Obtains the submitted form values and sends the request to the backend web service via the contact us service.
+   * @param {NgForm} form
+   */
   onSubmit(form: NgForm) {
     this.formData.firstName = form.value.firstName;
     this.formData.lastName = form.value.lastName;
@@ -37,7 +47,7 @@ export class ContactUsComponent implements OnInit {
     this.formData.issueType = form.value.issueType;
     this.formData.issue = form.value.issue;
 
-    if (this.authenticateService.isLoggedIn()) {
+    if (this.loggedIn) {
       this.contactUsService.authenticatedContactUs(this.formData.issueType, this.formData.issue).subscribe(() => {
         this.router.navigate(['/contact-us-screen']);
       }, () => {});

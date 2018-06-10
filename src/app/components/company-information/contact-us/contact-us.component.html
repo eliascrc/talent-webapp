@@ -23,11 +23,13 @@
 
         <div class="form-group">
           <p class="input-label">Issue type</p>
-          <select [ngModel]="'authenticationIssue'" name="issueType" required>
-            <option value="Authentication issues" selected>Authentication issues</option>
-            <option value="Account closing">Account closing</option>
-            <option value="Other">Other</option>
-          </select>
+          <div class="select-arrow">
+            <select [ngModel]="'Authentication issues'" name="issueType" required>
+              <option value="Authentication issues" selected>Authentication issues</option>
+              <option value="Account closing">Account closing</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-group">
@@ -40,12 +42,13 @@
 
         <div class="form-group">
           <p class="input-label">Issue type</p>
-          <select id="issueType" [ngModel]="'authenticationIssue'" name="issueType" required>
-            <option value="authenticationIssue" selected>Authentication issue</option>
-            <option value="paymentIssue">Payment issue</option>
-            <option value="technicalIssue">Technical issue</option>
-            <option value="other">Other</option>
-          </select>
+          <div class="select-arrow">
+            <select [ngModel]="'Authentication issues'" name="issueType" required>
+              <option value="Authentication issues" selected>Authentication issues</option>
+              <option value="Account closing">Account closing</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-group">
