@@ -22,6 +22,7 @@ import {TermsOfUseComponent} from './components/company-information/terms-of-use
 
 import {UserService} from './services/user.service';
 import {PrivacyPolicyService} from './services/company-information/privacy-policy.service';
+import {TermsOfUseService} from './services/company-information/terms-of-use.service';
 
 // For proof of concept sign-up
 import {OrganizationSelectComponent} from './components/authentication/organization-select/organization-select.component';
@@ -70,6 +71,7 @@ import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
     UserService,
     OrganizationService,
     PrivacyPolicyService,
+    TermsOfUseService,
     AuthenticateService,
     ForgotPasswordService,
     ContactUsService
