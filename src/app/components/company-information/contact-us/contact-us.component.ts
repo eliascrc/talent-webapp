@@ -31,7 +31,7 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
     this.authenticateService.isLoggedIn()
       .then(response => {
-        this.loggedIn = response;
+          this.loggedIn = response;
         }
       );
   }
@@ -41,21 +41,23 @@ export class ContactUsComponent implements OnInit {
    * @param {NgForm} form
    */
   onSubmit(form: NgForm) {
-    this.formData.firstName = form.value.firstName;
-    this.formData.lastName = form.value.lastName;
-    this.formData.email = form.value.email;
     this.formData.issueType = form.value.issueType;
     this.formData.issue = form.value.issue;
 
     if (this.loggedIn) {
       this.contactUsService.authenticatedContactUs(this.formData.issueType, this.formData.issue).subscribe(() => {
         this.router.navigate(['/contact-us-screen']);
-      }, () => {});
+      }, () => {
+      });
     } else {
+      this.formData.firstName = form.value.firstName;
+      this.formData.lastName = form.value.lastName;
+      this.formData.email = form.value.email;
       this.contactUsService.unauthenticatedContactUs(this.formData.firstName, this.formData.lastName, this.formData.email,
         this.formData.issueType, this.formData.issue).subscribe(() => {
         this.router.navigate(['/contact-us-screen']);
-      }, () => {});
+      }, () => {
+      });
     }
   }
 
