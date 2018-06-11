@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpResponse } from "@angular/common/http";
-import { User } from "@model/User"
+import { User } from "@model/User";
+import { Http } from '@angular/http';
 
 @Injectable()
 export class AuthenticateService {
@@ -26,10 +27,11 @@ export class AuthenticateService {
 	 * web service to determine if the user is logged in
 	 */
 	isLoggedIn(): Promise<boolean> {
-		let loggedIn: boolean = false;
 		return this.http.get(this.loggedInUrl, { withCredentials: true })
 			.toPromise()
-			.then(response => response == true);
+      .then(response => {
+        return response == true;
+      });
 	}
 
 	/**

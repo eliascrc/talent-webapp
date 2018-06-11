@@ -32,7 +32,9 @@ import {InvalidTokenComponent} from './components/authentication/invalid-token/i
 import {ForgotPasswordService} from '@services/authentication/forgot-password.service';
 import {ConfirmEqualValidatorDirective} from './shared/confirm-equal-validator.directive';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
-import { FooterComponent } from './components/footer/footer.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {ContactUsScreenComponent} from './components/company-information/contact-us-screen/contact-us-screen.component';
+import {ContactUsService} from '@services/company-information/contact-us.service';
 
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 
@@ -52,8 +54,9 @@ import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
     OrganizationSelectComponent,
     InvalidTokenComponent,
     ConfirmEqualValidatorDirective,
-	SanitizeHtmlPipe,
-    FooterComponent
+    FooterComponent,
+    ContactUsScreenComponent,
+    SanitizeHtmlPipe,
   ],
   imports: [
     BrowserModule,
@@ -67,10 +70,11 @@ import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     UserService,
     OrganizationService,
-	PrivacyPolicyService,
+    PrivacyPolicyService,
     TermsOfUseService,
     AuthenticateService,
-    ForgotPasswordService
+    ForgotPasswordService,
+    ContactUsService
   ],
   bootstrap: [AppComponent]
 })

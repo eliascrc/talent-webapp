@@ -1,0 +1,52 @@
+.container-fluid {
+  width: 57%;
+  min-width: 200px;
+  min-height: 607px;
+  margin: 165px auto 65px auto;
+  font-family: "Source Sans Pro", serif;
+  border: 1px solid #D5D5D5;
+  border-radius: 8px;
+}
+
+.container-row {
+  min-height: 607px;
+}
+
+.center-content {
+  width: 50%;
+  margin: 154px auto auto auto;
+}
+
+.message-title {
+	color: #294261;
+  font-family: Roboto;
+  font-size: 36px;
+  letter-spacing: 3.6px;
+  line-height: 42px;
+  text-align: center;
+}
+
+.row.smaller-message {
+  width: 95%;
+  margin: 45px 0 auto 0;
+}
+
+.message {
+  color: #A2A2A2;
+  font-size: 24px;
+  line-height: 31px;
+  text-align: center;
+}
+
+.row.button {
+  margin: 73px auto 192px auto;
+}
+
+.submit-button {
+  height: 39px;
+  width: 140px;
+  border-radius: 8px;
+  background-color: #EFA42F;
+  margin: auto;
+  border-style: none;
+}

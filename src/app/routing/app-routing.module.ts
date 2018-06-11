@@ -14,27 +14,30 @@ import {ContactUsComponent} from '../components/company-information/contact-us/c
 import {TermsOfUseComponent} from '../components/company-information/terms-of-use/terms-of-use.component';
 import {OrganizationSelectComponent} from '../components/authentication/organization-select/organization-select.component';
 import {InvalidTokenComponent} from '../components/authentication/invalid-token/invalid-token.component';
+import {ContactUsScreenComponent} from '../components/company-information/contact-us-screen/contact-us-screen.component';
+import {UnauthenticateGuard} from './unauthenticate-guard.service';
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent},
-  {path: 'landing-page', component: LandingPageComponent},
-  {path: 'login', component: OrganizationSelectComponent},
-  {path: 'sign-up', component: SignUpComponent},
+  {path: '', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
+  {path: 'landing-page', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
+  {path: 'login', component: OrganizationSelectComponent, canActivate: [UnauthenticateGuard]},
+  {path: 'sign-up', component: SignUpComponent, canActivate: [UnauthenticateGuard]},
   {path: 'about', component: AboutComponent},
   {path: 'contact-us', component: ContactUsComponent},
+  {path: 'contact-us-screen', component: ContactUsScreenComponent},
   {path: 'privacy-policy', component: PrivacyPolicyComponent},
   {path: 'terms-of-use', component: TermsOfUseComponent},
-  {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [UnauthenticateGuard]},
+  {path: 'reset-password', component: ResetPasswordComponent, canActivate: [UnauthenticateGuard]},
   {path: 'invalid-token', component: InvalidTokenComponent},
-  {path: 'login/:uniqueIdentifier', component: LoginComponent},
+  {path: 'login/:uniqueIdentifier', component: LoginComponent, canActivate: [UnauthenticateGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard]},
 ];
 
 @NgModule({
   exports: [RouterModule],
   imports: [RouterModule.forRoot(routes)],
-  providers: [AuthenticateGuard]
+  providers: [AuthenticateGuard, UnauthenticateGuard]
 })
 export class AppRoutingModule {
 }
