@@ -49,17 +49,6 @@ input, textarea, select, option {
   font-size: 20px;
 }
 
-.dropdown-arrow {
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #294261;
-  margin-top: 3%;
-  margin-left: 70%;
-  pointer-events: none;
-}
-
 select {
   cursor: pointer;
   -webkit-appearance: none;
@@ -76,9 +65,9 @@ select {
 .select-arrow:after {
   font-family: FontAwesome;
   content: '\f0d7';
-  font-size: 42px;
+  font-size: 28px;
   position: absolute;
-  top: 2px;
+  top: 11px;
   right: 40px;
   color: #294261;
   pointer-events: none;
