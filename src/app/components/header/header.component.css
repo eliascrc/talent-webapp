@@ -1,0 +1,38 @@
+nav.container-fluid {
+  min-height: 5.4vh;
+  min-width: 310px;
+  width: 100%;
+  padding: 0px;
+  font-size: 91%;
+  font-family: "Source Sans Pro", serif;
+}
+
+.container-fluid .row {
+  margin-right: 0px;
+  margin-left: 0px;
+  height: 5.4vh;
+  width: 100%;
+}
+
+.main-bar {
+  width: 95%;
+}
+
+.logout-button {
+  height: 34px;
+  width: 87px;
+  float: right;
+  border-radius: 10px;
+  background-color: #294261;
+  margin-top: 12px;
+  border-style: none;
+  font-size: 16px;
+  letter-spacing: -0.4px;
+  line-height: 20px;
+}
+
+.horizontal-line {
+  height: 0.19vh;
+  width: 100%;
+  border: 1px solid #294261;
+}
