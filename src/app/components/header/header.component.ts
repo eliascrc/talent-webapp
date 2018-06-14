@@ -29,4 +29,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  onSignIn() {
+      this.router.navigate(['/login']);
+  }
+
 }
