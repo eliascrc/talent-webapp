@@ -113,7 +113,7 @@ body {
 }
 
 @media only screen and (max-width: 471px) {
-  #signin-text[_ngcontent-c1] {
+  #signin-text {
     display: none;
   }
 }
@@ -130,7 +130,7 @@ body {
 
 
 @media only screen and (max-width: 471px) {  
-  #signin-button[_ngcontent-c1] {
+  #signin-button {
     margin-left: 23%;
   }
 }
@@ -192,7 +192,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 430px) {
   #title {
     margin-left: 24%;
   }
