@@ -8,7 +8,7 @@ import { Http } from '@angular/http';
 export class AuthenticateService {
 
 	private loginUrl: string = 'http://ws.talent.cr/ws/login';
-  private logoutUrl: string = 'http://ws.talent.cr/ws/logout';
+  	private logoutUrl: string = 'http://ws.talent.cr/ws/logout';
 	private loggedInUrl: string = 'http://ws.talent.cr/ws/user/loggedIn';
 	private authenticatedUrl: string = 'http://ws.talent.cr/ws/user/authenticated';
 
