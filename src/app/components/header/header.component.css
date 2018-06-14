@@ -10,12 +10,12 @@ nav.container-fluid {
 .container-fluid .row {
   margin-right: 0px;
   margin-left: 0px;
-  height: 8.4vh;
+  min-height: 8.4vh;
   width: 100%;
 }
 
 .main-bar {
-  width: 96.5%;
+  width: 95%;
 }
 
 .header-button {

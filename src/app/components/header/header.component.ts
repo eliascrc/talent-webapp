@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
+import {LocationStrategy} from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   loggedIn = false;
 
-  constructor(private router: Router, private authenticateService: AuthenticateService) {
+  constructor(private router: Router, private authenticateService: AuthenticateService, private url: LocationStrategy) {
   }
 
   ngOnInit() {

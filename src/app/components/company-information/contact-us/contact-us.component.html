@@ -3,7 +3,7 @@
     <div class="contact-us-title">Contact us</div>
   </div>
 
-  <div class="row form-row">
+  <div *ngIf="displayForm" class="row form-row">
     <form (ngSubmit)="onSubmit(contactForm)" class="contact-us-form" #contactForm="ngForm">
       <div *ngIf="!loggedIn">
         <div class="form-group">
