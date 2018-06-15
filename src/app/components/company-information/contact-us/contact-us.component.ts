@@ -17,6 +17,7 @@ import {ContactUsService} from '@services/company-information/contact-us.service
 export class ContactUsComponent implements OnInit {
 
   loggedIn = false;
+  displayForm = false;
   formData = {
     firstName: '',
     lastName: '',
@@ -32,6 +33,7 @@ export class ContactUsComponent implements OnInit {
     this.authenticateService.isLoggedIn()
       .then(response => {
           this.loggedIn = response;
+          this.displayForm = true;
         }
       );
   }

@@ -8,6 +8,7 @@ import { Http } from '@angular/http';
 export class AuthenticateService {
 
 	private loginUrl: string = 'http://ws.talent.cr/ws/login';
+  	private logoutUrl: string = 'http://ws.talent.cr/ws/logout';
 	private loggedInUrl: string = 'http://ws.talent.cr/ws/user/loggedIn';
 	private authenticatedUrl: string = 'http://ws.talent.cr/ws/user/authenticated';
 
@@ -42,4 +43,9 @@ export class AuthenticateService {
 		return this.http.get<User>(this.authenticatedUrl, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, withCredentials: true } )
 		.toPromise().then(user => localStorage.setItem("loggedUser", JSON.stringify(user)));
 	}
+
+	logout(): Promise<any> {
+    return this.http
+      .post(this.logoutUrl, null, { headers: null, withCredentials: true } ).toPromise();
+  }
 }

@@ -29,6 +29,16 @@ export class ContactUsScreenComponent implements OnInit {
     } else {
       this.router.navigate(['/landing-page']);
     }
+
+    this.authenticateService.isLoggedIn()
+      .then(response => {
+          if (response) {
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.router.navigate(['/landing-page']);
+          }
+        }
+      );
   }
 
 }

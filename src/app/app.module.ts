@@ -37,6 +37,7 @@ import {ContactUsScreenComponent} from './components/company-information/contact
 import {ContactUsService} from '@services/company-information/contact-us.service';
 
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
     FooterComponent,
     ContactUsScreenComponent,
     SanitizeHtmlPipe,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
