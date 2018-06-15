@@ -1,0 +1,94 @@
+.container-fluid {
+  width: 74.72%;
+  min-width: 250px;
+  min-height: 142vh;
+  margin: 50px auto 50px auto;
+  font-family: "Source Sans Pro", serif;
+}
+
+.about-us-title {
+  color: #294261;
+  font-size: 36px;
+  letter-spacing: 3.6px;
+  line-height: 45px;
+}
+
+.main-image-container {
+  margin-top: 25px;
+  height: 425px;
+}
+
+.main-image {
+  width: 100%;
+}
+
+.about-heading {
+  display: block;
+  margin-top: 25px;
+  color: #294261;
+  font-size: 20px;
+  letter-spacing: 3.6px;
+  line-height: 25px;
+}
+
+.about-paragraph {
+  margin-top: 25px;
+  color: #A2A2A2;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: justify;
+}
+
+.people-image-row {
+  margin-top: 25px;
+  height: 360px;
+}
+
+.people-image {
+  width: 100%;
+  height: 100%;
+}
+
+.image-col {
+  padding: 0 13px 0 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .container-fluid {
+    min-height: 210vh;
+  }
+
+  .image-col {
+    padding: 13px 0 0 0;
+  }
+
+  .people-image-row {
+    margin-top: 25px;
+    height: 750px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .main-image-container {
+    height: 280px;
+  }
+}
+
+@media only screen and (device-width: 1024px) {
+  .container-fluid {
+    min-height: 113vh;
+  }
+
+  .about-us-title {
+    font-size: 47px;
+  }
+
+  .about-heading {
+    font-size: 31px;
+  }
+
+  .about-paragraph {
+    font-size: 25px;
+    line-height: 29px;
+  }
+}
