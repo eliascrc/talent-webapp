@@ -14,16 +14,15 @@ import {Http} from '@angular/http';
 })
 
 export class LoginComponent implements OnInit {
+  private static EMAIL_REGEX: RegExp = new RegExp('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?');
   private emailIsValid: boolean;
   private invalidCredentials: boolean;
-  private emailRegex: RegExp = new RegExp('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?');
 
   @Input() organization: Organization;
 
   constructor(private route: ActivatedRoute, private organizationService: OrganizationService, private router: Router, private authenticateService: AuthenticateService) {
     this.emailIsValid = true;
     this.invalidCredentials = false;
-    this.getOrganization();
   }
 
   /**
@@ -36,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.getOrganization();
   }
 
   /**
@@ -65,9 +64,9 @@ export class LoginComponent implements OnInit {
   validateEmail(email: string, event: any) {
     if (event.type == 'keyup' && !this.emailIsValid) {
       // only validate email on keyup if it has been identified as invalid
-      this.emailIsValid = this.emailRegex.test(email);
+      this.emailIsValid = LoginComponent.EMAIL_REGEX.test(email);
     } else if (event.type == 'blur') { // always validate the email on blur
-      this.emailIsValid = this.emailRegex.test(email);
+      this.emailIsValid = LoginComponent.EMAIL_REGEX.test(email);
     }
   }
 
