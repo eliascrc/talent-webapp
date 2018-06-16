@@ -20,9 +20,13 @@ export class Skill extends BasicEntity {
   constructor(skill: any) {
     super(skill);
     this.name = skill.name;
-    this.resources = skill.resources;
-    this.category = skill.category;
-    this.skillType = skill.skillType;
-    this.organization = skill.organization;
+    
+    this.resources = new Set(); 
+    for(let resource of skill.resources)
+      this.resources.add(resource);
+
+    this.category = new SkillCategory(skill.category);
+    this.skillType = skill.skillType; // Enum
+    this.organization = new Organization(skill.organization);
   }
 }

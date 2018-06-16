@@ -36,14 +36,31 @@ export class Organization extends BasicEntity {
     this.name = organization.name;
     this.twoStepVerification = organization.twoStepVerification;
     this.totalUsers = organization.totalUsers;
-    this.state = organization.state;
-    this.logo = organization.logo;
-    this.invitations = organization.invitations;
+    this.state = organization.state; // Enum
+    
+    this.logo = new OrganizationLogo(organization.logo);
+    
+    this.invitations = new Set(); 
+    for(let invitation of organization.invitations)
+      this.invitations.add(new Invitation(invitation));
+
     this.domain = organization.domain;
-    this.userAuthenticationMethod = organization.userAuthenticationMethod;
-    this.resources = organization.resources;
-    this.capabilities = organization.capabilities;
-    this.skillCategories = organization.skillCategories;
-    this.projects = organization.projects;
+    this.userAuthenticationMethod = organization.userAuthenticationMethod; // Enum
+    
+    this.resources = new Set();
+    for (let resource of organization.resources)
+      this.resources.add(new TechnicalResource(resource));
+
+    this.capabilities = new Set(); 
+    for (let capability of organization.capabilities)
+      this.capabilities.add(new Capability(capability));
+
+    this.skillCategories = new Set(); 
+    for (let skillCategory of organization.skillCategories)
+      this.skillCategories.add(new SkillCategory(skillCategory));
+
+    this.projects = new Set(); 
+    for (let project of organization.projects)
+      this.projects.add(new Project(project));
   }
 }

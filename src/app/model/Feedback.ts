@@ -20,9 +20,9 @@ export class Feedback extends BasicEntity {
   constructor(feedback: any) {
     super(feedback);
     this.description = feedback.description;
-    this.observee = feedback.observee;
-    this.observer = feedback.observer;
-    this.relatedProject = feedback.relatedProject;
-    this.feedbackType = feedback.feedbackType;
+    this.observee = new TechnicalResource(feedback.observee);
+    this.observer = new TechnicalResource(feedback.observer);
+    this.relatedProject = new Project (feedback.relatedProject);
+    this.feedbackType = feedback.feedbackType; //Enum
   }
 }

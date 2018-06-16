@@ -22,7 +22,7 @@ export class Project extends BasicEntity {
   confluenceLink: string;
   versionControlLink: string;
   timeline: Set<ProjectEvent>;
-  currentState: Set<ProjectEvent>;
+  currentState: ProjectEvent;
   leadHistory: Set<LeadPosition>;
   projectCapabilities: Set<CapabilityLevel>;
   projectPositions: Set<ProjectPosition>;
@@ -33,17 +33,36 @@ export class Project extends BasicEntity {
     super(project);
     this.name = project.name;
     this.description = project.description;
-    this.startDate = project.startDate;
-    this.endDate = project.endDate;
+
+    this.startDate = new Date(project.startDate);
+    this.endDate = new Date(project.endDate);
+
     this.jiraLink = project.jiraLink;
     this.confluenceLink = project.confluenceLink;
     this.versionControlLink = project.versionControlLink;
-    this.timeline = project.timeline;
-    this.currentState = project.currentState;
-    this.leadHistory = project.leadHistory;
-    this.projectCapabilities = project.projectCapabilities;
-    this.projectPositions = project.projectPositions;
-    this.organization = project.organization;
-    this.resourcesFeedback = project.resourcesFeedback;
+    
+    this.timeline = new Set(); 
+    for (let event of project.timeline)
+      this.timeline.add(new ProjectEvent(event));
+    
+    this.currentState = new ProjectEvent(project.currentState);
+
+    this.leadHistory = new Set();
+    for(let lead of project.leadHistory)
+      this.leadHistory.add(new LeadPosition(lead));
+
+    this.projectCapabilities = new Set();
+    for (let capability of project.projectCapabilities)
+      this.projectCapabilities.add(new CapabilityLevel(capability));
+
+    this.projectPositions = new Set();
+    for(let position of project.projectPositions)
+      this.projectPositions.add(new ProjectPosition(position));
+
+    this.organization = new Organization(project.organization);
+    
+    this.resourcesFeedback = new Set();
+    for(let feedback of project.resourcesFeedback)
+      this.resourcesFeedback.add(new Feedback(feedback));
   }
 }

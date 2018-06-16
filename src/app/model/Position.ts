@@ -14,7 +14,7 @@ export class Position extends BasicEntity {
 
   constructor(position: any) {
     super(position);
-    this.capabilityLevel = position.capabilityLevel;
-    this.technicalResource = position.technicalResource;
+    this.capabilityLevel = new CapabilityLevel(position.capabilityLevel);
+    this.technicalResource = new TechnicalResource(position.technicalResource);
   }
 }

@@ -17,8 +17,15 @@ export class Capability extends BasicEntity {
   constructor(capability: any) {
     super(capability);
     this.name = capability.name;
-    this.levelHierarchy = capability.levelHierarchy;
-    this.associatedTechnologies = capability.associatedTechnologies;
-    this.organization = capability.organization;
+
+    this.levelHierarchy = new Set();
+    for (let capabilityLevel of capability.levelHierarchy)
+      this.levelHierarchy.add(new CapabilityLevel(capabilityLevel));
+
+    this.associatedTechnologies = new Set();
+    for (let technology of capability.associatedTechnologies)
+      this.associatedTechnologies.add(technology);
+
+    this.organization = new Organization(capability.organization);
   }
 }

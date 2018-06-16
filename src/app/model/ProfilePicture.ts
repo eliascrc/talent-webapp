@@ -11,6 +11,6 @@ export class ProfilePicture extends Image {
 
   constructor(profilePicture: any) {
     super(profilePicture);
-    this.technicalResource = profilePicture.technicalResource;
+    this.technicalResource = new TechnicalResource(profilePicture.technicalResource);
   }
 }

@@ -12,6 +12,6 @@ export class OrganizationLogo extends Image {
 
   constructor(organizationLogo: any) {
     super(organizationLogo);
-    this.organization = organizationLogo.organization;
+    this.organization = new Organization(organizationLogo.organization);
   }
 }

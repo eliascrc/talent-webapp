@@ -23,9 +23,17 @@ export class CapabilityLevel extends BasicEntity {
     super(capabilityLevel);
     this.name = capabilityLevel.name;
     this.hierarchyPosition = capabilityLevel.hierarchyPosition;
-    this.capability = capabilityLevel.capability;
-    this.requiredSkills = capabilityLevel.requiredSkills;
-    this.organization = capabilityLevel.organization;
-    this.projects = capabilityLevel.projects;
+
+    this.capability = new Capability(capabilityLevel.capability);
+
+    this.requiredSkills = new Set();
+    for (let skill of capabilityLevel.requiredSkills)
+      this.requiredSkills.add(new Skill(skill));
+
+    this.organization = new Organization(capabilityLevel.organization);
+
+    this.projects = new Set();
+    for (let project of capabilityLevel.projects)
+      this.projects.add(new Project(project));
   }
 }

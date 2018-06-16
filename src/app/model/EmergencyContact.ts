@@ -18,6 +18,6 @@ export class EmergencyContact extends BasicEntity {
     this.email = emergencyContact.email;
     this.name = emergencyContact.name;
     this.telephone = emergencyContact.telephone;
-    this.technicalResource = emergencyContact.technicalResource;
+    this.technicalResource = new TechnicalResource(emergencyContact.technicalResource);
   }
 }

@@ -20,10 +20,15 @@ export class ProjectPosition extends BasicEntity {
 
   constructor(projectPosition: any) {
     super(projectPosition);
-    this.projectPositionStatus = projectPosition.projectPositionStatus;
+    this.projectPositionStatus = projectPosition.projectPositionStatus; // Enum
     this.totalHours = projectPosition.totalHours;
-    this.capability = projectPosition.capability;
-    this.holderHistory = projectPosition.holderHistory;
-    this.project = projectPosition.project;
+
+    this.capability = new CapabilityLevel(projectPosition.capability);
+    
+    this.holderHistory = new Set();
+    for(let holder of projectPosition.holderHistory)
+      this.holderHistory.add(new ProjectPositionHolder(holder));
+
+    this.project = new Project(projectPosition.project);
   }
 }

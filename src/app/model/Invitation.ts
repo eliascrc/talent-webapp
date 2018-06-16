@@ -18,6 +18,6 @@ export class Invitation extends BasicEntity {
     this.email = invitation.email;
     this.token = invitation.token;
     this.isValid = invitation.isValid;
-    this.organization = invitation.organization;
+    this.organization = new Organization(invitation.organization);
   }
 }
