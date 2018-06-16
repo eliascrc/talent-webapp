@@ -1,27 +1,30 @@
-export class User {
-  accountNonExporired: boolean;
+import {BasicEntity} from '@model/BasicEntity';
+
+/**
+ * Class that represents a User within the Talent system.
+ * It contains the username, password, first name, last name and the information inherited from BasicEntity class.
+ *
+ * @author Elías Calderón
+ */
+export class User extends BasicEntity {
+  accountNonExpired: boolean;
   accountNonLocked: boolean;
   administrator: boolean;
   credentialsNonExpired: boolean;
-  entityCreationTimestampo: Date;
-  entityVersion: any;
   username: string;
   firstName: string;
   lastName: string;
-  id: string;
-  lastUpdatedTimestamp: Date;
+  token: string;
 
   constructor(user: any) {
-    this.accountNonExporired = user.accountNonExporired;
+    super(user);
+    this.accountNonExpired = user.accountNonExpired;
     this.accountNonLocked = user.accountNonLocked;
     this.administrator = user.administrator;
     this.credentialsNonExpired = user.credentialsNonExpired;
-    this.entityCreationTimestampo = user.entityCreationTimestampo;
-    this.entityVersion = user.entityVersion;
     this.username = user.username;
     this.firstName = user.firstName;
     this.lastName = user.lastName;
-    this.id = user.id;
-    this.lastUpdatedTimestamp = user.lastUpdatedTimestamp;
+    this.token = user.token;
   }
 }
