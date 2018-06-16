@@ -19,8 +19,8 @@ export class PreviousJob extends BasicEntity {
     super(previousJob);
     this.organizationName = previousJob.organizationName;
     this.description = previousJob.description;
-    this.startDate = new Date(previousJob.startDate);
-    this.endDate = new Date(previousJob.endDate);
+    this.startDate = new Date(previousJob.startDate.getTime());
+    this.endDate = new Date(previousJob.endDate.getTime());
     this.technicalResource = new TechnicalResource(previousJob.technicalResource);
   }
 }

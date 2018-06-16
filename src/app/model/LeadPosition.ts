@@ -18,8 +18,8 @@ export class LeadPosition extends BasicEntity {
 
   constructor(leadPosition: any) {
     super(leadPosition);
-    this.startDate = new Date(leadPosition.startDate);
-    this.endDate = new Date (leadPosition.endDate);
+    this.startDate = new Date(leadPosition.startDate.getTime());
+    this.endDate = new Date (leadPosition.endDate.getTime());
 
     this.active = leadPosition.active;
     

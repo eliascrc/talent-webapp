@@ -34,8 +34,8 @@ export class Project extends BasicEntity {
     this.name = project.name;
     this.description = project.description;
 
-    this.startDate = new Date(project.startDate);
-    this.endDate = new Date(project.endDate);
+    this.startDate = new Date(project.startDate.getTime());
+    this.endDate = new Date(project.endDate.getTime());
 
     this.jiraLink = project.jiraLink;
     this.confluenceLink = project.confluenceLink;

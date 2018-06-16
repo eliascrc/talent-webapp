@@ -61,8 +61,8 @@ export class TechnicalResource extends User {
       this.emergencyContacts.add(new EmergencyContact(contact));
 
     this.levelAssessmentTimeGap = technicalResource.levelAssessmentTimeGap;
-    this.lastLevelAssessment = new Date(technicalResource.lastLevelAssessment);
-    this.lastPerformanceReview = new Date(technicalResource.lastPerformanceReview);
+    this.lastLevelAssessment = new Date(technicalResource.lastLevelAssessment.getTime());
+    this.lastPerformanceReview = new Date(technicalResource.lastPerformanceReview.getTime());
     this.isAdministrator = technicalResource.isAdministrator;
     
     this.leadPositions = new Set(); 

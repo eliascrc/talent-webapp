@@ -20,8 +20,8 @@ export class ProjectPositionHolder extends BasicEntity {
 
   constructor(projectPositionHolder: any) {
     super(projectPositionHolder);
-    this.startDate = new Date(projectPositionHolder.startDate);
-    this.endDate = new Date(projectPositionHolder.endDate);
+    this.startDate = new Date(projectPositionHolder.startDate.getTime());
+    this.endDate = new Date(projectPositionHolder.endDate.getTime());
     this.projectPosition = new ProjectPosition(projectPositionHolder.projectPosition);
 
     this.reviewed = projectPositionHolder.reviewed;

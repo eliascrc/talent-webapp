@@ -16,8 +16,8 @@ export class ProjectEvent extends BasicEntity {
 
   constructor(projectEvent: ProjectEvent) {
     super(projectEvent);
-    this.startDate = new Date(projectEvent.startDate);
-    this.endDate = new Date(projectEvent.endDate);
+    this.startDate = new Date(projectEvent.startDate.getTime());
+    this.endDate = new Date(projectEvent.endDate.getTime());
     this.eventType = projectEvent.eventType; // Enum
     this.project = new Project(projectEvent.project);
   }
