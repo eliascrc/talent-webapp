@@ -46,6 +46,26 @@ footer.container-fluid {
   color: #294261;
 }
 
+.loggedIn {
+  background-color: #294261;
+}
+
+.loggedIn .footer-link-separator {
+  border: 1px solid #FFFFFF;
+}
+
+.loggedIn .footer-link {
+  color: #FFFFFF;
+}
+
+.loggedIn .footer-link>a {
+  color: #FFFFFF;
+}
+
+.loggedIn .center {
+  color: #FFFFFF;
+}
+
 @media only screen and (max-width: 450px) {
   .footer-link {
     margin: 0 1vw 5px 1vw;

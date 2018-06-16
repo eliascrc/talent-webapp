@@ -4,9 +4,36 @@ body, html {
   font-family: "Source Sans Pro", serif;
 }
 
+.wrapper-large {
+  position: relative;
+  padding: 0 0 0 128px;
+}
+
+.wrapper-short {
+  position: relative;
+  padding: 0 0 0 73px;
+}
+
+.sidebar-transition {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
 .contentContainer {
   min-height: 90vh;
   padding: 0;
   margin: 0;
   position: relative;
+}
+
+@media only screen and (max-width: 415px) {
+  .wrapper-large {
+    padding: 0 0 0 45px;
+  }
+
+  .wrapper-short {
+    padding: 0 0 0 45px;
+  }
 }
