@@ -18,7 +18,6 @@ export class AuthenticateService {
 	 * Returns an observable that tries to log in the user using the log in web service
 	 */
 	login(username: string, password: string, organizationIdentifier: string) {
-		alert("User: "+username+"\nPassword: "+password+"\nOrganizationIdentifier: "+organizationIdentifier);
 		const body = `username=${username}&password=${password}&organizationIdentifier=${organizationIdentifier}`;
 		return this.http
 		.post(this.loginUrl, body, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, withCredentials: true } );
