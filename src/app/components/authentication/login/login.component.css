@@ -50,13 +50,19 @@
 
 @media only screen and (max-width: 4000px) {
   #signin-link {
-    margin-right: 5.71%;
+    margin-right: 8.71%;
   }
 }
 
 @media only screen and (max-width: 700px) {
   #signin-link {
-    margin-right: 5.71%;
+    margin-right: 5.2%;
+  }
+}
+
+@media only screen and (min-width: 701px) and (max-width: 992px) {
+  #signin-link {
+    margin-right: 5.2%;
   }
 }
 
@@ -221,7 +227,7 @@
 #organization-logo {
   height: 14.06vw;
   text-align: center;
-  
+
 }
 
 #form-content {

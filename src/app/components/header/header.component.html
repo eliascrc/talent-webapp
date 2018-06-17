@@ -1,0 +1,12 @@
+<nav class="container-fluid">
+  <div class="row">
+    <div class="main-bar">
+      <a routerLink="/landing-page">
+        <img src="/assets/images/talent-logo.png" class="logo">
+      </a>
+      <button class="btn btn-primary header-button" *ngIf="loggedIn" (click)="onLogout()">Logout</button>
+      <button class="btn btn-primary header-button" *ngIf="!loggedIn" (click)="onSignIn()">Sign in</button>
+    </div>
+  </div>
+  <div class="horizontal-line"></div>
+</nav>
