@@ -28,8 +28,6 @@
 .hamburger-menu {
   margin: 23px auto auto auto;
   font-family: FontAwesome;
-  height: 30px;
-  width: 30px;
   color: #FFFFFF;
   font-size: 30px;
   letter-spacing: 3.05px;
@@ -105,11 +103,35 @@
 }
 
 @media only screen and (max-width: 415px) {
-  .sidebar-large {
-    width: 45px;
+  .sidebar-short {
+    width: 25px;
   }
 
-  .sidebar-short {
-    width: 45px;
+  .sidebar-short .oval {
+    display: none;
+  }
+
+  .sidebar-short .oval2 {
+    display: none;
+  }
+
+  .sidebar-short .oval p {
+    display: none;
+  }
+
+  .sidebar-short .line {
+    display: none;
+  }
+
+  .sidebar-short .progress {
+    display: none;
+  }
+
+  .sidebar-short .notifications {
+    display: none;
+  }
+
+  .sidebar-short .hamburger-menu {
+    font-size: 20px;
   }
 }

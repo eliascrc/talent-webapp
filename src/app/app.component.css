@@ -29,11 +29,7 @@ body, html {
 }
 
 @media only screen and (max-width: 415px) {
-  .wrapper-large {
-    padding: 0 0 0 45px;
-  }
-
   .wrapper-short {
-    padding: 0 0 0 45px;
+    padding: 0 0 0 25px;
   }
 }
