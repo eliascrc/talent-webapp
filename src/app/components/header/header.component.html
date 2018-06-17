@@ -1,12 +1,59 @@
-<nav class="container-fluid">
-  <div class="row">
-    <div class="main-bar">
-      <a routerLink="/landing-page">
-        <img src="/assets/images/talent-logo.png" class="logo">
-      </a>
-      <button class="btn btn-primary header-button" *ngIf="loggedIn" (click)="onLogout()">Logout</button>
-      <button class="btn btn-primary header-button" *ngIf="!loggedIn" (click)="onSignIn()">Sign in</button>
+<div *ngIf="displayHeader">
+  <nav *ngIf="!loggedIn" class="container-fluid">
+    <div class="row">
+      <div class="main-bar">
+        <a routerLink="/landing-page">
+          <img src="/assets/images/talent-logo.png" class="logo">
+        </a>
+        <button class="btn btn-primary header-button" (click)="onSignIn()">Sign in</button>
+      </div>
     </div>
-  </div>
-  <div class="horizontal-line"></div>
-</nav>
+    <div class="horizontal-line"></div>
+  </nav>
+  <nav *ngIf="loggedIn" class="container-fluid">
+    <div class="row">
+      <div class="main-bar-loggedIn">
+        <a routerLink="">
+          <img [src]="userOrganizationLogo" class="logo">
+        </a>
+        <div class="right-content">
+          <div class="notifications">
+            <i class="fas fa-bell"></i>
+            <span><div class="totalNotifications"><p>3</p></div></span>
+          </div>
+          <div class="userName"><p class="name">{{userName}}</p></div>
+          <div class="user-menu" (click)="onLoggedInAreaChanged()"><i class="fas fa-ellipsis-v"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="horizontal-line"></div>
+    <div *ngIf="displayLoggedInArea" class="loggedin-area">
+      <div class="container-fluid loggedIn-area-content">
+        <div class="row profile-picture-area">
+          <div class="profile-picture">
+            <img [src]="userProfilePicture" class="picture" alt="Profile picture">
+          </div>
+          <div class="button-area">
+            <div class="loggedin-area-name">{{userName}}</div>
+            <div class="view-profile-button">
+              <button class="btn btn-primary view-profile">
+                <p class="btn-text">View Profile</p>
+              </button>
+            </div>
+          </div>
+          <div>
+            <div class="horizontal-separator"></div>
+          </div>
+          <div class="preferences">
+            <i class="fas fa-cogs preferences-icon"></i>
+            <span class="preferences-text">Preferences</span>
+          </div>
+          <div class="logout" (click)="onLogout()">
+            <i class="fas fa-sign-out-alt logout-icon"></i>
+            <span class="logout-text">Logout</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
