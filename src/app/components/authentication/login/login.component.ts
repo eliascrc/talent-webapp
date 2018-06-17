@@ -47,7 +47,8 @@ export class LoginComponent implements OnInit {
 	 * @param password the password entered in the password field
 	 */
 	login(email: string, password: string) {
-		this.authenticateService.login(email, password)
+		var organizationIdentifier = this.route.snapshot.paramMap.get('uniqueIdentifier');
+		this.authenticateService.login(email, password, organizationIdentifier)
 			.subscribe(() => {
 				this.authenticateService.storeUser()
 				.then(() => this.router.navigate(['/dashboard']));
