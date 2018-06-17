@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'contact-us-screen', component: ContactUsScreenComponent},
   {path: 'privacy-policy', component: PrivacyPolicyComponent},
   {path: 'terms-of-use', component: TermsOfUseComponent},
-  {path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [UnauthenticateGuard]},
+  {path: 'forgot-password/:uniqueIdentifier', component: ForgotPasswordComponent, canActivate: [UnauthenticateGuard]},
   {path: 'reset-password', component: ResetPasswordComponent, canActivate: [UnauthenticateGuard]},
   {path: 'invalid-token', component: InvalidTokenComponent},
   {path: 'login/:uniqueIdentifier', component: LoginComponent, canActivate: [UnauthenticateGuard]},
