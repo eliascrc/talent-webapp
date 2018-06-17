@@ -33,7 +33,6 @@ export class HeaderComponent implements OnInit {
           if (this.loggedIn) {
             this.authenticateService.getLoggedInUserInfo().then(userInfo => {
                const userInfoObject = JSON.parse(JSON.stringify(userInfo));
-               console.log(userInfoObject);
                let name = userInfoObject.firstName;
                name = name.concat(' ');
                this.userName = name.concat(userInfoObject.lastName);

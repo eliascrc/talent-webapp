@@ -70,7 +70,6 @@
 
 .progress {
   margin: 31px auto auto auto;
-  font-family: FontAwesome;
   height: 50px;
   width: 50px;
   color: #FFFFFF;
@@ -81,13 +80,18 @@
 
 .notifications {
   margin: 49px auto auto auto;
-  font-family: FontAwesome;
   height: 50px;
   width: 50px;
   color: #FFFFFF;
   font-size: 50px;
   cursor: pointer;
   background-color: #294261;
+}
+
+.icon {
+  color: #FFFFFF;
+  height: 50px;
+  width: 50px;
 }
 
 .sidebar-large .line {
@@ -103,7 +107,7 @@
 }
 
 .label-n {
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 @media only screen and (max-width: 415px) {
