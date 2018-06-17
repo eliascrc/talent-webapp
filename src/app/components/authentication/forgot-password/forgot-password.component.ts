@@ -21,8 +21,6 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPassword() {
 	document.getElementById('confirmation-message').style.display = 'block';
     document.getElementById('recover-password-form').style.display = 'none';
-	//this.organizationIdentifier = "monkey-labs";
     this.forgotPasswordService.forgotPassword(this.userData.email, this.organizationIdentifier);
   }
-
 }

@@ -28,7 +28,7 @@ export class ForgotPasswordService {
   }
 
   resetPassword(token: string, newPassword: string): Promise<any> {
-    const body = `newPassword=${newPassword}$`;
+    const body = `newPassword=${newPassword}`;
     return this.http
       .post('http://ws.talent.cr/ws/passwordReset/reset/?token=' + token, body, {withCredentials: true})
       .toPromise()
