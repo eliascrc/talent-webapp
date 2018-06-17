@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   private static EMAIL_REGEX: RegExp = new RegExp('[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?');
   private emailIsValid: boolean;
   private invalidCredentials: boolean;
+  private organizationIdentifier: string;
 
   @Input() organization: Organization;
 
@@ -29,16 +30,15 @@ export class LoginComponent implements OnInit {
    * Uses the route to retrieve the organization for this component, important for setting the logo on the page
    */
   getOrganization(): void {
-    const uniqueIdentifier: string = this.route.snapshot.paramMap.get('uniqueIdentifier');
-    this.organizationService.getOrganization(uniqueIdentifier)
+    this.organizationService.getOrganization(this.organizationIdentifier)
       .subscribe(response => this.organization = response, error => this.router.navigate(['login/']));
   }
 
   ngOnInit() {
+	this.organizationIdentifier = this.route.snapshot.paramMap.get('uniqueIdentifier');
     this.getOrganization();
   }
 
-<<<<<<< HEAD
 	/**
 	 * Tries to log in the user using the supplied email and password, redirects to the dashboard page on success
 	 * and stores the user on local storage, on error it sets invalid credentials to true so the error message is
@@ -48,33 +48,12 @@ export class LoginComponent implements OnInit {
 	 * @param password the password entered in the password field
 	 */
 	login(email: string, password: string) {
-		var organizationIdentifier = this.route.snapshot.paramMap.get('uniqueIdentifier');
-		this.authenticateService.login(email, password, organizationIdentifier)
+		this.authenticateService.login(email, password, this.organizationIdentifier)
 			.subscribe(() => {
 				this.authenticateService.storeUser()
 				.then(() => this.router.navigate(['/dashboard']));
 			}, () => this.invalidCredentials = true);
 	}
-=======
-  /**
-   * Tries to log in the user using the supplied email and password, redirects to the dashboard page on success
-   * and stores the user on local storage, on error it sets invalid credentials to true so the error message is
-   * displayed
-   * on error it sets invalid credentials to true
-   * @param email the email entered in the email field
-   * @param password the password entered in the password field
-   */
-  login(email: string, password: string) {
-    this.authenticateService.login(email, password)
-      .subscribe(() => {
-        this.authenticateService.storeUser()
-          .then(() => {
-            this.router.navigate(['/dashboard']);
-            location.reload();
-          });
-      }, () => this.invalidCredentials = true);
-  }
->>>>>>> 72624f0f76f00a5163c7c023f2f6273ca61ed2ae
 
   /**
    * Uses a regular expression to validate the email provided by the user
