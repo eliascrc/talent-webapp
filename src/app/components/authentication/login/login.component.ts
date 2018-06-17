@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
 			.subscribe(() => {
 				this.authenticateService.storeUser()
 				.then(() => this.router.navigate(['/dashboard']));
+        location.reload();
 			}, () => this.invalidCredentials = true);
 	}
 

@@ -6,6 +6,12 @@ import {AuthenticateService} from '@services/authentication/authenticate.service
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
+
+/**
+ * Application's footer, which is part of all components.
+ *
+ * @author Josue Leon Sarkis
+ */
 export class FooterComponent implements OnInit {
   loggedIn = false;
 

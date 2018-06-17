@@ -9,6 +9,11 @@ import {OrganizationService} from '@services/organization/organization.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+/**
+ * Application's header, which is part of all components. It displays different layouts depending if the user is logged in or not.
+ *
+ * @author Josue Leon Sarkis
+ */
 export class HeaderComponent implements OnInit {
 
   loggedIn = false;
@@ -32,12 +37,12 @@ export class HeaderComponent implements OnInit {
                let name = userInfoObject.firstName;
                name = name.concat(' ');
                this.userName = name.concat(userInfoObject.lastName);
+               this.userProfilePicture = userInfoObject.profilePicture.link;
                this.organizationService.getOrganization(userInfoObject.organization.uniqueIdentifier)
                  .subscribe(userOrganization => {
                    this.userOrganizationLogo = JSON.parse(JSON.stringify(userOrganization)).logo;
                  });
             });
-            this.userOrganizationLogo = '/assets/images/talent-logo.png';
           }
           this.displayHeader = true;
         }
