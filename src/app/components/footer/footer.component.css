@@ -1,6 +1,6 @@
 footer.container-fluid {
   min-height: 8.4vh;
-  min-width: 310px;
+  min-width: 285px;
   width: 100%;
   padding: 0px;
   font-size: 91%;
@@ -46,15 +46,55 @@ footer.container-fluid {
   color: #294261;
 }
 
-@media only screen and (max-width: 450px) {
+.loggedIn {
+  background-color: #294261;
+}
+
+.loggedIn .horizontal-line {
+  display: none;
+}
+
+.loggedIn .footer-link-separator {
+  border: 1px solid #FFFFFF;
+}
+
+.loggedIn .footer-link {
+  color: #FFFFFF;
+}
+
+.loggedIn .footer-link>a {
+  color: #FFFFFF;
+}
+
+.loggedIn .center {
+  color: #FFFFFF;
+}
+
+@media only screen and (max-width: 360px) {
   .footer-link {
-    margin: 0 1vw 5px 1vw;
+    margin: 0 0.5vw 5px 0.5vw;
+  }
+
+  .loggedIn .footer-link {
+    margin: 0 0 5px 0;
+  }
+
+  .loggedIn .footer-link-separator {
+    border: 0.5px solid #FFFFFF;
   }
 }
 
-@media only screen and (max-width: 365px) {
+@media only screen and (min-width: 361px) and (max-width: 415px) {
   .footer-link {
-    margin: 0 0.5vw 5px 0.5vw;
+    margin: 0 1vw 5px 1vw;
+  }
+
+  .loggedIn .footer-link {
+    margin: 0 1vw 5px 1vw;
+  }
+
+  .loggedIn .footer-link-separator {
+    border: 1px solid #FFFFFF;
   }
 }
 
