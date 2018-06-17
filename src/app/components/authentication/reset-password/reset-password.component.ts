@@ -21,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {	  
     this.forgotPasswordService
       .validateToken(this.token)
       .catch(error => {

@@ -9,9 +9,9 @@ export class ForgotPasswordService {
 
   constructor(private http: Http) { }
 
-  forgotPassword(email: string): Promise<any> {
+  forgotPassword(email: string, organizationIdentifier: string): Promise<any> {
     this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-    const body = `email=${email}`;
+    const body = `email=${email}&organizationIdentifier=${organizationIdentifier}`;
     return this.http
       .post('http://ws.talent.cr/ws/passwordReset/forgotPassword', body, {headers: this.headers})
       .toPromise()
@@ -28,7 +28,7 @@ export class ForgotPasswordService {
   }
 
   resetPassword(token: string, newPassword: string): Promise<any> {
-    const body = `newPassword=${newPassword}`;
+    const body = `newPassword=${newPassword}$`;
     return this.http
       .post('http://ws.talent.cr/ws/passwordReset/reset/?token=' + token, body, {withCredentials: true})
       .toPromise()
