@@ -10,7 +10,6 @@ export class BasicEntity {
   lastUpdatedTimestamp: Date;
 
   constructor(basicEntity: any) {
-	  alert(basicEntity.entityCreationTimestamp.getTime());
     this.entityCreationTimestamp = new Date(basicEntity.entityCreationTimestamp.getTime());
     this.entityVersion = basicEntity.entityVersion;
     this.id = basicEntity.id;
