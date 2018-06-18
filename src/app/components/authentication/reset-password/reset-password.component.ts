@@ -13,7 +13,6 @@ export class ResetPasswordComponent implements OnInit {
   userData: any = {};
   passConfirm: any = {};
   token: string;
-  user: User;
 
   constructor(private forgotPasswordService: ForgotPasswordService, private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
@@ -34,7 +33,6 @@ export class ResetPasswordComponent implements OnInit {
       .then( result => {
         this.forgotPasswordService.logUser()
           .then(result2 => {
-            this.user = new User(result2);
             this.router.navigate(['/dashboard']);
           });
       });
