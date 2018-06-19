@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ForgotPasswordService} from '../../../services/authentication/forgot-password.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from '../../../model/User';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,7 +19,7 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
-  ngOnInit() {	  
+  ngOnInit() {
     this.forgotPasswordService
       .validateToken(this.token)
       .catch(error => {
@@ -30,11 +29,7 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPassword() {
     this.forgotPasswordService.resetPassword(this.token, this.userData.password)
-      .then( result => {
-        this.forgotPasswordService.logUser()
-          .then(result2 => {
-            this.router.navigate(['/dashboard']);
-          });
-      });
+      .then(result => this.router.navigate(['/dashboard']));
+    location.reload();
   }
 }
