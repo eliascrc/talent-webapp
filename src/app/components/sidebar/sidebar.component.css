@@ -1,3 +1,5 @@
+@import url('http://fonts.googleapis.com/css?family=Lato');
+
 .sidebar-large {
   width: 128px;
   background-color: #294261;
@@ -41,7 +43,7 @@
   width: 50px;
   background-color: #FFFFFF;
   color: #294261;
-  font-family: Lato;
+  font-family: Lato, sans-serif;
   font-size: 24px;
   letter-spacing: 2.44px;
   line-height: 29px;
