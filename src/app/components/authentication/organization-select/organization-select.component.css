@@ -1,6 +1,7 @@
 #container-fluid, #general-row, #container-row1, #container-row2 {
   margin: 0;
   padding: 0;
+  min-height: 90vh
 }
 
 #signin-row, #logo-row, #list-row, #list-row2, #list-row3 {
