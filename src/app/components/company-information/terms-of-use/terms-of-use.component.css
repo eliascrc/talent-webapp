@@ -9,48 +9,8 @@ body {
   letter-spacing: 2.8px;
   line-height: 36px;
   margin-top: 4.19vh;
-}
-
-@media only screen and (max-width: 4000px) {
-  #title {
-    margin-left: 41.8%;
-  }
-}
-
-@media only screen and (max-width: 1300px) {
-  #title {
-    margin-left: 38%;
-  }
-}
-
-@media only screen and (max-width: 900px) {
-  #title {
-    margin-left: 35%;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  #title {
-    margin-left: 32%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  #title {
-    margin-left: 30%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  #title {
-    margin-left: 25%;
-  }
-}
-
-@media only screen and (max-width: 430px) {
-  #title {
-    margin-left: 24%;
-  }
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #text {

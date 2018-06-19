@@ -75,5 +75,8 @@ export class LoginComponent implements OnInit {
   clearSignInError() {
     this.invalidCredentials = false;
   }
-
+  
+  redirectToForgotPassword(){
+	this.router.navigate(['/forgot-password', this.organizationIdentifier]);
+  }
 }
