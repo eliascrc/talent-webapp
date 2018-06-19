@@ -284,14 +284,8 @@ nav.container-fluid {
   .header-button {
     height: 45px;
     width: 113px;
-    float: right;
-    border-radius: 10px;
-    background-color: #294261;
     margin-top: 43px;
-    border-style: none;
     font-size: 28px;
-    letter-spacing: -0.4px;
-    line-height: 20px;
   }
 
   .notifications {
