@@ -5,7 +5,7 @@
         <a routerLink="/landing-page">
           <img src="/assets/images/talent-logo.png" alt="Talent!" class="logo">
         </a>
-        <button class="btn btn-primary header-button" (click)="onSignIn()">Sign in</button>
+        <button *ngIf="!router.url.includes('/login')" class="btn btn-primary header-button" (click)="onSignIn()" id="sign-in-button">Sign in</button>
       </div>
     </div>
     <div class="horizontal-line"></div>

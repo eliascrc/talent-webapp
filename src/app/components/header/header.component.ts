@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   displayLoggedInArea = false;
   userProfilePicture: string;
 
-  constructor(private router: Router, private authenticateService: AuthenticateService, private organizationService: OrganizationService) {
+  constructor(public router: Router, private authenticateService: AuthenticateService, private organizationService: OrganizationService) {
   }
 
   ngOnInit() {
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.authenticateService.logout().then(response => {
-      this.router.navigate(['/landing-page']);
+      this.router.navigate(['/login']);
       location.reload();
     });
   }
