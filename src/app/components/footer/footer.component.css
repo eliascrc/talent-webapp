@@ -1,5 +1,5 @@
 footer.container-fluid {
-  min-height: 8.4vh;
+  height: 80px;
   min-width: 285px;
   width: 100%;
   padding: 0px;
@@ -13,7 +13,6 @@ footer.container-fluid {
 }
 
 .horizontal-line {
-  height: 0.19vh;
   width: 100%;
   border: 1px solid #294261;
 }

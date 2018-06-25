@@ -1,6 +1,6 @@
 #container-fluid, #general-row, #container-row1, #container-row2 {
   margin: 0px;
-  padding: 0px;  
+  padding: 0px;
   min-height: 90vh;
 }
 
@@ -43,6 +43,7 @@
 #sign-up-button {
   height: 34px;
   width: 87px;
+  font-size: 16px;
   border-radius: 10px;
   background-color: #294261;
   padding: 0;
