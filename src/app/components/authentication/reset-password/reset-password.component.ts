@@ -29,7 +29,6 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPassword() {
     this.forgotPasswordService.resetPassword(this.token, this.userData.password)
-      .then(result => this.router.navigate(['/dashboard']));
-    location.reload();
+      .then(result => { this.router.navigate(['/dashboard']); location.reload();});
   }
 }
