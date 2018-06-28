@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authenticateService.isLoggedIn()
       .then(response => {
-          console.log(response);
           this.loggedIn = response;
         }
       );
