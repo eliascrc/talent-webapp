@@ -42,6 +42,13 @@
           </div>
 
           <div class="form-group">
+            <label for="nickname">Nickname</label>
+            <input type="text" class="form-control" placeholder="Nickname" id="nickname" ngModel name="nickname"
+                   required/>
+            <div class="error-message">Field is required</div>
+          </div>
+
+          <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" placeholder="Email" id="email" ngModel name="email" required
                    email/>
