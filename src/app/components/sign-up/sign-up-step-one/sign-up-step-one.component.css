@@ -1,10 +1,12 @@
+
+/* Tag selectors */
 label {
   margin-bottom: 12px;
 }
 
 input[type=text], input[type=email], input[type=password] {
   font-size: 20px;
-  margin-bottom: 22px;
+  margin-bottom: 34px;
   padding-left: 26px;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -29,6 +31,7 @@ input.ng-invalid.ng-touched {
   margin-bottom: 0;
 }
 
+/* Classes */
 .form-group {
   margin: 0;
 }
@@ -80,12 +83,13 @@ input.ng-invalid.ng-touched {
   font-weight: normal;
 }
 
+/* Identifiers */
 #minimum-height {
   min-height: 90vh;
 }
 
 #side-image {
-  background: url(../../../../../assets/images/handshake.png) no-repeat center;
+  background: url(../../../../assets/images/handshake.png) no-repeat center;
   background-size: cover
 }
 
@@ -113,6 +117,7 @@ input.ng-invalid.ng-touched {
   border-radius: 10px;
 }
 
+/* Custom Checkbox */
 .tos {
   display: block;
   position: relative;
@@ -140,6 +145,7 @@ input.ng-invalid.ng-touched {
   background-color: #B9BBBE;
 }
 
+/* Checkbox events */
 .checkmark:hover {
   background-color: #A8AAAD;
 }
@@ -155,6 +161,7 @@ input.ng-invalid.ng-touched {
   display: none;
 }
 
+/* Checkmark events */
 .tos input:checked ~ .checkmark:after {
   display: block;
 }

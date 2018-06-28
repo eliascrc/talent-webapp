@@ -1,10 +1,15 @@
 <div class="container-fluid m-0 p-0" id="minimum-height">
 
+  <!-- Main wrapper row-->
   <div class="row m-0 p-0">
+
+    <!-- Side image column -->
     <div class="d-md-block col-lg-5" id="side-image"></div>
 
+    <!-- Form and header column -->
     <div class="col-md-12 col-lg-7">
 
+      <!-- Inside Header -->
       <div class="row">
         <div class="main-bar">
 
@@ -17,7 +22,10 @@
         </div>
       </div>
 
+      <!-- Form row -->
       <div class="row" id="step-one-input">
+
+        <!-- Step One Form -->
         <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
           <div class="form-group">
             <label for="first-name">First Name</label>
@@ -39,17 +47,16 @@
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" placeholder="Password" id="password" ngModel name="password" required/>
-            <div class="error-message">Field is required</div>
+            <input type="password" class="form-control" placeholder="Password" id="password" ngModel name="password"
+                   (keyup)="validatePassword(signUpForm)" required/>
+            <div class="error-message">Password must have at least 8 characters with symbols, numbers, upper and lower case letters</div>
           </div>
 
           <div class="form-group">
             <label for="confirm-password">Confirm Password</label>
             <input type="password" class="form-control" placeholder="Confirm Password" id="confirm-password" ngModel
-                   name="confirm" required/>
-            <div class="error-message" *ngIf="!passwordMatch" style="display: block">
-              Passwords do not match
-            </div>
+                   name="confirm" (keyup)="validatePassword(signUpForm)" required/>
+            <div class="error-message">Passwords do not match</div>
           </div>
 
           <div class="form-group">

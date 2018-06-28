@@ -8,6 +8,15 @@ export class SignupService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Returns an observable that tries to send the sign up step one information to the backend web service
+   *
+   * @param {string} firstName the first name of the user
+   * @param {string} lastName the last name of the user
+   * @param {string} email the email of the user
+   * @param {string} password the password of the user
+   * @returns {Observable<Object>} the observable object
+   */
   stepOne(firstName: string, lastName: string, email: string, password: string) {
     const bodyParameters = `firstName=${firstName}&lastName=${lastName}&email=${email}&password=${password}`;
     return this.http
