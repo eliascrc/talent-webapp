@@ -63,12 +63,9 @@ import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/si
     SanitizeHtmlPipe,
     HeaderComponent,
     SidebarComponent,
-<<<<<<< HEAD
-    AcceptInviteComponent
-=======
+    AcceptInviteComponent,
     SignUpStepOneComponent,
     SignUpStepTwoComponent
->>>>>>> 903aa7f6d0a2ab41a34491539d3d690f15ecdc91
   ],
   imports: [
     BrowserModule,
