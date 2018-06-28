@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'landing-page', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
   {path: 'login', component: OrganizationSelectComponent, canActivate: [UnauthenticateGuard]},
   {path: 'sign-up', component: SignUpComponent, canActivate: [UnauthenticateGuard]},
-  {path: 'sign-up-step3', component: SignUpStep3Component, canActivate: [UnauthenticateGuard]},
+  {path: 'sign-up-step3', component: SignUpStep3Component, canActivate: [AuthenticateGuard]},
   {path: 'about', component: AboutComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'contact-us-screen', component: ContactUsScreenComponent},
