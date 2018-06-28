@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {LoginComponent} from '../components/authentication/login/login.component';
-import {SignUpComponent} from '../components/authentication/sign-up/sign-up.component';
 import {AboutComponent} from '../components/company-information/about/about.component';
 import {DashboardComponent} from '../components/company-information/dashboard/dashboard.component';
 import {AuthenticateGuard} from './authenticate-guard.service';
@@ -16,12 +15,15 @@ import {OrganizationSelectComponent} from '../components/authentication/organiza
 import {InvalidTokenComponent} from '../components/authentication/invalid-token/invalid-token.component';
 import {ContactUsScreenComponent} from '../components/company-information/contact-us-screen/contact-us-screen.component';
 import {UnauthenticateGuard} from './unauthenticate-guard.service';
+import {SignUpStepOneComponent} from '../components/sign-up/sign-up-step-one/sign-up-step-one.component';
+import {SignUpStepTwoComponent} from '../components/sign-up/sign-up-step-two/sign-up-step-two.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
   {path: 'landing-page', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
   {path: 'login', component: OrganizationSelectComponent, canActivate: [UnauthenticateGuard]},
-  {path: 'sign-up', component: SignUpComponent, canActivate: [UnauthenticateGuard]},
+  {path: 'sign-up/step-one', component: SignUpStepOneComponent, canActivate: [UnauthenticateGuard]},
+  {path: 'sign-up/step-two', component: SignUpStepTwoComponent, canActivate: [UnauthenticateGuard]},
   {path: 'about', component: AboutComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'contact-us-screen', component: ContactUsScreenComponent},
