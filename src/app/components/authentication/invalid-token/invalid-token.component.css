@@ -48,7 +48,7 @@ body {
 }
 
 
-@media only screen and (max-width: 4000px) {
+@media only screen and (max-width: 1000px) {
   #forgot-password-h {
     margin-left: 37%;
   }
@@ -81,6 +81,12 @@ body {
 
 @media only screen and (max-width: 4000px) {
   #confirmation-message {
+    margin-left: 28%;
+  }
+}
+
+@media only screen and (max-width: 2000px) {
+  #confirmation-message {
     margin-left: 24.16%;
   }
 }
@@ -91,15 +97,16 @@ body {
   }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 500px) {
   #confirmation-message {
-    margin-left: 12.16%;
+    margin-left: 11%;
+    width: 270px;
   }
 }
 
 @media only screen and (max-width: 400px) {
   #confirmation-message {
-    margin-left: 6%;
+    margin-left: 7%;
     width: 270px;
   }
 }

@@ -1,0 +1,147 @@
+@import url('http://fonts.googleapis.com/css?family=Lato');
+
+.sidebar-large {
+  width: 128px;
+  background-color: #294261;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+}
+
+.sidebar-short {
+  width: 73px;
+  background-color: #294261;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+}
+
+.sidebar-transition {
+  transition:width 0.5s ease-in-out;
+}
+
+.container-fluid {
+  width: 100%;
+  height: 100%;
+}
+
+.hamburger-menu {
+  margin: 23px auto auto auto;
+  font-family: FontAwesome;
+  color: #FFFFFF;
+  font-size: 30px;
+  letter-spacing: 3.05px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.oval {
+  margin: 43px auto auto auto;
+  height: 50px;
+  width: 50px;
+  background-color: #FFFFFF;
+  color: #294261;
+  font-family: Lato, sans-serif;
+  font-size: 24px;
+  letter-spacing: 2.44px;
+  line-height: 29px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.oval2 {
+  margin-top: 17px;
+}
+
+.oval p {
+  margin: 10px auto auto 20px;
+}
+
+.oval2 p {
+  margin: 10px auto auto 15px;
+}
+
+.line {
+  margin: 15px auto auto auto;
+  height: 2px;
+  width: 58px;
+  border: 1px solid #9BA4AE;
+}
+
+.progress {
+  margin: 31px auto auto auto;
+  height: 50px;
+  width: 50px;
+  color: #FFFFFF;
+  font-size: 50px;
+  cursor: pointer;
+  background-color: #294261;
+}
+
+.notifications {
+  margin: 49px auto auto auto;
+  height: 50px;
+  width: 50px;
+  color: #FFFFFF;
+  font-size: 50px;
+  cursor: pointer;
+  background-color: #294261;
+}
+
+.icon {
+  color: #FFFFFF;
+  height: 50px;
+  width: 50px;
+}
+
+.sidebar-large .line {
+  width: 95px;
+}
+
+.label {
+  display: block;
+  color: #FFFFFF;
+  font-size: 18px;
+  line-height: 23px;
+  margin: 5px auto auto auto;
+}
+
+.label-n {
+  margin-top: 25px;
+}
+
+@media only screen and (max-width: 415px) {
+  .sidebar-short {
+    width: 25px;
+  }
+
+  .sidebar-short .oval {
+    display: none;
+  }
+
+  .sidebar-short .oval2 {
+    display: none;
+  }
+
+  .sidebar-short .oval p {
+    display: none;
+  }
+
+  .sidebar-short .line {
+    display: none;
+  }
+
+  .sidebar-short .progress {
+    display: none;
+  }
+
+  .sidebar-short .notifications {
+    display: none;
+  }
+
+  .sidebar-short .hamburger-menu {
+    font-size: 20px;
+  }
+}

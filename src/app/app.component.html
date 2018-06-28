@@ -1,8 +1,18 @@
 <head>
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 </head>
-<app-header></app-header>
-<div class="contentContainer">
-  <router-outlet></router-outlet>
+<div *ngIf="!loggedIn">
+  <app-header></app-header>
+  <div class="contentContainer">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>
+<div *ngIf="loggedIn" class="sidebar-transition" [class.wrapper-short]="!sidebarChange" [class.wrapper-large]="sidebarChange">
+  <app-sidebar (notify)="onSidebarChanged($event)"></app-sidebar>
+  <app-header></app-header>
+  <div class="contentContainer">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+</div>

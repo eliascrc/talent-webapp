@@ -1,0 +1,22 @@
+<div class="sidebar-transition" [class.sidebar-short]="!hamburgerClicked" [class.sidebar-large]="hamburgerClicked">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="hamburger-menu" (click)="onHamburgerClick()"><i class="fas fa-bars"></i></div>
+    </div>
+    <div class="row">
+      <div class="oval"><p>P</p></div>
+    </div>
+    <div class="row">
+      <div class="oval oval2"><p>{{userOrganizationNameInitial}}</p></div>
+    </div>
+    <div class="row">
+      <div class="line"></div>
+    </div>
+    <div class="row">
+      <div class="progress"><img src="../../../assets/images/projects.png" class="icon"></div>
+    </div>
+    <div class="row">
+      <div *ngIf="hamburgerClicked" class="label">My projects</div>
+    </div>
+  </div>
+</div>

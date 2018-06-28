@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {ForgotPasswordService} from '../../../services/authentication/forgot-password.service';
 
 @Component({
@@ -9,15 +10,17 @@ import {ForgotPasswordService} from '../../../services/authentication/forgot-pas
 export class ForgotPasswordComponent implements OnInit {
 
   userData: any = {};
+  organizationIdentifier: string;
 
-  constructor(private forgotPasswordService: ForgotPasswordService) { }
+  constructor(private route: ActivatedRoute, private forgotPasswordService: ForgotPasswordService) { }
 
-  ngOnInit() { }
-
-  forgotPassword() {
-    document.getElementById('confirmation-message').style.display = 'block';
-    document.getElementById('recover-password-form').style.display = 'none';
-    this.forgotPasswordService.forgotPassword(this.userData.email);
+  ngOnInit() {
+	this.organizationIdentifier = this.route.snapshot.paramMap.get('uniqueIdentifier');
   }
 
+  forgotPassword() {
+	document.getElementById('confirmation-message').style.display = 'block';
+    document.getElementById('recover-password-form').style.display = 'none';
+    this.forgotPasswordService.forgotPassword(this.userData.email, this.organizationIdentifier);
+  }
 }

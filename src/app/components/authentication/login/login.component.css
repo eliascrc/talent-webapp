@@ -1,6 +1,7 @@
 #container-fluid, #general-row, #container-row1, #container-row2 {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
+  min-height: 90vh;
 }
 
 #signin-row, #logo-row, #list-row, #list-row2, #list-row3 {
@@ -42,9 +43,11 @@
 #sign-up-button {
   height: 34px;
   width: 87px;
+  font-size: 16px;
   border-radius: 10px;
   background-color: #294261;
   padding: 0;
+  border: none;
 }
 
 @media only screen and (max-width: 4000px) {
@@ -184,8 +187,9 @@
 }
 
 .email-error {
-  position: absolute;
+  position: inherit;
   color: #C4183C;
+  text-align: left;
   margin-top: 1.17vh;
   display: block;
   margin-left: auto;
@@ -239,9 +243,10 @@
 }
 
 #forgot-password-link {
-  display: block;
+  display: inline-block;
   text-align: center;
   margin-top: 1.93vh;
+  cursor: pointer;
   height: 24px;
 	color: #4083FF;
 	font-size: 18px;

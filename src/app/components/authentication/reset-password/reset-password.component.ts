@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ForgotPasswordService} from '../../../services/authentication/forgot-password.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User} from '../../../model/User';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,7 +12,6 @@ export class ResetPasswordComponent implements OnInit {
   userData: any = {};
   passConfirm: any = {};
   token: string;
-  user: User;
 
   constructor(private forgotPasswordService: ForgotPasswordService, private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
@@ -31,12 +29,6 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPassword() {
     this.forgotPasswordService.resetPassword(this.token, this.userData.password)
-      .then( result => {
-        this.forgotPasswordService.logUser()
-          .then(result2 => {
-            this.user = new User(result2);
-            this.router.navigate(['/dashboard']);
-          });
-      });
+      .then(result => { this.router.navigate(['/dashboard']); location.reload();});
   }
 }
