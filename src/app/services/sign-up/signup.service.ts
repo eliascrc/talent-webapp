@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
+/**
+ * Service that processes backend web services requests for the /ws/signUp resources.
+ *
+ * @author Elias Calderon
+ */
 @Injectable()
 export class SignupService {
 
