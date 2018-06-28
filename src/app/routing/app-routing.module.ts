@@ -17,6 +17,7 @@ import {ContactUsScreenComponent} from '../components/company-information/contac
 import {UnauthenticateGuard} from './unauthenticate-guard.service';
 import {SignUpStepOneComponent} from '../components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import {SignUpStepTwoComponent} from '../components/sign-up/sign-up-step-two/sign-up-step-two.component';
+import {UserProfileComponent} from '../components/profile/user-profile/user-profile.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'invalid-token', component: InvalidTokenComponent},
   {path: 'login/:uniqueIdentifier', component: LoginComponent, canActivate: [UnauthenticateGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard]},
+  {path: 'profile/user-profile', component: UserProfileComponent, canActivate: [AuthenticateGuard]},
 ];
 
 @NgModule({
