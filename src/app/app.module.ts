@@ -39,9 +39,9 @@ import {ContactUsService} from '@services/company-information/contact-us.service
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SignUpStep3Component } from './components/authentication/sign-up-step3/sign-up-step3.component';
 import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
+import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 
 @NgModule({
   declarations: [
@@ -63,9 +63,9 @@ import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/si
     SanitizeHtmlPipe,
     HeaderComponent,
     SidebarComponent,
-    SignUpStep3Component,
     SignUpStepOneComponent,
-    SignUpStepTwoComponent
+    SignUpStepTwoComponent,
+    SignUpStepThreeComponent
   ],
   imports: [
     BrowserModule,
