@@ -12,7 +12,6 @@ import {DashboardComponent} from './components/company-information/dashboard/das
 import {LoginComponent} from './components/authentication/login/login.component';
 // import { LoginRoutingModule } from './components/authentication/login/login-routing.module';
 import {AboutComponent} from './components/company-information/about/about.component';
-import {SignUpComponent} from './components/authentication/sign-up/sign-up.component';
 import {LandingPageComponent} from './components/company-information/landing-page/landing-page.component';
 import {ForgotPasswordComponent} from './components/authentication/forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './components/authentication/reset-password/reset-password.component';
@@ -23,6 +22,7 @@ import {TermsOfUseComponent} from './components/company-information/terms-of-use
 import {UserService} from './services/user.service';
 import {PrivacyPolicyService} from './services/company-information/privacy-policy.service';
 import {TermsOfUseService} from './services/company-information/terms-of-use.service';
+import {SignupService} from '@services/sign-up/signup.service';
 
 // For proof of concept sign-up
 import {OrganizationSelectComponent} from './components/authentication/organization-select/organization-select.component';
@@ -40,13 +40,14 @@ import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AcceptInviteComponent } from './components/authentication/accept-invite/accept-invite.component';
+import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
+import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AboutComponent,
-    SignUpComponent,
     DashboardComponent,
     LandingPageComponent,
     PrivacyPolicyComponent,
@@ -62,7 +63,12 @@ import { AcceptInviteComponent } from './components/authentication/accept-invite
     SanitizeHtmlPipe,
     HeaderComponent,
     SidebarComponent,
+<<<<<<< HEAD
     AcceptInviteComponent
+=======
+    SignUpStepOneComponent,
+    SignUpStepTwoComponent
+>>>>>>> 903aa7f6d0a2ab41a34491539d3d690f15ecdc91
   ],
   imports: [
     BrowserModule,
@@ -80,7 +86,8 @@ import { AcceptInviteComponent } from './components/authentication/accept-invite
     TermsOfUseService,
     AuthenticateService,
     ForgotPasswordService,
-    ContactUsService
+    ContactUsService,
+    SignupService
   ],
   bootstrap: [AppComponent]
 })
