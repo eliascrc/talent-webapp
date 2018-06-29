@@ -39,32 +39,7 @@ body {
   letter-spacing: -0.51px;
   line-height: 43px;
   margin-top: 32.22vh;
-}
-
-@media only screen and (max-width: 4000px) {
-  #forgot-password-h {
-    margin-left: 33.16%;
-  }
-}
-
-
-@media only screen and (max-width: 1000px) {
-  #forgot-password-h {
-    margin-left: 37%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  #forgot-password-h {
-    margin-left: 20.16%;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  #forgot-password-h {
-    margin-top: 16vh;
-    margin-left: 19%;
-  }
+  text-align: center;
 }
 
 #confirmation-message {
@@ -77,36 +52,6 @@ body {
   text-align: center;
   margin-top: 5.27vh;
   margin-bottom: 36.81vh;
-}
-
-@media only screen and (max-width: 4000px) {
-  #confirmation-message {
-    margin-left: 28%;
-  }
-}
-
-@media only screen and (max-width: 2000px) {
-  #confirmation-message {
-    margin-left: 24.16%;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  #confirmation-message {
-    margin-left: 27%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  #confirmation-message {
-    margin-left: 11%;
-    width: 270px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  #confirmation-message {
-    margin-left: 7%;
-    width: 270px;
-  }
+  margin-left: auto;
+  margin-right: auto;
 }
