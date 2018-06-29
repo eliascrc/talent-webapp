@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -8,14 +8,18 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./accept-invite.component.css']
 })
 export class AcceptInviteComponent implements OnInit {
-formData = {
-    firstName: '',
-    lastName: '',
-    password: ''
-  };
+	formData = {
+		firstName: '',
+		lastName: '',
+		nickname: '',
+		password: ''
+	  };
+	token: string;
 
-  constructor(public router: Router) {
-
+  constructor(public router: Router, private route: ActivatedRoute) {
+	this.route.queryParams.subscribe(params => {
+      this.token = params['token'];
+    });
   }
 
   ngOnInit() {

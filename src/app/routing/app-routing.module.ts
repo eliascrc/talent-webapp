@@ -15,7 +15,7 @@ import {OrganizationSelectComponent} from '../components/authentication/organiza
 import {InvalidTokenComponent} from '../components/authentication/invalid-token/invalid-token.component';
 import {ContactUsScreenComponent} from '../components/company-information/contact-us-screen/contact-us-screen.component';
 import {UnauthenticateGuard} from './unauthenticate-guard.service';
-import {AcceptInviteComponent} from '../components/authentication/accept-invite/accept-invite.component';
+import {AcceptInviteComponent} from '../components/sign-up/accept-invite/accept-invite.component';
 import {SignUpStepOneComponent} from '../components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import {SignUpStepTwoComponent} from '../components/sign-up/sign-up-step-two/sign-up-step-two.component';
 

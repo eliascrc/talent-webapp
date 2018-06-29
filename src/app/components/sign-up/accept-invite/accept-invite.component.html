@@ -1,7 +1,7 @@
-<div class="container-fluid m-0 p-0" id="minimum-height">
+<div class="container-fluid p-0" id="minimum-height">
 
   <!-- Main wrapper row-->
-  <div class="row m-0 p-0">
+  <div class="row p-0">
 
     <!-- Form and header column -->
     <div class="col-md-12">
@@ -22,12 +22,12 @@
         <form (ngSubmit)="onSubmit(acceptInviteForm)" #acceptInviteForm="ngForm">
           <div class="form-group">
             <label for="first-name">First Name</label>
-            <p class="static-information" id="static-first-name">Renato</p>
+            <p class="static-information" id="static-first-name">{{formData.firstName}}</p>
           </div>
 
           <div class="form-group">
             <label for="last-name">Last Name</label>
-            <p class="static-information" id="static-last-name">Mainieri</p>
+            <p class="static-information" id="static-last-name">{{formData.lastName}}</p>
           </div>
 
           <div class="form-group">
