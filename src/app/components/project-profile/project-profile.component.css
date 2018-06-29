@@ -5,6 +5,11 @@
   font-family: "Source Sans Pro", serif;
 }
 
+.container-fluid .row {
+  margin: 0;
+  padding: 0
+}
+
 .edit-pencil {
   color: lightslategray;
   margin-left: 22px;
@@ -21,6 +26,30 @@
   display: inline-block;
   margin: auto 26px auto 26px;
   vertical-align: bottom;
+}
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+:host /deep/ .nav-link {
+  margin: 23px auto 23px auto;
+  color: #979595;
+}
+
+:host /deep/ .nav-link:hover {
+  border-style: none;
+}
+
+:host /deep/ .nav-link.active {
+  border: none;
+  color: #EFA42F;
+}
+
+.tab-title
+{
+  color:red;
+  background-color: blue;
 }
 
 #top-content {
@@ -43,6 +72,7 @@
 #project-tabs {
   margin-top: 79px;
   width: 100%;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
 }
 
 #title {
