@@ -1,3 +1,49 @@
-<p>
-  project-profile works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div id="top-content">
+
+      <div id="project-title">
+        <div id="title">Talent!</div><div id="edit-name"><i class="fas fa-pencil-alt edit-pencil"></i></div>
+        <div id="project-date">
+          <i class="far fa-clock date-clock" style="display: inline-block;"></i>
+          <div id="date">
+            <div id="start-date">03/08/2015</div> - <div id="end-date">Present</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="right-content">
+        <div id="project-lead">
+          <div id="lead-label">Lead</div>
+          <div id="lead">Rodrigo Bartels</div>
+        </div>
+        <div class="vertical-line"></div>
+        <div id="project-status">
+          <div id="status-icon"></div>
+          <div id="status">Active</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row" id="project-tabs">
+    <ngb-tabset justify="fill">
+      <ngb-tab title="Resources">
+        <ng-template ngbTabContent>
+          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth .</p>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab>
+        <ng-template ngbTabTitle><b>Positions</b> title</ng-template>
+        <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+          <p>Exercitation.</p>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Skills">
+        <ng-template ngbTabContent>
+          <p>Sed commodo, led faciliac at.</p>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+.container-fluid {
+  min-height: 90vh;
+  width: 88%;
+  margin: auto;
+  font-family: "Source Sans Pro", serif;
+}
+
+.edit-pencil {
+  color: lightslategray;
+  margin-left: 22px;
+}
+
+.date-clock {
+  color: lightslategray;
+}
+
+.vertical-line {
+  height: 64px;
+  width: 1px;
+  border: 1px solid rgba(0,0,0,0.14);
+  display: inline-block;
+  margin: auto 26px auto 26px;
+  vertical-align: bottom;
+}
+
+#top-content {
+  margin-top: 88px;
+  width: 100%;
+}
+
+#project-title {
+  display: inline-block;
+}
+
+#project-lead {
+  display: inline-block;
+}
+
+#project-status {
+  display: inline-block;
+}
+
+#project-tabs {
+  margin-top: 79px;
+  width: 100%;
+}
+
+#title {
+  color: #294261;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 31px;
+  display: inline-block;
+}
+
+#edit-name {
+  display: inline-block;
+}
+
+#right-content {
+  float: right;
+  display: inline-block;
+}
+
+#project-date {
+  margin-top: 13px;
+}
+
+#date {
+  display: inline-block;
+}
+
+#start-date {
+  margin-left: 8px;
+  color: #5A6169;
+  font-size: 14px;
+  display: inline-block;
+}
+
+#end-date {
+  display: inline-block;
+  font-size: 14px;
+  color: #5A6169;
+}
+
+#lead-label {
+  color: #294261;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 23px;
+}
+
+#lead {
+  color: #5A6169;
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 25px;
+}
+
+#status-icon {
+  height: 18px;
+  width: 18px;
+  background: linear-gradient(163.34deg, #DDF6BC 0%, #B8E986 100%);
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.07);
+  border-radius: 50%;
+}
+
+#status {
+  color: rgba(0,0,0,0.5);
+  font-size: 13px;
+  line-height: 17px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+ngb-tabset {
+  width: 100%;
+}
