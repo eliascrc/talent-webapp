@@ -27,11 +27,9 @@ formData = {
    */
   onSubmit(form: NgForm) {
     if (this.validatePassword(form)) {
-      this.formData.firstName = form.value.firstName;
-      this.formData.lastName = form.value.lastName;
+      this.formData.nickname = form.value.nickname;
       this.formData.password = form.value.password;
-	  alert("Firstname: "+this.formData.firstName+
-			"\nLastname: "+this.formData.lastName+
+	  alert("Nickname: "+this.formData.nickname+
 			"\nPassword: "+this.formData.password);
     }
   }
