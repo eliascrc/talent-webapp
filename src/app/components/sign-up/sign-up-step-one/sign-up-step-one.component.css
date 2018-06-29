@@ -117,6 +117,10 @@ input.ng-invalid.ng-touched {
   border-radius: 10px;
 }
 
+#next-step-button:disabled {
+  cursor: not-allowed;
+}
+
 /* Custom Checkbox */
 .tos {
   display: block;
