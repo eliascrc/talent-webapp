@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 
+
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './routing/app-routing.module';
 
@@ -73,7 +74,7 @@ import { UserProfileComponent } from './components/profile/user-profile/user-pro
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    NgbModule,
+    NgbModule.forRoot(),
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

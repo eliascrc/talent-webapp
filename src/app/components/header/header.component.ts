@@ -57,6 +57,7 @@ export class HeaderComponent implements OnInit {
 
   onViewProfile() {
     this.router.navigate(['/profile/user-profile']);
+    this.displayLoggedInArea = !this.displayLoggedInArea;
   }
 
   onSignIn() {

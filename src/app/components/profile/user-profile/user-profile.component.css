@@ -1,0 +1,98 @@
+
+#top-content{
+  width: 100%;
+}
+
+#image{
+  display: inline-block;
+}
+
+#information{
+  display: inline-block;
+}
+
+#profilePicture{
+  border-radius: 50%;
+  height: auto;
+  width: 119px;
+}
+
+#basic-info{
+  margin: 58px auto 58px 8px;
+}
+
+.container-fluid{
+  width: 88%;
+  margin: auto;
+  min-height: 90vh;
+}
+
+.container-fluid .row {
+  margin: 0;
+  padding: 0;
+}
+
+.user-name{
+  margin: 35px auto auto 29px;
+}
+
+.user-info{
+  margin: 10px auto auto 29px;
+}
+
+.name{
+  color: #294261;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 23px;
+  height: 23px;
+}
+
+.position-info {
+  height: 23px;
+  width: 129px;
+  color: #5A6169;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.edit-button{
+  margin-top: 90px;
+  display: inline-block;
+  color: lightslategray;
+}
+
+.align-right{
+  float: right;
+  display: inline-block;
+}
+
+#project-tabs {
+  margin-top: 79px;
+  width: 100%;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
+}
+
+:host /deep/ .nav-link{
+  color: #979595;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 18px;
+}
+
+:host /deep/ .nav-link.active{
+  border: none;
+  color: #EFA42F;
+  border-bottom: #EFA42F;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 18px;
+}
+
+:host /deep/ .nav-link:hover{
+  border-style: none;
+}
+
+:host /deep/ ngb-tabset {
+  width: 100%;
+}
