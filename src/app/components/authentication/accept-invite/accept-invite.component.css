@@ -1,0 +1,180 @@
+/* Tag selectors */
+*{
+	margin-left: auto;
+	margin-right: auto;
+	width: 60vw;
+}
+
+label {
+  margin-bottom: 12px;
+}
+
+input[type=text], input[type=password] {
+  font-size: 20px;
+  margin-bottom: 34px;
+  padding-left: 26px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: 1px solid #BECAD6;
+  border-radius: 8px;
+}
+
+input[type=text].ng-invalid.ng-touched:nth-child(n) ~ .error-message:nth-child(n),
+input[type=password].ng-invalid.ng-touched:nth-child(n) ~ .error-message:nth-child(n)
+{
+  display: block;
+}
+
+input:focus {
+  box-shadow: 0 5px 11px 0 rgba(196,24,60,0.1);
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #C4183C;
+  box-shadow: 0 5px 11px 0 rgba(196,24,60,0.1);
+  margin-bottom: 0;
+}
+
+/* Classes */
+.form-group {
+  margin: 0;
+}
+
+.form-control {
+	width: 100%;
+}
+
+.error-message {
+  color: #C4183C;
+  margin-top: 4px;
+  margin-bottom: 3px;
+  display: none;
+  font-size: 18px;
+}
+
+.special-link {
+  border-bottom: 1px solid #3B9DFF;
+}
+
+.special-link:hover {
+  text-decoration: none;
+}
+
+.container-fluid {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: normal;
+}
+
+.static-information{
+  padding-left: 26px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.organization-logo-div {
+  display: block;
+  text-align: center;
+  margin-top: 16.69vh;
+  margin-bottom: 12.69vh;
+}
+
+/* Identifiers */
+#minimum-height {
+  min-height: 90vh;
+}
+
+#accept-invite-input {
+  margin-top: 1vh;
+  margin-bottom: 12vh;
+  font-size: 20px;
+  width: 100%;
+}
+
+#upper-text {
+  margin-top: 7.5vh;
+  color: #294261;
+  display: inline-block;
+  text-align: center;
+  font-size: 33px;
+}
+
+#accept-Invite-button {
+  margin-top: 40px;
+  width: 60%;
+  font-size: 24px;
+  height: 69px;
+  background-color: #EFA42F;
+  border: none;
+  border-radius: 10px;
+  margin-left: 20%;
+}
+
+#accept-Invite-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Custom Checkbox */
+.tos {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+}
+
+/* Hide the browser's default checkbox */
+.tos input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#organization-logo {
+  height: 14.06vw;
+  text-align: center;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  margin-top: 5px;
+  margin-left: 4px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  height: 21px;
+  width: 21px;
+  border-radius: 2px;
+  background-color: #B9BBBE;
+}
+
+/* Checkbox events */
+.checkmark:hover {
+  background-color: #A8AAAD;
+}
+
+.tos input:checked ~ .checkmark {
+  background-color: #294261;
+}
+
+/* Create the check */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Checkmark events */
+.tos input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.tos .checkmark:after {
+  left: 8px;
+  top: 2px;
+  width: 6px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
