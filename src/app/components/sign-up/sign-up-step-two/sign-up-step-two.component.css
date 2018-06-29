@@ -8,6 +8,15 @@
   width: 60px;
   height: 60px;
   display: inline;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: -0.6px;
+  line-height: 31px;
+  color: #A3A9B0;
+  text-align: center;
+  text-align: -webkit-center;
+  text-align: -moz-center;
 }
 
 .confirmation-input {
@@ -17,6 +26,11 @@
 /* Identifiers */
 #minimum-height {
   min-height: 90vh;
+}
+
+#line-container {
+  height: 60px;
+  display: inline;
 }
 
 #side-image {
@@ -71,7 +85,7 @@
   box-sizing: border-box;
   width: 25px;
   border: 1px solid #BECAD6;
-  margin: 0 1.5%;
+  margin: 0.5rem 1.5%;
   display: inline-block;
 }
 

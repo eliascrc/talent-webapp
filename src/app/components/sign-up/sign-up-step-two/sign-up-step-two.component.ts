@@ -12,6 +12,8 @@ import {NgForm} from '@angular/forms';
 })
 export class SignUpStepTwoComponent implements OnInit {
 
+  completeForm = false;
+  validNumber = true;
   email = 'marianaabellan@gmail.com';
 
   constructor(public router: Router) {
@@ -28,16 +30,16 @@ export class SignUpStepTwoComponent implements OnInit {
 
   }
 
-  /**
-   * Redirects the user to the sign in page
-   */
-  onSignIn() {
-    this.router.navigate(['/login']);
-  }
-
   validateField(event: any, position: number) {
     const changedNumber = event.target.value;
     let offset = 1;
+
+    if (isNaN(changedNumber)) {
+      event.target.value = null;
+      console.log(event.target.classList);
+      this.completeForm = false;
+      return;
+    }
 
     if (changedNumber.length > 1) {
       event.target.value = changedNumber[0];
@@ -51,9 +53,18 @@ export class SignUpStepTwoComponent implements OnInit {
       }
     }
 
-    const element = (document.getElementsByClassName('confirmation-number')[position + offset]) as HTMLElement;
-    console.log(element.innerHTML);
-    element.focus();
+    const elements = document.getElementsByClassName('confirmation-number');
+
+    this.completeForm = true;
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      this.completeForm = this.completeForm && ( (element as HTMLInputElement).value.length > 0);
+    }
+
+    console.log("@" + this.completeForm);
+
+    const nextElement = (document.getElementsByClassName('confirmation-number')[position + offset]) as HTMLElement;
+    nextElement.focus();
   }
 
 }
