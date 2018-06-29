@@ -1,3 +1,71 @@
-<p>
-  sign-up-step-two works!
-</p>
+<div class="container-fluid m-0 p-0" id="minimum-height">
+
+  <!-- Main wrapper row-->
+  <div class="row m-0 p-0">
+
+    <!-- Side image column -->
+    <div class="d-md-block col-lg-5" id="side-image"></div>
+
+    <!-- Form and header column -->
+    <div class="col-md-12 col-lg-7">
+
+      <!-- Form row -->
+      <div class="row" id="step-two-input">
+
+        <h2 class="ml-auto mr-auto">Email Confirmation</h2>
+
+        <div id="email-message">
+          <p class="m-0">We've sent a confirmation code to</p>
+          <strong>{{email}}</strong>. Please enter your code bellow.
+        </div>
+
+        <div id="confirmation-code">
+          <div id="confirmation-message">Confirmation code</div>
+
+          <!-- Step One Form -->
+          <form (ngSubmit)="onSubmit(confirmationForm)" #confirmationForm="ngForm" class="align-middle">
+
+            <div class="form-group confirmation-input">
+              <input type="text" class="form-control confirmation-number" name="firstNumber" title="Confirmation number"
+                     ngModel required (keyup)="validateField($event, 0)"/>
+            </div>
+
+            <div class="form-group confirmation-input">
+              <input type="text" class="form-control confirmation-number" name="secondNumber"
+                     title="Confirmation number" ngModel required (keyup)="validateField($event, 1)"/>
+            </div>
+
+            <div class="form-group confirmation-input">
+              <input type="text" class="form-control confirmation-number" name="thirdNumber" title="Confirmation number"
+                     ngModel required (keyup)="validateField($event, 2)"/>
+            </div>
+
+            <div id="number-separator"></div>
+
+            <div class="form-group confirmation-input">
+              <input type="text" class="form-control confirmation-number" name="fourthNumber"
+                     title="Confirmation number" ngModel required (keyup)="validateField($event, 3)"/>
+            </div>
+
+            <div class="form-group confirmation-input">
+              <input type="text" class="form-control confirmation-number" name="fifthNumber" title="Confirmation number"
+                     ngModel required (keyup)="validateField($event, 4)"/>
+            </div>
+
+            <div class="form-group confirmation-input">
+              <input type="text" class="form-control confirmation-number" name="sixthNumber" title="Confirmation number"
+                     ngModel required (keyup)="validateField($event, 5)"/>
+            </div>
+
+            <button class="btn btn-primary" id="next-step-button" [disabled]="!confirmationForm.valid">
+              Sign up
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
