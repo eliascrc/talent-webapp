@@ -42,6 +42,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
 import { CreateProjectComponent } from './components/create-project/create-project/create-project.component';
+import {ProjectService} from '@services/project/project.service';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { CreateProjectComponent } from './components/create-project/create-proje
     AuthenticateService,
     ForgotPasswordService,
     ContactUsService,
-    SignupService
+    SignupService,
+    ProjectService,
   ],
   bootstrap: [AppComponent]
 })

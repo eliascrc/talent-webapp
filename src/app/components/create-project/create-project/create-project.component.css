@@ -34,6 +34,7 @@ input, textarea, select, option {
   padding-left: 1.94%;
   font-size: 20px;
   display: block;
+  margin-bottom: 4.24vh;
 }
 
 textarea {
@@ -62,20 +63,49 @@ textarea {
 
 .cancel-button {
   min-height: 39px;
-  width: 140px;
-  border-radius: 8px;
-  background-color: #EFA42F;
-  border-style: none;
-  color: #FFFFFF;
-  font-size: 16px;
+  color: #979595;
   letter-spacing: -0.4px;
-  line-height: 20px;
   display: block;
   float: left;
+  background-color: #FFFFFF;
+  border: 1px solid #979595;
+  border-radius: 8px;
+  width: 424px;
+  height: 77px;
+  font-family: "Lato";
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 33px;
+}
+
+.submit-button {
+  min-height: 39px;
+  color: white;
+  letter-spacing: -0.4px;
+  display: block;
+  float: left;
+  background-color: #EFA42F;
+  border: 0px;
+  border-radius: 8px;
+  width: 424px;
+  height: 77px;
+  font-family: "Lato";
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 33px;
 }
 
 button.btn[disabled] {
   cursor: not-allowed;
 }
 
+.buttons-div {
+  display: flex;
+  justify-content: space-between;
+  width: 80.83vw;
+  padding-bottom: 5.76vh;
+}
 
+select::after {
+  display: none;
+}
