@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {SignupService} from 'app/services/sign-up/signup.service';
 import {NgForm} from '@angular/forms';
+import {StepCommunicationService} from '@services/sign-up/step-communication.service';
 
 @Component({
   selector: 'app-sign-up-step-one',
@@ -23,7 +24,7 @@ export class SignUpStepOneComponent implements OnInit {
     password: ''
   };
 
-  constructor(public router: Router, public signUpService: SignupService) {
+  constructor(public router: Router, public signUpService: SignupService, public stepCommunicationService: StepCommunicationService) {
 
   }
 
@@ -43,9 +44,11 @@ export class SignUpStepOneComponent implements OnInit {
 
       this.signUpService.stepOne(this.formData.firstName, this.formData.lastName, this.formData.email,
         this.formData.password).subscribe(() => {
+
+        this.stepCommunicationService.registerEmail(this.formData.email);
         this.router.navigate(['/sign-up/step-two']);
-      }, () => {
-      });
+
+      }, () => {});
     }
   }
 

@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {Subscription} from 'rxjs/Subscription';
+import {StepCommunicationService} from '@services/sign-up/step-communication.service';
 
 /**
  *
@@ -16,7 +18,13 @@ export class SignUpStepTwoComponent implements OnInit {
   validNumber = true;
   email: string;
 
-  constructor(public router: Router) {
+  constructor(public router: Router, public stepCommunicationService: StepCommunicationService) {
+    stepCommunicationService.registeredEmail$.subscribe(
+      email => {
+        this.email = email;
+      }
+    );
+
   }
 
   ngOnInit() {
@@ -58,7 +66,7 @@ export class SignUpStepTwoComponent implements OnInit {
     this.completeForm = true;
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i];
-      this.completeForm = this.completeForm && ( (element as HTMLInputElement).value.length > 0);
+      this.completeForm = this.completeForm && ((element as HTMLInputElement).value.length > 0);
     }
 
     const nextElement = (document.getElementsByClassName('confirmation-number')[position + offset]) as HTMLElement;
