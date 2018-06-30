@@ -40,8 +40,6 @@ export class SignUpStepTwoComponent implements OnInit {
     const code = form.value.firstNumber[0] + form.value.secondNumber[0] + form.value.thirdNumber[0] + form.value.fourthNumber[0]
       + form.value.fifthNumber[0] + form.value.sixthNumber[0];
 
-    console.log(code + ' ' + this.email);
-
     this.signUpService.stepTwo(this.email, code).subscribe(() => {
       this.router.navigate(['/sign-up/step-three']);
 
@@ -58,7 +56,6 @@ export class SignUpStepTwoComponent implements OnInit {
 
     if (isNaN(changedNumber)) {
       event.target.value = null;
-      console.log(event.target.classList);
       this.completeForm = false;
       return;
     }
