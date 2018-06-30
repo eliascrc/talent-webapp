@@ -18,15 +18,20 @@
   text-align: -moz-center;
 }
 
+.confirmation-number.invalid-code {
+  border: 1px solid #C4183C;
+  box-shadow: 0 5px 11px 0 rgba(196,24,60,0.1);
+}
+
 .confirmation-input {
   display: inline;
 }
 
-/* Identifiers */
-#minimum-height {
+.minimum-height {
   min-height: 90vh;
 }
 
+/* Identifiers */
 #line-container {
   height: 60px;
   display: inline;
@@ -59,7 +64,7 @@
   color: #A2A2A2;
   line-height: 31px;
   font-family: 'Source Sans Pro', sans-serif;
-  margin: 0 auto 11vh auto;
+  margin: 0 auto 70px auto;
   text-align: center;
   text-align: -moz-center;
   text-align: -webkit-center;
@@ -71,7 +76,7 @@
 }
 
 #confirmation-code form {
-  margin: 5vh 0;
+  margin: 10px 0 40px 0;
 }
 
 #confirmation-message {
@@ -107,9 +112,18 @@
   cursor: not-allowed;
 }
 
+#error-message {
+  color: #C4183C;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  display: block;
+  font-size: 18px;
+}
+
 @media only screen and (max-width: 580px) {
 
-  #confirmation-message {
+  #confirmation-message, #error-message {
     text-align: center;
     text-align: -moz-center;
     text-align: -webkit-center;

@@ -25,8 +25,7 @@ export class SignUpStepOneComponent implements OnInit {
     password: ''
   };
 
-  constructor(public router: Router, public signUpService: SignupService, public stepCommunicationService: StepCommunicationService) {
-
+  constructor(public router: Router, public signUpService: SignupService, private stepCommunicationService: StepCommunicationService) {
   }
 
   ngOnInit() {

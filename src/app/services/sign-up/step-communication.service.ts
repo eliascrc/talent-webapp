@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class StepCommunicationService {
 
-  private email = new Subject<string>();
-
+  private email = new BehaviorSubject('Invalid Email');
   registeredEmail$ = this.email.asObservable();
 
   constructor() {
