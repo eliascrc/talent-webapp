@@ -73,7 +73,7 @@ import { CreateProjectComponent } from './components/create-project/create-proje
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    NgbModule,
+    NgbModule.forRoot(),
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

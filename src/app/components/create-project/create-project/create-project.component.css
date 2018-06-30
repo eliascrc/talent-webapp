@@ -10,6 +10,7 @@
 
 .content {
   margin-left: 5.069%;
+  margin-right: auto;
 }
 
 label {
@@ -32,6 +33,49 @@ input, textarea, select, option {
   background-color: #FFFFFF;
   padding-left: 1.94%;
   font-size: 20px;
-  display: inline-block;
   display: block;
 }
+
+textarea {
+  width: 80.83vw;
+  height: 143px;
+  padding-left: 0px;
+}
+
+.select:after {
+  display: none;
+}
+
+.submit-button {
+  min-height: 39px;
+  width: 140px;
+  border-radius: 8px;
+  background-color: #EFA42F;
+  border-style: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  letter-spacing: -0.4px;
+  line-height: 20px;
+  display: block;
+  float: right;
+}
+
+.cancel-button {
+  min-height: 39px;
+  width: 140px;
+  border-radius: 8px;
+  background-color: #EFA42F;
+  border-style: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  letter-spacing: -0.4px;
+  line-height: 20px;
+  display: block;
+  float: left;
+}
+
+button.btn[disabled] {
+  cursor: not-allowed;
+}
+
+

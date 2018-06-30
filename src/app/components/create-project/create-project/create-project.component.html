@@ -7,9 +7,27 @@
   <label for="start-date">
     Start Date:
   </label>
-  <input id="start-date" class="-calendar">
-  <label for="project-lead">
+  <input id="start-date" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="model" (click)="d.toggle()"
+         placeholder="yyyy-mm-dd" (dateSelect)="updateDate()">
+  <label>
     Project Lead:
   </label>
-  <input id="project-lead">
+  <div class="form-group">
+      <select [ngModel]="'Authentication issues'" name="issueType" required>
+        <option *ngFor="let resource of resources"
+                [value]="resource.username"
+                [attr.selected]="true">
+          {{resource.firstName}} {{resource.lastName}}
+        </option>
+      </select>
+    <span class="select-arrow"></span>
+  </div>
+  <label for="description">
+    Write a short description of your project:
+  </label>
+  <textarea id="description">
+  </textarea>
+
+
+
 </div>
