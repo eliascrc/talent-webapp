@@ -17,7 +17,7 @@ export class SignUpStepThreeComponent implements OnInit {
     organizationId: ''
   };
 
-  constructor(public router: Router, public signUpService: SignupService) { }
+  constructor(public router: Router, public signUpService: SignupService, private stepCommunicationService: StepCommunicationService) { }
 
   ngOnInit() {
   }
@@ -26,7 +26,7 @@ export class SignUpStepThreeComponent implements OnInit {
     if (this.isOrganizationIdValid(form) && this.isNameNotEmpty(form)) {
       this.formData.organizationName = form.value.organizationName.trim();
       this.formData.organizationId = form.value.organizationIdentifier;
-      console.log('Successful fields');
+      this.signUpService.stepThree('jolesa97@gmail.com', this.formData.organizationName, this.formData.organizationId).then();
     }
   }
 
