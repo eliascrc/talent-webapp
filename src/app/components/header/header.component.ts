@@ -32,15 +32,15 @@ export class HeaderComponent implements OnInit {
           this.loggedIn = response;
           if (this.loggedIn) {
             this.authenticateService.getLoggedInUserInfo().then(userInfo => {
-               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
-               let name = userInfoObject.firstName;
-               name = name.concat(' ');
-               this.userName = name.concat(userInfoObject.lastName);
-               this.userProfilePicture = userInfoObject.profilePicture.link;
-               this.organizationService.getOrganization(userInfoObject.organization.uniqueIdentifier)
-                 .subscribe(userOrganization => {
-                   this.userOrganizationLogo = JSON.parse(JSON.stringify(userOrganization)).logo;
-                 });
+              const userInfoObject = JSON.parse(JSON.stringify(userInfo));
+              let name = userInfoObject.firstName;
+              name = name.concat(' ');
+              this.userName = name.concat(userInfoObject.lastName);
+              this.userProfilePicture = userInfoObject.profilePicture.link;
+              this.organizationService.getOrganization(userInfoObject.organization.uniqueIdentifier)
+                .subscribe(userOrganization => {
+                  this.userOrganizationLogo = JSON.parse(JSON.stringify(userOrganization)).logo;
+                });
             });
           }
           this.displayHeader = true;
@@ -56,8 +56,13 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  onViewProfile() {
+    this.router.navigate(['/profile/user-profile']);
+    this.displayLoggedInArea = !this.displayLoggedInArea;
+  }
+
   onSignIn() {
-      this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 
   onLoggedInAreaChanged() {
