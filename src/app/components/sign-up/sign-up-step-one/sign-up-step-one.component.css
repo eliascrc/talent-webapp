@@ -31,6 +31,11 @@ input.ng-invalid.ng-touched {
   margin-bottom: 0;
 }
 
+h2 {
+  text-align: center;
+  margin: auto auto 20px;
+}
+
 /* Classes */
 .form-group {
   margin: 0;
@@ -115,6 +120,10 @@ input.ng-invalid.ng-touched {
   background-color: #EFA42F;
   border: none;
   border-radius: 10px;
+}
+
+#next-step-button:disabled {
+  cursor: not-allowed;
 }
 
 /* Custom Checkbox */

@@ -10,7 +10,8 @@ import {HttpClient} from '@angular/common/http';
 export class SignupService {
 
   private stepOneUrl = 'http://ws.talent.cr/ws/signUp/stepOne';
-  private stepThreeUrl = 'http://ws.talent.cr/ws/organization/create'
+  private stepTwoUrl = 'http://ws.talent.cr/ws/signUp/stepTwo';
+  private stepThreeUrl = 'http://ws.talent.cr/ws/organization/create';
 
   constructor(private http: HttpClient) { }
 
@@ -19,14 +20,22 @@ export class SignupService {
    *
    * @param {string} firstName the first name of the user
    * @param {string} lastName the last name of the user
+   * @param {string} nickname the nickname of the user
    * @param {string} email the email of the user
    * @param {string} password the password of the user
    * @returns {Observable<Object>} the observable object
    */
-  stepOne(firstName: string, lastName: string, email: string, password: string) {
-    const bodyParameters = `firstName=${firstName}&lastName=${lastName}&email=${email}&password=${password}`;
+  stepOne(firstName: string, lastName: string, nickname: string, email: string, password: string) {
+    const bodyParameters = `firstName=${firstName}&lastName=${lastName}&nickname=${nickname}&email=${email}&password=${password}`;
     return this.http
       .post(this.stepOneUrl, bodyParameters,
+        {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
+  }
+
+  stepTwo(email: string, code: string) {
+    const bodyParameters = `email=${email}&code=${code}`;
+    return this.http
+      .post(this.stepTwoUrl, bodyParameters,
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
   }
 

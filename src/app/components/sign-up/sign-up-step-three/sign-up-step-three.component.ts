@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {SignupService} from '@services/sign-up/signup.service';
+import {StepCommunicationService} from '@services/sign-up/step-communication.service';
 
 @Component({
   selector: 'app-sign-up-step-three',

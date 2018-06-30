@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {SignupService} from 'app/services/sign-up/signup.service';
 import {NgForm} from '@angular/forms';
+import {StepCommunicationService} from '@services/sign-up/step-communication.service';
 
 @Component({
   selector: 'app-sign-up-step-one',
@@ -19,12 +20,12 @@ export class SignUpStepOneComponent implements OnInit {
   formData = {
     firstName: '',
     lastName: '',
+    nickname: '',
     email: '',
     password: ''
   };
 
-  constructor(public router: Router, public signUpService: SignupService) {
-
+  constructor(public router: Router, public signUpService: SignupService, private stepCommunicationService: StepCommunicationService) {
   }
 
   ngOnInit() {
@@ -38,14 +39,17 @@ export class SignUpStepOneComponent implements OnInit {
     if (this.validatePassword(form)) {
       this.formData.firstName = form.value.firstName;
       this.formData.lastName = form.value.lastName;
+      this.formData.nickname = form.value.nickname;
       this.formData.email = form.value.email;
       this.formData.password = form.value.password;
 
-      this.signUpService.stepOne(this.formData.firstName, this.formData.lastName, this.formData.email,
+      this.signUpService.stepOne(this.formData.firstName, this.formData.lastName, this.formData.nickname, this.formData.email,
         this.formData.password).subscribe(() => {
+
+        this.stepCommunicationService.registerEmail(this.formData.email);
         this.router.navigate(['/sign-up/step-two']);
-      }, () => {
-      });
+
+      }, () => {});
     }
   }
 
