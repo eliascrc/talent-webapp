@@ -1,0 +1,37 @@
+.page-title {
+  padding-top: 3.125vh;
+  color: #47525E;
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 37px;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.content {
+  margin-left: 5.069%;
+}
+
+label {
+  color: #47525E;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+}
+
+.name-label {
+  margin-top: 2.92vh;
+}
+
+input, textarea, select, option {
+  height: 58px;
+  width: 40.48vw;
+  border: 1px solid #BECAD6;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  padding-left: 1.94%;
+  font-size: 20px;
+  display: inline-block;
+  display: block;
+}
