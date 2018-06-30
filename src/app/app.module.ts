@@ -43,6 +43,8 @@ import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {SignUpStepOneComponent} from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import {SignUpStepTwoComponent} from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
 import { SignUpStepFourComponent } from './components/sign-up/sign-up-step-four/sign-up-step-four.component';
+import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
+import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { SignUpStepFourComponent } from './components/sign-up/sign-up-step-four/
     SidebarComponent,
     SignUpStepOneComponent,
     SignUpStepTwoComponent,
-    SignUpStepFourComponent
+    SignUpStepThreeComponent,
+    SignUpStepFourComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,7 @@ import { SignUpStepFourComponent } from './components/sign-up/sign-up-step-four/
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    NgbModule,
+    NgbModule.forRoot(),
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -11,6 +11,7 @@ export class SignupService {
 
   private stepOneUrl = 'http://ws.talent.cr/ws/signUp/stepOne';
   private stepTwoUrl = 'http://ws.talent.cr/ws/signUp/stepTwo';
+  private stepThreeUrl = 'http://ws.talent.cr/ws/organization/create';
   private stepFourUrl = 'http://ws.talent.cr/ws/invitation/send';
 
   constructor(private http: HttpClient) { }
@@ -44,6 +45,21 @@ export class SignupService {
     return this.http
       .post(this.stepFourUrl, bodyParameters,
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
+  }
+
+  /**
+   * Returns a promise that tries to send the sign up step three information to the backend endpoint, in order to create an
+   * organization for the user completing the sign up process.
+   * @param {string} username
+   * @param {string} organizationName
+   * @param {string} organizationId
+   * @returns {Promise<any>}
+   */
+  stepThree(username: string, organizationName: string, organizationId: string): Promise<any> {
+    const bodyParameters = `username=${username}&name=${organizationName}&uniqueIdentifier=${organizationId}&termsOfServiceAccepted=true`;
+    return this.http.post(this.stepThreeUrl, bodyParameters,
+      {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true})
+      .toPromise();
   }
 
 }
