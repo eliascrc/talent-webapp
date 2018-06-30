@@ -48,7 +48,7 @@ export class SignupService {
    * @returns {Promise<any>}
    */
   stepThree(username: string, organizationName: string, organizationId: string): Promise<any> {
-    const bodyParameters = `username=${username}&organizationName=${organizationName}&organizationId=${organizationId}`;
+    const bodyParameters = `username=${username}&name=${organizationName}&uniqueIdentifier=${organizationId}&termsOfServiceAccepted=true`;
     return this.http.post(this.stepThreeUrl, bodyParameters,
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true})
       .toPromise();

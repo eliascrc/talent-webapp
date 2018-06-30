@@ -26,7 +26,10 @@
             <label for="organization-id" id="organization-id-label">Organization id</label>
             <input type="text" placeholder="Organization id" id="organization-id" ngModel name="organizationId" required/>
             <span class="align-bottom" id="talent-domain">.talent.cr</span>
-            <div class="error-message">Id must have at least 3 characters and only numbers or letters. Hyphens are permitted if surrounded by these characters.</div>
+            <div class="error-message">
+              Id must have at least 3 characters and only numbers or letters. Hyphens are permitted if surrounded by these characters.
+              It must be unique.
+            </div>
           </div>
 
           <button class="btn btn-primary" id="next-step-button" [disabled]="!signUpStepThreeForm.valid">Continue</button>
