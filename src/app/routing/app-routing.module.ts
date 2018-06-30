@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'invalid-token', component: InvalidTokenComponent, canActivate: [UnauthenticateGuard]},
   {path: 'login/:uniqueIdentifier', component: LoginComponent, canActivate: [UnauthenticateGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard]},
-  {path: 'accept-invite', component: AcceptInviteComponent, canActivate: [UnauthenticateGuard]}
+  {path: 'accept-invite', component: AcceptInviteComponent}
 ];
 
 @NgModule({

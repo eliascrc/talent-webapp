@@ -9,9 +9,9 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./accept-invite.component.css']
 })
 export class AcceptInviteComponent implements OnInit {
-	firstName: string = '',
-	lastName: string = '',
-	token: string = '';
+	firstName: string;
+	lastName: string;
+	token: string;
 	organizationLogo: string; 
 
   constructor(private invitationService: InvitationService, public router: Router, private route: ActivatedRoute) {
@@ -23,14 +23,16 @@ export class AcceptInviteComponent implements OnInit {
   ngOnInit() {
 	  this.invitationService.
 	  validateToken(this.token).
-	  then(response  => {
+	  catch(error => {this.router.navigate(['/invalid-token']);})
+	  .then(response  => {		  
                const userInfoObject = JSON.parse(JSON.stringify(response));
-               this.firstName = userInfoObject.firstName;
-               this.lastName = userInfoObject.lastname;
-			   this.organizationLogo = userInfoObject.organization;
+			   const body = JSON.parse(userInfoObject._body);
+			   console.dir(userInfoObject._body);
+               this.firstName = body.firstName;
+               this.lastName = body.lastName;
+			   this.organizationLogo = body.logo;
             });
-      )//.catch(error => {this.router.navigate(['/invalid-token']);});
-	  
+      )
   }
 
   /**
@@ -39,8 +41,8 @@ export class AcceptInviteComponent implements OnInit {
    */
   onSubmit(form: NgForm) {
     if (this.validatePassword(form)) {
-	  this.invitationService.
-	  acceptInvite(this.token, form.value.nickname, form.value.password);
+	  this.invitationService.acceptInvite(this.token, form.value.nickname, form.value.password).
+	  then(response => { this.router.navigate(['/dashboard']);});
     }
   }
 
