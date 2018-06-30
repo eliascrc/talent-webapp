@@ -19,7 +19,7 @@
           <!-- Step Four Form -->
           <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
 
-            <div *ngFor="let invitation of invitations">
+            <div *ngFor="let invitation of invitationsInput">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="first-name">First Name</label>
