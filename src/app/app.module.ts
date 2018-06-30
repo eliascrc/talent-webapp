@@ -23,6 +23,7 @@ import {UserService} from './services/user.service';
 import {PrivacyPolicyService} from './services/company-information/privacy-policy.service';
 import {TermsOfUseService} from './services/company-information/terms-of-use.service';
 import {SignupService} from '@services/sign-up/signup.service';
+import {InvitationService} from '@services/sign-up/invitation.service';
 
 // For proof of concept sign-up
 import {OrganizationSelectComponent} from './components/authentication/organization-select/organization-select.component';
@@ -42,6 +43,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AcceptInviteComponent } from './components/sign-up/accept-invite/accept-invite.component';
 import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
+
 
 @NgModule({
   declarations: [
@@ -84,7 +86,8 @@ import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/si
     AuthenticateService,
     ForgotPasswordService,
     ContactUsService,
-    SignupService
+    SignupService,
+	InvitationService
   ],
   bootstrap: [AppComponent]
 })
