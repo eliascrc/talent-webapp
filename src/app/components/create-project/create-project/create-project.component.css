@@ -109,3 +109,9 @@ button.btn[disabled] {
 select::after {
   display: none;
 }
+
+.error-div {
+  color: #C4183C;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
