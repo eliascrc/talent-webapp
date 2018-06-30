@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.authenticateService.logout().then(response => {
+      document.getElementById('app-component-element').style.display = 'none';
       this.router.navigate(['/login']);
       location.reload();
     });
