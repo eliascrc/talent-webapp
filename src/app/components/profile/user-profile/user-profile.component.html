@@ -1,0 +1,53 @@
+<div class="container-fluid">
+
+
+  <div class="row" id="basic-info">
+    <div id="top-content">
+      <div id="image">
+        <div id="image-div">
+          <img [src]="userProfilePicture" alt="image" id="profilePicture">
+        </div>
+      </div>
+      <div id="information">
+        <div class="user-name"><p class="name">{{userName}}</p></div>
+        <div class="user-info"><p class="position-info">hola<br/>mundo</p></div>
+      </div>
+      <div id="edit-option">
+        <div class="edit-button" (click)="onEditButton()">
+          <i class="fas fa-pencil-alt" id="edit-pencil" title="Edit"></i>
+        </div>
+      </div>
+      <div class="align-right">
+        <div class="user-name"><p class="name">Technical Manager</p></div>
+        <div class="user-info"><p class="position-info">Rodrigo Bartels</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="project-tabs">
+    <ngb-tabset justify="fill">
+      <ngb-tab title="Projects">
+        <ng-template ngbTabContent>
+          <p>Projects works!</p>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Kudos & warnings">
+        <ng-template ngbTabContent>
+          <p>Kudos and warnings works!</p>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Skills">
+        <ng-template ngbTabContent>
+          <p>Skills works!</p>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Education records">
+        <ng-template ngbTabContent>
+          <p> Education records works!</p>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+
+</div>
+

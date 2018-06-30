@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 
+
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './routing/app-routing.module';
 
@@ -43,6 +44,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
+import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
 import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 
 @NgModule({
@@ -67,6 +69,7 @@ import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-thre
     SidebarComponent,
     SignUpStepOneComponent,
     SignUpStepTwoComponent,
+    UserProfileComponent,
     SignUpStepThreeComponent
   ],
   imports: [
@@ -75,7 +78,7 @@ import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-thre
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    NgbModule,
+    NgbModule.forRoot(),
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
