@@ -96,17 +96,19 @@
   color: #EFA42F;
   font-size: 14px;
   line-height: 18px;
-  margin: 20px;
+  margin: 18px;
   margin-bottom: 0;
-  height: 70px;
+  height: 60px;
   border: none white;
   border-bottom: 1px solid #EFA42F;
 }
 
 :host /deep/ .nav-link:hover{
   border-style: none;
-  border-bottom: 1px solid #EFA42F;
-  color: #EFA42F;
+  margin: 18px;
+  margin-bottom: 0;
+  height: 60px;
+  border-bottom: 1px solid #DFDFDF;
 }
 
 :host /deep/ ngb-tabset {
@@ -130,7 +132,7 @@
     line-height: 18px;
     width: 60px;
     margin: 18px 5px 18px 5px;
-    height: 70px;
+    height: 60px;
     border: none white;
     border-bottom: 1px solid #EFA42F;
     padding: 0;
@@ -216,7 +218,7 @@
     font-size: 14px;
     line-height: 18px;
     margin: 18px auto 18px auto;
-    height: 70px;
+    height: 60px;
     border: none white;
     border-bottom: 1px solid #EFA42F;
   }

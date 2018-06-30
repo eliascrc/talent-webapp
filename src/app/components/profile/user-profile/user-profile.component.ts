@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
-import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -35,6 +34,7 @@ export class UserProfileComponent implements OnInit {
       );
   }
 
-  onEditButton(){}
+  // This method will be implemented when the edit profile component is ready
+  onEditButton() { }
 
 }
