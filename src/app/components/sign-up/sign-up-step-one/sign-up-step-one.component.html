@@ -25,6 +25,8 @@
       <!-- Form row -->
       <div class="row" id="step-one-input">
 
+        <h2>Sign up</h2>
+
         <!-- Step One Form -->
         <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
           <div class="form-group">
@@ -37,6 +39,13 @@
           <div class="form-group">
             <label for="last-name">Last Name</label>
             <input type="text" class="form-control" placeholder="Last name" id="last-name" ngModel name="lastName"
+                   required/>
+            <div class="error-message">Field is required</div>
+          </div>
+
+          <div class="form-group">
+            <label for="nickname">Nickname</label>
+            <input type="text" class="form-control" placeholder="Nickname" id="nickname" ngModel name="nickname"
                    required/>
             <div class="error-message">Field is required</div>
           </div>
