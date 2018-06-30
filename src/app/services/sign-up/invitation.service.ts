@@ -22,9 +22,8 @@ export class InvitationService {
   acceptInvite(token: string, nickname: string, password: string): Promise<any> {
 	this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     const body = `nickname=${nickname}&password=${password}`;
-	this.options = {headers: this.headers, withCredentials: true}
     return this.http
-      .post(this.acceptInvitationUrl + token, body, options)
+      .post(this.acceptInvitationUrl + token, body, {headers: this.headers, withCredentials: true})
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
