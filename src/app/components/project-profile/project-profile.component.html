@@ -12,15 +12,15 @@
         </div>
       </div>
 
-      <div id="right-content">
+      <div class="right-content">
         <div id="project-lead">
           <div id="lead-label">Lead</div>
           <div id="lead">Rodrigo Bartels</div>
         </div>
         <div class="vertical-line"></div>
         <div id="project-status">
-          <div id="status-icon"></div>
-          <div id="status">Active</div>
+          <div class="status-icon"></div>
+          <div id="status">ACTIVE</div>
         </div>
       </div>
 
@@ -30,18 +30,86 @@
     <ngb-tabset justify="fill">
       <ngb-tab title="Resources">
         <ng-template ngbTabContent>
-          <p>Raw </p>
+          <div class="row">
+            <div class="edit-resources">
+              <i class="fas fa-pencil-alt edit-resources-pencil"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div *ngFor="let resource of projectResources" class="content-card">
+              <div class="resource-profile-picture">
+                <img src="https://s3.amazonaws.com/talent.cr-bucket/profile-pictures/2c9e8053-640b3fe2-0164-0bf56329-0026.jpg" alt="" class="profile-picture">
+              </div>
+              <div id="resource-basic-info">
+                <div id="resource-name">Mariana Abellan</div>
+                <div class="resource-capability">Junior Software Engineer</div>
+                <div class="resource-capability">Technical Resource</div>
+              </div>
+              <div class="cards-right-content">
+                <div class="vertical-line"></div>
+                <div id="resource-project-date">
+                  <i class="far fa-clock date-clock" style="display: inline-block;"></i>
+                  <div id="resource-date">
+                    <div id="resource-start-date">03/08/2015</div> <span id="date-hyphen">-</span> <div id="resource-end-date">Present</div>
+                  </div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="block-info">
+                  <div id="resource-project-position-label">Position</div>
+                  <div id="resource-project-position">Web Developer</div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="block-info">
+                  <div id="resource-workload">8 hours</div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="block-info">
+                  <div class="status-icon center"></div>
+                  <div id="resource-status">ACTIVE</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </ng-template>
       </ngb-tab>
-      <ngb-tab>
-        <ng-template ngbTabTitle><b>Positions</b> title</ng-template>
-        <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-          <p>Exercitation.</p>
+      <ngb-tab title="Positions">
+        <ng-template ngbTabContent>
+          <div class="row">
+            <div class="edit-resources">
+              <i class="fas fa-pencil-alt edit-resources-pencil"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div *ngFor="let position of projectPositions" class="content-card">
+              <div class="position">
+                <div class="position-name">{{position}}</div>
+              </div>
+              <div class="cards-right-content">
+                <div *ngFor="" class="resource-picture">
+                  <img src="https://s3.amazonaws.com/talent.cr-bucket/profile-pictures/2c9e8053-640b3fe2-0164-0bf56329-0026.jpg" alt="" class="profile-picture">
+                </div>
+              </div>
+
+            </div>
+            <div class="content-card">
+              <div class="position">
+                <div class="position-name">Position</div>
+              </div>
+              <div class="cards-right-content">
+                <div *ngFor="let resource of projectResources" class="resource-picture">
+                  <img src="https://s3.amazonaws.com/talent.cr-bucket/profile-pictures/2c9e8053-640b3fe2-0164-0bf56329-0026.jpg" alt="" class="profile-picture">
+                </div>
+                <div id="add-position"><i class="fas fa-plus" id="addButton"></i></div>
+              </div>
+
+            </div>
+          </div>
         </ng-template>
       </ngb-tab>
       <ngb-tab title="Skills">
         <ng-template ngbTabContent>
-          <p>Sed commodo, led faciliac at.</p>
+
         </ng-template>
       </ngb-tab>
     </ngb-tabset>

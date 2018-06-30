@@ -1,6 +1,7 @@
 .container-fluid {
   min-height: 90vh;
   width: 88%;
+  min-width: 320px;
   margin: auto;
   font-family: "Source Sans Pro", serif;
 }
@@ -13,6 +14,7 @@
 .edit-pencil {
   color: lightslategray;
   margin-left: 22px;
+  cursor: pointer;
 }
 
 .date-clock {
@@ -34,6 +36,7 @@
 
 :host /deep/ .nav-link {
   margin: 23px auto 23px auto;
+  width: 110px;
   color: #979595;
 }
 
@@ -42,14 +45,92 @@
 }
 
 :host /deep/ .nav-link.active {
-  border: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #EFA42F;
+  height: 65px;
   color: #EFA42F;
+  margin-bottom: 0;
 }
 
-.tab-title
-{
-  color:red;
-  background-color: blue;
+.content-card {
+  min-height: 92px;
+  width: 90%;
+  border: 0.5px solid rgba(0,0,0,0.05);
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.04);
+  margin: 20px auto 20px auto;
+}
+
+.resource-profile-picture {
+  display: inline-block;
+  margin: 11px 20px 0 20px;
+}
+
+.profile-picture {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.resource-capability {
+  color: #5A6169;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.right-content {
+  float: right;
+  display: inline-block;
+}
+
+.cards-right-content {
+  float: right;
+  display: inline-block;
+  margin-top: 11px;
+}
+
+.block-info {
+  display: inline-block;
+}
+
+.status-icon {
+  height: 18px;
+  width: 18px;
+  background: linear-gradient(163.34deg, #DDF6BC 0%, #B8E986 100%);
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.07);
+  border-radius: 50%;
+  margin-left: 7px;
+}
+
+.edit-resources {
+  width: 100%;
+}
+
+.edit-resources-pencil {
+  float: right;
+  color: lightslategray;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.position-name {
+  color: #294261;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+}
+
+.resource-picture {
+  display: inline-block;
+  margin: 0px 6px 0 6px;
+}
+
+.position {
+  display: inline-block;
+  margin: 35px auto 35px 35px;
 }
 
 #top-content {
@@ -73,6 +154,8 @@
   margin-top: 79px;
   width: 100%;
   box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
+  height: 60vh;
+  overflow: auto;
 }
 
 #title {
@@ -84,11 +167,6 @@
 }
 
 #edit-name {
-  display: inline-block;
-}
-
-#right-content {
-  float: right;
   display: inline-block;
 }
 
@@ -127,12 +205,61 @@
   margin-top: 25px;
 }
 
-#status-icon {
-  height: 18px;
-  width: 18px;
-  background: linear-gradient(163.34deg, #DDF6BC 0%, #B8E986 100%);
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.07);
-  border-radius: 50%;
+#resource-basic-info {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#resource-name {
+  color: #294261;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+}
+
+#resource-date {
+  display: inline-block;
+}
+
+#resource-start-date {
+  margin-left: 8px;
+  color: #979595;
+  font-size: 12px;
+  display: inline-block;
+}
+
+#resource-end-date {
+  display: inline-block;
+  font-size: 12px;
+  color: #979595;
+}
+
+#resource-project-date {
+  display: inline-block;
+  margin-bottom: 17px;
+}
+
+#date-hyphen {
+  color: #979595;
+}
+
+#resource-project-position-label {
+  color: rgba(0,0,0,0.65);
+  font-size: 14px;
+  line-height: 18px;
+  margin-left: 13px;
+}
+
+#resource-project-position {
+  color: #979595;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+#resource-workload {
+  color: #979595;
+  font-size: 12px;
+  line-height: 15px;
 }
 
 #status {
@@ -143,6 +270,67 @@
   margin-top: 25px;
 }
 
+#resource-status {
+  color: rgba(0,0,0,0.5);
+  font-size: 13px;
+  line-height: 17px;
+  text-align: center;
+  margin-right: 25px;
+  margin-top: 3px;
+}
+
+#add-position {
+  margin-left: 5px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+#addButton {
+  color: #294261;
+  cursor: pointer;
+  height: 17px;
+  width: 17px;
+}
+
 ngb-tabset {
   width: 100%;
+}
+
+@media only screen and (max-width: 836px) {
+  .content-card .vertical-line {
+    display: none;
+  }
+
+  #resource-project-date, .block-info, .cards-right-content {
+    display: block;
+  }
+
+  .cards-right-content {
+    float: none;
+    margin-left: 20px;
+  }
+
+  .block-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #resource-project-position-label {
+    margin-left: 0px;
+  }
+
+  #resource-status {
+    text-align: left;
+  }
+
+}
+
+@media only screen and (max-width: 545px) {
+
+  .right-content {
+    float: none;
+    display: block;
+    margin-top: 20px;
+  }
+
 }
