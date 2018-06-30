@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class SignUpStepTwoComponent implements OnInit {
 
   completeForm = false;
   validNumber = true;
-  email = 'marianaabellan@gmail.com';
+  email: string;
 
   constructor(public router: Router) {
   }
@@ -60,8 +60,6 @@ export class SignUpStepTwoComponent implements OnInit {
       const element = elements[i];
       this.completeForm = this.completeForm && ( (element as HTMLInputElement).value.length > 0);
     }
-
-    console.log("@" + this.completeForm);
 
     const nextElement = (document.getElementsByClassName('confirmation-number')[position + offset]) as HTMLElement;
     nextElement.focus();
