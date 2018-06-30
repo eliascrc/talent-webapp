@@ -11,6 +11,7 @@ export class SignupService {
 
   private stepOneUrl = 'http://ws.talent.cr/ws/signUp/stepOne';
   private stepTwoUrl = 'http://ws.talent.cr/ws/signUp/stepTwo';
+  private stepFourUrl = 'http://ws.talent.cr/ws/invitation/send';
 
   constructor(private http: HttpClient) { }
 
@@ -35,6 +36,13 @@ export class SignupService {
     const bodyParameters = `email=${email}&code=${code}`;
     return this.http
       .post(this.stepTwoUrl, bodyParameters,
+        {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
+  }
+
+  stepFour(serializedInvitations: string) {
+    const bodyParameters = `invitations=${serializedInvitations}`;
+    return this.http
+      .post(this.stepFourUrl, bodyParameters,
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
   }
 

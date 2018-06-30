@@ -10,12 +10,50 @@ input.ng-invalid.ng-touched {
 }
 
 hr {
-  margin: 30px 0;
+  margin: 40px 0;
+  border: 1px solid #D9DBDD;
 }
 
 /* Classes */
 .form-group {
   margin: 0;
+}
+
+.invitation-label {
+  color: #495057;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  letter-spacing: -0.35px;
+  line-height: 25px;
+}
+
+.invitation-input {
+  border: 1px solid #BECAD6;
+  border-radius: 8px;
+  padding: 2vh 0 2vh 20px;
+  margin-top: 1.5%;
+  color: #B9BBBE;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  letter-spacing: -0.35px;
+  line-height: 25px;
+}
+
+.invitation-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #B9BBBE;
+  opacity: 1; /* Firefox */
+}
+
+.invitation-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #B9BBBE;
+}
+
+.invitation-input::-ms-input-placeholder { /* Microsoft Edge */
+  color: #B9BBBE;
+}
+
+.email-margin {
+  margin-top: 1.5%;
 }
 
 .container-fluid {
@@ -62,26 +100,35 @@ hr {
 }
 
 #step-four-row {
-  margin: auto;
-  width: 70%;
+  padding: 0 10% 0 10%;
+  width: 100%;
 }
 
 #add-more-button {
   background-color: #FFF;
   color: #294261;
   border: 1px solid #294261;
-  padding: 5px 10px;
+  font-family: 'Roboto', serif;
+  font-size: 14px;
+  line-height: 16px;
+  border-radius: 10px;
+  text-align: center;
+  text-shadow: 0 2px 10px 0 rgba(0,0,0,0.5);
+  padding: 10px 15px;
   margin: auto;
   display: inherit;
 }
 
 #skip-anchor {
   padding-bottom: 5px;
-  margin: 20px auto;
+  margin: 6% auto;
   color: #294261;
   border-bottom: 1px solid #294261;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
+  line-height: 23px;
   display: table;
+  text-align: center;
 }
 
 #next-step-button {
@@ -94,6 +141,23 @@ hr {
   border-radius: 10px;
 }
 
+@media only screen and (max-width: 460px){
+  #next-step-button {
+    font-size: 80%;
+  }
+}
+
 #next-step-button:disabled {
   cursor: not-allowed;
+}
+
+#error-message {
+  color: #C4183C;
+  height: 30px;
+  margin: 0 auto 10px auto;
+  display: block;
+  font-size: 18px;
+  text-align: center;
+  text-align: -moz-center;
+  text-align: -webkit-center;
 }

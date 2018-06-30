@@ -1,10 +1,10 @@
 import {Invitation} from '@model/Invitation';
 
 export class Invitations {
-  people: Invitation[];
+  invitations: Invitation[];
 
   constructor(invitations: any) {
-    this.people = invitations.people;
+    this.invitations = invitations.invitations;
   }
 
 }
