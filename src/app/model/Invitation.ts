@@ -9,6 +9,8 @@ import {Organization} from '@model/Organization';
  */
 export class Invitation extends BasicEntity {
   email: String;
+  firstName: String;
+  lastName: String;
   token: String;
   isValid: boolean;
   organization: Organization;

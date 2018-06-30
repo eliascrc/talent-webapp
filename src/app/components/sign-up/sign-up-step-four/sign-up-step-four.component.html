@@ -1,0 +1,60 @@
+<div class="container-fluid m-0 p-0" id="minimum-height">
+
+  <!-- Main wrapper row-->
+  <div class="row m-0 p-0">
+
+    <!-- Side image column -->
+    <div class="d-md-block col-lg-5" id="side-image"></div>
+
+    <div class="col-md-12 col-lg-7">
+
+      <!-- Form row -->
+      <div class="row" id="step-four-input">
+
+        <h2>Send Invitations</h2>
+
+        <div id="invitations-message">Invite people to your organization by entering their email addresses.</div>
+
+        <div class="col-xs-12 container-fluid" id="step-four-row">
+          <!-- Step Four Form -->
+          <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+
+            <div *ngFor="let invitation of invitations">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="first-name">First Name</label>
+                  <input type="text" class="form-control" placeholder="First name" id="first-name" ngModel
+                         name="firstName{{invitation.id}}" required/>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="last-name">Last Name</label>
+                  <input type="text" class="form-control" placeholder="Last name" id="last-name" ngModel
+                         name="lastName{{invitation.id}}" required/>
+                </div>
+
+                <div class="form-group col-12">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" placeholder="Email" id="email" ngModel
+                         name="email{{invitation.id}}" required email/>
+                </div>
+              </div>
+
+              <hr>
+            </div>
+
+            <input type="button" class="btn btn-secondary" id="add-more-button" (click)="newInvitationInput()"
+                   value="Add more">
+
+            <button class="btn btn-primary" id="next-step-button" [disabled]="!signUpForm.valid">
+              Sign up
+            </button>
+
+            <a routerLink="/dashboard" id="skip-anchor">Skip for now</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
