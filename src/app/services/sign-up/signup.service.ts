@@ -18,12 +18,13 @@ export class SignupService {
    *
    * @param {string} firstName the first name of the user
    * @param {string} lastName the last name of the user
+   * @param {string} nickname the nickname of the user
    * @param {string} email the email of the user
    * @param {string} password the password of the user
    * @returns {Observable<Object>} the observable object
    */
-  stepOne(firstName: string, lastName: string, email: string, password: string) {
-    const bodyParameters = `firstName=${firstName}&lastName=${lastName}&email=${email}&password=${password}`;
+  stepOne(firstName: string, lastName: string, nickname: string, email: string, password: string) {
+    const bodyParameters = `firstName=${firstName}&lastName=${lastName}&nickname=${nickname}&email=${email}&password=${password}`;
     return this.http
       .post(this.stepOneUrl, bodyParameters,
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
