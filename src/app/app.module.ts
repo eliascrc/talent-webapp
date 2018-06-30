@@ -45,6 +45,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
+import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { UserProfileComponent } from './components/profile/user-profile/user-pro
     SidebarComponent,
     SignUpStepOneComponent,
     SignUpStepTwoComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    SignUpStepThreeComponent
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,7 @@ import {UnauthenticateGuard} from './unauthenticate-guard.service';
 import {SignUpStepOneComponent} from '../components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import {SignUpStepTwoComponent} from '../components/sign-up/sign-up-step-two/sign-up-step-two.component';
 import {UserProfileComponent} from '../components/profile/user-profile/user-profile.component';
+import {SignUpStepThreeComponent} from '../components/sign-up/sign-up-step-three/sign-up-step-three.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
@@ -25,7 +26,7 @@ const routes: Routes = [
   {path: 'login', component: OrganizationSelectComponent, canActivate: [UnauthenticateGuard]},
   {path: 'sign-up/step-one', component: SignUpStepOneComponent, canActivate: [UnauthenticateGuard]},
   {path: 'sign-up/step-two', component: SignUpStepTwoComponent, canActivate: [UnauthenticateGuard]},
-  {path: 'sign-up/step-three', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
+  {path: 'sign-up/step-three', component: SignUpStepThreeComponent, canActivate: [UnauthenticateGuard]},
   {path: 'about', component: AboutComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'contact-us-screen', component: ContactUsScreenComponent},
