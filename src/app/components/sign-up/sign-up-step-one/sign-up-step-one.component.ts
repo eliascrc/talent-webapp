@@ -20,6 +20,7 @@ export class SignUpStepOneComponent implements OnInit {
   formData = {
     firstName: '',
     lastName: '',
+    nickname: '',
     email: '',
     password: ''
   };
@@ -39,10 +40,11 @@ export class SignUpStepOneComponent implements OnInit {
     if (this.validatePassword(form)) {
       this.formData.firstName = form.value.firstName;
       this.formData.lastName = form.value.lastName;
+      this.formData.nickname = form.value.nickname;
       this.formData.email = form.value.email;
       this.formData.password = form.value.password;
 
-      this.signUpService.stepOne(this.formData.firstName, this.formData.lastName, this.formData.email,
+      this.signUpService.stepOne(this.formData.firstName, this.formData.lastName, this.formData.nickname, this.formData.email,
         this.formData.password).subscribe(() => {
 
         this.stepCommunicationService.registerEmail(this.formData.email);
