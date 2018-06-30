@@ -26,6 +26,7 @@ const routes: Routes = [
   {path: 'sign-up/step-one', component: SignUpStepOneComponent, canActivate: [UnauthenticateGuard]},
   {path: 'sign-up/step-two', component: SignUpStepTwoComponent, canActivate: [UnauthenticateGuard]},
   {path: 'sign-up/step-four', component: SignUpStepFourComponent, canActivate: [AuthenticateGuard]},
+  {path: 'sign-up/step-three', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
   {path: 'about', component: AboutComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'contact-us-screen', component: ContactUsScreenComponent},

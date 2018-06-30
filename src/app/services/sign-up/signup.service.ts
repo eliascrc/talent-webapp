@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 export class SignupService {
 
   private stepOneUrl = 'http://ws.talent.cr/ws/signUp/stepOne';
+  private stepTwoUrl = 'http://ws.talent.cr/ws/signUp/stepTwo';
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +28,13 @@ export class SignupService {
     const bodyParameters = `firstName=${firstName}&lastName=${lastName}&nickname=${nickname}&email=${email}&password=${password}`;
     return this.http
       .post(this.stepOneUrl, bodyParameters,
+        {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
+  }
+
+  stepTwo(email: string, code: string) {
+    const bodyParameters = `email=${email}&code=${code}`;
+    return this.http
+      .post(this.stepTwoUrl, bodyParameters,
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
   }
 
