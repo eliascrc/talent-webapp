@@ -4,16 +4,16 @@ import {AuthenticateService} from '@services/authentication/authenticate.service
 import {Location} from '@angular/common';
 import {ProjectService} from '@services/project/project.service';
 
-/**
- * Component used for creating projects
- *
- * @author Daniel Montes de Oca
- */
 @Component({
   selector: 'app-create-project',
   templateUrl: './create-project.component.html',
   styleUrls: ['./create-project.component.css'],
 })
+/**
+ * Component used for creating projects
+ *
+ * @author Daniel Montes de Oca
+ */
 export class CreateProjectComponent implements OnInit {
 
   model;
@@ -52,6 +52,7 @@ export class CreateProjectComponent implements OnInit {
 
   /**
    * Used to check if the form is ready to be submitted
+   * @param {string} description a brief description of the project entered by the user
    */
   validateForm(description: string): void {
     if (this.model != null) {
