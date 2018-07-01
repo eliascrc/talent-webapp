@@ -5,7 +5,6 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 
-
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './routing/app-routing.module';
 
@@ -41,16 +40,15 @@ import {ContactUsService} from '@services/company-information/contact-us.service
 import {ProjectService} from '@services/project/project.service';
 
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
-
-import { HeaderComponent } from './components/header/header.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AcceptInviteComponent } from './components/sign-up/accept-invite/accept-invite.component';
-import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
-import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
-import { CreateProjectComponent } from './components/create-project/create-project/create-project.component';
-import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
-import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
-
+import {HeaderComponent} from './components/header/header.component';
+import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {SignUpStepOneComponent} from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
+import {SignUpStepTwoComponent} from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
+import {SignUpStepFourComponent} from './components/sign-up/sign-up-step-four/sign-up-step-four.component';
+import {AcceptInviteComponent} from './components/sign-up/accept-invite/accept-invite.component';
+import {CreateProjectComponent} from './components/create-project/create-project/create-project.component';
+import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
+import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 
 @NgModule({
   declarations: [
@@ -75,9 +73,11 @@ import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-thre
     AcceptInviteComponent,
     SignUpStepOneComponent,
     SignUpStepTwoComponent,
+    SignUpStepThreeComponent,
+    SignUpStepFourComponent,
+    UserProfileComponent,
     CreateProjectComponent,
     UserProfileComponent,
-    SignUpStepThreeComponent,
 
   ],
   imports: [
@@ -99,7 +99,7 @@ import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-thre
     ContactUsService,
     SignupService,
     ProjectService,
-	InvitationService,
+    InvitationService,
     StepCommunicationService
   ],
   bootstrap: [AppComponent]

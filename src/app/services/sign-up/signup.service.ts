@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 /**
@@ -12,11 +12,13 @@ export class SignupService {
   private stepOneUrl = 'http://ws.talent.cr/ws/signUp/stepOne';
   private stepTwoUrl = 'http://ws.talent.cr/ws/signUp/stepTwo';
   private stepThreeUrl = 'http://ws.talent.cr/ws/organization/create';
+  private stepFourUrl = 'http://ws.talent.cr/ws/invitation/send';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   /**
-   * Returns an observable that tries to send the sign up step one information to the backend web service
+   * Returns an observable that tries to send the sign up step one information to the backend web service, in order to create a user account
    *
    * @param {string} firstName the first name of the user
    * @param {string} lastName the last name of the user
@@ -32,6 +34,13 @@ export class SignupService {
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
   }
 
+  /**
+   * Returns an observable that tries to send the sign up step two information to the backend web service, in order to validate a user account
+   *
+   * @param {string} email the email of the user
+   * @param {string} code the code for validating the user account
+   * @returns {Observable<Object>} the observable object
+   */
   stepTwo(email: string, code: string) {
     const bodyParameters = `email=${email}&code=${code}`;
     return this.http
@@ -52,6 +61,19 @@ export class SignupService {
     return this.http.post(this.stepThreeUrl, bodyParameters,
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true})
       .toPromise();
+  }
+
+  /**
+   * Returns an observable that tries to send the sign up step four information to the backend web service, in order to send invitations.
+   *
+   * @param {string} serializedInvitations the serialized invitations to send
+   * @returns {Observable<Object>} the observable object
+   */
+  stepFour(serializedInvitations: string) {
+    const bodyParameters = `invitations=${serializedInvitations}`;
+    return this.http
+      .post(this.stepFourUrl, bodyParameters,
+        {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
   }
 
 }

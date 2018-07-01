@@ -4,14 +4,16 @@ import {NgForm} from '@angular/forms';
 import {StepCommunicationService} from '@services/sign-up/step-communication.service';
 import {SignupService} from '@services/sign-up/signup.service';
 
-/**
- *
- */
 @Component({
   selector: 'app-sign-up-step-two',
   templateUrl: './sign-up-step-two.component.html',
   styleUrls: ['./sign-up-step-two.component.css']
 })
+/**
+ * Sign Up component which displays and processes the step two form for the activation of a user account.
+ *
+ * @author Elias Calderon
+ */
 export class SignUpStepTwoComponent implements OnInit {
 
   completeForm = false;
@@ -50,6 +52,12 @@ export class SignUpStepTwoComponent implements OnInit {
 
   }
 
+  /**
+   * Validates the number field of the code
+   *
+   * @param event the triggering event
+   * @param {number} position the number position
+   */
   validateField(event: any, position: number) {
     const changedNumber = event.target.value;
     let offset = 1;
@@ -88,6 +96,9 @@ export class SignUpStepTwoComponent implements OnInit {
     nextElement.focus();
   }
 
+  /**
+   * Puts the class to the numbers for showing the code as invalid
+   */
   invalidateFields() {
     const elements = document.getElementsByClassName('confirmation-number');
 

@@ -9,6 +9,8 @@ import {Organization} from '@model/Organization';
  */
 export class Invitation extends BasicEntity {
   email: String;
+  firstName: String;
+  lastName: String;
   token: String;
   isValid: boolean;
   organization: Organization;
@@ -16,8 +18,12 @@ export class Invitation extends BasicEntity {
   constructor(invitation: any) {
     super(invitation);
     this.email = invitation.email;
+    this.firstName = invitation.firstName;
+    this.lastName = invitation.lastName;
     this.token = invitation.token;
     this.isValid = invitation.isValid;
-    this.organization = new Organization(invitation.organization);
+    if (invitation.organization != null) {
+      this.organization = new Organization(invitation.organization);
+    }
   }
 }
