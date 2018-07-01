@@ -8,6 +8,13 @@ import {NgForm} from '@angular/forms';
   templateUrl: './accept-invite.component.html',
   styleUrls: ['./accept-invite.component.css']
 })
+
+/**
+ * Accept invite component which displays the technical resource name, organization logo
+ * and processes the insertion of the new technical resource inside the organization.
+ *
+ * @author Renato Mainieri Sáenz
+ */
 export class AcceptInviteComponent implements OnInit {
 	firstName: string;
 	lastName: string;
