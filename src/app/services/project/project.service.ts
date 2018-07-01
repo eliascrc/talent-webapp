@@ -8,11 +8,13 @@ import {Project} from '@model/Project';
 /**
  *  Service that processes web services related to projects
  *
- *  @author Daniel Montes de Oca
+ *  @author Daniel Montes de Oca, Josue Leon Sarkis
  */
 @Injectable()
 export class ProjectService {
 
+  private getPositionsHistoryUrl = 'http://ws.talent.cr/ws/organization/project/getHistory';
+  private getBasicInformationUrl = 'http://ws.talent.cr/ws/organization/project/get';
   private createUrl = 'http://ws.talent.cr/ws/organization/project/create';
 
   constructor(private http: HttpClient) { }
@@ -30,6 +32,33 @@ export class ProjectService {
     return this.http
       .post<Project>(this.createUrl, bodyParameters,
         {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true});
+  }
+
+  /**
+   * Obtains a project's basic information.
+   * @param {string} projectId
+   * @returns {Promise<any>}
+   */
+  getProjectBasicInformation(projectId: string): Promise<any> {
+    const body = `projectId=${projectId}`;
+    return this.http.post<Project>(this.getBasicInformationUrl, body, {
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      withCredentials: true
+    }).toPromise();
+  }
+
+  /**
+   * Obtains the project's positions holders history.
+   * @param {string} projectId
+   * @returns {Promise<any>}
+   */
+  getProjectPositionsHistory(projectId: string): Promise<any> {
+    return this.http.get<any>(this.getPositionsHistoryUrl, {
+      params: {
+        'projectId': projectId
+      },
+      withCredentials: true
+    }).toPromise();
   }
 
 }

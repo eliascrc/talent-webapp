@@ -1,0 +1,121 @@
+<div *ngIf="projectLoaded" class="container-fluid">
+  <div class="row">
+    <div id="top-content">
+
+      <div id="project-title">
+        <div id="title">{{projectName}}</div><div id="edit-name"><i class="fas fa-pencil-alt edit-pencil"></i></div>
+        <div id="project-date">
+          <i class="far fa-clock date-clock" style="display: inline-block;"></i>
+          <div id="date">
+            <div id="start-date">{{projectStartDate | date: 'dd-MM-yyyy'}}</div> -
+            <div id="end-date">{{ projectEndDate == 'Present' ? 'Present' : projectEndDate | date: 'dd-MM-yyyy'}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-content">
+        <div id="project-lead">
+          <div id="lead-label">Lead</div>
+          <div id="lead">Rodrigo Bartels</div>
+        </div>
+        <div class="vertical-line"></div>
+        <div id="project-status">
+          <div class="status-icon" [class.red-status-icon]="projectRedStatus" [class.yellow-status-icon]="projectYellowStatus"></div>
+          <div id="status">{{projectStatus | uppercase}}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row" id="project-tabs">
+    <ngb-tabset justify="fill">
+      <ngb-tab title="Resources">
+        <ng-template ngbTabContent>
+          <div class="row">
+            <div class="edit-resources">
+              <i class="fas fa-pencil-alt edit-resources-pencil"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div *ngFor="let resource of projectResources" class="content-card">
+              <div class="resource-profile-picture">
+                <img src="{{resource.profilePicture}}" alt="" class="profile-picture" (click)="onSeeUserProfile(resource.id)">
+              </div>
+              <div id="resource-basic-info">
+                <div id="resource-name" (click)="onSeeUserProfile(resource.id)">{{resource.name}}</div>
+                <div class="resource-capability">{{resource.technicalPosition}}</div>
+                <div class="resource-capability">Technical Resource</div>
+              </div>
+              <div class="cards-right-content">
+                <div class="vertical-line"></div>
+                <div id="resource-project-date">
+                  <i class="far fa-clock date-clock" style="display: inline-block;"></i>
+                  <div id="resource-date">
+                    <div id="resource-start-date">{{resource.startDate | date: 'dd-MM-yyyy'}}</div>
+                    <span id="date-hyphen">-</span> <div id="resource-end-date">{{ resource.endDate == 'Present' ? 'Present' : resource.endDate | date: 'dd-MM-yyyy'}}</div>
+                  </div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="block-info">
+                  <div id="resource-project-position-label">Position</div>
+                  <div id="resource-project-position">{{resource.position}}</div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="block-info">
+                  <div id="resource-workload">{{resource.hours}} hours</div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="block-info" id="block-info-status">
+                  <div class="status-icon center" [class.red-status-icon]="resource.isActive == 'INACTIVE'"></div>
+                  <div id="resource-status">{{resource.isActive}}</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Positions">
+        <ng-template ngbTabContent>
+          <div class="row">
+            <div class="edit-resources">
+              <i class="fas fa-pencil-alt edit-resources-pencil"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div *ngFor="let position of projectPositionHolders" class="content-card-positions">
+              <div class="position">
+                <div class="position-name">{{position.capability}}</div>
+              </div>
+              <div class="cards-right-content-positions">
+                <div *ngFor="let positionHolder of position.resources" class="resource-picture-positions">
+                  <img src="{{positionHolder.picture}}" alt="" class="profile-picture" (click)="onSeeUserProfile(positionHolder.id)"
+                       data-toggle="tooltip" data-placement="top" title="{{positionHolder.name}}">
+                </div>
+              </div>
+
+            </div>
+            <div class="content-card-positions">
+              <div class="position">
+                <div class="position-name">Position</div>
+              </div>
+              <div class="cards-right-content-positions">
+                <div *ngFor="let resource of projectResources" class="resource-picture-positions">
+                  <img src="{{resource.profilePicture}}" alt="" class="profile-picture" (click)="onSeeUserProfile(resource.id)"
+                       data-toggle="tooltip" data-placement="top" title="{{resource.name}}">
+                </div>
+                <div id="add-position"><i class="fas fa-plus" id="addButton"></i></div>
+              </div>
+
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Skills">
+        <ng-template ngbTabContent>
+
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>
