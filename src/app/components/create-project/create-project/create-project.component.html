@@ -1,0 +1,43 @@
+<div class="content">
+  <h3 class="page-title">Create a project</h3>
+  <form #createProjectForm="ngForm">
+    <label class="name-label" for="name">
+      Name:
+    </label>
+    <input id="name" (click)="d.close()" [(ngModel)]="name" name="projectName" class="form-control" required (input)="validateForm(desc.value)">
+    <label for="start-date">
+      Start Date:
+    </label>
+    <input id="start-date" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+           #d="ngbDatepicker" (dateSelect)="validateForm(desc.value)" (click)="d.toggle()">
+    <label>
+      Project Lead:
+    </label>
+    <div class="form-group" (click)="d.close()">
+      <select required>
+        <option *ngFor="let resource of resources"
+                [value]="resource.username"
+                [attr.selected]="true">
+          {{resource.firstName}} {{resource.lastName}}
+        </option>
+      </select>
+      <span class="select-arrow"></span>
+    </div>
+    <label for="description">
+      Write a short description of your project:
+    </label>
+    <textarea #desc id="description" (click)="d.close()" (input)="validateForm(desc.value)"></textarea>
+
+    <div class="error-div" *ngIf="error">
+      There was an error creating the project
+    </div>
+
+    <div class="buttons-div">
+      <button class="cancel-button  btn btn-primary" [disabled]="false" (click)="cancel()">Cancel</button>
+      <button class="submit-button btn btn-primary" type="submit"  [disabled]="!formIsValid"
+      (click)="onSubmit(desc.value)">Submit</button>
+    </div>
+  </form>
+
+</div>
+
