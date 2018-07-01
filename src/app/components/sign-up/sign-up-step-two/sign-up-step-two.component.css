@@ -106,6 +106,9 @@
   background-color: #EFA42F;
   border: none;
   border-radius: 10px;
+  line-height: 28px;
+  font-family: 'Roboto', serif;
+  text-shadow: 0 2px 10px 0 rgba(0,0,0,0.5);
 }
 
 #next-step-button:disabled {
