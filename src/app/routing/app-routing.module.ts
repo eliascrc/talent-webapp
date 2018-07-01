@@ -15,8 +15,10 @@ import {OrganizationSelectComponent} from '../components/authentication/organiza
 import {InvalidTokenComponent} from '../components/authentication/invalid-token/invalid-token.component';
 import {ContactUsScreenComponent} from '../components/company-information/contact-us-screen/contact-us-screen.component';
 import {UnauthenticateGuard} from './unauthenticate-guard.service';
+import {AcceptInviteComponent} from '../components/sign-up/accept-invite/accept-invite.component';
 import {SignUpStepOneComponent} from '../components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import {SignUpStepTwoComponent} from '../components/sign-up/sign-up-step-two/sign-up-step-two.component';
+import {CreateProjectComponent} from '../components/create-project/create-project/create-project.component';
 import {UserProfileComponent} from '../components/profile/user-profile/user-profile.component';
 import {SignUpStepThreeComponent} from '../components/sign-up/sign-up-step-three/sign-up-step-three.component';
 
@@ -34,10 +36,12 @@ const routes: Routes = [
   {path: 'terms-of-use', component: TermsOfUseComponent},
   {path: 'forgot-password/:uniqueIdentifier', component: ForgotPasswordComponent, canActivate: [UnauthenticateGuard]},
   {path: 'reset-password', component: ResetPasswordComponent, canActivate: [UnauthenticateGuard]},
-  {path: 'invalid-token', component: InvalidTokenComponent},
+  {path: 'invalid-token', component: InvalidTokenComponent, canActivate: [UnauthenticateGuard]},
   {path: 'login/:uniqueIdentifier', component: LoginComponent, canActivate: [UnauthenticateGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard]},
+  {path: 'accept-invite', component: AcceptInviteComponent, canActivate: [UnauthenticateGuard]},
   {path: 'profile/user-profile', component: UserProfileComponent, canActivate: [AuthenticateGuard]},
+  {path: 'create-project', component: CreateProjectComponent, canActivate: [AuthenticateGuard]},
 ];
 
 @NgModule({
