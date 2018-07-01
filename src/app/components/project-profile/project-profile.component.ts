@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProjectService} from '@services/organization/projects/project.service';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
+import {ProjectService} from '@services/project/project.service';
 
 /**
  * Used to represent the resources that have been part of a project.
