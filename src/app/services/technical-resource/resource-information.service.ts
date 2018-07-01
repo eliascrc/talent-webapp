@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 /**
  * Establishes communication with the backend endpoints regarding a technical resource's related information.
+ *
+ * @author Josue Leon Sarkis
  */
 export class ResourceInformationService {
 
