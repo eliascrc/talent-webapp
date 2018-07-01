@@ -1,0 +1,42 @@
+<div class="container-fluid m-0 p-0" id="minimum-height">
+
+  <!-- Main wrapper row-->
+  <div class="row m-0 p-0" id="step-three-content">
+
+    <!-- Side image column -->
+    <div class="d-none d-sm-none d-md-none d-lg-block col-lg-5" id="side-image"></div>
+
+    <!-- Form and header column -->
+    <div class="col-md-12 col-lg-7 m-0 p-0">
+
+      <!-- Form row -->
+      <div class="row" id="step-three-input">
+
+        <div id="step-title">Organization name</div>
+        <div id="step-subtitle">Please enter the name of your organization</div>
+        <!-- Form -->
+        <form (ngSubmit)="onSubmit(signUpStepThreeForm)" #signUpStepThreeForm="ngForm">
+          <div class="form-group">
+            <label for="organization-name">Organization name</label>
+            <input type="text" class="form-control" placeholder="Name" id="organization-name" ngModel name="organizationName" required/>
+            <div class="error-message">Field is required</div>
+          </div>
+
+          <div class="form-group">
+            <label for="organization-id" id="organization-id-label">Organization id</label>
+            <input type="text" placeholder="Organization id" id="organization-id" ngModel name="organizationId" required/>
+            <span class="align-bottom" id="talent-domain">.talent.cr</span>
+            <div class="error-message">
+              Id must have at least 3 characters and only numbers or letters. Hyphens are permitted if surrounded by these characters.
+              It must be unique.
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="next-step-button" [disabled]="!signUpStepThreeForm.valid">Continue</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</div>

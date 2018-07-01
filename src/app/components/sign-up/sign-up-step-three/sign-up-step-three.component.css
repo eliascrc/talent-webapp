@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto"');
+
+/* Tag selectors */
+label {
+  margin-bottom: 12px;
+}
+
+input[type=text] {
+  font-size: 20px;
+  padding-left: 26px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: 1px solid #BECAD6;
+  border-radius: 8px;
+}
+
+input[type=text].ng-invalid.ng-touched:nth-child(n) ~ .error-message:nth-child(n) {
+  display: block;
+}
+
+input:focus {
+  box-shadow: 0 5px 11px 0 rgba(196, 24, 60, 0.1);
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #C4183C;
+  box-shadow: 0 5px 11px 0 rgba(196, 24, 60, 0.1);
+  margin-bottom: 0;
+}
+
+form {
+  margin-top: 63px;
+  width: 100%;
+}
+
+button.btn[disabled] {
+  cursor: not-allowed;
+}
+
+/* Classes */
+.container-fluid {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: normal;
+}
+
+.form-group {
+  margin: 0;
+}
+
+.error-message {
+  color: #C4183C;
+  margin-top: 4px;
+  margin-bottom: 3px;
+  display: none;
+  font-size: 18px;
+}
+
+/* Identifiers */
+#step-three-content {
+  min-height: 90vh;
+  min-width: 320px;
+}
+
+#minimum-height {
+  min-height: 90vh;
+}
+
+#side-image {
+  background: url(../../../../assets/images/handshake.png) no-repeat center;
+  background-size: cover
+}
+
+#step-title {
+  width: 100%;
+  margin-top: 181px;
+  color: #294261;
+  font-family: Roboto, sans-serif;
+  font-size: 28px;
+  letter-spacing: 2.8px;
+  line-height: 33px;
+  text-align: center;
+}
+
+#step-subtitle {
+  margin-top: 39px;
+  width: 100%;
+  color: #A2A2A2;
+  font-size: 24px;
+  line-height: 31px;
+  text-align: center;
+}
+
+#step-three-input {
+  font-size: 20px;
+  width: 67.4%;
+  margin: auto;
+}
+
+#next-step-button {
+  margin: 86px auto 220px 10%;
+  width: 80%;
+  font-size: 24px;
+  height: 69px;
+  background-color: #EFA42F;
+  border: none;
+  border-radius: 10px;
+}
+
+#talent-domain {
+  color: #495057;
+  font-size: 24px;
+  letter-spacing: -0.45px;
+  line-height: 31px;
+  margin-left: 25px;
+  align-content: baseline;
+}
+
+#organization-id-label {
+  margin-top: 24px;
+  display: block;
+}
+
+#organization-id {
+  width: 70%;
+}
+
+@media only screen and (max-width: 578px) {
+  #organization-id {
+    width: 100%;
+  }
+}

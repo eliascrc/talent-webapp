@@ -1,7 +1,7 @@
 .container-fluid {
   min-height: 90vh;
   width: 88%;
-  min-width: 320px;
+  min-width: 295px;
   margin: auto;
   font-family: "Source Sans Pro", serif;
 }
@@ -64,6 +64,16 @@
   margin: 20px auto 20px auto;
 }
 
+.content-card-positions {
+  min-height: 92px;
+  width: 90%;
+  border: 0.5px solid rgba(0,0,0,0.05);
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.04);
+  margin: 20px auto 20px auto;
+}
+
 .resource-profile-picture {
   display: inline-block;
   margin: 11px 20px 0 20px;
@@ -73,6 +83,7 @@
   height: 70px;
   width: 70px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .resource-capability {
@@ -92,6 +103,12 @@
   margin-top: 11px;
 }
 
+.cards-right-content-positions {
+  float: right;
+  display: inline-block;
+  margin-top: 11px;
+}
+
 .block-info {
   display: inline-block;
 }
@@ -102,7 +119,15 @@
   background: linear-gradient(163.34deg, #DDF6BC 0%, #B8E986 100%);
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.07);
   border-radius: 50%;
-  margin-left: 7px;
+  margin: auto;
+}
+
+.red-status-icon {
+  background: linear-gradient(163.34deg, lightpink 0%, red 100%);
+}
+
+.yellow-status-icon {
+  background: linear-gradient(163.34deg, lightyellow 0%, darkorange 100%);
 }
 
 .edit-resources {
@@ -124,6 +149,11 @@
 }
 
 .resource-picture {
+  display: inline-block;
+  margin: 0px 6px 0 6px;
+}
+
+.resource-picture-positions {
   display: inline-block;
   margin: 0px 6px 0 6px;
 }
@@ -156,6 +186,7 @@
   box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
   height: 60vh;
   overflow: auto;
+  margin-bottom: 15px;
 }
 
 #title {
@@ -208,6 +239,7 @@
 #resource-basic-info {
   display: inline-block;
   vertical-align: middle;
+  min-width: 102.8px;
 }
 
 #resource-name {
@@ -215,6 +247,7 @@
   font-size: 14px;
   font-weight: bold;
   line-height: 18px;
+  cursor: pointer;
 }
 
 #resource-date {
@@ -237,6 +270,7 @@
 #resource-project-date {
   display: inline-block;
   margin-bottom: 17px;
+  min-width: 148.97px;
 }
 
 #date-hyphen {
@@ -247,13 +281,15 @@
   color: rgba(0,0,0,0.65);
   font-size: 14px;
   line-height: 18px;
-  margin-left: 13px;
+  text-align: center;
 }
 
 #resource-project-position {
   color: #979595;
   font-size: 12px;
   line-height: 15px;
+  min-width: 154.83px;
+  text-align: center;
 }
 
 #resource-workload {
@@ -275,8 +311,9 @@
   font-size: 13px;
   line-height: 17px;
   text-align: center;
-  margin-right: 25px;
+  margin: auto;
   margin-top: 3px;
+  min-width: 49.91px;
 }
 
 #add-position {
@@ -292,11 +329,28 @@
   width: 17px;
 }
 
+#block-info-status {
+  margin-right: 25px;
+}
+
 ngb-tabset {
   width: 100%;
 }
 
-@media only screen and (max-width: 836px) {
+@media only screen and (max-width: 1250px) {
+  .cards-right-content {
+    float: left;
+    margin-left: 2px;
+  }
+}
+
+@media only screen and (max-width: 978px) {
+  .vertical-line {
+    margin: auto 13px 10px 13px;
+  }
+}
+
+@media only screen and (max-width: 846px) {
   .content-card .vertical-line {
     display: none;
   }
@@ -306,8 +360,8 @@ ngb-tabset {
   }
 
   .cards-right-content {
-    float: none;
     margin-left: 20px;
+    float: none;
   }
 
   .block-info {
@@ -317,10 +371,19 @@ ngb-tabset {
 
   #resource-project-position-label {
     margin-left: 0px;
+    text-align: left;
+  }
+
+  #resource-project-position {
+    text-align: left;
   }
 
   #resource-status {
     text-align: left;
+  }
+
+  .status-icon {
+    margin-left: 13px;
   }
 
 }
@@ -331,6 +394,16 @@ ngb-tabset {
     float: none;
     display: block;
     margin-top: 20px;
+  }
+
+}
+
+@media only screen and (max-width: 530px) {
+
+  .cards-right-content-positions {
+    display: block;
+    float: none;
+    margin-bottom: 10px;
   }
 
 }
