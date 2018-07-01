@@ -23,6 +23,7 @@ import {UserService} from '@services/user.service';
 import {PrivacyPolicyService} from '@services/company-information/privacy-policy.service';
 import {TermsOfUseService} from '@services/company-information/terms-of-use.service';
 import {SignupService} from '@services/sign-up/signup.service';
+import {InvitationService} from '@services/sign-up/invitation.service';
 import {StepCommunicationService} from '@services/sign-up/step-communication.service';
 
 // For proof of concept sign-up
@@ -36,6 +37,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {FooterComponent} from './components/footer/footer.component';
 import {ContactUsScreenComponent} from './components/company-information/contact-us-screen/contact-us-screen.component';
 import {ContactUsService} from '@services/company-information/contact-us.service';
+import {ProjectService} from '@services/project/project.service';
 
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 import {HeaderComponent} from './components/header/header.component';
@@ -43,6 +45,8 @@ import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {SignUpStepOneComponent} from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
 import {SignUpStepTwoComponent} from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
 import { SignUpStepFourComponent } from './components/sign-up/sign-up-step-four/sign-up-step-four.component';
+import { AcceptInviteComponent } from './components/sign-up/accept-invite/accept-invite.component';
+import { CreateProjectComponent } from './components/create-project/create-project/create-project.component';
 import { UserProfileComponent } from './components/profile/user-profile/user-profile.component';
 import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 
@@ -66,11 +70,15 @@ import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-thre
     SanitizeHtmlPipe,
     HeaderComponent,
     SidebarComponent,
+    AcceptInviteComponent,
     SignUpStepOneComponent,
     SignUpStepTwoComponent,
     SignUpStepThreeComponent,
     SignUpStepFourComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CreateProjectComponent,
+    UserProfileComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -90,6 +98,8 @@ import { SignUpStepThreeComponent } from './components/sign-up/sign-up-step-thre
     ForgotPasswordService,
     ContactUsService,
     SignupService,
+    ProjectService,
+	InvitationService,
     StepCommunicationService
   ],
   bootstrap: [AppComponent]
