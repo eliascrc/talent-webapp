@@ -46,7 +46,7 @@ export class AcceptInviteComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (this.validatePassword(form)) {
 	  this.invitationService.acceptInvite(this.token, form.value.nickname, form.value.password).
-	  then(response => { this.router.navigate(['/dashboard']);});
+	  then(response => { this.router.navigate(['/dashboard']); location.reload();});
     }
   }
 
