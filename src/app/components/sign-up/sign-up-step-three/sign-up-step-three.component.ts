@@ -47,7 +47,7 @@ export class SignUpStepThreeComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (this.isOrganizationIdValid(form) && this.isNameNotEmpty(form)) {
       this.formData.organizationName = form.value.organizationName.trim();
-      this.formData.organizationId = form.value.organizationIdentifier;
+      this.formData.organizationId = form.value.organizationId;
       this.signUpService.stepThree(this.userEmail, this.formData.organizationName, this.formData.organizationId)
         .then(response => {
           this.router.navigate(['/sign-up/step-four']);
