@@ -1,4 +1,4 @@
-
+/* Tag Selectors */
 input:focus {
   box-shadow: 0 5px 11px 0 rgba(196,24,60,0.1);
 }
@@ -139,6 +139,9 @@ hr {
   background-color: #EFA42F;
   border: none;
   border-radius: 10px;
+  font-family: 'Roboto', serif;
+  line-height: 28px;
+  text-shadow: 0 2px 10px 0 rgba(0,0,0,0.5);
 }
 
 @media only screen and (max-width: 460px){
