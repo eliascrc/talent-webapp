@@ -12,6 +12,11 @@ import {HttpErrorResponse} from '@angular/common/http';
   templateUrl: './sign-up-step-four.component.html',
   styleUrls: ['./sign-up-step-four.component.css']
 })
+/**
+ * Sign Up component which displays and processes the step four form for the invitation of users.
+ *
+ * @author Elias Calderon
+ */
 export class SignUpStepFourComponent implements OnInit {
 
   invitationsInput: InvitationInput[];
@@ -27,6 +32,10 @@ export class SignUpStepFourComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Verifies and send the invitation form
+   * @param {NgForm} form the modified form
+   */
   onSubmit(form: NgForm) {
     let any: any;
     const invitationsArray: Invitation[] = [];
@@ -70,6 +79,9 @@ export class SignUpStepFourComponent implements OnInit {
     });
   }
 
+  /**
+   * Adds a new input for the form
+   */
   newInvitationInput() {
     this.invitationsInput.push(new InvitationInput(this.idCounter));
     this.idCounter++;
