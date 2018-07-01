@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 /**
  * Service that processes backend web services requests for the /ws/signUp resources.
  *
- * @author Elias Calderon
+ * @author Elias Calderon, Josue Leon Sarkis
  */
 @Injectable()
 export class SignupService {
