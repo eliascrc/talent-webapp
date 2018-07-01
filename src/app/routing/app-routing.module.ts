@@ -40,7 +40,7 @@ const routes: Routes = [
   {path: 'login/:uniqueIdentifier', component: LoginComponent, canActivate: [UnauthenticateGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard]},
   {path: 'accept-invite', component: AcceptInviteComponent, canActivate: [UnauthenticateGuard]},
-  {path: 'profile/user-profile', component: UserProfileComponent, canActivate: [AuthenticateGuard]},
+  {path: 'profile/user-profile/:userId', component: UserProfileComponent, canActivate: [AuthenticateGuard]},
   {path: 'create-project', component: CreateProjectComponent, canActivate: [AuthenticateGuard]},
 ];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
+import {ActivatedRoute, Route} from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,11 +13,12 @@ export class UserProfileComponent implements OnInit {
   userProfilePicture: string;
   loggedIn = false;
   position: string;
+  userId: string;
 
-
-  constructor(private authenticateService: AuthenticateService) { }
+  constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit() {
+    this.userId = this.activatedRoute.snapshot.paramMap.get('userId');
     this.authenticateService.isLoggedIn()
       .then(response => {
           this.loggedIn = response;
