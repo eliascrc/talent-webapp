@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 export class ResourceInformationService {
 
   private getTechnicalResourceBasicInfoUrl = 'http://ws.talent.cr/ws/technicalResource/basicInformation';
+  private getTechnicalResourceBasicInfoUrlWithId = 'http://ws.talent.cr/ws/technicalResource/basicInformation/id';
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +23,20 @@ export class ResourceInformationService {
     return this.http.get<any>(this.getTechnicalResourceBasicInfoUrl, {
       params: {
         'username': email
+      },
+      withCredentials: true
+    }).toPromise();
+  }
+
+  /**
+   * Obtains the basic information of a technical resource.
+   * @param {string} id
+   * @returns {Promise<any>}
+   */
+  getTechnicalResourceBasicInfoWithId(id: string): Promise<any> {
+    return this.http.get<any>(this.getTechnicalResourceBasicInfoUrlWithId, {
+      params: {
+        'id': id
       },
       withCredentials: true
     }).toPromise();
