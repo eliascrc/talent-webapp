@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   displayHeader = false;
   userOrganizationLogo: string;
   userName: string;
+  userId: string;
   displayLoggedInArea = false;
   userProfilePicture: string;
 
@@ -37,6 +38,7 @@ export class HeaderComponent implements OnInit {
               name = name.concat(' ');
               this.userName = name.concat(userInfoObject.lastName);
               this.userProfilePicture = userInfoObject.profilePicture.link;
+              this.userId = userInfoObject.id;
               this.organizationService.getOrganization(userInfoObject.organization.uniqueIdentifier)
                 .subscribe(userOrganization => {
                   this.userOrganizationLogo = JSON.parse(JSON.stringify(userOrganization)).logo;
@@ -57,7 +59,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onViewProfile() {
-    this.router.navigate(['/profile/user-profile']);
+    let dir = '/profile/user-profile/';
+    dir = dir.concat(this.userId);
+    this.router.navigate([dir]);
     this.displayLoggedInArea = !this.displayLoggedInArea;
   }
 
