@@ -37,7 +37,8 @@ input[type=password]::-ms-input-placeholder { /* Microsoft Edge */
 
 input[type=text].ng-invalid.ng-touched:nth-child(n) ~ .error-message:nth-child(n),
 input[type=email].ng-invalid.ng-touched:nth-child(n) ~ .error-message:nth-child(n),
-input[type=password].ng-invalid.ng-touched:nth-child(n) ~ .error-message:nth-child(n)
+input[type=password].ng-invalid.ng-touched:nth-child(n) ~ .error-message:nth-child(n),
+input[type=password].p-invalid.ng-touched:nth-child(n) ~ .error-message:nth-child(n)
 {
   display: block;
 }
@@ -46,7 +47,9 @@ input:focus {
   box-shadow: 0 5px 11px 0 rgba(196,24,60,0.1);
 }
 
-input.ng-invalid.ng-touched {
+input.ng-invalid.ng-touched,
+input.p-invalid.ng-touched
+{
   border: 1px solid #C4183C;
   box-shadow: 0 5px 11px 0 rgba(196,24,60,0.1);
   margin-bottom: 0;

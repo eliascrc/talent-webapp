@@ -17,6 +17,10 @@ import {StepCommunicationService} from '@services/sign-up/step-communication.ser
  */
 export class SignUpStepOneComponent implements OnInit {
 
+  formSubmitted = false;
+  passwordInvalid = true;
+  signUpBtnMessage = 'Sign up';
+
   formData = {
     firstName: '',
     lastName: '',
@@ -36,12 +40,14 @@ export class SignUpStepOneComponent implements OnInit {
    * @param {NgForm} form The form that the user modifies
    */
   onSubmit(form: NgForm) {
-    if (this.validatePassword(form)) {
+    if (this.validatePassword(form) && !this.formSubmitted) {
       this.formData.firstName = form.value.firstName;
       this.formData.lastName = form.value.lastName;
       this.formData.nickname = form.value.nickname;
       this.formData.email = form.value.email;
       this.formData.password = form.value.password;
+      this.formSubmitted = true;
+      this.signUpBtnMessage = 'Working...';
 
       this.signUpService.stepOne(this.formData.firstName, this.formData.lastName, this.formData.nickname, this.formData.email,
         this.formData.password).subscribe(() => {
@@ -49,7 +55,8 @@ export class SignUpStepOneComponent implements OnInit {
         this.stepCommunicationService.registerEmail(this.formData.email);
         this.router.navigate(['/sign-up/step-two']);
 
-      }, () => {});
+      }, () => {
+      });
     }
   }
 
@@ -71,14 +78,28 @@ export class SignUpStepOneComponent implements OnInit {
 
     if (!isPasswordSafeEnough) {
       form.controls.password.setErrors({'incorrect': true});
+      document.getElementById('password-error').classList.add('p-invalid');
+      document.getElementById('password').classList.add('p-invalid');
+      this.passwordInvalid = true;
+
     } else {
       form.controls.password.setErrors(null);
+      document.getElementById('password-error').classList.remove('p-invalid');
+      document.getElementById('password').classList.remove('p-invalid');
+      this.passwordInvalid = false;
     }
 
     if (!passwordMatches) {
       form.controls.confirm.setErrors({'incorrect': true});
+      document.getElementById('confirm-password-error').classList.add('p-invalid');
+      document.getElementById('confirm-password').classList.add('p-invalid');
+      this.passwordInvalid = true;
+
     } else {
       form.controls.confirm.setErrors(null);
+      document.getElementById('confirm-password-error').classList.remove('p-invalid');
+      document.getElementById('confirm-password').classList.remove('p-invalid');
+      this.passwordInvalid = this.passwordInvalid || false;
     }
 
     return isPasswordSafeEnough && passwordMatches;
