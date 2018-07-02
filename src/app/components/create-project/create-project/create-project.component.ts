@@ -3,6 +3,7 @@ import {TechnicalResource} from '@model/TechnicalResource';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {Location} from '@angular/common';
 import {ProjectService} from '@services/project/project.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-project',
@@ -22,7 +23,8 @@ export class CreateProjectComponent implements OnInit {
   formIsValid: boolean;
   error: boolean;
 
-  constructor(private authenticateService: AuthenticateService, private projectService: ProjectService, private location: Location) {
+  constructor(private authenticateService: AuthenticateService, private projectService: ProjectService, private location: Location,
+              private router: Router) {
     this.resources = new Set<TechnicalResource>();
     this.error = false;  // used to specify that there was an error while creating the project
   }
@@ -38,7 +40,8 @@ export class CreateProjectComponent implements OnInit {
   onSubmit(description: string): void {
     const startDate = this.model.year + '-' + this.model.month + '-' + this.model.day;
     this.projectService.create(this.name, startDate, this.resources.values().next().value.username, description)
-      .subscribe(response => this.location.back() // redirects the user to the last page they were on (temporary)
+      .subscribe(response =>
+          this.router.navigate(['project-profile', response.id]) // redirects the user to the last page they were on (temporary)
         , error => this.error = true);
   }
 
