@@ -32,14 +32,15 @@ export class AcceptInviteComponent implements OnInit {
 
   ngOnInit() {
 	  this.invitationService.
-	  validateToken(this.token).then(response  => {		  
+	  validateToken(this.token).catch(error => {this.router.navigate(['/invalid-token']);}).
+	  then(response  => {		  
 			   const userInfoObject = JSON.parse(JSON.stringify(response));
 			   const body = JSON.parse(userInfoObject._body);
                this.firstName = body.firstName;
                this.lastName = body.lastName;
 			   this.organizationLogo = body.logo;
             });
-			//.catch(error => {this.router.navigate(['/invalid-token']);})
+			
   }
 
   /**
