@@ -47,6 +47,11 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+
+  /**
+   * Checks that the user is able to edit.
+   * @param {string} userId
+   */
   checkEditPermission(userId: string) {
     this.canEdit = false;
     this.authenticateService.isLoggedIn()
