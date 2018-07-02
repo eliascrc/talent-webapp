@@ -15,6 +15,7 @@ export class UserProfileComponent implements OnInit {
   userProfilePicture: string;
   loggedIn = false;
   position: string;
+  canEdit: boolean;
 
   constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
               private resourceService: ResourceInformationService) {
@@ -24,17 +25,13 @@ export class UserProfileComponent implements OnInit {
    * Data querying of the users profile information.
    */
   ngOnInit() {
-    this.userId = this.activatedRoute.snapshot.paramMap.get('userId');
-    this.authenticateService.isLoggedIn()
-      .then(response => {
-          this.loggedIn = response;
-          if (this.loggedIn) {
-            this.authenticateService.getLoggedInUserInfo().then(loggedUserInfo => {
-              const loggedUserInfoObject = JSON.parse(JSON.stringify(loggedUserInfo));
-              const id = loggedUserInfoObject.id;
-              if (id !== this.userId) {
-                document.getElementById('edit-button').style.display = 'none';
-              }
+    this.activatedRoute.params.subscribe(param => {
+      this.userId = param['userId'];
+      this.checkEditPermission(this.userId);
+      this.authenticateService.isLoggedIn()
+        .then(response => {
+            this.loggedIn = response;
+            if (this.loggedIn) {
               this.resourceService.getTechnicalResourceBasicInfoWithId(this.userId)
                 .then(userInfo => {
                   let name = userInfo.firstName;
@@ -42,9 +39,31 @@ export class UserProfileComponent implements OnInit {
                   this.name = name.concat(userInfo.lastName);
                   this.userProfilePicture = userInfo.profilePicture;
                   this.userProfilePicture = userInfo.profilePicture.link;
-                  //this.position = userInfo.technicalPosition;
                 }, error => {
                 });
+            }
+          }
+        );
+    });
+  }
+
+
+  /**
+   * Checks that the user is able to edit.
+   * @param {string} userId
+   */
+  checkEditPermission(userId: string) {
+    this.canEdit = false;
+    this.authenticateService.isLoggedIn()
+      .then(response => {
+          this.loggedIn = response;
+          if (this.loggedIn) {
+            this.authenticateService.getLoggedInUserInfo().then(userInfo => {
+              const userInfoObject = JSON.parse(JSON.stringify(userInfo));
+              const id = userInfoObject.id;
+              if (this.userId === id) {
+                this.canEdit = true;
+              }
             });
           }
         }

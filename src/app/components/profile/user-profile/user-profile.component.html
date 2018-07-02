@@ -12,7 +12,7 @@
         <div class="user-name"><p class="name">{{name}}</p></div>
         <div class="user-info"><p class="position-info">Junior Software Developer<br/>Technical Resource</p></div>
       </div>
-      <div id="edit-option">
+      <div *ngIf="canEdit" id="edit-option">
         <div class="edit-button" (click)="onEditButton()">
           <i class="fas fa-pencil-alt" id="edit-pencil" title="Edit"></i>
         </div>
