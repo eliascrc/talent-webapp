@@ -41,7 +41,7 @@ export class CreateProjectComponent implements OnInit {
     const startDate = this.model.year + '-' + this.model.month + '-' + this.model.day;
     this.projectService.create(this.name, startDate, this.resources.values().next().value.username, description)
       .subscribe(response =>
-          this.router.navigate(['project-profile', response.id]) // redirects the user to the last page they were on (temporary)
+          this.router.navigate(['project-profile', response.id]) // navigates to a page with the created project's information
         , error => this.error = true);
   }
 
