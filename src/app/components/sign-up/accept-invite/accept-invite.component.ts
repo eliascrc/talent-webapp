@@ -16,6 +16,9 @@ import {NgForm} from '@angular/forms';
  * @author Renato Mainieri Sáenz
  */
 export class AcceptInviteComponent implements OnInit {
+	formSubmitted = false;
+    passwordInvalid = true;
+  
 	firstName: string;
 	lastName: string;
 	token: string;
@@ -29,14 +32,14 @@ export class AcceptInviteComponent implements OnInit {
 
   ngOnInit() {
 	  this.invitationService.
-	  validateToken(this.token).catch(error => {this.router.navigate(['/invalid-token']);})
-	  .then(response  => {		  
+	  validateToken(this.token).then(response  => {		  
 			   const userInfoObject = JSON.parse(JSON.stringify(response));
 			   const body = JSON.parse(userInfoObject._body);
                this.firstName = body.firstName;
                this.lastName = body.lastName;
 			   this.organizationLogo = body.logo;
             });
+			//.catch(error => {this.router.navigate(['/invalid-token']);})
   }
 
   /**
@@ -61,16 +64,30 @@ export class AcceptInviteComponent implements OnInit {
 
     if (!isPasswordSafeEnough) {
       form.controls.password.setErrors({'incorrect': true});
+      document.getElementById('password-error').classList.add('p-invalid');
+      document.getElementById('password').classList.add('p-invalid');
+      this.passwordInvalid = true;
+
     } else {
       form.controls.password.setErrors(null);
+      document.getElementById('password-error').classList.remove('p-invalid');
+      document.getElementById('password').classList.remove('p-invalid');
+      this.passwordInvalid = false;
     }
 
     if (!passwordMatches) {
       form.controls.confirm.setErrors({'incorrect': true});
+      document.getElementById('confirm-password-error').classList.add('p-invalid');
+      document.getElementById('confirm-password').classList.add('p-invalid');
+      this.passwordInvalid = true;
+
     } else {
       form.controls.confirm.setErrors(null);
+      document.getElementById('confirm-password-error').classList.remove('p-invalid');
+      document.getElementById('confirm-password').classList.remove('p-invalid');
+      this.passwordInvalid = this.passwordInvalid || false;
     }
-
+	
     return isPasswordSafeEnough && passwordMatches;
   }
 
