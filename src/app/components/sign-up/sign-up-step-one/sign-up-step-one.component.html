@@ -1,7 +1,7 @@
-<div class="container-fluid m-0 p-0" id="minimum-height">
+<div class="container-fluid m-0 p-0 minimum-height">
 
   <!-- Main wrapper row-->
-  <div class="row m-0 p-0">
+  <div class="row m-0 p-0 minimum-height">
 
     <!-- Side image column -->
     <div class="d-md-block col-lg-5" id="side-image"></div>
@@ -25,10 +25,10 @@
       <!-- Form row -->
       <div class="row" id="step-one-input">
 
-        <h2>Sign up</h2>
+        <h2 class="col-12">Sign up</h2>
 
         <!-- Step One Form -->
-        <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+        <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm" class="col-12">
           <div class="form-group">
             <label for="first-name">First Name</label>
             <input type="text" class="form-control" placeholder="First name" id="first-name" ngModel name="firstName"
