@@ -115,13 +115,12 @@
   width: 100%;
 }
 
-@media screen and (device-width: 768px) {
-
+@media screen and (min-width: 710px) and (max-width: 975px) {
   :host /deep/ .nav-link{
     color: #979595;
     font-size: 13px;
     line-height: 18px;
-    width: 60px;
+    width: 110px;
     margin: 18px 5px 18px 5px;
     padding: 0;
   }
@@ -130,17 +129,17 @@
     color: #EFA42F;
     font-size: 13px;
     line-height: 18px;
-    width: 60px;
-    margin: 18px 5px 18px 5px;
+    width: 110px;
+    margin: 18px 5px 0px 5px;
     height: 60px;
     border: none white;
     border-bottom: 1px solid #EFA42F;
     padding: 0;
   }
-
 }
 
-@media screen and (max-width: 670px) {
+
+@media screen and (min-width: 625px) and (max-width: 710px) {
   #image{
     width: 100%;
     display: block;
@@ -208,16 +207,218 @@
 
   :host /deep/ .nav-link{
     color: #979595;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 18px;
+    width: 70px;
+    margin: 18px 5px 18px 5px;
+    padding: 0;
+  }
+
+  :host /deep/ .nav-link.active{
+    color: #EFA42F;
+    font-size: 13px;
+    line-height: 18px;
+    width: 95px;
+    margin: 18px 5px 0 5px;
+    height: 60px;
+    border: none white;
+    border-bottom: 1px solid #EFA42F;
+    padding: 0;
+  }
+
+  #basic-info {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+
+  #project-tabs{
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: 100%;
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 625px) {
+  #image{
+    width: 100%;
+    display: block;
+  }
+
+  #image-div {
+    margin: auto;
+    width: fit-content;
+  }
+
+  #profilePicture{
+    align-content: center;
+    float: inside;
+    alignment: center;
+  }
+
+  #edit-option{
+    margin: auto;
+    width: fit-content;
+    display: block;
+  }
+
+  .edit-button{
+    display: contents;
+    color: lightslategray;
+    margin-top: 0;
+  }
+
+  #information{
+    width: 100%;
+    float: inside;
+    display: block;
+    text-align: center;
+  }
+
+  .align-right{
+    width: 100%;
+    float: inside;
+    display: block;
+    text-align: center;
+  }
+
+  .user-name{
+    margin: 15px auto auto auto;
+  }
+
+  .name{
+    color: #294261;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 23px;
+    height: 23px;
+  }
+
+  .position-info {
+    height: 23px;
+    color: #5A6169;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .user-info{
+    margin: 10px auto auto auto;
+  }
+
+  :host /deep/ .nav-link{
+    color: #979595;
+    font-size: 13px;
+    line-height: 18px;
+    width: 60px;
+    margin: 18px 5px 18px 5px;
+    padding: 0;
+  }
+
+  :host /deep/ .nav-link.active{
+    color: #EFA42F;
+    font-size: 13px;
+    line-height: 18px;
+    width: 90px;
+    margin: 18px 5px 0 5px;
+    height: 60px;
+    border: none white;
+    border-bottom: 1px solid #EFA42F;
+    padding: 0;
+  }
+
+  #basic-info {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+
+  #project-tabs{
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: 100%;
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
+  }
+}
+
+@media screen and (min-width: 410px) and (max-width: 500px) {
+  #image{
+    width: 100%;
+    display: block;
+  }
+
+  #image-div {
+    margin: auto;
+    width: fit-content;
+  }
+
+  #profilePicture{
+    align-content: center;
+    float: inside;
+    alignment: center;
+  }
+
+  #edit-option{
+    margin: auto;
+    width: fit-content;
+    display: block;
+  }
+
+  .edit-button{
+    display: contents;
+    color: lightslategray;
+    margin-top: 0;
+  }
+
+  #information{
+    width: 100%;
+    float: inside;
+    display: block;
+    text-align: center;
+  }
+
+  .align-right{
+    width: 100%;
+    float: inside;
+    display: block;
+    text-align: center;
+  }
+
+  .user-name{
+    margin: 15px auto auto auto;
+  }
+
+  .name{
+    color: #294261;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 23px;
+    height: 23px;
+  }
+
+  .position-info {
+    height: 23px;
+    color: #5A6169;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .user-info{
+    margin: 10px auto auto auto;
+  }
+
+  :host /deep/ .nav-link{
+    color: #979595;
+    font-size: 13px;
+    width: 115px;
+    line-height: 10px;
     margin: 18px auto 18px auto;
   }
 
   :host /deep/ .nav-link.active{
     color: #EFA42F;
-    font-size: 14px;
-    line-height: 18px;
-    margin: 18px auto 18px auto;
+    font-size: 13px;
+    line-height: 10px;
+    width: 115px;
+    margin: 18px auto 0 auto;
     height: 60px;
     border: none white;
     border-bottom: 1px solid #EFA42F;
@@ -234,5 +435,102 @@
     width: 100%;
     box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
   }
+}
 
+@media screen and (max-width: 410px) {
+  #image{
+    width: 100%;
+    display: block;
+  }
+
+  #image-div {
+    margin: auto;
+    width: fit-content;
+  }
+
+  #profilePicture{
+    align-content: center;
+    float: inside;
+    alignment: center;
+  }
+
+  #edit-option{
+    margin: auto;
+    width: fit-content;
+    display: block;
+  }
+
+  .edit-button{
+    display: contents;
+    color: lightslategray;
+    margin-top: 0;
+  }
+
+  #information{
+    width: 100%;
+    float: inside;
+    display: block;
+    text-align: center;
+  }
+
+  .align-right{
+    width: 100%;
+    float: inside;
+    display: block;
+    text-align: center;
+  }
+
+  .user-name{
+    margin: 15px auto auto auto;
+  }
+
+  .name{
+    color: #294261;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 23px;
+    height: 23px;
+  }
+
+  .position-info {
+    height: 23px;
+    color: #5A6169;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .user-info{
+    margin: 10px auto auto auto;
+  }
+
+  :host /deep/ .nav-link{
+    color: #979595;
+    font-size: 13px;
+    width: 95px;
+    line-height: 10px;
+    margin: 18px auto 18px auto;
+  }
+
+  :host /deep/ .nav-link.active{
+    color: orange;
+    font-size: 13px;
+    line-height: 10px;
+    width: 95px;
+    margin: 18px auto 0 auto;
+    height: 60px;
+    border: none white;
+    border-bottom: 1px solid #EFA42F;
+  }
+
+  #basic-info {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+
+  #project-tabs{
+    margin-top: 0;
+    margin-bottom: 30px;
+    width: 100%;
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
+  }
 }

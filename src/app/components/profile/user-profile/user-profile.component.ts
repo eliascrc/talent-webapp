@@ -10,7 +10,6 @@ import {ResourceInformationService} from '@services/technical-resource/resource-
 })
 export class UserProfileComponent implements OnInit {
 
-  static DEFAULT_PROFILE_PICTURE = '../../../../assets/images/defaultProfilePicture.png';
   userId: string;
   name: string;
   userProfilePicture: string;
@@ -21,6 +20,9 @@ export class UserProfileComponent implements OnInit {
               private resourceService: ResourceInformationService) {
   }
 
+  /**
+   * Data querying of the users profile information.
+   */
   ngOnInit() {
     this.userId = this.activatedRoute.snapshot.paramMap.get('userId');
     if (this.userId !== this.getLoggedInUserId()) {
@@ -37,7 +39,7 @@ export class UserProfileComponent implements OnInit {
                 this.name = name.concat(userInfo.lastName);
                 this.userProfilePicture = userInfo.profilePicture;
                 this.userProfilePicture = userInfo.profilePicture.link;
-                this.position = userInfo.technicalPosition;
+                //this.position = userInfo.technicalPosition;
                 console.log(this.userId);
                 console.log(userInfo.id);
               }, error => {
@@ -47,6 +49,10 @@ export class UserProfileComponent implements OnInit {
       );
   }
 
+  /**
+   * Queries the authenticateService to get the loggedIn user id.
+   * @returns {any} loggedIn user id.
+   */
   getLoggedInUserId(): any {
     this.authenticateService.getLoggedInUserInfo().then(loggedUserInfo => {
       const loggedUserInfoObject = JSON.parse(JSON.stringify(loggedUserInfo));
@@ -55,6 +61,9 @@ export class UserProfileComponent implements OnInit {
   }
 
   // This method will be implemented when the edit profile component is ready
+  /**
+   * Sends the user to the edit profile page.
+   */
   onEditButton() {
 
   }
