@@ -25,25 +25,26 @@ export class UserProfileComponent implements OnInit {
    * Data querying of the users profile information.
    */
   ngOnInit() {
-    this.userId = this.activatedRoute.snapshot.paramMap.get('userId');
-    this.checkEditPermission(this.userId);
-    this.authenticateService.isLoggedIn()
-      .then(response => {
-          this.loggedIn = response;
-          if (this.loggedIn) {
-            this.resourceService.getTechnicalResourceBasicInfoWithId(this.userId)
-              .then(userInfo => {
-                let name = userInfo.firstName;
-                name = name.concat(' ');
-                this.name = name.concat(userInfo.lastName);
-                this.userProfilePicture = userInfo.profilePicture;
-                this.userProfilePicture = userInfo.profilePicture.link;
-                //this.position = userInfo.technicalPosition;
-              }, error => {
-              });
+    this.activatedRoute.params.subscribe(param => {
+      this.userId = param['userId'];
+      this.checkEditPermission(this.userId);
+      this.authenticateService.isLoggedIn()
+        .then(response => {
+            this.loggedIn = response;
+            if (this.loggedIn) {
+              this.resourceService.getTechnicalResourceBasicInfoWithId(this.userId)
+                .then(userInfo => {
+                  let name = userInfo.firstName;
+                  name = name.concat(' ');
+                  this.name = name.concat(userInfo.lastName);
+                  this.userProfilePicture = userInfo.profilePicture;
+                  this.userProfilePicture = userInfo.profilePicture.link;
+                }, error => {
+                });
+            }
           }
-        }
-      );
+        );
+    });
   }
 
   checkEditPermission(userId: string) {
