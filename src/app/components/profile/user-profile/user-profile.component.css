@@ -115,7 +115,7 @@
   width: 100%;
 }
 
-@media screen and (min-width: 710px) and (max-width: 975px) {
+@media screen and (min-width: 728px) and (max-width: 975px) {
   :host /deep/ .nav-link{
     color: #979595;
     font-size: 13px;
@@ -139,7 +139,7 @@
 }
 
 
-@media screen and (min-width: 625px) and (max-width: 710px) {
+@media screen and (min-width: 625px) and (max-width: 728px) {
   #image{
     width: 100%;
     display: block;

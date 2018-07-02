@@ -15,6 +15,7 @@ export class UserProfileComponent implements OnInit {
   userProfilePicture: string;
   loggedIn = false;
   position: string;
+  canEdit: boolean;
 
   constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
               private resourceService: ResourceInformationService) {
@@ -25,26 +26,38 @@ export class UserProfileComponent implements OnInit {
    */
   ngOnInit() {
     this.userId = this.activatedRoute.snapshot.paramMap.get('userId');
+    this.checkEditPermission(this.userId);
     this.authenticateService.isLoggedIn()
       .then(response => {
           this.loggedIn = response;
           if (this.loggedIn) {
-            this.authenticateService.getLoggedInUserInfo().then(loggedUserInfo => {
-              const loggedUserInfoObject = JSON.parse(JSON.stringify(loggedUserInfo));
-              const id = loggedUserInfoObject.id;
-              if (id !== this.userId) {
-                document.getElementById('edit-button').style.display = 'none';
+            this.resourceService.getTechnicalResourceBasicInfoWithId(this.userId)
+              .then(userInfo => {
+                let name = userInfo.firstName;
+                name = name.concat(' ');
+                this.name = name.concat(userInfo.lastName);
+                this.userProfilePicture = userInfo.profilePicture;
+                this.userProfilePicture = userInfo.profilePicture.link;
+                //this.position = userInfo.technicalPosition;
+              }, error => {
+              });
+          }
+        }
+      );
+  }
+
+  checkEditPermission(userId: string) {
+    this.canEdit = false;
+    this.authenticateService.isLoggedIn()
+      .then(response => {
+          this.loggedIn = response;
+          if (this.loggedIn) {
+            this.authenticateService.getLoggedInUserInfo().then(userInfo => {
+              const userInfoObject = JSON.parse(JSON.stringify(userInfo));
+              const id = userInfoObject.id;
+              if (this.userId === id) {
+                this.canEdit = true;
               }
-              this.resourceService.getTechnicalResourceBasicInfoWithId(this.userId)
-                .then(userInfo => {
-                  let name = userInfo.firstName;
-                  name = name.concat(' ');
-                  this.name = name.concat(userInfo.lastName);
-                  this.userProfilePicture = userInfo.profilePicture;
-                  this.userProfilePicture = userInfo.profilePicture.link;
-                  //this.position = userInfo.technicalPosition;
-                }, error => {
-                });
             });
           }
         }

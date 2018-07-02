@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {LocationStrategy} from '@angular/common';
 import {OrganizationService} from '@services/organization/organization.service';
@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   displayLoggedInArea = false;
   userProfilePicture: string;
 
-  constructor(public router: Router, private authenticateService: AuthenticateService, private organizationService: OrganizationService) {
+  constructor(public router: Router, private authenticateService: AuthenticateService, private organizationService: OrganizationService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
