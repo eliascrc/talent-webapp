@@ -4,17 +4,45 @@
       <div id="org-logo">
         <img [src]="organizationLogo" id="logo">
       </div>
-      <div>
-
+      <div id="org-name">
+        <div id="name">{{organizationName}}</div>
+        <div id="unique-identifier">{{organizationUniqueIdentifier}}</div>
       </div>
-      <div>
-
+      <div *ngIf="isAdministrator" id="edit-name">
+        <i class="fas fa-pencil-alt"></i>
       </div>
-
-
     </div>
   </div>
+
   <div class="row" id="organization-accordions">
+    <div class="accordion-card">
+      <div class="accordion-title">Members</div>
+      <div class="accordion-arrow"><i class="arrow" (click)="onShowMembers()" [class.up]="showMembers" [class.down]="!showMembers"></i></div>
+      <div class="accordion-content" [class.show]="showMembers" [class.hide]="!showMembers">
+
+      </div>
+    </div>
+    <div class="accordion-card">
+      <div class="accordion-title">Capabilities</div>
+      <div class="accordion-arrow"><i class="arrow" (click)="onShowCapabilities()" [class.up]="showCapabilities" [class.down]="!showCapabilities"></i></div>
+      <div class="accordion-content" [class.show]="showCapabilities" [class.hide]="!showCapabilities">
+
+      </div>
+    </div>
+    <div class="accordion-card">
+      <div class="accordion-title">Skills</div>
+      <div class="accordion-arrow"><i class="arrow" (click)="onShowSkills()" [class.up]="showSkills" [class.down]="!showSkills"></i></div>
+      <div class="accordion-content" [class.show]="showSkills" [class.hide]="!showSkills">
+
+      </div>
+    </div>
+    <div class="accordion-card">
+      <div class="accordion-title">Projects</div>
+      <div class="accordion-arrow"><i class="arrow" (click)="onShowProjects()" [class.up]="showProjects" [class.down]="!showProjects"></i></div>
+      <div class="accordion-content" [class.show]="showProjects" [class.hide]="!showProjects">
+
+      </div>
+    </div>
 
   </div>
 </div>

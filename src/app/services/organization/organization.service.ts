@@ -7,6 +7,7 @@ import { Organization } from '@model/Organization';
 export class OrganizationService {
 
   private url: string = 'http://ws.talent.cr/ws/login/organization';
+  private organizationBasicInfoUrl = 'http://ws.talent.cr/ws/organization/get';
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +21,15 @@ export class OrganizationService {
         'uniqueIdentifier': uniqueIdentifier
       }
     });
+  }
+
+  /**
+   * Returns a promise with the JSON containing the organization's basic information.
+   * @returns {Promise<Object>}
+   */
+  getOrganizationBasicInfo() {
+    return this.http.get(this.organizationBasicInfoUrl, {withCredentials: true})
+      .toPromise();
   }
 
 }
