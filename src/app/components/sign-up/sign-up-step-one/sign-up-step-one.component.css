@@ -14,8 +14,6 @@ input[type=text], input[type=email], input[type=password] {
   border-radius: 8px;
 }
 
-
-
 input[type=text]::placeholder,
 input[type=email]::placeholder,
 input[type=password]::placeholder  { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -131,6 +129,14 @@ h2 {
   margin: 10vh 27.16% 12vh 17.19%;
   font-size: 20px;
   width: 60%;
+}
+
+#already-used-error {
+  color: #C4183C;
+  margin-bottom: 15px;
+  display: block;
+  font-size: 18px;
+  height: 18px;
 }
 
 #upper-text {

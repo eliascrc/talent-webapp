@@ -27,6 +27,8 @@
 
         <h2 class="col-12">Sign up</h2>
 
+        <div class="col-12" id="already-used-error">{{alreadyUsedAccountMsg}}</div>
+
         <!-- Step One Form -->
         <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm" class="col-12">
           <div class="form-group">

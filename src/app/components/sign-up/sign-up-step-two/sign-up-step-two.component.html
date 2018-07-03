@@ -69,8 +69,8 @@
               </div>
             </div>
 
-            <button class="btn btn-primary" id="next-step-button" [disabled]="!completeForm || !validCode">
-              Done
+            <button class="btn btn-primary" id="next-step-button" [disabled]="!completeForm || !validCode ||  formSubmitted">
+              {{nextStepBtnMessage}}
             </button>
           </form>
         </div>

@@ -20,6 +20,7 @@ export class SignUpStepOneComponent implements OnInit {
   formSubmitted = false;
   passwordInvalid = true;
   signUpBtnMessage = 'Sign up';
+  alreadyUsedAccountMsg = '';
 
   formData = {
     firstName: '',
@@ -56,6 +57,8 @@ export class SignUpStepOneComponent implements OnInit {
         this.router.navigate(['/sign-up/step-two']);
 
       }, () => {
+        this.alreadyUsedAccountMsg = 'This account has already been used and activated';
+        scroll(0, 0);
       });
     }
   }
