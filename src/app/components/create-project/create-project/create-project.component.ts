@@ -49,7 +49,6 @@ export class CreateProjectComponent implements OnInit {
    * Used to cancel the creation of the project, returns the user to the previous page they were in
    */
   cancel(): void {
-    alert(this.resources.size);
     this.location.back();
   }
 
