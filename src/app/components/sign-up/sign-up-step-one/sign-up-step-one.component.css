@@ -134,9 +134,8 @@ h2 {
 #already-used-error {
   color: #C4183C;
   margin-bottom: 15px;
-  display: block;
+  display: none;
   font-size: 18px;
-  height: 18px;
 }
 
 #upper-text {
