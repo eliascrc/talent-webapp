@@ -27,7 +27,7 @@ export class SignUpStepTwoComponent implements OnInit {
   ngOnInit() {
     this.stepCommunicationService.registeredEmail$.subscribe(email => {
       if (email === 'Invalid Email') {
-        // this.router.navigate(['/sign-up/step-one']);
+        this.router.navigate(['/sign-up/step-one']);
       } else {
         this.email = email;
       }
