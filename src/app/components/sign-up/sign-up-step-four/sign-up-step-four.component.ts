@@ -22,6 +22,8 @@ export class SignUpStepFourComponent implements OnInit {
   invitationsInput: InvitationInput[];
   idCounter: number;
   errorMessage: string;
+  formSubmitted = false;
+  invitationBtnMessage = 'Send Invitations';
 
   constructor(public router: Router, public signUpService: SignupService) {
     this.idCounter = 0;
@@ -61,21 +63,32 @@ export class SignUpStepFourComponent implements OnInit {
     any = {};
     any.invitations = invitationsArray;
     invitationsToSend = new Invitations(any);
-    console.log(JSON.stringify(invitationsToSend));
+    this.formSubmitted = true;
+    this.invitationBtnMessage = 'Sending...';
 
     this.signUpService.stepFour(JSON.stringify(invitationsToSend)).subscribe(() => {
 
-      this.router.navigate(['/dashboard']);
-      location.reload();
+      this.router.navigate(['/dashboard']).then( () => {
+        location.reload();
+      });
 
     }, error => {
       const httpError: HttpErrorResponse = (error as HttpErrorResponse);
       if (httpError.status === 401) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard']).then( () => {
+          location.reload();
+        });
+
       } else if (httpError.status === 409 && httpError.error === 'LimitOfInvitationsReached') {
         this.errorMessage = 'Limit of invitations has been reached!';
+        this.formSubmitted = false;
+        this.invitationBtnMessage = 'Send Invitations';
+
       } else if (httpError.status === 409 && httpError.error === 'AlreadyRegisteredUser') {
         this.errorMessage = 'One of the users you\'re trying to invite is already registered!';
+        this.formSubmitted = false;
+        this.invitationBtnMessage = 'Send Invitations';
+
       }
     });
   }

@@ -59,6 +59,8 @@ export class SignUpStepOneComponent implements OnInit {
       }, () => {
         this.alreadyUsedAccountMsg = 'This account has already been used and activated';
         document.getElementById('already-used-error').style.display = 'block';
+        this.formSubmitted = false;
+        this.signUpBtnMessage = 'Sign up';
         scroll(0, 0);
       });
     }
