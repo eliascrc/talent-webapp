@@ -44,7 +44,7 @@ const routes: Routes = [
   {path: 'project-profile/:projectIdentifier', component: ProjectProfileComponent, canActivate: [AuthenticateGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard]},
   {path: 'accept-invite', component: AcceptInviteComponent, canActivate: [UnauthenticateGuard]},
-  {path: 'profile/user-profile', component: UserProfileComponent, canActivate: [AuthenticateGuard]},
+  {path: 'profile/user-profile/:userId', component: UserProfileComponent, canActivate: [AuthenticateGuard]},
   {path: 'create-project', component: CreateProjectComponent, canActivate: [AuthenticateGuard]},
 ];
 
@@ -55,3 +55,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
+

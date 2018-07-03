@@ -155,6 +155,7 @@ nav.container-fluid {
 .picture {
   position: relative;
   width: 100%;
+  height: 81px;
   margin-top: 30%;
   border-radius: 50%;
 }

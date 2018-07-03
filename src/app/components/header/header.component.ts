@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {LocationStrategy} from '@angular/common';
 import {OrganizationService} from '@services/organization/organization.service';
@@ -20,10 +20,11 @@ export class HeaderComponent implements OnInit {
   displayHeader = false;
   userOrganizationLogo: string;
   userName: string;
+  userId: string;
   displayLoggedInArea = false;
   userProfilePicture: string;
 
-  constructor(public router: Router, private authenticateService: AuthenticateService, private organizationService: OrganizationService) {
+  constructor(public router: Router, private authenticateService: AuthenticateService, private organizationService: OrganizationService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -37,6 +38,7 @@ export class HeaderComponent implements OnInit {
               name = name.concat(' ');
               this.userName = name.concat(userInfoObject.lastName);
               this.userProfilePicture = userInfoObject.profilePicture.link;
+              this.userId = userInfoObject.id;
               this.organizationService.getOrganization(userInfoObject.organization.uniqueIdentifier)
                 .subscribe(userOrganization => {
                   this.userOrganizationLogo = JSON.parse(JSON.stringify(userOrganization)).logo;
@@ -57,7 +59,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onViewProfile() {
-    this.router.navigate(['/profile/user-profile']);
+    let dir = '/profile/user-profile/';
+    dir = dir.concat(this.userId);
+    this.router.navigate([dir]);
     this.displayLoggedInArea = !this.displayLoggedInArea;
   }
 

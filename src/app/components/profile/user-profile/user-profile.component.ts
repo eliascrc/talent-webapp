@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
+import {ActivatedRoute, Route} from '@angular/router';
+import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,26 +10,60 @@ import {AuthenticateService} from '@services/authentication/authenticate.service
 })
 export class UserProfileComponent implements OnInit {
 
-  userName: string;
+  userId: string;
+  name: string;
   userProfilePicture: string;
   loggedIn = false;
   position: string;
+  canEdit: boolean;
 
+  constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
+              private resourceService: ResourceInformationService) {
+  }
 
-  constructor(private authenticateService: AuthenticateService) { }
-
+  /**
+   * Data querying of the users profile information.
+   */
   ngOnInit() {
+    this.activatedRoute.params.subscribe(param => {
+      this.userId = param['userId'];
+      this.checkEditPermission(this.userId);
+      this.authenticateService.isLoggedIn()
+        .then(response => {
+            this.loggedIn = response;
+            if (this.loggedIn) {
+              this.resourceService.getTechnicalResourceBasicInfoWithId(this.userId)
+                .then(userInfo => {
+                  let name = userInfo.firstName;
+                  name = name.concat(' ');
+                  this.name = name.concat(userInfo.lastName);
+                  this.userProfilePicture = userInfo.profilePicture;
+                  this.userProfilePicture = userInfo.profilePicture.link;
+                }, error => {
+                });
+            }
+          }
+        );
+    });
+  }
+
+
+  /**
+   * Checks that the user is able to edit.
+   * @param {string} userId
+   */
+  checkEditPermission(userId: string) {
+    this.canEdit = false;
     this.authenticateService.isLoggedIn()
       .then(response => {
           this.loggedIn = response;
           if (this.loggedIn) {
             this.authenticateService.getLoggedInUserInfo().then(userInfo => {
               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
-              let name = userInfoObject.firstName;
-              name = name.concat(' ');
-              this.userName = name.concat(userInfoObject.lastName);
-              this.userProfilePicture = userInfoObject.profilePicture.link;
-              this.position = userInfoObject.technicalPosition;
+              const id = userInfoObject.id;
+              if (this.userId === id) {
+                this.canEdit = true;
+              }
             });
           }
         }
@@ -35,6 +71,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   // This method will be implemented when the edit profile component is ready
-  onEditButton() { }
+  /**
+   * Sends the user to the edit profile page.
+   */
+  onEditButton() {
+
+  }
 
 }
