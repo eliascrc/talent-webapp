@@ -1,0 +1,33 @@
+.container-fluid {
+  min-height: 90vh;
+  width: 88%;
+  min-width: 295px;
+  margin: auto;
+  font-family: "Source Sans Pro", serif;
+}
+
+.container-fluid .row {
+  margin: 0;
+  padding: 0
+}
+
+#logo {
+  max-height:50px;
+  width: auto;
+  height: auto;
+}
+
+#org-logo {
+  height: 50px;
+  width: auto;
+  margin: 14px 0 14px 45px;
+  display: inline-block;
+  float: left;
+}
+
+#top-content {
+  margin-top: 88px;
+  width: 100%;
+}
+
+
