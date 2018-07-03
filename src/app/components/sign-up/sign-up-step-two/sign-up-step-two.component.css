@@ -1,3 +1,5 @@
+
+/* Identifiers */
 .container-fluid {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: normal;
@@ -18,13 +20,25 @@
   text-align: -moz-center;
 }
 
+.confirmation-number:focus,
+.confirmation-number.ng-valid{
+  border: 1px solid #17C671;
+  box-shadow: 0 5px 11px 0 rgba(23,198,113,0.1);
+}
+
 .confirmation-number.invalid-code {
   border: 1px solid #C4183C;
   box-shadow: 0 5px 11px 0 rgba(196,24,60,0.1);
 }
 
 .confirmation-input {
-  display: inline;
+  display: inline-block;
+  display: -moz-inline-block;
+}
+
+.confirmation-input.center-input {
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .minimum-height {
@@ -35,6 +49,7 @@
 #line-container {
   height: 60px;
   display: inline;
+  padding: 0 8px;
 }
 
 #side-image {
@@ -76,7 +91,7 @@
 }
 
 #confirmation-code form {
-  margin: 10px 0 40px 0;
+  margin: 10px auto 40px auto;
 }
 
 #confirmation-message {
@@ -84,14 +99,16 @@
   font-size: 20px;
   letter-spacing: -0.35px;
   line-height: 25px;
+  text-align: center;
+  text-align: -moz-center;
+  text-align: -webkit-center;
 }
 
 #number-separator {
   box-sizing: border-box;
   width: 25px;
   border: 1px solid #BECAD6;
-  margin: 0.5rem 1.5%;
-  display: inline-block;
+  margin: 30px auto;
 }
 
 #send-to-bottom, #send-to-top {
@@ -99,8 +116,9 @@
 }
 
 #next-step-button {
-  margin-top: 40px;
+  margin: 40px auto 0 auto;
   width: 100%;
+  max-width: 600px;
   font-size: 24px;
   height: 69px;
   background-color: #EFA42F;
@@ -108,7 +126,7 @@
   border-radius: 10px;
   line-height: 28px;
   font-family: 'Roboto', serif;
-  text-shadow: 0 2px 10px 0 rgba(0,0,0,0.5);
+  display: block;
 }
 
 #next-step-button:disabled {
@@ -122,26 +140,8 @@
   margin-bottom: 0;
   display: block;
   font-size: 18px;
+  text-align: center;
+  text-align: -moz-center;
+  text-align: -webkit-center;
 }
 
-@media only screen and (max-width: 580px) {
-
-  #confirmation-message, #error-message {
-    text-align: center;
-    text-align: -moz-center;
-    text-align: -webkit-center;
-  }
-
-  #send-to-bottom {
-    display: block;
-  }
-
-  #number-separator {
-    display: block;
-  }
-
-  #number-separator {
-    margin: 2rem auto;
-  }
-
-}
