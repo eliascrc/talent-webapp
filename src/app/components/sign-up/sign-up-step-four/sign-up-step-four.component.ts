@@ -66,6 +66,7 @@ export class SignUpStepFourComponent implements OnInit {
     this.signUpService.stepFour(JSON.stringify(invitationsToSend)).subscribe(() => {
 
       this.router.navigate(['/dashboard']);
+      location.reload();
 
     }, error => {
       const httpError: HttpErrorResponse = (error as HttpErrorResponse);
