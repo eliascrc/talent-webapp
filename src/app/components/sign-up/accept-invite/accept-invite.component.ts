@@ -36,8 +36,8 @@ export class AcceptInviteComponent implements OnInit {
 	  then(response  => {		  
 			   const userInfoObject = JSON.parse(JSON.stringify(response));
 			   const body = JSON.parse(userInfoObject._body);
-               this.firstName = body.firstName;
-               this.lastName = body.lastName;
+               this.firstName = body.invitedResourceFirstName;
+               this.lastName = body.invitedResourceLastName;
 			   this.organizationLogo = body.logo;
             });
 			
