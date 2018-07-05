@@ -52,6 +52,7 @@ import {AcceptInviteComponent} from './components/sign-up/accept-invite/accept-i
 import {CreateProjectComponent} from './components/create-project/create-project/create-project.component';
 import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
+import { SearchResourceComponent } from './components/search/search-resource/search-resource.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/
     UserProfileComponent,
     CreateProjectComponent,
     UserProfileComponent,
+    SearchResourceComponent,
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,7 @@ import {SignUpStepFourComponent} from '../components/sign-up/sign-up-step-four/s
 import {CreateProjectComponent} from '../components/create-project/create-project/create-project.component';
 import {UserProfileComponent} from '../components/profile/user-profile/user-profile.component';
 import {SignUpStepThreeComponent} from '../components/sign-up/sign-up-step-three/sign-up-step-three.component';
+import {SearchResourceComponent} from '../components/search/search-resource/search-resource.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
@@ -46,6 +47,7 @@ const routes: Routes = [
   {path: 'accept-invite', component: AcceptInviteComponent, canActivate: [UnauthenticateGuard]},
   {path: 'profile/user-profile/:userId', component: UserProfileComponent, canActivate: [AuthenticateGuard]},
   {path: 'create-project', component: CreateProjectComponent, canActivate: [AuthenticateGuard]},
+  {path: 'search/resource', component: SearchResourceComponent, canActivate: [AuthenticateGuard]},
 ];
 
 @NgModule({
