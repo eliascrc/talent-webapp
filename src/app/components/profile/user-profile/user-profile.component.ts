@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {ActivatedRoute, Route} from '@angular/router';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
@@ -17,7 +18,7 @@ export class UserProfileComponent implements OnInit {
   position: string;
   canEdit: boolean;
 
-  constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
+  constructor(private router: Router, private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
               private resourceService: ResourceInformationService) {
   }
 
@@ -70,12 +71,12 @@ export class UserProfileComponent implements OnInit {
       );
   }
 
-  // This method will be implemented when the edit profile component is ready
+
   /**
    * Sends the user to the edit profile page.
    */
   onEditButton() {
-
+	this.router.navigate(['/profile/edit-profile']);
   }
 
 }

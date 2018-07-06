@@ -69,8 +69,33 @@ input[type=text], input[type=password] {
   width: 100%;
 }
 
-#drag-picture {
+#drag-picture{
+  padding: 0;
+  margin-bottom: 49px;
+  position: relative;
+  border-radius: 8px;
+}
+
+#drag-picture:hover {
+  box-shadow: inset 0 0 2px 0 rgba(0,0,0,0.5), 0 0.01px 4px 0 rgba(0,0,0,0.5);
+}
+
+#drag-picture-input {
   height: 122px;
+  color: transparent;
+  width: 100%;
+  opacity: 0;
+}
+
+#drag-picture-contain {
+  position: absolute;
+  color: #B9BBBE;
+  font-size: 14px;
+  letter-spacing: -0.25px;
+  line-height: 18px;
+  text-align: center;
+  margin-left: 44%;
+  margin-top: 33px;
 }
 
 #information{
@@ -113,6 +138,10 @@ label.custom-file {
   line-height: 17px;
 }
 
+.custom-file-input{
+  display: none;
+}
+
 .container-fluid{
   width: 88%;
   min-width: 285px;
@@ -124,6 +153,12 @@ label.custom-file {
 .container-fluid .row {
   margin: 0;
   padding: 0;
+}
+
+i.far.fa-copy {
+  font-size: 29px;
+  display: block;  
+  margin-bottom: 4px;
 }
 
 .user-name{
@@ -160,66 +195,11 @@ label.custom-file {
   vertical-align: middle;
 }
 
-:host /deep/ .nav-link{
-  color: #979595;
-  font-size: 14px;
-  line-height: 18px;
-  margin: 18px;
-  width: 150px;
-  text-align: center;
-}
-
-:host /deep/ .nav-link.active{
-  color: #EFA42F;
-  font-size: 14px;
-  line-height: 18px;
-  margin: 18px;
-  margin-bottom: 0;
-  height: 60px;
-  border: none white;
-  border-bottom: 1px solid #EFA42F;
-}
-
-:host /deep/ .nav-link:hover{
-  border-style: none;
-  margin: 18px;
-  margin-bottom: 0;
-  height: 60px;
-  border-bottom: 1px solid #DFDFDF;
-}
-
-:host /deep/ ngb-tabset {
-  width: 100%;
-}
-
 ::placeholder { 
     color: #B9BBBE;
 }
 
-@media screen and (min-width: 728px) and (max-width: 975px) {
-  :host /deep/ .nav-link{
-    color: #979595;
-    font-size: 13px;
-    line-height: 18px;
-    width: 110px;
-    margin: 18px 5px 18px 5px;
-    padding: 0;
-  }
-
-  :host /deep/ .nav-link.active{
-    color: #EFA42F;
-    font-size: 13px;
-    line-height: 18px;
-    width: 110px;
-    margin: 18px 5px 0px 5px;
-    height: 60px;
-    border: none white;
-    border-bottom: 1px solid #EFA42F;
-    padding: 0;
-  }
-}
-
-@media screen and (min-width: 625px) and (max-width: 728px) {
+@media screen and (max-width: 728px) {
   #image{
     width: 100%;
     display: block;
@@ -271,187 +251,6 @@ label.custom-file {
 
   .user-info{
     margin: 10px auto auto auto;
-  }
-
-  :host /deep/ .nav-link{
-    color: #979595;
-    font-size: 13px;
-    line-height: 18px;
-    width: 70px;
-    margin: 18px 5px 18px 5px;
-    padding: 0;
-  }
-
-  :host /deep/ .nav-link.active{
-    color: #EFA42F;
-    font-size: 13px;
-    line-height: 18px;
-    width: 95px;
-    margin: 18px 5px 0 5px;
-    height: 60px;
-    border: none white;
-    border-bottom: 1px solid #EFA42F;
-    padding: 0;
-  }
-
-  #basic-info {
-    margin-bottom: 20px;
-    padding: 0;
-  }
-}
-
-@media screen and (min-width: 500px) and (max-width: 625px) {
-  #image{
-    width: 100%;
-    display: block;
-  }
-
-  #image-div {
-    margin: auto;
-    width: fit-content;
-  }
-
-  #profilePicture{
-    align-content: center;
-    float: inside;
-    alignment: center;
-  }
-
-  #information{
-    width: 100%;
-    float: inside;
-    display: block;
-    text-align: center;
-  }
-
-  .align-right{
-    width: 100%;
-    float: inside;
-    display: block;
-    text-align: center;
-  }
-
-  .user-name{
-    margin: 15px auto auto auto;
-  }
-
-  .name{
-    color: #294261;
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 23px;
-    height: 23px;
-  }
-
-  .position-info {
-    height: 23px;
-    color: #5A6169;
-    font-size: 16px;
-    line-height: 18px;
-  }
-
-  .user-info{
-    margin: 10px auto auto auto;
-  }
-
-  :host /deep/ .nav-link{
-    color: #979595;
-    font-size: 13px;
-    line-height: 18px;
-    width: 60px;
-    margin: 18px 5px 18px 5px;
-    padding: 0;
-  }
-
-  :host /deep/ .nav-link.active{
-    color: #EFA42F;
-    font-size: 13px;
-    line-height: 18px;
-    width: 90px;
-    margin: 18px 5px 0 5px;
-    height: 60px;
-    border: none white;
-    border-bottom: 1px solid #EFA42F;
-    padding: 0;
-  }
-
-  #basic-info {
-    margin-bottom: 20px;
-    padding: 0;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  #image{
-    width: 100%;
-    display: block;
-  }
-
-  #image-div {
-    margin: auto;
-    width: fit-content;
-  }
-
-  #profilePicture{
-    align-content: center;
-    float: inside;
-    alignment: center;
-  }
-
-  #information{
-    width: 100%;
-    float: inside;
-    display: block;
-    text-align: center;
-  }
-
-  .align-right{
-    width: 100%;
-    float: inside;
-    display: block;
-    text-align: center;
-  }
-
-  .user-name{
-    margin: 15px auto auto auto;
-  }
-
-  .name{
-    color: #294261;
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 23px;
-    height: 23px;
-  }
-
-  .position-info {
-    height: 23px;
-    color: #5A6169;
-    font-size: 16px;
-    line-height: 18px;
-  }
-
-  .user-info{
-    margin: 10px auto auto auto;
-  }
-
-  :host /deep/ .nav-link{
-    color: #979595;
-    font-size: 13px;
-    width: 115px;
-    line-height: 10px;
-    margin: 18px auto 18px auto;
-  }
-
-  :host /deep/ .nav-link.active{
-    color: #EFA42F;
-    font-size: 13px;
-    line-height: 10px;
-    width: 115px;
-    margin: 18px auto 0 auto;
-    height: 60px;
-    border: none white;
-    border-bottom: 1px solid #EFA42F;
   }
 
   #basic-info {

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
+import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
 import {ActivatedRoute, Route} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -17,19 +19,35 @@ import {ActivatedRoute, Route} from '@angular/router';
 export class EditProfileComponent implements OnInit {
 
   userId: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   userProfilePicture: string;
-  loggedIn = false;
   position: string;
-  canEdit: boolean;
 
-  constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router; private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute) {
   }
 
   /**
-   * Data querying of the users profile information.
+   * Data querying of the user basic information.
    */
   ngOnInit() {
+	  this.authenticateService.getLoggedInUserInfo().then(userInfo => {
+              const userInfoObject = JSON.parse(JSON.stringify(userInfo));
+              this.userId = userInfoObject.id;
+			  this.firstName = userInfoObject.firstName;
+			  this.lastName = userInfoObject.lastName;
+			  let profilePictureObject = JSON.parse(JSON.stringify(userInfoObject.profilePicture));			  
+			  this.userProfilePicture = profilePictureObject.link;
+       });
+  }
+  
+  /**
+   * Sends the user to the user-profile page.
+   */
+  onCancelButton() {
+	let dir = '/profile/user-profile/';
+    dir = dir.concat(this.userId);
+    this.router.navigate([dir]);
   }
 
 }
