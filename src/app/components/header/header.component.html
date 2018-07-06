@@ -2,9 +2,11 @@
   <nav *ngIf="!loggedIn" class="container-fluid">
     <div class="row">
       <div class="main-bar">
-        <a routerLink="/landing-page">
-          <img src="/assets/images/talent-logo.png" alt="Talent!" class="logo">
-        </a>
+        <div class="header-logo">
+          <a routerLink="/landing-page">
+            <img src="/assets/images/talent-logo.png" alt="Talent!" class="logo">
+          </a>
+        </div>
         <button *ngIf="!router.url.includes('/login') && !router.url.includes('/sign-up')" class="btn btn-primary header-button" (click)="onSignIn()" id="sign-in-button">Sign in</button>
       </div>
     </div>
@@ -13,9 +15,11 @@
   <nav *ngIf="loggedIn" class="container-fluid">
     <div class="row">
       <div class="main-bar-loggedIn">
-        <a routerLink="">
-          <img [src]="userOrganizationLogo" class="logo">
-        </a>
+        <div class="header-logo">
+          <a routerLink="">
+            <img [src]="userOrganizationLogo" class="logo" *ngIf="!router.url.includes('/organization-profile')">
+          </a>
+        </div>
         <div class="right-content">
           <div class="notifications">
             <i class="fas fa-bell"></i>

@@ -20,57 +20,71 @@
         </div>
 
         <div class="col-12" id="confirmation-code">
-          <div id="confirmation-message">Confirmation code</div>
+          <div id="confirmation-message" class="text-center">Confirmation code</div>
 
-          <div id="error-message">{{errorMessage}}</div>
+          <div id="error-message" class="text-center">{{errorMessage}}</div>
 
           <!-- Step One Form -->
-          <form (ngSubmit)="onSubmit(confirmationForm)" #confirmationForm="ngForm" class="align-middle">
+          <form (ngSubmit)="onSubmit(confirmationForm)" #confirmationForm="ngForm">
 
-            <div id="send-to-top">
-              <div class="form-group confirmation-input">
-                <input type="text" class="form-control confirmation-number" name="firstNumber"
-                       title="Confirmation number"
-                       ngModel required (keyup)="validateField($event, 0)"/>
-              </div>
+            <div class="container">
+              <div class="row justify-content-center">
 
-              <div class="form-group confirmation-input">
-                <input type="text" class="form-control confirmation-number" name="secondNumber"
-                       title="Confirmation number" ngModel required (keyup)="validateField($event, 1)"/>
-              </div>
+                <div class="col-12 col-sm-auto p-0">
+                  <div class="d-table m-auto">
 
-              <div class="form-group confirmation-input">
-                <input type="text" class="form-control confirmation-number" name="thirdNumber"
-                       title="Confirmation number"
-                       ngModel required (keyup)="validateField($event, 2)"/>
+                    <div class="form-group confirmation-input">
+                      <input type="text" class="form-control confirmation-number" name="firstNumber"
+                             title="Confirmation number"
+                             ngModel required (keyup)="validateField($event, 0)"/>
+                    </div>
+
+                    <div class="form-group confirmation-input center-input">
+                      <input type="text" class="form-control confirmation-number" name="secondNumber"
+                             title="Confirmation number" ngModel required (keyup)="validateField($event, 1)"/>
+                    </div>
+
+                    <div class="form-group confirmation-input">
+                      <input type="text" class="form-control confirmation-number" name="thirdNumber"
+                             title="Confirmation number"
+                             ngModel required (keyup)="validateField($event, 2)"/>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div id="line-container" class="col-12 col-sm-auto">
+                  <div class="align-middle" id="number-separator"></div>
+                </div>
+
+                <div class="col-12 col-sm-auto p-0">
+                  <div class="d-table m-auto">
+
+                    <div class="form-group confirmation-input">
+                      <input type="text" class="form-control confirmation-number" name="fourthNumber"
+                             title="Confirmation number" ngModel required (keyup)="validateField($event, 3)"/>
+                    </div>
+
+                    <div class="form-group confirmation-input center-input">
+                      <input type="text" class="form-control confirmation-number" name="fifthNumber"
+                             title="Confirmation number"
+                             ngModel required (keyup)="validateField($event, 4)"/>
+                    </div>
+
+                    <div class="form-group confirmation-input">
+                      <input type="text" class="form-control confirmation-number" name="sixthNumber"
+                             title="Confirmation number"
+                             ngModel required (keyup)="validateField($event, 5)"/>
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            <div id="line-container">
-              <div class="align-middle" id="number-separator"></div>
-            </div>
-
-            <div id="send-to-bottom">
-              <div class="form-group confirmation-input">
-                <input type="text" class="form-control confirmation-number" name="fourthNumber"
-                       title="Confirmation number" ngModel required (keyup)="validateField($event, 3)"/>
-              </div>
-
-              <div class="form-group confirmation-input">
-                <input type="text" class="form-control confirmation-number" name="fifthNumber"
-                       title="Confirmation number"
-                       ngModel required (keyup)="validateField($event, 4)"/>
-              </div>
-
-              <div class="form-group confirmation-input">
-                <input type="text" class="form-control confirmation-number" name="sixthNumber"
-                       title="Confirmation number"
-                       ngModel required (keyup)="validateField($event, 5)"/>
-              </div>
-            </div>
-
-            <button class="btn btn-primary" id="next-step-button" [disabled]="!completeForm || !validCode">
-              Done
+            <button class="btn btn-primary" id="next-step-button" [disabled]="!completeForm || !validCode ||  formSubmitted">
+              {{nextStepBtnMessage}}
             </button>
           </form>
         </div>

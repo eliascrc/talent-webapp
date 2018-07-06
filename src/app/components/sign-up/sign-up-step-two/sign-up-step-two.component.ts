@@ -19,6 +19,8 @@ export class SignUpStepTwoComponent implements OnInit {
   completeForm = false;
   validCode = true;
   errorMessage = '';
+  nextStepBtnMessage = 'Done';
+  formSubmitted = false;
   email: string;
 
   constructor(public router: Router, public signUpService: SignupService, private stepCommunicationService: StepCommunicationService) {
@@ -42,12 +44,17 @@ export class SignUpStepTwoComponent implements OnInit {
     const code = form.value.firstNumber[0] + form.value.secondNumber[0] + form.value.thirdNumber[0] + form.value.fourthNumber[0]
       + form.value.fifthNumber[0] + form.value.sixthNumber[0];
 
+    this.formSubmitted = true;
+    this.nextStepBtnMessage = 'Working...';
+
     this.signUpService.stepTwo(this.email, code).subscribe(() => {
       this.router.navigate(['/sign-up/step-three']);
 
     }, () => {
       this.validCode = false;
       this.invalidateFields();
+      this.formSubmitted = false;
+      this.nextStepBtnMessage = 'Done';
     });
 
   }
@@ -59,7 +66,7 @@ export class SignUpStepTwoComponent implements OnInit {
    * @param {number} position the number position
    */
   validateField(event: any, position: number) {
-    const changedNumber = event.target.value;
+    const changedNumber = event.target.value.valueOf();
     let offset = 1;
 
     if (isNaN(changedNumber)) {
@@ -72,10 +79,11 @@ export class SignUpStepTwoComponent implements OnInit {
       event.target.value = changedNumber[0];
     }
 
+    console.log(changedNumber);
     if (event.target.value.length === 0) {
       if (position === 0 || changedNumber.length > 0) {
         offset = 0;
-      } else {
+      } else if (changedNumber.length === 0) {
         offset = -1;
       }
     }
@@ -92,8 +100,10 @@ export class SignUpStepTwoComponent implements OnInit {
       this.validCode = true;
     }
 
-    const nextElement = (document.getElementsByClassName('confirmation-number')[position + offset]) as HTMLElement;
-    nextElement.focus();
+    if ( (position + offset) < 6 ) {
+      const nextElement = (document.getElementsByClassName('confirmation-number')[position + offset]) as HTMLElement;
+      nextElement.focus();
+    }
   }
 
   /**

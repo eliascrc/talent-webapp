@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {OrganizationService} from '@services/organization/organization.service';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,7 +18,7 @@ export class SidebarComponent implements OnInit {
   hamburgerClicked = false;
   userOrganizationNameInitial: string;
 
-  constructor(private authenticateService: AuthenticateService, private organizationService: OrganizationService) { }
+  constructor(private authenticateService: AuthenticateService, private organizationService: OrganizationService, private router: Router) { }
 
   ngOnInit() {
     this.authenticateService.getLoggedInUserInfo().then(userInfo => {
@@ -34,7 +35,8 @@ export class SidebarComponent implements OnInit {
     this.notify.emit(this.hamburgerClicked);
   }
 
-
-
+  onViewOrganizationProfile() {
+    this.router.navigate(['/organization-profile']);
+  }
 
 }

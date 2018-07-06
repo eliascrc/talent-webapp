@@ -41,19 +41,19 @@
 
 .people-image-row {
   margin-top: 25px;
-  height: 360px;
+  height: auto;
 }
 
 .people-image {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .image-col {
   padding: 0 13px 0 0;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   .container-fluid {
     min-height: 210vh;
   }
@@ -64,7 +64,7 @@
 
   .people-image-row {
     margin-top: 25px;
-    height: 750px;
+    height: auto;
   }
 }
 

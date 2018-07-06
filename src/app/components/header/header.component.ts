@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
-import {LocationStrategy} from '@angular/common';
 import {OrganizationService} from '@services/organization/organization.service';
 
 @Component({
@@ -53,8 +52,9 @@ export class HeaderComponent implements OnInit {
   onLogout() {
     this.authenticateService.logout().then(response => {
       document.getElementById('app-component-element').style.display = 'none';
-      this.router.navigate(['/login']);
-      location.reload();
+      this.router.navigate(['/login']).then(ready => {
+        location.reload();
+      });
     });
   }
 
