@@ -223,15 +223,19 @@
 
 #start-date {
   margin-left: 8px;
-  color: #5A6169;
-  font-size: 14px;
+  color: #979595;
+  font-size: 13px;
   display: inline-block;
 }
 
 #end-date {
   display: inline-block;
-  font-size: 14px;
-  color: #5A6169;
+  font-size: 13px;
+  color: #979595;
+}
+
+#date-hyphen {
+  color: #979595;
 }
 
 #project-status {
