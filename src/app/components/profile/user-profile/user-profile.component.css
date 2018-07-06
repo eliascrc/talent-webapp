@@ -261,6 +261,14 @@
   vertical-align: middle;
 }
 
+.red-status-icon {
+  background: linear-gradient(163.34deg, lightpink 0%, red 100%);
+}
+
+.yellow-status-icon {
+  background: linear-gradient(163.34deg, lightyellow 0%, darkorange 100%);
+}
+
 @media screen and (min-width: 728px) and (max-width: 986px) {
   :host /deep/ .nav-link{
     color: #979595;
@@ -314,10 +322,12 @@
 
   #resource-project-position {
     text-align: left;
+    margin-top: 10px;
   }
 
   #project-status {
     margin-left: 30px;
+    margin-right: 30px;
     text-align: left;
   }
 
@@ -714,8 +724,10 @@
 
   #project-status {
     margin-left: 30px;
+    margin-right: 30px;
     text-align: left;
   }
+
 }
 
 @media screen and (max-width: 410px) {

@@ -14,7 +14,7 @@ export class ProjectPositionService {
    * @returns {Promise<any>}
    */
   getTechnicalResourceProjectPosition(username: string, projectId: string): Promise<any> {
-    return this.http.get<any>(this.getResourceProjectPosition + 'jolesa97@gmail.com' + '?projectId=' + '40288188-645e6438-0164-5e65e9a5-0070', {
+    return this.http.get<any>(this.getResourceProjectPosition + username + '&projectId=' + projectId, {
       withCredentials: true
     }).toPromise();
   }

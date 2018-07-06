@@ -47,7 +47,7 @@
                 <div class="vertical-line"></div>
                 <div class="block-info">
                   <div id="resource-project-position-label">Position</div>
-                  <div id="resource-project-position">Web developer</div>
+                  <div id="resource-project-position">{{project.resourcePosition}}</div>
                 </div>
                 <div class="vertical-line"></div>
                 <div id="project-status">
@@ -56,7 +56,7 @@
                 </div>
                 <div class="vertical-line"></div>
                 <div class="block-info">
-                  <div class="see-projects-button arrow-icon" (click)="onEditButton()">
+                  <div class="see-projects-button arrow-icon" (click)="onSeeProject(project.id)">
                     SEE PROJECT <i class="fas fa-angle-right arrow"></i>
                   </div>
                 </div>

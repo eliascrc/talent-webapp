@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
-import {ActivatedRoute, Route} from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
 import {ProjectPositionService} from '@services/project-position/project-position.service';
 
@@ -31,7 +31,8 @@ export class UserProfileComponent implements OnInit {
   userProjects: ResourceProject[] = [];
 
   constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
-              private resourceService: ResourceInformationService) {
+              private resourceService: ResourceInformationService, private router: Router,
+              private projectPositionService: ProjectPositionService) {
   }
 
   /**
@@ -104,11 +105,11 @@ export class UserProfileComponent implements OnInit {
         } else if (userProject.projectStatus == 'END') {
           userProject.projectRedStatus = true;
         }
-        // this.projectPositionService.getTechnicalResourceProjectPosition(username, project.id).then( response => {
-        //   userProject.resourcePosition = response.projectPosition;
-        //   console.log(userProject.resourcePosition);
-        // }, error => {
-        // });
+        this.projectPositionService.getTechnicalResourceProjectPosition(username, project.id).then( response => {
+          userProject.resourcePosition = response.projectPosition.capabilityLevel.capability.name;
+          console.log(userProject.resourcePosition);
+        }, error => {
+        });
         this.userProjects.push(userProject);
       });
     }, error => {
@@ -121,6 +122,13 @@ export class UserProfileComponent implements OnInit {
    */
   onEditButton() {
 
+  }
+
+  /**
+   * Sends the user to the project profile
+   */
+  onSeeProject(projectId: string) {
+   // this.router.navigate('project-profile/' + projectId);
   }
 
 }
