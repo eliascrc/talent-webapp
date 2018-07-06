@@ -60,7 +60,6 @@ export class UserProfileComponent implements OnInit {
                   let name = userInfo.firstName;
                   name = name.concat(' ');
                   this.name = name.concat(userInfo.lastName);
-                  this.userProfilePicture = userInfo.profilePicture;
                   this.userProfilePicture = userInfo.profilePicture.link;
                   this.getUsersProjects(userInfo.username);
                 }, error => {
