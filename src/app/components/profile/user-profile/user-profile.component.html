@@ -37,7 +37,7 @@
                 <div class="project-basic-info">
                   <div><i class="far fa-clock date-clock" style="display: inline-block;"></i>
                     <div id="start-date">{{project.startDate | date: 'dd-MM-yyyy'}}</div>
-                    -
+                    <span id="date-hyphen">-</span>
                     <div id="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date: 'dd-MM-yyyy'}}</div>
 
                   </div>
