@@ -53,6 +53,7 @@ import {CreateProjectComponent} from './components/create-project/create-project
 import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
+import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { OrganizationProfileComponent } from './components/profile/organization-
     CreateProjectComponent,
     UserProfileComponent,
     OrganizationProfileComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

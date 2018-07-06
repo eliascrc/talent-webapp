@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row" id="basic-info">
+    <div id="top-content">
+      <div id="image">
+        <div id="image-div">
+          <img [src]="userProfilePicture" alt="image" id="profilePicture">
+        </div>
+      </div>
+      <div id="information">
+        <div class="user-name"><p class="name">Renato Mainieri</p></div>
+        <div class="user-info"><p class="position-info">Junior Software Developer<br/>Technical Resource</p></div>
+      </div>
+      <div class="align-right">
+        <div class="user-name"><p class="name">Technical Manager</p></div>
+        <div class="user-info"><p class="position-info">Rodrigo Bartels</p></div>
+      </div>
+	  
+	  <div class="row" id="basic-info-input">
+
+        <!-- Basic Information Form -->
+        <form (ngSubmit)="onSubmit(acceptInviteForm)" #acceptInviteForm="ngForm">
+		  <div class="form-group">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" placeholder="Renato" id="firstName" ngModel name="firstName"/>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" placeholder="Mainieri" id="lastName" ngModel name="lastName"/>
+          </div>
+		  
+		  <div class="form-group">
+            <label for="profilePicture">Profile picture</label>
+			<label class="custom-file">Choose Files
+				<input type="file" id="file" class="custom-file-input">
+				<span class="custom-file-control"></span>
+			</label>
+          </div>
+		  
+		  <div class="form-group">
+            <input type="text" class="form-control" id="drag-picture" ngModel name="dragPicture"/>
+          </div>
+		  
+		  <button class="btn btn-secondary" id="cancel-button">
+            Cancel
+          </button>
+		  
+		  <button class="btn btn-primary" id="save-button">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
