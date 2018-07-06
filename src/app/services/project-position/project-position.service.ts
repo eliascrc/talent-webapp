@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
+/**
+ * Service that processes web services related to project positions.
+ *
+ * @author Maria Jose Cubero
+ */
 @Injectable()
 export class ProjectPositionService {
 

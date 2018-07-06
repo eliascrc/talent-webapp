@@ -4,6 +4,9 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
 import {ProjectPositionService} from '@services/project-position/project-position.service';
 
+/**
+ * Used to represent a project where the resource has participated.
+ */
 class ResourceProject {
   id: string;
   name: string;
@@ -20,6 +23,12 @@ class ResourceProject {
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
+
+/**
+ * Manages all the profile information.
+ *
+ * @author Maria Jose Cubero
+ */
 export class UserProfileComponent implements OnInit {
 
   userId: string;
@@ -87,13 +96,11 @@ export class UserProfileComponent implements OnInit {
 
   /**
    * Saves the projects of the user on a list.
+   * @param {string} username
    */
   getUsersProjects(username: string) {
     this.resourceService.getTechnicalResourceProjects(username).then(projects => {
       projects.forEach( project => {
-        console.log(project.name);
-        console.log(project.description);
-        console.dir(project);
         const userProject = new ResourceProject();
         userProject.id = project.id;
         userProject.name = project.name;
@@ -107,7 +114,6 @@ export class UserProfileComponent implements OnInit {
         }
         this.projectPositionService.getTechnicalResourceProjectPosition(username, project.id).then( response => {
           userProject.resourcePosition = response.projectPosition.capabilityLevel.capability.name;
-          console.log(userProject.resourcePosition);
         }, error => {
         });
         this.userProjects.push(userProject);
@@ -128,7 +134,8 @@ export class UserProfileComponent implements OnInit {
    * Sends the user to the project profile
    */
   onSeeProject(projectId: string) {
-   // this.router.navigate('project-profile/' + projectId);
+    const dir = 'project-profile/' + projectId;
+    this.router.navigate([dir]);
   }
 
 }

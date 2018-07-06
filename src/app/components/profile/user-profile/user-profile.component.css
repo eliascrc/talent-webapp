@@ -68,6 +68,7 @@
   display: inline-block;
   color: lightslategray;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .align-right{
@@ -217,6 +218,7 @@
   padding-top: 12px;
   text-align: center;
   margin-left: 25px;
+  cursor: pointer;
 }
 
 #start-date {
@@ -361,6 +363,7 @@
     display: contents;
     color: lightslategray;
     margin-top: 0;
+    cursor: pointer;
   }
 
   #information{
@@ -493,6 +496,7 @@
     display: contents;
     color: lightslategray;
     margin-top: 0;
+    cursor: pointer;
   }
 
   #information{
@@ -625,6 +629,7 @@
     display: contents;
     color: lightslategray;
     margin-top: 0;
+    cursor: pointer;
   }
 
   #information{
@@ -765,6 +770,7 @@
     display: contents;
     color: lightslategray;
     margin-top: 0;
+    cursor: pointer;
   }
 
   #information{
