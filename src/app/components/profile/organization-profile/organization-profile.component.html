@@ -40,7 +40,29 @@
       <div class="accordion-title">Projects</div>
       <div class="accordion-arrow"><i class="arrow" (click)="onShowProjects()" [class.up]="showProjects" [class.down]="!showProjects"></i></div>
       <div class="accordion-content" [class.show]="showProjects" [class.hide]="!showProjects">
+        <div *ngFor="let project of organizationProjects" class="content-card">
+          <div id="project-basic-info">
+            <div id="project-name" (click)="onSeeProjectProfile(project.id)">{{project.name}}</div>
+            <div id="project-date">
+              <i class="far fa-clock date-clock" style="display: inline-block;"></i>
+              <div id="date">
+                <div id="start-date">{{project.startDate | date: 'dd-MM-yyyy'}}</div>
+                <span id="date-hyphen">-</span>
+                <div id="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date: 'dd-MM-yyyy'}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="cards-right-content">
+            <div class="vertical-line"></div>
+            <div class="block-info">
+              <div class="status-icon center" [class.red-status-icon]="project.projectRedStatus" [class.yellow-status-icon]="project.projectYellowStatus"></div>
+              <div id="project-status">{{project.state}}</div>
+            </div>
+            <div class="vertical-line"></div>
+            <button class="btn btn-primary" id="project-button" (click)="onSeeProjectProfile(project.id)"><div id="project-button-text">SEE PROJECT <i class="fas fa-angle-right" id="button-arrow"></i></div></button>
+          </div>
 
+        </div>
       </div>
     </div>
 
