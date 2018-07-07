@@ -18,21 +18,26 @@
 	  <div class="row" id="basic-info-input">
 
         <!-- Basic Information Form -->
-        <form (ngSubmit)="onSubmit(acceptInviteForm)" #acceptInviteForm="ngForm">
+        <form (ngSubmit)="onSubmit(editForm)" #editForm="ngForm">
 		  <div class="form-group">
             <label for="firstName">First name</label>
-            <input type="text" class="form-control" placeholder={{firstName}} id="firstName" ngModel name="firstName"/>
+            <input type="text" class="form-control" placeholder={{firstName}} id="firstName" ngModel name="firstNameInput" [disabled]="saving"/>
           </div>
 
           <div class="form-group">
             <label for="lastName">Last name</label>
-            <input type="text" class="form-control" placeholder={{lastName}} id="lastName" ngModel name="lastName"/>
+            <input type="text" class="form-control" placeholder={{lastName}} id="lastName" ngModel name="lastNameInput" [disabled]="saving"/>
+          </div>
+		  
+		  <div class="form-group">
+            <label for="nickname">Nickname</label>
+            <input type="text" class="form-control" placeholder={{nickname}} id="nickname" ngModel name="nicknameInput" [disabled]="saving"/>
           </div>
 		  
 		  <div class="form-group">
             <label for="profilePicture">Profile picture</label>
 			<label class="custom-file">Choose Files
-				<input type="file" id="file" class="custom-file-input">
+				<input type="file" id="file" class="custom-file-input" [disabled]="saving">
 				<span class="custom-file-control"></span>
 			</label>
           </div>
@@ -41,12 +46,11 @@
 			<span id="drag-picture-contain">
 				<i class="far fa-copy"></i>Drag files here
 			</span>
-			<input type="file" id="drag-picture-input" ngModel name="dragPicture"/>					
+			<input type="file" id="drag-picture-input" ngModel name="dragPicture" [disabled]="saving"/>					
           </div>
 		  
-		  <button class="btn btn-secondary" id="cancel-button" (click)="onCancelButton()">Cancel</button>
-		  
-		  <button class="btn btn-primary" id="save-button">Save</button>
+		  <button class="btn btn-secondary" id="cancel-button" (click)="onCancelButton()" [disabled]="saving">Cancel</button>
+		  <input class="btn btn-primary" id="save-button" type="submit" [disabled]="saving" value={{buttonMessage}}/>
         </form>
       </div>
     </div>

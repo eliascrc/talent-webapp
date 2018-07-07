@@ -39,6 +39,7 @@ import {ContactUsScreenComponent} from './components/company-information/contact
 import {ContactUsService} from '@services/company-information/contact-us.service';
 import {ProjectService} from '@services/project/project.service';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
+import {EditResourceInformationService} from '@services/technical-resource/edit-resource-information.service';
 
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 
@@ -107,8 +108,9 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
     SignupService,
     StepCommunicationService,
     ResourceInformationService,
+	EditResourceInformationService,
     InvitationService,
-    ProjectService,
+    ProjectService
   ],
   bootstrap: [AppComponent]
 })
