@@ -46,7 +46,7 @@ export class OrganizationProfileComponent implements OnInit {
 
   /**
    * Requests the organization's basic information to the organization service, and checks if the user is administrator of the
-   * organization.
+   * organization. It then obtains the organization's projects to display them in the Projects tab.
    */
   ngOnInit() {
     this.organizationService.getOrganizationBasicInfo().then(orgBasicInfo => {
@@ -63,10 +63,7 @@ export class OrganizationProfileComponent implements OnInit {
     }, error => {
     });
 
-    this.organizationService.getOrganizationProjects().then(response => {
-      this.parseOrganizationProjects(response);
-    }, error => {
-    });
+    this.processProjects();
 
     this.organizationLoaded = true;
   }
@@ -100,6 +97,13 @@ export class OrganizationProfileComponent implements OnInit {
   onShowProjects() {
     this.showProjects = !this.showProjects;
 
+  }
+
+  processProjects() {
+    this.organizationService.getOrganizationProjects().then(response => {
+      this.parseOrganizationProjects(response);
+    }, error => {
+    });
   }
 
   /**
