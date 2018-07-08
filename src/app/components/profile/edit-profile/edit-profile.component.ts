@@ -69,6 +69,9 @@ export class EditProfileComponent implements OnInit {
        });
   }
   
+  /**
+   * Validate that the extension of the file is valid (jpg).
+   */
   uploadFile(event: EventTarget) {
 	let eventObj: MSInputMethodContext = <MSInputMethodContext> event;
 	let target: HTMLInputElement = <HTMLInputElement> eventObj.target;
