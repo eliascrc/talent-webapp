@@ -28,6 +28,7 @@ export class EditProfileComponent implements OnInit {
   userProfilePicture: string;
   position: string;
   saving: boolean;
+  isAuthorized: boolean = false;
   validFile: boolean = true;
   buttonMessage: string = "Save";
   file: File;
@@ -41,22 +42,30 @@ export class EditProfileComponent implements OnInit {
    * Data querying of the user basic information.
    */
   ngOnInit() {
+	  this.activatedRoute.params.subscribe(param => {
+      this.userId = param['userId'];});
 	  this.authenticateService.getLoggedInUserInfo().then(userInfo => {
               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
-              this.userId = userInfoObject.id;
+              let id = userInfoObject.id;
 			  this.isAdmistrator = userInfoObject.administrator;
-			  this.resourceInformationService.getTechnicalResourceBasicInfoWithId(this.userId)
-			  .then(userInfo => {
-                  this.firstName = userInfo.firstName;
-				  this.lastName = userInfo.lastName;
-			      this.nickname = userInfo.nickname;
-				  const technicalPosition = JSON.parse(JSON.stringify(userInfo.technicalPosition));	
-				  const capabilityLevel = JSON.parse(JSON.stringify(technicalPosition.capabilityLevel));	
-				  const capability = JSON.parse(JSON.stringify(capabilityLevel.capability));
-				  this.position = capabilityLevel.name.concat(' ').concat(capability.name);
-			      const profilePictureObject = JSON.parse(JSON.stringify(userInfo.profilePicture));			  
-			      this.userProfilePicture = profilePictureObject.link;
-                });
+			  if (this.isAdmistrator || this.userId == id) {
+				  this.isAuthorized = (this.userId == id);
+				  this.resourceInformationService.getTechnicalResourceBasicInfoWithId(this.userId)
+				  .then(userInfo => {
+					  this.firstName = userInfo.firstName;
+					  this.lastName = userInfo.lastName;
+					  this.nickname = userInfo.nickname;
+					  const technicalPosition = JSON.parse(JSON.stringify(userInfo.technicalPosition));	
+					  const capabilityLevel = JSON.parse(JSON.stringify(technicalPosition.capabilityLevel));	
+					  const capability = JSON.parse(JSON.stringify(capabilityLevel.capability));
+					  this.position = capabilityLevel.name.concat(' ').concat(capability.name);
+					  const profilePictureObject = JSON.parse(JSON.stringify(userInfo.profilePicture));			  
+					  this.userProfilePicture = profilePictureObject.link;
+				  });
+			  }
+			  else {
+				  this.onCancelButton();
+			  }
        });
   }
   

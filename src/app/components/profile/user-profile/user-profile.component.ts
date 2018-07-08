@@ -1,5 +1,3 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {ActivatedRoute, Route, Router} from '@angular/router';
@@ -85,8 +83,9 @@ export class UserProfileComponent implements OnInit {
           if (this.loggedIn) {
             this.authenticateService.getLoggedInUserInfo().then(userInfo => {
               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
-              const id = userInfoObject.id;
-              if (this.userId === id) {
+              const id = userInfoObject.id;			  
+			  const isAdmistrator = userInfoObject.administrator;
+              if (isAdmistrator || this.userId === id) {
                 this.canEdit = true;
               }
             });
@@ -127,7 +126,8 @@ export class UserProfileComponent implements OnInit {
    * Sends the user to the edit profile page.
    */
   onEditButton() {
-	this.router.navigate(['/profile/edit-profile']);
+	const dir = '/profile/edit-profile/' + this.userId;
+	this.router.navigate([dir]);
   }
 
   /**

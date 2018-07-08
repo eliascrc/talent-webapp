@@ -47,7 +47,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticateGuard]},
   {path: 'accept-invite', component: AcceptInviteComponent, canActivate: [UnauthenticateGuard]},
   {path: 'profile/user-profile/:userId', component: UserProfileComponent, canActivate: [AuthenticateGuard]},
-  {path: 'profile/edit-profile', component: EditProfileComponent, canActivate: [AuthenticateGuard]},
+  {path: 'profile/edit-profile/:userId', component: EditProfileComponent, canActivate: [AuthenticateGuard]},
   {path: 'create-project', component: CreateProjectComponent, canActivate: [AuthenticateGuard]},
   {path: 'organization-profile', component: OrganizationProfileComponent, canActivate: [AuthenticateGuard]},
 ];

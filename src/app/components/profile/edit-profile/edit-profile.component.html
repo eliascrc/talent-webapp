@@ -33,19 +33,19 @@
             <label for="nickname">Nickname</label>
             <input type="text" class="form-control" placeholder={{nickname}} id="nickname" ngModel name="nicknameInput" [disabled]="saving"/>
           </div>
-          <label for="profilePicture">Profile picture</label>
-		  <div class="form-group">
+          <label *ngIf="isAuthorized" for="profilePicture">Profile picture</label>
+		  <div  *ngIf="isAuthorized"class="form-group">
 			<label class="custom-file">Choose Files
 				<input type="file" id="file" class="custom-file-input" [disabled]="saving" (change)="uploadFile($event)">
 			</label>
 		    <label class="custom-file-control" id="file-name">{{fileName}}</label>
           </div>
 		  
-		  <div class="form-control" id="drag-picture">
+		  <div *ngIf="isAuthorized" class="form-control" id="drag-picture">
 			<span id="drag-picture-contain">
 				<i class="far fa-copy"></i>Drag files here
 			</span>
-			<input type="file" id="drag-picture-input" ngModel name="dragPicture" [disabled]="saving" (change)="uploadFile($event)"/>					
+			<input type="file" id="drag-picture-input" ngModel name="dragPicture" [disabled]="saving || n" (change)="uploadFile($event)"/>					
           </div>
 		  <label *ngIf="!validFile" class="custom-file-control" id="file-message">The extension of the profile picture must be .jpg.</label>
 		  

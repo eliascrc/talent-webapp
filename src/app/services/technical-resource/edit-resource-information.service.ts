@@ -38,7 +38,7 @@ export class EditResourceInformationService {
    * @param {File} file
    * @returns {Promise<any>}
    */
-  uploadProfilePicture(file File): Promise<any>{
+  uploadProfilePicture(file: File): Promise<any>{
 	let formData = new FormData();
 	formData.append('file', file);
     return this.http
