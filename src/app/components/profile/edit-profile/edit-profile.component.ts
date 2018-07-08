@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
-import {ActivatedRoute, Route} from '@angular/router';
 import {EditResourceInformationService} from '@services/technical-resource/edit-resource-information.service';
+import {ActivatedRoute, Route} from '@angular/router';
 import {Router} from '@angular/router';
 
 @Component({
@@ -20,15 +21,20 @@ import {Router} from '@angular/router';
 export class EditProfileComponent implements OnInit {
 
   userId: string;
+  isAdmistrator: boolean;
   firstName: string;
   lastName: string;
   nickname: string;
   userProfilePicture: string;
   position: string;
   saving: boolean;
+  validFile: boolean = true;
   buttonMessage: string = "Save";
+  file: File;
+  fileName: string;
 
-  constructor(private router: Router, private authenticateService: AuthenticateService, private editResourceInformationService: EditResourceInformationService, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private authenticateService: AuthenticateService, private resourceInformationService: ResourceInformationService,
+				private editResourceInformationService: EditResourceInformationService, private activatedRoute: ActivatedRoute) {
   }
 
   /**
@@ -38,12 +44,34 @@ export class EditProfileComponent implements OnInit {
 	  this.authenticateService.getLoggedInUserInfo().then(userInfo => {
               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
               this.userId = userInfoObject.id;
-			  this.firstName = userInfoObject.firstName;
-			  this.lastName = userInfoObject.lastName;
-			  this.nickname = userInfoObject.nickname;
-			  const profilePictureObject = JSON.parse(JSON.stringify(userInfoObject.profilePicture));			  
-			  this.userProfilePicture = profilePictureObject.link;
+			  this.isAdmistrator = userInfoObject.administrator;
+			  this.resourceInformationService.getTechnicalResourceBasicInfoWithId(this.userId)
+			  .then(userInfo => {
+                  this.firstName = userInfo.firstName;
+				  this.lastName = userInfo.lastName;
+			      this.nickname = userInfo.nickname;
+				  const technicalPosition = JSON.parse(JSON.stringify(userInfo.technicalPosition));	
+				  const capabilityLevel = JSON.parse(JSON.stringify(technicalPosition.capabilityLevel));	
+				  const capability = JSON.parse(JSON.stringify(capabilityLevel.capability));
+				  this.position = capabilityLevel.name.concat(' ').concat(capability.name);
+			      const profilePictureObject = JSON.parse(JSON.stringify(userInfo.profilePicture));			  
+			      this.userProfilePicture = profilePictureObject.link;
+                });
        });
+  }
+  
+  uploadFile(event: EventTarget) {
+	let eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+	let target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+	let files: FileList = target.files;
+	this.file = files[0];
+	this.fileName = this.file.name;
+	if (this.file.type != "image/jpeg") {
+		this.validFile = false;
+	}
+	else {
+		this.validFile = true;
+	}
   }
   
   /**
@@ -52,6 +80,7 @@ export class EditProfileComponent implements OnInit {
   onCancelButton() {
 	let dir = '/profile/user-profile/';
     dir = dir.concat(this.userId);
+	console.log(this.file);
     this.router.navigate([dir]);
   }
 
@@ -61,16 +90,24 @@ export class EditProfileComponent implements OnInit {
   onSubmit(form: NgForm) {
 	this.saving = true;
 	this.buttonMessage = "Working...";
+	// Check if the firstName was modified
 	if (form.value.firstNameInput != "") {		
 	  this.firstName = form.value.firstNameInput;
 	}
+	// Check if the lastName was modified
 	if (form.value.lastNameInput != "") {		
 	  this.lastName = form.value.lastNameInput;
 	}
+	// Check if the nickname was modified
 	if (form.value.nicknameInput != "") {		
 	  this.nickname = form.value.nicknameInput;
 	}	
+    // Check if a profile picture was added
+	if(this.file != null){
+		this.editResourceInformationService.uploadProfilePicture(this.file);
+	}
+	
 	this.editResourceInformationService.editTechnicalResourceBasicInfo(this.userId, this.firstName, this.lastName, this.nickname).
-	then(response => { }).catch(this.saving=false; this.buttonMessage = "Save");
+	catch(error => {this.saving=false; this.buttonMessage = "Save"}).then(response => {this.onCancelButton();});
   }
 }

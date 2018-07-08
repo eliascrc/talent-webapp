@@ -33,7 +33,8 @@ input[type=text], input[type=password] {
   border-radius: 10px;
   background-color: #FFFFFF;
   color: #979595;
-  float: left;
+  float: left;  
+  margin-top: 49px;
   
 }
 
@@ -50,6 +51,7 @@ input[type=text], input[type=password] {
   font-family: Roboto;
   background-color: #EFA42F;
   float: right;
+  margin-top: 49px;
 }
 
 #save-button:hover{
@@ -75,7 +77,6 @@ input[type=text], input[type=password] {
 
 #drag-picture{
   padding: 0;
-  margin-bottom: 49px;
   position: relative;
   border-radius: 8px;  
 }
@@ -96,10 +97,12 @@ input[type=text], input[type=password] {
   position: absolute;
   color: #B9BBBE;
   font-size: 14px;
+  width: 100%;
   letter-spacing: -0.25px;
   line-height: 18px;
   text-align: center;
-  margin-left: 44%;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 33px;
 }
 
@@ -121,7 +124,6 @@ input[type=text], input[type=password] {
 .custom-file {
   margin-top: 8px;
   margin-bottom: 4px;
-  display: block;
   border: 0.5px solid #BECAD6;
   border-radius: 2px;
   background-color: #FFFFFF;
@@ -132,8 +134,8 @@ input[type=text], input[type=password] {
   box-shadow: inset 0 0 2px 0 rgba(0,0,0,0.5), 0 0.01px 4px 0 rgba(0,0,0,0.5);
 }
 
-label.custom-file {
-  height: 18px;
+label.custom-file, #file-name, #file-message {
+  height: auto;
   width: 98px;
   padding-left: 16px;
   color: #000000;
@@ -141,6 +143,16 @@ label.custom-file {
   font-weight: 300;
   letter-spacing: -0.35px;
   line-height: 17px;
+}
+
+#file-name{
+  padding-left: 4px;
+}
+
+#file-message{
+  width: 100%;
+  padding-left: 0px;
+  color: #FF0000;
 }
 
 .custom-file-input{
