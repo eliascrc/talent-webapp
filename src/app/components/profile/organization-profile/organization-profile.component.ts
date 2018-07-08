@@ -18,6 +18,9 @@ class OrganizationProject {
   projectYellowStatus = false;
 }
 
+/**
+ * Used to represent the attributes needed of an organization resource.
+ */
 class OrganizationResource {
 
   id: string;
@@ -155,7 +158,6 @@ export class OrganizationProfileComponent implements OnInit {
    * @param {any[]} organizationMembers
    */
   parseOrganizationMembers(organizationMembers: any[]) {
-    console.dir(organizationMembers);
     organizationMembers.forEach(resource => {
       let organizationResource = new OrganizationResource();
       organizationResource.id = resource.id;
@@ -165,7 +167,6 @@ export class OrganizationProfileComponent implements OnInit {
         organizationResource.technicalPosition = resource.technicalPosition.capabilityLevel.name + ' ' + resource.technicalPosition.capabilityLevel.capability.name;
       this.organizationMembers.push(organizationResource);
     });
-    console.dir(this.organizationMembers);
   }
 
   /**
