@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {OrganizationService} from '@services/organization/organization.service';
 
 @Component({
   selector: 'app-organization-skills',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganizationSkillsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router, private organizationService: OrganizationService) { }
 
   ngOnInit() {
+
+    this.organizationService.getSkills().then( skillCategories => {
+
+    });
+
   }
 
 }

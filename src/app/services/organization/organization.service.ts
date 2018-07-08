@@ -8,6 +8,7 @@ export class OrganizationService {
 
   private url: string = 'http://ws.talent.cr/ws/login/organization';
   private organizationBasicInfoUrl = 'http://ws.talent.cr/ws/organization/get';
+  private organizationSkillsUrl = 'http://ws.talent.cr/ws/organization/skill/get';
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,11 @@ export class OrganizationService {
    */
   getOrganizationBasicInfo() {
     return this.http.get(this.organizationBasicInfoUrl, {withCredentials: true})
+      .toPromise();
+  }
+
+  getSkills() {
+    return this.http.get(this.organizationSkillsUrl, {withCredentials: true})
       .toPromise();
   }
 
