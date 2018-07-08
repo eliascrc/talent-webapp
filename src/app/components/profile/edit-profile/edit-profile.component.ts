@@ -80,7 +80,6 @@ export class EditProfileComponent implements OnInit {
   onCancelButton() {
 	let dir = '/profile/user-profile/';
     dir = dir.concat(this.userId);
-	console.log(this.file);
     this.router.navigate([dir]);
   }
 
@@ -108,6 +107,7 @@ export class EditProfileComponent implements OnInit {
 	}
 	
 	this.editResourceInformationService.editTechnicalResourceBasicInfo(this.userId, this.firstName, this.lastName, this.nickname).
-	catch(error => {this.saving=false; this.buttonMessage = "Save"}).then(response => {this.onCancelButton();});
+	catch(error => {this.saving=false; this.buttonMessage = "Save"}).
+	then(response => {this.onCancelButton();});
   }
 }

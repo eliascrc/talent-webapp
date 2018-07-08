@@ -53,8 +53,10 @@ import {AcceptInviteComponent} from './components/sign-up/accept-invite/accept-i
 import {CreateProjectComponent} from './components/create-project/create-project/create-project.component';
 import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
+import {ProjectPositionService} from '@services/project-position/project-position.service';
 import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -110,7 +112,8 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
     ResourceInformationService,
 	EditResourceInformationService,
     InvitationService,
-    ProjectService
+    ProjectService,
+    ProjectPositionService
   ],
   bootstrap: [AppComponent]
 })

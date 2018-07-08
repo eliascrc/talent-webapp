@@ -1,14 +1,36 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
-import {ActivatedRoute, Route} from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
+import {ProjectPositionService} from '@services/project-position/project-position.service';
+
+/**
+ * Used to represent a project where the resource has participated.
+ */
+class ResourceProject {
+  id: string;
+  name: string;
+  startDate: string;
+  endDate: string;
+  projectStatus: string;
+  projectRedStatus = false;
+  projectYellowStatus = false;
+  resourcePosition: string;
+}
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
+
+/**
+ * Manages all the profile information.
+ *
+ * @author Maria Jose Cubero
+ */
 export class UserProfileComponent implements OnInit {
 
   userId: string;
@@ -17,9 +39,11 @@ export class UserProfileComponent implements OnInit {
   loggedIn = false;
   position: string;
   canEdit: boolean;
+  userProjects: ResourceProject[] = [];
 
-  constructor(private router: Router, private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
-              private resourceService: ResourceInformationService) {
+  constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
+              private resourceService: ResourceInformationService, private router: Router,
+              private projectPositionService: ProjectPositionService) {
   }
 
   /**
@@ -38,8 +62,8 @@ export class UserProfileComponent implements OnInit {
                   let name = userInfo.firstName;
                   name = name.concat(' ');
                   this.name = name.concat(userInfo.lastName);
-                  this.userProfilePicture = userInfo.profilePicture;
                   this.userProfilePicture = userInfo.profilePicture.link;
+                  this.getUsersProjects(userInfo.username);
                 }, error => {
                 });
             }
@@ -71,12 +95,47 @@ export class UserProfileComponent implements OnInit {
       );
   }
 
-
+  /**
+   * Saves the projects of the user on a list.
+   * @param {string} username
+   */
+  getUsersProjects(username: string) {
+    this.resourceService.getTechnicalResourceProjects(username).then(projects => {
+      projects.forEach( project => {
+        const userProject = new ResourceProject();
+        userProject.id = project.id;
+        userProject.name = project.name;
+        userProject.startDate = project.startDate;
+        userProject.endDate = project.endDate != null ? project.endDate : 'Present';
+        userProject.projectStatus = project.state;
+        if (userProject.projectStatus == 'ON_HOLD') {
+          userProject.projectYellowStatus = true;
+        } else if (userProject.projectStatus == 'END') {
+          userProject.projectRedStatus = true;
+        }
+        this.projectPositionService.getTechnicalResourceProjectPosition(username, project.id).then( response => {
+          userProject.resourcePosition = response.projectPosition.capabilityLevel.capability.name;
+        }, error => {
+        });
+        this.userProjects.push(userProject);
+      });
+    }, error => {
+    });
+  }
+  
   /**
    * Sends the user to the edit profile page.
    */
   onEditButton() {
 	this.router.navigate(['/profile/edit-profile']);
+  }
+
+  /**
+   * Sends the user to the project profile
+   */
+  onSeeProject(projectId: string) {
+    const dir = 'project-profile/' + projectId;
+    this.router.navigate([dir]);
   }
 
 }

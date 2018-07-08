@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response, Headers} from '@angular/http';
 
 @Injectable()
 /**
@@ -9,10 +9,9 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
  */
 export class EditResourceInformationService {
 
-  private editTechnicalResourceBasicInfoUrl = 'http://ws.talent.cr/ws/technicalResource/basicInformation/edit';
-  private uploadProfilePictureUrl = "http://ws.talent.cr/ws/profilePicture/upload";
+  private editTechnicalResourceBasicInfoUrl: string = 'http://ws.talent.cr/ws/technicalResource/basicInformation/edit';
+  private uploadProfilePictureUrl: string = 'http://ws.talent.cr/ws/profilePicture/upload';
   private headers: Headers;
-  private options: RequestOptions;
 
   constructor(private http: Http) { }
 
@@ -26,10 +25,12 @@ export class EditResourceInformationService {
    */
   editTechnicalResourceBasicInfo(technicalResourceId: string, firstName: string, lastName: string, nickname: string): Promise<any> {
     this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-    const body = `technicalResourceId=${technicalResourceId}&firstName=${firstName}&lastName=${lastName}&nickname=${nickname}`;
-    return this.http
-      .post(this.editTechnicalResourceBasicInfoUrl, body, {headers: this.headers, withCredentials: true})
-      .toPromise();
+	const body = `technicalResourceId=${technicalResourceId}&firstName=${firstName}&lastName=${lastName}&nickname=${nickname}`;
+	return this.http.
+	post(this.editTechnicalResourceBasicInfoUrl, body, {headers: this.headers, withCredentials: true}).
+	toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
   }
   
   /**
@@ -42,7 +43,9 @@ export class EditResourceInformationService {
 	formData.append('file', file);
     return this.http
       .post(this.uploadProfilePictureUrl, formData, {withCredentials: true})
-      .toPromise();
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
   }
   
   private extractData(res: Response) {

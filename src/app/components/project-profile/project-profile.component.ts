@@ -64,7 +64,7 @@ export class ProjectProfileComponent implements OnInit {
       this.projectName = projectInfoObject.name.charAt(0).toUpperCase() + projectInfoObject.name.substr(1);
       this.projectStartDate = projectInfoObject.startDate;
       this.projectEndDate = projectInfoObject.endDate != null ? projectInfoObject.endDate : 'Present';
-      this.projectStatus = projectInfoObject.currentState.eventType;
+      this.projectStatus = projectInfoObject.state;
       if (this.projectStatus == 'ON_HOLD') {
         this.projectYellowStatus = true;
       } else if (this.projectStatus == 'END') {
