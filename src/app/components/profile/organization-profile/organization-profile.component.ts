@@ -155,14 +155,17 @@ export class OrganizationProfileComponent implements OnInit {
    * @param {any[]} organizationMembers
    */
   parseOrganizationMembers(organizationMembers: any[]) {
+    console.dir(organizationMembers);
     organizationMembers.forEach(resource => {
       let organizationResource = new OrganizationResource();
       organizationResource.id = resource.id;
-      organizationResource.name = resource.name;
-      organizationResource.profilePicture = resource.profilePicture;
-      organizationResource.technicalPosition = resource.technicalPosition;
+      organizationResource.name = resource.firstName + ' ' + resource.lastName;
+      organizationResource.profilePicture = resource.profilePicture.link;
+      if (resource.technicalPosition != null)
+        organizationResource.technicalPosition = resource.technicalPosition.capabilityLevel.name + ' ' + resource.technicalPosition.capabilityLevel.capability.name;
       this.organizationMembers.push(organizationResource);
     });
+    console.dir(this.organizationMembers);
   }
 
   /**

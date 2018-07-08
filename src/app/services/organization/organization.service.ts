@@ -9,7 +9,7 @@ export class OrganizationService {
   private url = 'http://ws.talent.cr/ws/login/organization';
   private organizationBasicInfoUrl = 'http://ws.talent.cr/ws/organization/get';
   private organizationProjectsUrl = 'http://ws.talent.cr/ws/organization/project/getProjects';
-  private organizationMembersUrl = '';
+  private organizationMembersUrl = 'http://ws.talent.cr/ws/organization/technicalResource/getAll';
 
   constructor(private http: HttpClient) {
   }

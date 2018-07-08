@@ -76,7 +76,7 @@
   margin: 20px auto 20px auto;
 }
 
-.content-card .members {
+.members {
   min-height: 92px;
 }
 
@@ -141,6 +141,7 @@
   color: #5A6169;
   font-size: 12px;
   line-height: 15px;
+  margin-top: 6px;
 }
 
 /* -------------------------------------- IDs ---------------------------------- */
@@ -201,7 +202,7 @@
 }
 
 #project-name {
-  color: rgba(0,0,0,0.65);
+  color: #294261;
   font-size: 20px;
   font-weight: bold;
   line-height: 25px;
@@ -322,6 +323,14 @@ i.arrow {
   .vertical-line {
     display: none;
   }
+
+  #resource-basic-info {
+    display: block;
+    vertical-align: middle;
+    min-width: 102.8px;
+    margin: 13px auto 13px 13px;
+  }
+
 }
 
 
