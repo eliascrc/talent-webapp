@@ -83,8 +83,9 @@ export class UserProfileComponent implements OnInit {
           if (this.loggedIn) {
             this.authenticateService.getLoggedInUserInfo().then(userInfo => {
               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
-              const id = userInfoObject.id;
-              if (this.userId === id) {
+              const id = userInfoObject.id;			  
+			  const isAdmistrator = userInfoObject.administrator;
+              if (isAdmistrator || this.userId === id) {
                 this.canEdit = true;
               }
             });
@@ -120,13 +121,13 @@ export class UserProfileComponent implements OnInit {
     }, error => {
     });
   }
-
-  // This method will be implemented when the edit profile component is ready
+  
   /**
    * Sends the user to the edit profile page.
    */
   onEditButton() {
-
+	const dir = '/profile/edit-profile/' + this.userId;
+	this.router.navigate([dir]);
   }
 
   /**

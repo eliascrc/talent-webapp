@@ -39,6 +39,7 @@ import {ContactUsScreenComponent} from './components/company-information/contact
 import {ContactUsService} from '@services/company-information/contact-us.service';
 import {ProjectService} from '@services/project/project.service';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
+import {EditResourceInformationService} from '@services/technical-resource/edit-resource-information.service';
 
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 
@@ -54,6 +55,7 @@ import {UserProfileComponent} from './components/profile/user-profile/user-profi
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 import {ProjectPositionService} from '@services/project-position/project-position.service';
 import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
+import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -86,6 +88,7 @@ import { OrganizationProfileComponent } from './components/profile/organization-
     CreateProjectComponent,
     UserProfileComponent,
     OrganizationProfileComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,6 +110,7 @@ import { OrganizationProfileComponent } from './components/profile/organization-
     SignupService,
     StepCommunicationService,
     ResourceInformationService,
+	EditResourceInformationService,
     InvitationService,
     ProjectService,
     ProjectPositionService

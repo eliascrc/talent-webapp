@@ -40,6 +40,10 @@
   padding: 0;
 }
 
+.fa-pencil-alt:before {
+  cursor: pointer;
+}
+
 .user-name{
   margin: 35px auto auto 29px;
 }

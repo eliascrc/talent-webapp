@@ -1,0 +1,277 @@
+label {
+  height: 25px;	
+  color: #495057;	
+  font-size: 20px;	
+  letter-spacing: -0.35px;	
+  line-height: 25px;
+}
+
+form {
+	width: 100%;
+}
+
+input[type=text], input[type=password] {
+  font-size: 20px;
+  margin-bottom: 34px;
+  padding-left: 26px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: 1px solid #BECAD6;
+  border-radius: 8px;
+}
+
+#top-content{
+  width: 100%;
+}
+
+#cancel-button {
+  box-sizing: border-box;
+  height: 42px;
+  width: 102px;
+  border: 1px solid #979595;
+  font-family: Roboto;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  color: #979595;
+  float: left;  
+  margin-top: 49px;
+  
+}
+
+#cancel-button:hover{
+  background-color: #979595;
+  color: #FFFFFF;
+}
+
+#save-button {
+  height: 41px;
+  width: 101px;
+  border-radius: 10px;
+  border-color: #EFA42F;
+  font-family: Roboto;
+  background-color: #EFA42F;
+  float: right;
+  margin-top: 49px;
+}
+
+#save-button:hover{
+  background-color: #FFFFFF;
+  color: #EFA42F;
+}
+
+#save-button:disabled, #cancel-button:disabled {
+  cursor: not-allowed;
+}
+
+#image{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#basic-info-input {
+  margin-top: 6vh;
+  margin-bottom: 12vh;
+  font-size: 20px;
+  width: 100%;
+}
+
+#drag-picture{
+  padding: 0;
+  position: relative;
+  border-radius: 8px;  
+}
+
+#drag-picture:hover {
+  box-shadow: inset 0 0 2px 0 rgba(0,0,0,0.5), 0 0.01px 4px 0 rgba(0,0,0,0.5);
+}
+
+#drag-picture-input {
+  height: 122px;
+  color: transparent;
+  width: 100%;
+  opacity: 0;  
+  cursor: pointer;
+}
+
+#drag-picture-contain {
+  position: absolute;
+  color: #B9BBBE;
+  font-size: 14px;
+  width: 100%;
+  letter-spacing: -0.25px;
+  line-height: 18px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 33px;
+}
+
+#information{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#profilePicture{
+  border-radius: 50%;
+  height: 119px;
+  width: 119px;
+}
+
+#basic-info{
+  margin: 58px auto 58px 8px;
+}
+
+.custom-file {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  border: 0.5px solid #BECAD6;
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.custom-file:hover{
+  box-shadow: inset 0 0 2px 0 rgba(0,0,0,0.5), 0 0.01px 4px 0 rgba(0,0,0,0.5);
+}
+
+label.custom-file, #file-name, #file-message {
+  height: auto;
+  width: 98px;
+  padding-left: 16px;
+  color: #000000;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: -0.35px;
+  line-height: 17px;
+}
+
+#file-name{
+  padding-left: 4px;
+}
+
+#file-message{
+  width: 100%;
+  padding-left: 0px;
+  color: #FF0000;
+}
+
+.custom-file-input{
+  display: none;
+}
+
+.container-fluid{
+  width: 88%;
+  min-width: 285px;
+  margin: auto;
+  min-height: 90vh;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.container-fluid .row {
+  margin: 0;
+  padding: 0;
+}
+
+i.far.fa-copy {
+  font-size: 29px;
+  display: block;  
+  margin-bottom: 4px;
+}
+
+.user-name{
+  margin: 35px auto auto 29px;
+}
+
+.user-info{
+  margin: 10px auto auto 29px;
+  height: 36px;	
+  color: #5A6169;	
+  font-size: 14px;	
+  line-height: 18px;
+}
+
+.name{
+  color: #294261;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 23px;
+  height: 23px;
+}
+
+.position-info {
+  height: 23px;
+  color: #5A6169;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.align-right{
+  float: right;
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle;
+}
+
+::placeholder { 
+    color: #B9BBBE;
+}
+
+@media screen and (max-width: 728px) {
+  #image{
+    width: 100%;
+    display: block;
+  }
+
+  #image-div {
+    margin: auto;
+    width: fit-content;
+  }
+
+  #profilePicture{
+    align-content: center;
+    float: inside;
+    alignment: center;
+  }
+
+  #information{
+    width: 100%;
+    float: inside;
+    display: block;
+    text-align: center;
+  }
+
+  .align-right{
+    width: 100%;
+    float: inside;
+    display: block;
+    text-align: center;
+  }
+
+  .user-name{
+    margin: 15px auto auto auto;
+  }
+
+  .name{
+    color: #294261;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 23px;
+    height: 23px;
+  }
+
+  .position-info {
+    height: 23px;
+    color: #5A6169;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .user-info{
+    margin: 10px auto auto auto;
+  }
+
+  #basic-info {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+}
