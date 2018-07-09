@@ -184,5 +184,11 @@ export class OrganizationProfileComponent implements OnInit {
   onSeeUserProfile(userId: string) {
     this.router.navigate(['/profile/user-profile/', userId]);
   }
-
+  
+  /**
+   * Triggered when clicking to edit organization information.
+   */
+  onEditProfile(){
+	this.router.navigate(['/edit-organization-profile']);
+  }
 }

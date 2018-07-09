@@ -17,7 +17,7 @@
       <div class="main-bar-loggedIn">
         <div class="header-logo">
           <a routerLink="">
-            <img [src]="userOrganizationLogo" class="logo" *ngIf="!router.url.includes('/organization-profile')">
+            <img [src]="userOrganizationLogo" class="logo" *ngIf="!router.url.includes('/organization-profile') && !router.url.includes('/edit-organization-profile')">
           </a>
         </div>
         <div class="right-content">

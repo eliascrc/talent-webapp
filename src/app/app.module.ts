@@ -29,6 +29,7 @@ import {StepCommunicationService} from '@services/sign-up/step-communication.ser
 // For proof of concept sign-up
 import {OrganizationSelectComponent} from './components/authentication/organization-select/organization-select.component';
 import {OrganizationService} from '@services/organization/organization.service';
+import {EditOrganizationService} from '@services/organization/edit-organization.service';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {InvalidTokenComponent} from './components/authentication/invalid-token/invalid-token.component';
 import {ForgotPasswordService} from '@services/authentication/forgot-password.service';
@@ -56,6 +57,7 @@ import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/
 import {ProjectPositionService} from '@services/project-position/project-position.service';
 import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
+import { EditOrganizationProfileComponent } from './components/profile/edit-organization-profile/edit-organization-profile.component';
 
 
 @NgModule({
@@ -89,6 +91,7 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
     UserProfileComponent,
     OrganizationProfileComponent,
     EditProfileComponent,
+    EditOrganizationProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +105,7 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     UserService,
     OrganizationService,
+    EditOrganizationService,
     PrivacyPolicyService,
     TermsOfUseService,
     AuthenticateService,
