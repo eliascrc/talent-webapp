@@ -1,16 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { HttpClient } from "@angular/common/http";
-import { Organization } from '@model/Organization';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {HttpClient} from '@angular/common/http';
+import {Organization} from '@model/Organization';
 
 @Injectable()
 export class OrganizationService {
 
-  private url: string = 'http://ws.talent.cr/ws/login/organization';
+  private url = 'http://ws.talent.cr/ws/login/organization';
   private organizationBasicInfoUrl = 'http://ws.talent.cr/ws/organization/get';
   private organizationSkillsUrl = 'http://ws.talent.cr/ws/organization/skill/get';
+  private organizationProjectsUrl = 'http://ws.talent.cr/ws/organization/project/getProjects';
+  private organizationMembersUrl = 'http://ws.talent.cr/ws/organization/technicalResource/getAll';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   /**
    * Returns an observable of type organization for a given organization unique identifier
@@ -36,6 +39,22 @@ export class OrganizationService {
   getSkills() {
     return this.http.get(this.organizationSkillsUrl, {withCredentials: true})
       .toPromise();
+  }
+
+  /**
+   * Returns a promise with the JSON containing the organization's projects.
+   * @returns {Promise<Object>}
+   */
+  getOrganizationProjects(): Promise<any> {
+    return this.http.get(this.organizationProjectsUrl, {withCredentials: true}).toPromise();
+  }
+
+  /**
+   * Returns a promise with the JSON containing the organization's members.
+   * @returns {Promise<Object>}
+   */
+  getOrganizationMembers(): Promise<any> {
+    return this.http.get(this.organizationMembersUrl, {withCredentials: true}).toPromise();
   }
 
 }
