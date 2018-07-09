@@ -10,9 +10,17 @@ export class BasicEntity {
   lastUpdatedTimestamp: Date;
 
   constructor(basicEntity: any) {
-    this.entityCreationTimestamp = new Date(basicEntity.entityCreationTimestamp.getTime());
+
+    console.log(basicEntity);
+    if (basicEntity.entityCreationTimestamp !== null && basicEntity.entityCreationTimestamp !== undefined) {
+      this.entityCreationTimestamp = new Date(basicEntity.entityCreationTimestamp.getTime());
+    }
+
     this.entityVersion = basicEntity.entityVersion;
     this.id = basicEntity.id;
-    this.lastUpdatedTimestamp = new Date(basicEntity.lastUpdatedTimestamp.getTime());
+
+    if (basicEntity.lastUpdatedTimestamp !== null && basicEntity.lastUpdatedTimestamp !== undefined) {
+      this.lastUpdatedTimestamp = new Date(basicEntity.lastUpdatedTimestamp.getTime());
+    }
   }
 }

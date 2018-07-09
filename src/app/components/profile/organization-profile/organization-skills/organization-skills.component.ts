@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {OrganizationService} from '@services/organization/organization.service';
+import {SkillCategory} from '@model/SkillCategory';
 
 @Component({
   selector: 'app-organization-skills',
@@ -9,14 +10,25 @@ import {OrganizationService} from '@services/organization/organization.service';
 })
 export class OrganizationSkillsComponent implements OnInit {
 
-  constructor(public router: Router, private organizationService: OrganizationService) { }
+  skillCategories: SkillCategory[] = [];
+
+  constructor(public router: Router, private organizationService: OrganizationService) {
+  }
 
   ngOnInit() {
 
-    this.organizationService.getSkills().then( skillCategories => {
-
+    this.organizationService.getOrganizationSkills().then(skillCategories => {
+      this.parseSkills(skillCategories);
     });
 
   }
 
+  private parseSkills(skillCategories: any[]) {
+    skillCategories.forEach(skillCategory => {
+
+      const skillCategoryModel = new SkillCategory(skillCategory);
+      this.skillCategories.push(skillCategoryModel);
+
+    });
+  }
 }

@@ -36,9 +36,8 @@ export class OrganizationService {
       .toPromise();
   }
 
-  getSkills() {
-    return this.http.get(this.organizationSkillsUrl, {withCredentials: true})
-      .toPromise();
+  getOrganizationSkills(): Promise<any> {
+    return this.http.get(this.organizationSkillsUrl, {withCredentials: true}).toPromise();
   }
 
   /**
