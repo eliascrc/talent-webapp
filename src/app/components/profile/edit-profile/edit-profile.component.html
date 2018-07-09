@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row" id="basic-info">
+    <div id="top-content">
+      <div id="image">
+        <div id="image-div">
+          <img *ngIf="userProfilePicture != null" [src]="userProfilePicture" alt="image" id="profilePicture">
+        </div>
+      </div>
+      <div id="information">
+        <div class="user-name"><p class="name">{{firstName}} {{lastName}}</p></div>
+        <div class="user-info"><p class="position-info">{{position}}<br/>Technical Resource</p></div>
+      </div>
+      <div class="align-right">
+        <div class="user-name"><p class="name">Technical Manager</p></div>
+        <div class="user-info"><p class="position-info">Rodrigo Bartels</p></div>
+      </div>
+	  
+	  <div class="row" id="basic-info-input">
+
+        <!-- Basic Information Form -->
+        <form (ngSubmit)="onSubmit(editForm)" #editForm="ngForm">
+		  <div class="form-group">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" placeholder={{firstName}} id="firstName" ngModel name="firstNameInput" [disabled]="saving || isAdministrator"/>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" placeholder={{lastName}} id="lastName" ngModel name="lastNameInput" [disabled]="saving || isAdministrator"/>
+          </div>
+		  
+		  <div class="form-group">
+            <label for="nickname">Nickname</label>
+            <input type="text" class="form-control" placeholder={{nickname}} id="nickname" ngModel name="nicknameInput" [disabled]="saving"/>
+          </div>
+          <label *ngIf="isAuthorized" for="profilePicture">Profile picture</label>
+		  <div  *ngIf="isAuthorized"class="form-group">
+			<label class="custom-file">Choose Files
+				<input type="file" id="file" class="custom-file-input" [disabled]="saving" (change)="uploadFile($event)">
+			</label>
+		    <label class="custom-file-control" id="file-name">{{fileName}}</label>
+          </div>
+		  
+		  <div *ngIf="isAuthorized" class="form-control" id="drag-picture">
+			<span id="drag-picture-contain">
+				<i class="far fa-copy"></i>Drag files here
+			</span>
+			<input type="file" id="drag-picture-input" ngModel name="dragPicture" [disabled]="saving || n" (change)="uploadFile($event)"/>					
+          </div>
+		  <label *ngIf="!validFile" class="custom-file-control" id="file-message">The extension of the profile picture must be .jpg.</label>
+		  
+		  <button class="btn btn-secondary" id="cancel-button" (click)="onCancelButton()" type="button" [disabled]="saving">Cancel</button>
+		  <input class="btn btn-primary" id="save-button" type="submit" [disabled]="saving" value={{buttonMessage}} [disabled]="!validFile"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

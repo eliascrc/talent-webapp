@@ -28,7 +28,43 @@
     <ngb-tabset justify="fill">
       <ngb-tab title="Projects">
         <ng-template ngbTabContent>
-          <p>Projects works!</p>
+          <div class="row">
+            <div *ngFor="let project of userProjects" class="content-card">
+              <div class="project-info">
+                <div class="project-basic-info">
+                  <div id="project-name">{{project.name}}</div>
+                </div>
+                <div class="project-basic-info">
+                  <div><i class="far fa-clock date-clock" style="display: inline-block;"></i>
+                    <div id="start-date">{{project.startDate | date: 'dd-MM-yyyy'}}</div>
+                    <span id="date-hyphen">-</span>
+                    <div id="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date: 'dd-MM-yyyy'}}</div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="cards-right-content">
+                <div class="vertical-line"></div>
+                <div class="block-info">
+                  <div id="resource-project-position-label">Position</div>
+                  <div id="resource-project-position">{{project.resourcePosition}}</div>
+                </div>
+                <div class="vertical-line"></div>
+                <div id="project-status">
+                  <div class="status-icon" [class.red-status-icon]="project.projectRedStatus" [class.yellow-status-icon]="project.projectYellowStatus"></div>
+                  <div id="status">{{project.projectStatus | uppercase}}</div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="block-info">
+
+                  <div class="see-projects-button arrow-icon" (click)="onSeeProject(project.id)">
+                    SEE PROJECT <i class="fas fa-angle-right arrow"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </ng-template>
       </ngb-tab>
       <ngb-tab title="Kudos & warnings">
@@ -48,6 +84,8 @@
       </ngb-tab>
     </ngb-tabset>
   </div>
+
+  <div class="pr"></div>
 
 </div>
 
