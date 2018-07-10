@@ -9,11 +9,27 @@ import { Http, Response, Headers} from '@angular/http';
  */
 export class EditOrganizationService {
 	
-  private editTechnicalResourceBasicInfoUrl: string = '';
+  private editOrganizationBasicInfoUrl: string = 'http://ws.talent.cr/ws/organization/create';
   private uploadOrganizationLogoUrl: string = 'http://ws.talent.cr/ws/organizationLogo/upload';
   private headers: Headers;
 
   constructor(private http: Http) { }
+  
+  /**
+   * Edits the basic information of a organization.
+   * @param {string} uniqueIdentifier
+   * @param {string} name
+   * @returns {Promise<any>}
+   */
+  editOrganizationBasicInfo(uniqueIdentifier: string, name: string): Promise<any> {
+    this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+	const body = `uniqueIdentifier=${uniqueIdentifier}&name=${name}`;
+	return this.http.
+	post(this.editOrganizationBasicInfoUrl, body, {headers: this.headers, withCredentials: true}).
+	toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
   
   /**
    * Change the logo of a organization.

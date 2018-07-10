@@ -103,5 +103,8 @@ export class EditOrganizationProfileComponent implements OnInit {
 		this.editOrganizationService.uploadOrganizationLogo(this.file);
 	}
 	
+	this.editOrganizationService.editOrganizationBasicInfo(this.uniqueIdentifier, this.organizationName).
+	catch(error => {this.saving=false; this.buttonMessage = "Save"; alert(error.status);}).
+	then(response => {this.onCancelButton();});	
   }
 }
