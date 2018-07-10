@@ -9,7 +9,7 @@ import { Http, Response, Headers} from '@angular/http';
  */
 export class EditOrganizationService {
 	
-  private editOrganizationBasicInfoUrl: string = 'http://ws.talent.cr/ws/organization/create';
+  private editOrganizationBasicInfoUrl: string = 'http://ws.talent.cr/ws/organization/edit';
   private uploadOrganizationLogoUrl: string = 'http://ws.talent.cr/ws/organizationLogo/upload';
   private headers: Headers;
 

@@ -23,10 +23,14 @@
 
           <div class="form-group">
             <label for="uniqueIdentifier">Unique indentifier</label>
-            <input type="text" class="form-control" placeholder={{uniqueIdentifier}} id="uniqueIdentifier" ngModel name="uniqueIdentifierInput" [disabled]="saving"/>
+            <input type="text" class="form-control" placeholder={{uniqueIdentifier}} id="uniqueIdentifier" ngModel name="uniqueIdentifierInput" 
+			(keyup)="hideMessage()" [disabled]="saving"/>
+		    <div class="error-message" id="error-message">Id must have at least 3 characters and only numbers or letters. 
+			  Hyphens are permitted if surrounded by these characters. It must be unique.
+            </div>
           </div>
 		  
-          <label for="organizationLogo">Organization logo</label>
+          <label for="organizationLogo" id="organizationLogoTitle">Organization logo</label>
 		  <div  class="form-group">
 			<label class="custom-file">Choose Files
 				<input type="file" id="file" class="custom-file-input" [disabled]="saving" (change)="uploadFile($event)">
