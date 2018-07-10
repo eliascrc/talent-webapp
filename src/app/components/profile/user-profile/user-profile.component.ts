@@ -70,7 +70,6 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-
   /**
    * Checks that the user is able to edit.
    * @param {string} userId
@@ -83,7 +82,7 @@ export class UserProfileComponent implements OnInit {
           if (this.loggedIn) {
             this.authenticateService.getLoggedInUserInfo().then(userInfo => {
               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
-              const id = userInfoObject.id;			  
+              const id = userInfoObject.id;
 			  const isAdmistrator = userInfoObject.administrator;
               if (isAdmistrator || this.userId === id) {
                 this.canEdit = true;
@@ -121,13 +120,13 @@ export class UserProfileComponent implements OnInit {
     }, error => {
     });
   }
-  
+
   /**
    * Sends the user to the edit profile page.
    */
   onEditButton() {
-	const dir = '/profile/edit-profile/' + this.userId;
-	this.router.navigate([dir]);
+  	const dir = '/profile/edit-profile/' + this.userId;
+  	this.router.navigate([dir]);
   }
 
   /**

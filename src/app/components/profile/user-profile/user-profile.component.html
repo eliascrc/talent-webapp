@@ -56,7 +56,6 @@
                 </div>
                 <div class="vertical-line"></div>
                 <div class="block-info">
-
                   <div class="see-projects-button arrow-icon" (click)="onSeeProject(project.id)">
                     SEE PROJECT <i class="fas fa-angle-right arrow"></i>
                   </div>
@@ -69,12 +68,42 @@
       </ngb-tab>
       <ngb-tab title="Kudos & warnings">
         <ng-template ngbTabContent>
-          <p>Kudos and warnings works!</p>
+          <div class="row">
+            <div class="col">
+              <div class="feedback-container">
+                  <div class="kudos-title">
+                    <i class="far fa-thumbs-up"></i>
+                    <span>Kudos</span>
+                  </div>
+                <div class="content-card">
+                  <div class="feedback-card-content">Maria Jose Cubero</div>
+                  <div class="feedback-message">gave you a kudo</div>
+                  <div class="feedback-comment">Description of the kudos.</div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col">
+              <div class="feedback-container">
+                <div class="warnings-title">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <span>Warnings</span>
+                </div>
+                <div class="content-card">
+                  <div class="feedback-card-content">Maria Jose Cubero</div>
+                  <div class="feedback-message">gave you a kudo</div>
+                  <div class="feedback-comment">Description of the kudos.</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </ng-template>
       </ngb-tab>
       <ngb-tab title="Skills">
         <ng-template ngbTabContent>
-          <p>Skills works!</p>
+          <div class="row">
+            <div class="skill-container">aa</div>
+          </div>
         </ng-template>
       </ngb-tab>
       <ngb-tab title="Education records">
