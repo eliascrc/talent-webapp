@@ -78,6 +78,11 @@
                   <i class="far fa-thumbs-up"></i>
                   <span>Kudos</span>
                 </div>
+                <div *ngIf="noFeedbacks">
+                  <div class="content-card">
+                    <div class="feedback-message">This resource has no kudos yet.</div>
+                  </div>
+                </div>
                 <div *ngFor="let feedback of userFeedbacks">
                   <div *ngIf="feedback.feedbackType == 'KUDO'">
                     <div class="content-card">
@@ -88,21 +93,26 @@
                   </div>
                 </div>
               </div>
-
-
             </div>
             <div class="col-md-6">
-              <div class="feedback-container">
-                <div class="warnings-title">
-                  <i class="fas fa-exclamation-triangle"></i>
-                  <span>Warnings</span>
-                </div>
-                <div *ngFor="let feedback of userFeedbacks">
-                  <div *ngIf="feedback.feedbackType == 'WARNING'">
+              <div *ngIf="canEdit">
+                <div class="feedback-container">
+                  <div class="warnings-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Warnings</span>
+                  </div>
+                  <div *ngIf="noFeedbacks">
                     <div class="content-card">
-                      <div class="feedback-card-content">{{feedback.observer}}</div>
-                      <div class="feedback-message">gave you a Warning</div>
-                      <div class="feedback-comment">{{feedback.description}}</div>
+                      <div class="feedback-message">You have no warnings.</div>
+                    </div>
+                  </div>
+                  <div *ngFor="let feedback of userFeedbacks">
+                    <div *ngIf="feedback.feedbackType == 'WARNING'">
+                      <div class="content-card">
+                        <div class="feedback-card-content">{{feedback.observer}}</div>
+                        <div class="feedback-message">gave you a Warning</div>
+                        <div class="feedback-comment">{{feedback.description}}</div>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -45,9 +45,10 @@ export class UserProfileComponent implements OnInit {
   userProfilePicture: string;
   loggedIn = false;
   position: string;
-  canEdit: boolean;
+  canEdit = false;
   userProjects: ResourceProject[] = [];
   userFeedbacks: ResourceFeedback[] = [];
+  noFeedbacks = false;
 
   constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
               private resourceService: ResourceInformationService, private router: Router,
@@ -60,13 +61,14 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(param => {
       this.userId = param['userId'];
-      this.checkEditPermission(this.userId);
+
       this.authenticateService.isLoggedIn()
         .then(response => {
             this.loggedIn = response;
             if (this.loggedIn) {
               this.resourceService.getTechnicalResourceBasicInfoWithId(this.userId)
                 .then(userInfo => {
+                  this.checkEditPermission(this.userId);
                   let name = userInfo.firstName;
                   name = name.concat(' ');
                   this.name = name.concat(userInfo.lastName);
@@ -86,7 +88,6 @@ export class UserProfileComponent implements OnInit {
    * @param {string} userId
    */
   checkEditPermission(userId: string) {
-    this.canEdit = false;
     this.authenticateService.isLoggedIn()
       .then(response => {
           this.loggedIn = response;
@@ -95,7 +96,7 @@ export class UserProfileComponent implements OnInit {
               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
               const id = userInfoObject.id;
               const isAdmistrator = userInfoObject.administrator;
-              if (isAdmistrator || this.userId === id) {
+              if (this.userId == id) {
                 this.canEdit = true;
               }
             });
@@ -148,6 +149,7 @@ export class UserProfileComponent implements OnInit {
         this.userFeedbacks.push(userFeedback);
       });
     }, error => {
+      this.noFeedbacks = true;
     });
   }
 
