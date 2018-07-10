@@ -81,7 +81,7 @@
                 <div *ngFor="let feedback of userFeedbacks">
                   <div *ngIf="feedback.feedbackType == 'KUDO'">
                     <div class="content-card">
-                      <div class="feedback-card-content">Maria Jose Cubero</div>
+                      <div class="feedback-card-content">{{feedback.observer}}</div>
                       <div class="feedback-message">gave you a Kudo</div>
                       <div class="feedback-comment">{{feedback.description}}</div>
                     </div>
@@ -100,7 +100,7 @@
                 <div *ngFor="let feedback of userFeedbacks">
                   <div *ngIf="feedback.feedbackType == 'WARNING'">
                     <div class="content-card">
-                      <div class="feedback-card-content">Maria Jose Cubero</div>
+                      <div class="feedback-card-content">{{feedback.observer}}</div>
                       <div class="feedback-message">gave you a Warning</div>
                       <div class="feedback-comment">{{feedback.description}}</div>
                     </div>

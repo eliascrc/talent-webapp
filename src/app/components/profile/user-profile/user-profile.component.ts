@@ -142,7 +142,9 @@ export class UserProfileComponent implements OnInit {
         const userFeedback = new ResourceFeedback();
         userFeedback.description = feedback.description + '.';
         userFeedback.feedbackType = feedback.feedbackType;
-        userFeedback.observer = 'Maria Jose Cubero';
+        let name = feedback.observer.firstName;
+        name = name.concat(' ');
+        userFeedback.observer = name.concat(feedback.observer.lastName);
         this.userFeedbacks.push(userFeedback);
       });
     }, error => {
