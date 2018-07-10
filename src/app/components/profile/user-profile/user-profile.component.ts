@@ -18,6 +18,9 @@ class ResourceProject {
   resourcePosition: string;
 }
 
+/**
+ * Used to represent a feedback that the resource has received.
+ */
 class ResourceFeedback {
   description: string;
   feedbackType: string;
