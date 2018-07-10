@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
 import {ProjectService} from '@services/project/project.service';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
 /**
  * Used to represent the resources that have been part of a project.
@@ -27,6 +28,19 @@ class ProjectPositionHolders {
   resources: {id: string, name: string, picture: string}[];
 }
 
+enum FeedbackType {
+  Kudo,
+  Warning,
+}
+
+/**
+ * Used to represent project positions and its holders.
+ */
+class FeedbackModal extends NgbModalRef {
+  feedbackReceiverId: string;
+  feedbackType: FeedbackType;
+}
+
 @Component({
   selector: 'app-project-profile',
   templateUrl: './project-profile.component.html',
@@ -50,8 +64,11 @@ export class ProjectProfileComponent implements OnInit {
   projectStatus: string;
   projectRedStatus = false;
   projectYellowStatus = false;
+  closeResult: string;
+  content: FeedbackModal;
 
-  constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService, private resourceService: ResourceInformationService) {
+  constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService,
+              private resourceService: ResourceInformationService, private modalService: NgbModal) {
   }
 
   /**
@@ -139,6 +156,27 @@ export class ProjectProfileComponent implements OnInit {
    */
   onSeeUserProfile(userId: string) {
     this.router.navigate(['/profile/user-profile/', userId]);
+  }
+
+  open(content: FeedbackModal, feedbackType: FeedbackType, technicalResourceId: string) {
+    content.feedbackReceiverId = technicalResourceId;
+    content.feedbackType = feedbackType;
+    this.modalService.open(content, {size: 'lg', centered: true});
+  }
+
+  confirmKudo(technicalResourceId: string, description: string) {
+    alert('Id:' + technicalResourceId + ' Description: ' + description);
+    this.content.close();
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
 }

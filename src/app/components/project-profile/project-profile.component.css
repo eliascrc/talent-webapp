@@ -407,3 +407,67 @@ ngb-tabset {
   }
 
 }
+
+#project-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.kudo-btn {
+  color: #FFFFFF;
+  background: #B8E986;
+  height: 35px;
+  vertical-align: center;
+  border: 0px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-top: 5px;
+  width: 100px;
+  font-family: "Lato";
+}
+
+.warning-btn {
+  color: #FFFFFF;
+  background: #DD5555;
+  height: 35px;
+  vertical-align: center;
+  border: 0px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-top: 5px;
+  width: 100px;
+  font-family: "Lato";
+}
+
+.confirm-button {
+  color: #FFFFFF;
+  background-color: #EFA42F;
+  height: 35px;
+  vertical-align: center;
+  border: 1px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-top: 5px;
+  width: 100px;
+  font-family: "Lato";
+}
+
+.cancel-button {
+  color: #979595;
+  background: #FFFFFF;
+  height: 35px;
+  vertical-align: center;
+  border: 1px solid #979595;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-top: 5px;
+  width: 100px;
+  font-family: "Lato";
+}
+
+textarea {
+  height: 100px;
+}
+
+.modal-title {
+  color: #47525E;;
+}
