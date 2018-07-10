@@ -325,6 +325,7 @@
   display: block;
   color: lightslategray;
   font-size: 14px;
+  margin-top: 15px;
 }
 
 @media screen and (min-width: 728px) and (max-width: 1000px) {
