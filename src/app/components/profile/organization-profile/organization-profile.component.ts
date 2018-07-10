@@ -32,10 +32,10 @@ class OrganizationResource {
 /**
  * User to represent a capability level of an organization.
  */
-class OrganizationCapabilityLevel {
+class OrganizationCapability {
   name: string;
   showCapabilities: boolean;
-  capabilities: string[];
+  capabilityLevels: string[];
 }
 
 @Component({
@@ -61,7 +61,7 @@ export class OrganizationProfileComponent implements OnInit {
   showCapabilities = false;
   showSkills = false;
   showProjects = false;
-  organizationCapabilityLevels: OrganizationCapabilityLevel[] = [];
+  organizationCapabilities: OrganizationCapability[] = [];
 
   constructor(private organizationService: OrganizationService, private authenticateService: AuthenticateService, private router: Router) {
   }
@@ -179,8 +179,10 @@ export class OrganizationProfileComponent implements OnInit {
     });
   }
 
-  parseOrganizationCapabilityLevels(){
+  parseOrganizationCapabilities(){
+    this.organizationService.getOrganizationCapabilities().then( capability=> {
 
+    });
   }
 
   /**
