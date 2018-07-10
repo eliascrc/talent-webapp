@@ -18,6 +18,11 @@ class OrganizationProject {
   projectYellowStatus = false;
 }
 
+class OrganizationCapabilityLevel{
+  name: string;
+  showCapabilities: boolean;
+}
+
 /**
  * Used to represent the attributes needed of an organization resource.
  */
