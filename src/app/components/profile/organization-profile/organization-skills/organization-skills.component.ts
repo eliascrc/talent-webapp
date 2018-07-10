@@ -31,4 +31,35 @@ export class OrganizationSkillsComponent implements OnInit {
 
     });
   }
+
+  addSkill() {
+    const addButton = (document.getElementById('add-skill-btn') as HTMLButtonElement);
+    addButton.disabled = true;
+
+    const skillTypeInput = (document.getElementById('skill-type-dropdown') as HTMLSelectElement);
+    const skillCategoryInput = (document.getElementById('skill-category-dropdown') as HTMLSelectElement);
+    const skillTextInput = (document.getElementById('new-skill') as HTMLInputElement);
+
+    const skillType = skillTypeInput.options[skillTypeInput.selectedIndex].value;
+    const skillCategory = skillCategoryInput.options[skillCategoryInput.selectedIndex].value;
+    const newSkill = skillTextInput.value;
+
+    if (newSkill !== '') {
+      this.organizationService.createOrganizationSkills(skillCategory, newSkill, skillType).then(response => {
+
+        this.skillCategories = [];
+
+        this.organizationService.getOrganizationSkills().then(skillCategories => {
+          this.parseSkills(skillCategories);
+          addButton.disabled = false;
+        });
+
+        document.getElementById('error-message').classList.remove('visible');
+
+      }, () => {
+        document.getElementById('error-message').classList.add('visible');
+        addButton.disabled = false;
+      });
+    }
+  }
 }

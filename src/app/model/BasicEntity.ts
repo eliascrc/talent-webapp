@@ -13,14 +13,14 @@ export class BasicEntity {
 
     console.log(basicEntity);
     if (basicEntity.entityCreationTimestamp !== null && basicEntity.entityCreationTimestamp !== undefined) {
-      this.entityCreationTimestamp = new Date(basicEntity.entityCreationTimestamp.getTime());
+      this.entityCreationTimestamp = new Date(basicEntity.entityCreationTimestamp);
     }
 
     this.entityVersion = basicEntity.entityVersion;
     this.id = basicEntity.id;
 
     if (basicEntity.lastUpdatedTimestamp !== null && basicEntity.lastUpdatedTimestamp !== undefined) {
-      this.lastUpdatedTimestamp = new Date(basicEntity.lastUpdatedTimestamp.getTime());
+      this.lastUpdatedTimestamp = new Date(basicEntity.lastUpdatedTimestamp);
     }
   }
 }

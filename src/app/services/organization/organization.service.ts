@@ -8,7 +8,8 @@ export class OrganizationService {
 
   private url = 'http://ws.talent.cr/ws/login/organization';
   private organizationBasicInfoUrl = 'http://ws.talent.cr/ws/organization/get';
-  private organizationSkillsUrl = 'http://ws.talent.cr/ws/organization/skill/get';
+  private getOrganizationSkillsUrl = 'http://ws.talent.cr/ws/organization/skill/get';
+  private createOrganizationSkillsUrl = 'http://ws.talent.cr/ws/organization/skill/create';
   private organizationProjectsUrl = 'http://ws.talent.cr/ws/organization/project/getProjects';
   private organizationMembersUrl = 'http://ws.talent.cr/ws/organization/technicalResource/getAll';
 
@@ -37,7 +38,13 @@ export class OrganizationService {
   }
 
   getOrganizationSkills(): Promise<any> {
-    return this.http.get(this.organizationSkillsUrl, {withCredentials: true}).toPromise();
+    return this.http.get(this.getOrganizationSkillsUrl, {withCredentials: true}).toPromise();
+  }
+
+  createOrganizationSkills(skillCategoryId: string, skillName: string, skillType: string) {
+    const bodyParameters = `skillCategoryId=${skillCategoryId}&skillName=${skillName}&skillType=${skillType}`;
+    return this.http.post(this.createOrganizationSkillsUrl, bodyParameters,
+      {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true}).toPromise();
   }
 
   /**
