@@ -18,11 +18,6 @@ class OrganizationProject {
   projectYellowStatus = false;
 }
 
-class OrganizationCapabilityLevel{
-  name: string;
-  showCapabilities: boolean;
-}
-
 /**
  * Used to represent the attributes needed of an organization resource.
  */
@@ -32,6 +27,15 @@ class OrganizationResource {
   name: string;
   technicalPosition: string;
   profilePicture: string;
+}
+
+/**
+ * User to represent a capability level of an organization.
+ */
+class OrganizationCapabilityLevel {
+  name: string;
+  showCapabilities: boolean;
+  capabilities: string[];
 }
 
 @Component({
@@ -57,6 +61,7 @@ export class OrganizationProfileComponent implements OnInit {
   showCapabilities = false;
   showSkills = false;
   showProjects = false;
+  organizationCapabilityLevels: OrganizationCapabilityLevel[] = [];
 
   constructor(private organizationService: OrganizationService, private authenticateService: AuthenticateService, private router: Router) {
   }
@@ -172,6 +177,10 @@ export class OrganizationProfileComponent implements OnInit {
         organizationResource.technicalPosition = resource.technicalPosition.capabilityLevel.name + ' ' + resource.technicalPosition.capabilityLevel.capability.name;
       this.organizationMembers.push(organizationResource);
     });
+  }
+
+  parseOrganizationCapabilityLevels(){
+
   }
 
   /**
