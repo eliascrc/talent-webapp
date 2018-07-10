@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {TechnicalResource} from '@model/TechnicalResource';
 import {JobPosition} from '@model/JobPosition';
+import {Router} from '@angular/router';
+import {OrganizationService} from '@services/organization/organization.service';
 
 @Component({
   selector: 'app-search-resource',
@@ -10,13 +12,21 @@ import {JobPosition} from '@model/JobPosition';
 })
 export class SearchResourceComponent implements OnInit {
 
-  public results: TechnicalResource[];
   public searchedWord: string;
 
-  constructor() {
+  public allOrganizationMembers: OrganizationResource[] = [];
+  public matchingOrganizationMembers: OrganizationResource[] = [];
+
+  constructor(public router: Router, private organizationService: OrganizationService) {
   }
 
   ngOnInit() {
+
+    this.organizationService.getOrganizationMembers().then(resources => {
+      this.parseOrganizationMembers(resources);
+    }, error => {
+    });
+
   }
 
   onSubmit(searchForm: NgForm) {
@@ -24,14 +34,45 @@ export class SearchResourceComponent implements OnInit {
 
       this.searchedWord = searchForm.value.searchBar;
       document.getElementById('results-for-lbl').style.display = 'block';
-      const results = document.getElementsByClassName('search-result');
+      this.matchingOrganizationMembers = [];
 
-      for (let i = 0; i < results.length; i++) {
-        const element = (results[i] as HTMLElement);
-        element.style.display = 'block';
-      }
+      this.allOrganizationMembers.forEach(member => {
+
+        if (member.name.includes(this.searchedWord)) {
+          this.matchingOrganizationMembers.push(member);
+        }
+
+      });
 
     }
   }
 
+  /**
+   * Parses the JSON object received to display all members and their basic information.
+   * @param {any[]} organizationMembers
+   */
+  parseOrganizationMembers(organizationMembers: any[]) {
+    organizationMembers.forEach(resource => {
+      const organizationResource = new OrganizationResource();
+      organizationResource.id = resource.id;
+      organizationResource.name = resource.firstName + ' ' + resource.lastName;
+      organizationResource.profilePicture = resource.profilePicture.link;
+      if (resource.technicalPosition != null) {
+        organizationResource.technicalPosition = resource.technicalPosition.capabilityLevel.name + ' ' + resource.technicalPosition.capabilityLevel.capability.name;
+      }
+      this.allOrganizationMembers.push(organizationResource);
+    });
+  }
+
+}
+
+/**
+ * Used to represent the attributes needed of an organization resource.
+ */
+class OrganizationResource {
+
+  id: string;
+  name: string;
+  technicalPosition: string;
+  profilePicture: string;
 }

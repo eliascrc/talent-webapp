@@ -34,20 +34,18 @@
       </div>
     </div>
 
-    <div class="search-result col-12 p-0">
+    <div class="search-result col-12 p-0" *ngFor="let resource of matchingOrganizationMembers">
       <div class="row p-4 m-0">
 
         <div class="search-img d-inline-block col-12 col-md-auto h-100">
-          <img src="https://t3.ftcdn.net/jpg/00/64/67/52/240_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg"
-               alt="Search Result Image">
+          <img src="{{resource.profilePicture}}" alt="Search Result Image">
         </div>
 
         <div class="search-info d-inline-block col-12 col-md-auto">
-          <div class="resource-name">Josué León Sarkis</div>
-          <div class="job-position mb-4">Junior Software Developer</div>
-          <div class="skills mb-2">Skills: Teamwork, Leadership, Java, C++, Javascript, Typescript, Angular, Spring, CSS
-          </div>
-          <div class="projects">Projects: Futmob, Papers</div>
+          <div class="resource-name">{{resource.name}}</div>
+          <div class="job-position mb-4">{{resource.technicalPosition}}</div>
+          <div class="skills mb-2">Skills: </div>
+          <div class="projects">Projects: </div>
 
         </div>
 
