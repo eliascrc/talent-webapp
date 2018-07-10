@@ -18,6 +18,12 @@ class ResourceProject {
   resourcePosition: string;
 }
 
+class ResourceFeedback {
+  description: string;
+  feedbackType: string;
+  observer: string;
+}
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -38,6 +44,7 @@ export class UserProfileComponent implements OnInit {
   position: string;
   canEdit: boolean;
   userProjects: ResourceProject[] = [];
+  userFeedbacks: ResourceFeedback[] = [];
 
   constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
               private resourceService: ResourceInformationService, private router: Router,
@@ -62,6 +69,7 @@ export class UserProfileComponent implements OnInit {
                   this.name = name.concat(userInfo.lastName);
                   this.userProfilePicture = userInfo.profilePicture.link;
                   this.getUsersProjects(userInfo.username);
+                  this.getUsersFeedback(userInfo.username);
                 }, error => {
                 });
             }
@@ -83,7 +91,7 @@ export class UserProfileComponent implements OnInit {
             this.authenticateService.getLoggedInUserInfo().then(userInfo => {
               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
               const id = userInfoObject.id;
-			  const isAdmistrator = userInfoObject.administrator;
+              const isAdmistrator = userInfoObject.administrator;
               if (isAdmistrator || this.userId === id) {
                 this.canEdit = true;
               }
@@ -99,7 +107,7 @@ export class UserProfileComponent implements OnInit {
    */
   getUsersProjects(username: string) {
     this.resourceService.getTechnicalResourceProjects(username).then(projects => {
-      projects.forEach( project => {
+      projects.forEach(project => {
         const userProject = new ResourceProject();
         userProject.id = project.id;
         userProject.name = project.name;
@@ -111,7 +119,7 @@ export class UserProfileComponent implements OnInit {
         } else if (userProject.projectStatus == 'END') {
           userProject.projectRedStatus = true;
         }
-        this.projectPositionService.getTechnicalResourceProjectPosition(username, project.id).then( response => {
+        this.projectPositionService.getTechnicalResourceProjectPosition(username, project.id).then(response => {
           userProject.resourcePosition = response.projectPosition.capabilityLevel.capability.name;
         }, error => {
         });
@@ -122,11 +130,28 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
+   * Saves the feedback of the resource in a list.
+   * @param {string} username
+   */
+  getUsersFeedback(username: string) {
+    this.resourceService.getTechnicalResourceFeedback(username).then(feedbacks => {
+      feedbacks.forEach(feedback => {
+        const userFeedback = new ResourceFeedback();
+        userFeedback.description = feedback.description + '.';
+        userFeedback.feedbackType = feedback.feedbackType;
+        userFeedback.observer = 'Maria Jose Cubero';
+        this.userFeedbacks.push(userFeedback);
+      });
+    }, error => {
+    });
+  }
+
+  /**
    * Sends the user to the edit profile page.
    */
   onEditButton() {
-  	const dir = '/profile/edit-profile/' + this.userId;
-  	this.router.navigate([dir]);
+    const dir = '/profile/edit-profile/' + this.userId;
+    this.router.navigate([dir]);
   }
 
   /**

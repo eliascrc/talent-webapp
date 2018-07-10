@@ -12,6 +12,7 @@ export class ResourceInformationService {
   private getTechnicalResourceBasicInfoUrl = 'http://ws.talent.cr/ws/technicalResource/basicInformation';
   private getTechnicalResourceBasicInfoUrlWithId = 'http://ws.talent.cr/ws/technicalResource/basicInformation/id';
   private getTechnicalResourcesProjects = 'http://ws.talent.cr/ws/technicalResource/project/get?username=';
+  private getTechnicalResourcesFeedback = 'http://ws.talent.cr/ws/technicalResource/receivedFeedback/get?technicalResource=';
 
   constructor(private http: HttpClient) {
   }
@@ -51,6 +52,17 @@ export class ResourceInformationService {
    */
   getTechnicalResourceProjects(username: string): Promise<any> {
     return this.http.get<any>(this.getTechnicalResourcesProjects + username , {
+      withCredentials: true
+    }).toPromise();
+  }
+
+  /**
+   * Obtains the feedback of a technical resource.
+   * @param {string} username
+   * @returns {Promise<any>}
+   */
+  getTechnicalResourceFeedback(username: string): Promise<any> {
+    return this.http.get<any>(this.getTechnicalResourcesFeedback + username , {
       withCredentials: true
     }).toPromise();
   }

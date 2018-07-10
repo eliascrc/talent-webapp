@@ -38,7 +38,9 @@
                   <div><i class="far fa-clock date-clock" style="display: inline-block;"></i>
                     <div id="start-date">{{project.startDate | date: 'dd-MM-yyyy'}}</div>
                     <span id="date-hyphen">-</span>
-                    <div id="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date: 'dd-MM-yyyy'}}</div>
+                    <div id="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date:
+                      'dd-MM-yyyy'}}
+                    </div>
 
                   </div>
                 </div>
@@ -51,7 +53,8 @@
                 </div>
                 <div class="vertical-line"></div>
                 <div id="project-status">
-                  <div class="status-icon" [class.red-status-icon]="project.projectRedStatus" [class.yellow-status-icon]="project.projectYellowStatus"></div>
+                  <div class="status-icon" [class.red-status-icon]="project.projectRedStatus"
+                       [class.yellow-status-icon]="project.projectYellowStatus"></div>
                   <div id="status">{{project.projectStatus | uppercase}}</div>
                 </div>
                 <div class="vertical-line"></div>
@@ -69,30 +72,39 @@
       <ngb-tab title="Kudos & warnings">
         <ng-template ngbTabContent>
           <div class="row">
-            <div class="col">
+            <div class="col-md-6">
               <div class="feedback-container">
-                  <div class="kudos-title">
-                    <i class="far fa-thumbs-up"></i>
-                    <span>Kudos</span>
+                <div class="kudos-title">
+                  <i class="far fa-thumbs-up"></i>
+                  <span>Kudos</span>
+                </div>
+                <div *ngFor="let feedback of userFeedbacks">
+                  <div *ngIf="feedback.feedbackType == 'KUDO'">
+                    <div class="content-card">
+                      <div class="feedback-card-content">Maria Jose Cubero</div>
+                      <div class="feedback-message">gave you a Kudo</div>
+                      <div class="feedback-comment">{{feedback.description}}</div>
+                    </div>
                   </div>
-                <div class="content-card">
-                  <div class="feedback-card-content">Maria Jose Cubero</div>
-                  <div class="feedback-message">gave you a kudo</div>
-                  <div class="feedback-comment">Description of the kudos.</div>
                 </div>
               </div>
 
+
             </div>
-            <div class="col">
+            <div class="col-md-6">
               <div class="feedback-container">
                 <div class="warnings-title">
                   <i class="fas fa-exclamation-triangle"></i>
                   <span>Warnings</span>
                 </div>
-                <div class="content-card">
-                  <div class="feedback-card-content">Maria Jose Cubero</div>
-                  <div class="feedback-message">gave you a kudo</div>
-                  <div class="feedback-comment">Description of the kudos.</div>
+                <div *ngFor="let feedback of userFeedbacks">
+                  <div *ngIf="feedback.feedbackType == 'WARNING'">
+                    <div class="content-card">
+                      <div class="feedback-card-content">Maria Jose Cubero</div>
+                      <div class="feedback-message">gave you a Warning</div>
+                      <div class="feedback-comment">{{feedback.description}}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -102,7 +114,6 @@
       <ngb-tab title="Skills">
         <ng-template ngbTabContent>
           <div class="row">
-            <div class="skill-container">aa</div>
           </div>
         </ng-template>
       </ngb-tab>

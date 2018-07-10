@@ -82,7 +82,7 @@
   vertical-align: middle;
 }
 
-#project-tabs {
+#project-tabs{
   margin-top: 79px;
   margin-bottom: 30px;
   width: 100%;
@@ -127,9 +127,10 @@
   width: 90%;
   border: 0.5px solid rgba(0,0,0,0.05);
   border-radius: 2px;
-  background-color: #fff9b8;
+  background-color: white;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.04);
-  margin: 20px auto 20px auto;
+  margin: auto auto 20px auto;
+  padding: 15px;
 }
 
 .project-basic-info {
@@ -193,10 +194,6 @@
   display: inline-block;
   padding-top: 20px;
   margin-left: 10px;
-}
-
-.status-icon {
-  margin-left: 13px;
 }
 
 #resource-status {
@@ -280,31 +277,68 @@
   background: linear-gradient(163.34deg, lightyellow 0%, darkorange 100%);
 }
 
-.skill-container{
-  width: 25%;
-  height: 25px;
-  background-color: #3B9DFF;
+.feedback-container{
+  width: 100%;
+  height: auto;
+  border: 0.5px solid rgba(0,0,0,0.05);
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.04);
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
-@media screen and (min-width: 728px) and (max-width: 994px) {
+.kudos-title{
+  text-align: center;
+  color: #294261;
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 25px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.warnings-title{
+  text-align: center;
+  color: orange;
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 25px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.feedback-card-content{
+  display: inline-block;
+  color: #294261;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.feedback-message{
+  color: lightslategray;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.feedback-comment{
+  display: block;
+  color: lightslategray;
+  font-size: 14px;
+}
+
+@media screen and (min-width: 728px) and (max-width: 1000px) {
   :host /deep/ .nav-link{
-    color: #979595;
     font-size: 13px;
-    line-height: 18px;
     width: 110px;
     margin: 18px 5px 18px 5px;
     padding: 0;
   }
 
   :host /deep/ .nav-link.active{
-    color: #EFA42F;
     font-size: 13px;
-    line-height: 18px;
     width: 110px;
     margin: 18px 5px 0px 5px;
-    height: 60px;
-    border: none white;
-    border-bottom: 1px solid #EFA42F;
     padding: 0;
   }
 
@@ -326,11 +360,6 @@
     margin-left: 20px;
     float: none;
     vertical-align: text-bottom;
-  }
-
-  .block-info {
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 
   #resource-project-position-label {
@@ -378,9 +407,7 @@
 
   .edit-button{
     display: contents;
-    color: lightslategray;
     margin-top: 0;
-    cursor: pointer;
   }
 
   #information{
@@ -402,18 +429,11 @@
   }
 
   .name{
-    color: #294261;
     font-size: 20px;
-    font-weight: bold;
-    line-height: 23px;
-    height: 23px;
   }
 
   .position-info {
-    height: 23px;
-    color: #5A6169;
     font-size: 16px;
-    line-height: 18px;
   }
 
   .user-info{
@@ -421,23 +441,16 @@
   }
 
   :host /deep/ .nav-link{
-    color: #979595;
     font-size: 13px;
-    line-height: 18px;
     width: 70px;
     margin: 18px 5px 18px 5px;
     padding: 0;
   }
 
   :host /deep/ .nav-link.active{
-    color: #EFA42F;
     font-size: 13px;
-    line-height: 18px;
     width: 95px;
     margin: 18px 5px 0 5px;
-    height: 60px;
-    border: none white;
-    border-bottom: 1px solid #EFA42F;
     padding: 0;
   }
 
@@ -448,9 +461,6 @@
 
   #project-tabs{
     margin-top: 0;
-    margin-bottom: 30px;
-    width: 100%;
-    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
   }
 
   .content-card .vertical-line {
@@ -466,11 +476,6 @@
     float: none;
   }
 
-  .block-info {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
   #resource-project-position-label {
     margin-left: 0px;
     text-align: left;
@@ -484,6 +489,7 @@
     margin-left: 30px;
     text-align: left;
   }
+
 }
 
 @media screen and (min-width: 500px) and (max-width: 625px) {
@@ -511,9 +517,7 @@
 
   .edit-button{
     display: contents;
-    color: lightslategray;
     margin-top: 0;
-    cursor: pointer;
   }
 
   #information{
@@ -535,18 +539,11 @@
   }
 
   .name{
-    color: #294261;
     font-size: 20px;
-    font-weight: bold;
-    line-height: 23px;
-    height: 23px;
   }
 
   .position-info {
-    height: 23px;
-    color: #5A6169;
     font-size: 16px;
-    line-height: 18px;
   }
 
   .user-info{
@@ -554,23 +551,16 @@
   }
 
   :host /deep/ .nav-link{
-    color: #979595;
     font-size: 13px;
-    line-height: 18px;
     width: 60px;
     margin: 18px 5px 18px 5px;
     padding: 0;
   }
 
   :host /deep/ .nav-link.active{
-    color: #EFA42F;
     font-size: 13px;
-    line-height: 18px;
     width: 90px;
     margin: 18px 5px 0 5px;
-    height: 60px;
-    border: none white;
-    border-bottom: 1px solid #EFA42F;
     padding: 0;
   }
 
@@ -581,9 +571,6 @@
 
   #project-tabs{
     margin-top: 0;
-    margin-bottom: 30px;
-    width: 100%;
-    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
   }
 
   .content-card .vertical-line {
@@ -597,11 +584,6 @@
   .cards-right-content {
     margin-left: 20px;
     float: none;
-  }
-
-  .block-info {
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 
   #resource-project-position-label {
@@ -644,9 +626,7 @@
 
   .edit-button{
     display: contents;
-    color: lightslategray;
     margin-top: 0;
-    cursor: pointer;
   }
 
   #information{
@@ -668,18 +648,11 @@
   }
 
   .name{
-    color: #294261;
     font-size: 20px;
-    font-weight: bold;
-    line-height: 23px;
-    height: 23px;
   }
 
   .position-info {
-    height: 23px;
-    color: #5A6169;
     font-size: 16px;
-    line-height: 18px;
   }
 
   .user-info{
@@ -687,7 +660,6 @@
   }
 
   :host /deep/ .nav-link{
-    color: #979595;
     font-size: 13px;
     width: 115px;
     line-height: 10px;
@@ -695,14 +667,10 @@
   }
 
   :host /deep/ .nav-link.active{
-    color: #EFA42F;
     font-size: 13px;
     line-height: 10px;
     width: 115px;
     margin: 18px auto 0 auto;
-    height: 60px;
-    border: none white;
-    border-bottom: 1px solid #EFA42F;
   }
 
   #basic-info {
@@ -712,9 +680,6 @@
 
   #project-tabs{
     margin-top: 0;
-    margin-bottom: 30px;
-    width: 100%;
-    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
   }
 
   .content-card .vertical-line {
@@ -728,11 +693,6 @@
   .cards-right-content {
     margin-left: 20px;
     float: none;
-  }
-
-  .block-info {
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 
   #resource-project-position-label {
@@ -753,13 +713,6 @@
 }
 
 @media screen and (max-width: 410px) {
-
-  .container-fluid{
-    width: 88%;
-    min-width: 285px;
-    margin: auto;
-    min-height: 90vh;
-  }
 
   #image{
     width: 100%;
@@ -785,9 +738,7 @@
 
   .edit-button{
     display: contents;
-    color: lightslategray;
     margin-top: 0;
-    cursor: pointer;
   }
 
   #information{
@@ -809,18 +760,11 @@
   }
 
   .name{
-    color: #294261;
     font-size: 20px;
-    font-weight: bold;
-    line-height: 23px;
-    height: 23px;
   }
 
   .position-info {
-    height: 23px;
-    color: #5A6169;
     font-size: 16px;
-    line-height: 18px;
   }
 
   .user-info{
@@ -828,7 +772,6 @@
   }
 
   :host /deep/ .nav-link{
-    color: #979595;
     font-size: 13px;
     width: 95px;
     line-height: 10px;
@@ -836,14 +779,10 @@
   }
 
   :host /deep/ .nav-link.active{
-    color: orange;
     font-size: 13px;
     line-height: 10px;
     width: 95px;
     margin: 18px auto 0 auto;
-    height: 60px;
-    border: none white;
-    border-bottom: 1px solid #EFA42F;
   }
 
   #basic-info {
@@ -853,9 +792,6 @@
 
   #project-tabs{
     margin-top: 0;
-    margin-bottom: 30px;
-    width: 100%;
-    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
   }
 
   .content-card .vertical-line {
@@ -869,11 +805,6 @@
   .cards-right-content {
     margin-left: 20px;
     float: none;
-  }
-
-  .block-info {
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 
   #resource-project-position-label {
@@ -893,62 +824,8 @@
   .status-icon {
     margin-left: 13px;
   }
-
 }
 
-.feedback-container{
-  width: 100%;
-  height: auto;
-  border: 0.5px solid rgba(0,0,0,0.05);
-  border-radius: 2px;
-  background-color: #FFFFFF;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.04);
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
 
-.kudos-title{
-  text-align: center;
-  color: #294261;
-  font-size: 19px;
-  font-weight: bold;
-  line-height: 25px;
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
-
-.warnings-title{
-  text-align: center;
-  color: orange;
-  font-size: 19px;
-  font-weight: bold;
-  line-height: 25px;
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
-
-.feedback-card-content{
-  display: inline-block;
-  margin-left: 25px;
-  margin-top: 12px;
-  color: #294261;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.feedback-message{
-  color: lightslategray;
-  font-size: 14px;
-  margin-top: 12px;
-  display: inline-block;
-}
-
-.feedback-comment{
-  display: block;
-  margin-left: 25px;
-  margin-top: 12px;
-  color: lightslategray;
-  font-size: 14px;
-}
 
 
