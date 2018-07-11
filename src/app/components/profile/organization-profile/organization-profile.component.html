@@ -43,7 +43,8 @@
             <div class="accordion-arrow"><i class="arrow" (click)="onShowCapabilityLevels(capability)"
                                             [class.up]="capability.showCapabilityLevels"
                                             [class.down]="!capability.showCapabilityLevels"></i></div>
-            <div class="accordion-content" [class.show-capability]="capability.showCapabilityLevels" [class.hide]="!capability.showCapabilityLevels">
+            <div class="accordion-content" [class.show-capability]="capability.showCapabilityLevels"
+                 [class.hide]="!capability.showCapabilityLevels">
               <div *ngFor="let capabilityLevel of capability.capabilityLevels" class="capability-content">
                 <div class="capability-name">{{capabilityLevel}}</div>
               </div>
