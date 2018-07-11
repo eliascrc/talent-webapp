@@ -44,11 +44,11 @@ import {EditResourceInformationService} from '@services/technical-resource/edit-
 
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 
-import { HeaderComponent } from './components/header/header.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
-import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
-import { ProjectProfileComponent } from './components/project-profile/project-profile.component';
+import {HeaderComponent} from './components/header/header.component';
+import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {SignUpStepOneComponent} from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
+import {SignUpStepTwoComponent} from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
+import {ProjectProfileComponent} from './components/project-profile/project-profile.component';
 import {SignUpStepFourComponent} from './components/sign-up/sign-up-step-four/sign-up-step-four.component';
 import {AcceptInviteComponent} from './components/sign-up/accept-invite/accept-invite.component';
 import {CreateProjectComponent} from './components/create-project/create-project/create-project.component';
@@ -58,6 +58,9 @@ import {ProjectPositionService} from '@services/project-position/project-positio
 import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
 import { EditOrganizationProfileComponent } from './components/profile/edit-organization-profile/edit-organization-profile.component';
+import {OrganizationProfileComponent} from './components/profile/organization-profile/organization-profile.component';
+import {CarouselModule} from 'primeng/primeng';
+import {EditProfileComponent} from './components/profile/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -100,6 +103,7 @@ import { EditOrganizationProfileComponent } from './components/profile/edit-orga
     HttpClientModule,
     HttpModule,
     NgbModule.forRoot(),
+    CarouselModule,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
@@ -114,7 +118,7 @@ import { EditOrganizationProfileComponent } from './components/profile/edit-orga
     SignupService,
     StepCommunicationService,
     ResourceInformationService,
-	EditResourceInformationService,
+    EditResourceInformationService,
     InvitationService,
     ProjectService,
     ProjectPositionService

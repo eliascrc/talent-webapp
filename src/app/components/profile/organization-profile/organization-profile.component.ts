@@ -3,6 +3,7 @@ import {OrganizationService} from '@services/organization/organization.service';
 import {Router} from '@angular/router';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {animate, style, transition, trigger} from '@angular/animations';
+import {consoleTestResultHandler} from 'tslint/lib/test';
 
 /**
  * Used to represent the attributes needed of an organization project.
@@ -29,6 +30,15 @@ class OrganizationResource {
   profilePicture: string;
 }
 
+/**
+ * User to represent a capability level of an organization.
+ */
+class OrganizationCapability {
+  name: string;
+  showCapabilityLevels: boolean;
+  capabilityLevels: string[] = [];
+}
+
 @Component({
   selector: 'app-organization-profile',
   templateUrl: './organization-profile.component.html',
@@ -52,6 +62,7 @@ export class OrganizationProfileComponent implements OnInit {
   showCapabilities = false;
   showSkills = false;
   showProjects = false;
+  organizationCapabilities: OrganizationCapability[] = [];
 
   constructor(private organizationService: OrganizationService, private authenticateService: AuthenticateService, private router: Router) {
   }
@@ -77,6 +88,7 @@ export class OrganizationProfileComponent implements OnInit {
 
     this.processProjects();
     this.processMembers();
+    this.parseOrganizationCapabilities();
 
     this.organizationLoaded = true;
   }
@@ -190,5 +202,31 @@ export class OrganizationProfileComponent implements OnInit {
    */
   onEditProfile(){
 	this.router.navigate(['/edit-organization-profile']);
+  }
+
+  /**
+   * Parses the JSON object received to display all the organization capabilities.
+   */
+  parseOrganizationCapabilities() {
+    this.organizationService.getOrganizationCapabilities().then(capabilities => {
+      capabilities.forEach(capability => {
+        const organizationCapability = new OrganizationCapability();
+        organizationCapability.name = capability.name;
+        organizationCapability.showCapabilityLevels = false;
+         capability.levelHierarchy.forEach(capabilityLevel => {
+           organizationCapability.capabilityLevels.push(capabilityLevel.name);
+         });
+        this.organizationCapabilities.push(organizationCapability);
+      });
+    }, error => {
+    });
+  }
+
+  /**
+   * Determines if the capability level of a capability must be shown.
+   * @param {OrganizationCapability} capability
+   */
+  onShowCapabilityLevels(capability: OrganizationCapability) {
+    capability.showCapabilityLevels = !capability.showCapabilityLevels;
   }
 }

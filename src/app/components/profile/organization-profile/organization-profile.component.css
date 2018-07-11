@@ -55,6 +55,12 @@
   transition: height 0.2s linear;
 }
 
+.show-capability {
+  margin-top: 15px;
+  overflow: auto;
+  padding-top: 0px;
+}
+
 .show {
   border: 1px solid #F0F0F0;
   margin-top: 15px;
@@ -76,11 +82,43 @@
   margin: 20px auto 20px auto;
 }
 
+.capability-content{
+  width: 90%;
+}
+
+.capability-padding{
+  padding: 25px;
+}
+
+.capability-level-name{
+  height: 25px;
+  width: 474px;
+  color: rgba(0,0,0,0.65);
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 25px;
+  display: inline-block;
+}
+
+.capability-name{
+  height: 18px;
+  width: 152px;
+  color: #979595;
+  font-size: 14px;
+  line-height: 18px;
+  display: block;
+  margin: 15px auto 15px 42px;
+}
+
 .members {
   min-height: 92px;
 }
 
 .hide .content-card {
+  display: none;
+}
+
+.hide .capability-content {
   display: none;
 }
 
