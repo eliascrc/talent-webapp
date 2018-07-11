@@ -1,0 +1,39 @@
+<div class="container-fluid" id="skill-tab">
+
+  <div class="row d-flex justify-content-end">
+
+    <select class="col-12 col-md-2" id="skill-type-dropdown" title="Select Skill Type">
+      <option value="SOFT">Soft</option>
+      <option value="TECHNICAL">Technical</option>
+    </select>
+
+    <select class="col-12 col-md-2" id="skill-category-dropdown" title="Select Skill Category">
+      <option *ngFor="let skillCategory of skillCategories" value="{{skillCategory.id}}">{{skillCategory.name}}</option>
+    </select>
+
+    <input class="col-12 col-md-2" type="text" title="Skill Input" id="new-skill" placeholder="New Skill">
+    <button class="btn btn-primary col-12 col-md-auto" id="add-skill-btn" (click)="addSkill()"> ADD <i class="fas fa-plus-circle"></i></button>
+
+  </div>
+
+  <div class="row" id="error-message">
+    The skill you're trying to create already exists.
+  </div>
+
+  <div class="row skill-row" *ngFor="let skillCategory of skillCategories">
+
+    <div class="col-12 skill-category">{{skillCategory.name}}</div>
+
+    <div class="col-12">
+      <div class="row">
+
+        <div class="col-12 col-sm-6 col-lg-3 skill-column" *ngFor="let skill of skillCategory.skills">
+            <span class="skill">{{skill.name}}</span> <span class="delete-skill"><i class="far fa-times-circle"></i></span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
