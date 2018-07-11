@@ -125,7 +125,6 @@ export class OrganizationProfileComponent implements OnInit {
       }
       this.organizationProjects.push(organizationProject);
     });
-    console.dir(this.organizationProjects);
   }
 
   /**

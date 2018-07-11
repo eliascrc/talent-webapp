@@ -54,6 +54,7 @@ import {UserProfileComponent} from './components/profile/user-profile/user-profi
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 import {ProjectPositionService} from '@services/project-position/project-position.service';
 import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
+import {CarouselModule} from 'primeng/primeng';
 
 
 @NgModule({
@@ -94,6 +95,7 @@ import { OrganizationProfileComponent } from './components/profile/organization-
     HttpClientModule,
     HttpModule,
     NgbModule.forRoot(),
+    CarouselModule,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
