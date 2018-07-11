@@ -121,6 +121,9 @@
   width: 100%;
 }
 
+:host /deep/ .tab-content {
+  min-height: 600px;
+}
 
 .content-card {
   min-height: 92px;
