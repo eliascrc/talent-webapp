@@ -25,6 +25,7 @@ import {UserProfileComponent} from '../components/profile/user-profile/user-prof
 import {EditProfileComponent} from '../components/profile/edit-profile/edit-profile.component';
 import {SignUpStepThreeComponent} from '../components/sign-up/sign-up-step-three/sign-up-step-three.component';
 import {OrganizationProfileComponent} from '../components/profile/organization-profile/organization-profile.component';
+import {EditOrganizationProfileComponent} from '../components/profile/edit-organization-profile/edit-organization-profile.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, canActivate: [UnauthenticateGuard]},
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path: 'profile/edit-profile/:userId', component: EditProfileComponent, canActivate: [AuthenticateGuard]},
   {path: 'create-project', component: CreateProjectComponent, canActivate: [AuthenticateGuard]},
   {path: 'organization-profile', component: OrganizationProfileComponent, canActivate: [AuthenticateGuard]},
+  {path: 'edit-organization-profile', component: EditOrganizationProfileComponent, canActivate: [AuthenticateGuard]},
 ];
 
 @NgModule({

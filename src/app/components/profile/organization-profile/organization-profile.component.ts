@@ -196,6 +196,13 @@ export class OrganizationProfileComponent implements OnInit {
   onSeeUserProfile(userId: string) {
     this.router.navigate(['/profile/user-profile/', userId]);
   }
+  
+  /**
+   * Triggered when clicking to edit organization information.
+   */
+  onEditProfile(){
+	this.router.navigate(['/edit-organization-profile']);
+  }
 
   /**
    * Parses the JSON object received to display all the organization capabilities.
@@ -222,5 +229,4 @@ export class OrganizationProfileComponent implements OnInit {
   onShowCapabilityLevels(capability: OrganizationCapability) {
     capability.showCapabilityLevels = !capability.showCapabilityLevels;
   }
-
 }
