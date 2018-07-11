@@ -55,6 +55,12 @@
   transition: height 0.2s linear;
 }
 
+.show-capability {
+  margin-top: 15px;
+  overflow: auto;
+  padding-top: 0px;
+}
+
 .show {
   border: 1px solid #F0F0F0;
   margin-top: 15px;
@@ -74,6 +80,10 @@
   background-color: #FFFFFF;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.04);
   margin: 20px auto 20px auto;
+}
+
+.capability-content{
+  width: 90%;
 }
 
 .capability-padding{
@@ -105,6 +115,10 @@
 }
 
 .hide .content-card {
+  display: none;
+}
+
+.hide .capability-content {
   display: none;
 }
 

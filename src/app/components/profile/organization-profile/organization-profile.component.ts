@@ -36,7 +36,7 @@ class OrganizationResource {
 class OrganizationCapability {
   name: string;
   showCapabilityLevels: boolean;
-  capabilityLevels: {name: string} [];
+  capabilityLevels: string[] = [];
 }
 
 @Component({
@@ -207,7 +207,6 @@ export class OrganizationProfileComponent implements OnInit {
         organizationCapability.name = capability.name;
         organizationCapability.showCapabilityLevels = false;
          capability.levelHierarchy.forEach(capabilityLevel => {
-           console.log(capabilityLevel.name);
            organizationCapability.capabilityLevels.push(capabilityLevel.name);
          });
         this.organizationCapabilities.push(organizationCapability);
@@ -216,9 +215,12 @@ export class OrganizationProfileComponent implements OnInit {
     });
   }
 
-  onShowCapabilityLevels(capability: OrganizationCapability){
-    const showCapabilityLevels = capability.showCapabilityLevels;
-    capability.showCapabilityLevels = !showCapabilityLevels;
+  /**
+   * Determines if the capability level of a capability must be shown.
+   * @param {OrganizationCapability} capability
+   */
+  onShowCapabilityLevels(capability: OrganizationCapability) {
+    capability.showCapabilityLevels = !capability.showCapabilityLevels;
   }
 
 }
