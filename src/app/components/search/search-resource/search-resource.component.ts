@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {TechnicalResource} from '@model/TechnicalResource';
-import {JobPosition} from '@model/JobPosition';
 import {Router} from '@angular/router';
 import {OrganizationService} from '@services/organization/organization.service';
+import {Observable} from 'rxjs/Observable';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-resource',
@@ -13,32 +13,42 @@ import {OrganizationService} from '@services/organization/organization.service';
 export class SearchResourceComponent implements OnInit {
 
   public searchedWord: string;
-
   public allOrganizationMembers: OrganizationResource[] = [];
   public matchingOrganizationMembers: OrganizationResource[] = [];
+  public resourcesNames: string[] = [];
 
   constructor(public router: Router, private organizationService: OrganizationService) {
   }
 
   ngOnInit() {
 
-    this.organizationService.getOrganizationMembers().then(resources => {
+    this.organizationService.getOrganizationMembersForSearch().then(resources => {
       this.parseOrganizationMembers(resources);
     }, error => {
     });
 
   }
 
-  onSubmit(searchForm: NgForm) {
-    if (searchForm.value.searchBar.length > 2) {
+  search = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 2 ? []
+        : this.resourcesNames.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    );
 
-      this.searchedWord = searchForm.value.searchBar;
+  onSubmit(searchForm: NgForm, event) {
+
+
+    if (searchForm.value.searchBar.length >= 2) {
+
+      this.searchedWord = event === null ? searchForm.value.searchBar : event.item;
       document.getElementById('results-for-lbl').style.display = 'block';
       this.matchingOrganizationMembers = [];
 
       this.allOrganizationMembers.forEach(member => {
 
-        if (member.name.includes(this.searchedWord)) {
+        if (member.name.toLowerCase().indexOf(this.searchedWord.toLowerCase()) > -1) {
           this.matchingOrganizationMembers.push(member);
         }
 
@@ -52,18 +62,39 @@ export class SearchResourceComponent implements OnInit {
    * @param {any[]} organizationMembers
    */
   parseOrganizationMembers(organizationMembers: any[]) {
+
     organizationMembers.forEach(resource => {
+
       const organizationResource = new OrganizationResource();
       organizationResource.id = resource.id;
       organizationResource.name = resource.firstName + ' ' + resource.lastName;
+      this.resourcesNames.push(organizationResource.name);
+
       organizationResource.profilePicture = resource.profilePicture.link;
+
       if (resource.technicalPosition != null) {
-        organizationResource.technicalPosition = resource.technicalPosition.capabilityLevel.name + ' ' + resource.technicalPosition.capabilityLevel.capability.name;
+        organizationResource.technicalPosition = resource.technicalPosition;
       }
+
+      if (resource.projects != null) {
+        resource.projects.forEach(project => {
+          organizationResource.projects += project + ' ';
+        });
+      }
+
+      if (resource.skills != null) {
+        resource.skills.forEach(skill => {
+          organizationResource.skills += skill.name + ' ';
+        });
+      }
+
       this.allOrganizationMembers.push(organizationResource);
     });
   }
 
+  onGoToProfile(id: string) {
+    this.router.navigate(['/profile/user-profile/' + id]);
+  }
 }
 
 /**
@@ -71,8 +102,10 @@ export class SearchResourceComponent implements OnInit {
  */
 class OrganizationResource {
 
-  id: string;
-  name: string;
-  technicalPosition: string;
-  profilePicture: string;
+  id = '';
+  name = '';
+  technicalPosition = '';
+  profilePicture = '';
+  skills = '';
+  projects = '';
 }

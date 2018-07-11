@@ -1,57 +1,41 @@
-<div class="container p-0 margin-top mb-5">
+<div class="container p-0 margin-top mb-5 ml-5 mr-5 w-auto">
 
 
-  <form (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm" class="row" id="search-bar-wrapper">
-      <div id="search-icon" class="d-inline-block h-100"><i class="fas fa-search"></i></div>
-      <input id="search-bar" type="text" class="form-control w-75 d-inline-block" name="searchBar"
-              title="search resources" placeholder="Search" ngModel/>
-      <!--[ngbTypeahead]="search"-->
+  <form (ngSubmit)="onSubmit(searchForm, null)" #searchForm="ngForm" class="row" id="search-bar-wrapper">
+    <div class="col-7 col-sm-6 col-md-4">
+      <div id="search-icon" class="d-inline h-100"><i class="fas fa-search"></i></div>
+      <input id="search-bar" type="text" class="form-control d-inline" name="searchBar"
+             title="search resources" placeholder="Search" ngModel [ngbTypeahead]="search" (selectItem)="onSubmit(searchForm, $event)"/>
+    </div>
   </form>
 
   <div class="row margin-top" id="results-for-lbl">
-    Results for "{{searchedWord}}"
+    <div class="col-12">
+      Results for "{{searchedWord}}"
+    </div>
   </div>
 
   <div class="row margin-top">
+    <div class="col-12">
 
-    <div class="search-result col-12 p-0">
-      <div class="row p-4 m-0">
+      <div class="search-result" *ngFor="let resource of matchingOrganizationMembers">
+        <div class="row p-4 m-0">
 
-        <div class="search-img d-inline-block col-12 col-md-auto h-100">
-          <img src="https://t3.ftcdn.net/jpg/00/64/67/52/240_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg"
-               alt="Search Result Image">
-        </div>
-
-        <div class="search-info d-inline-block col-12 col-md-auto">
-          <div class="resource-name">Josue Cubero</div>
-          <div class="job-position mb-4">Junior Software Developer</div>
-          <div class="skills mb-2">Skills: Teamwork, Leadership, Java, C++, Javascript, Typescript, Angular, Spring, CSS
+          <div class="search-img d-inline-block col-12 col-md-auto h-100">
+            <img class="min-img-width" src="{{resource.profilePicture}}" alt="Search Result Image" (click)="onGoToProfile(resource.id)">
           </div>
-          <div class="projects">Projects: Petbook, Papers</div>
 
+          <div class="search-info d-inline-block col-12 col-md-auto">
+            <div class="resource-name" (click)="onGoToProfile(resource.id)">{{resource.name}}</div>
+            <div class="job-position mb-4">{{resource.technicalPosition}}</div>
+            <div class="skills mb-2">Skills: {{resource.skills}}</div>
+            <div class="projects">Projects: {{resource.projects}}</div>
+
+          </div>
         </div>
-
       </div>
+
     </div>
-
-    <div class="search-result col-12 p-0" *ngFor="let resource of matchingOrganizationMembers">
-      <div class="row p-4 m-0">
-
-        <div class="search-img d-inline-block col-12 col-md-auto h-100">
-          <img src="{{resource.profilePicture}}" alt="Search Result Image">
-        </div>
-
-        <div class="search-info d-inline-block col-12 col-md-auto">
-          <div class="resource-name">{{resource.name}}</div>
-          <div class="job-position mb-4">{{resource.technicalPosition}}</div>
-          <div class="skills mb-2">Skills: </div>
-          <div class="projects">Projects: </div>
-
-        </div>
-
-      </div>
-    </div>
-
   </div>
 
 </div>
