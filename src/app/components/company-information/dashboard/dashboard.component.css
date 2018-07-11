@@ -1,0 +1,171 @@
+@import url('../../../../../node_modules/font-awesome/css/font-awesome.min.css');
+
+.container-fluid {
+  min-height: 90vh;
+  width: 88%;
+  min-width: 295px;
+  margin: auto;
+  font-family: "Source Sans Pro", serif;
+}
+
+.container-fluid .row {
+  margin: 0;
+  padding: 0
+}
+
+.title {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #294261;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 23px;
+}
+
+.member-picture {
+  height: 90px;
+  width: 90px;
+  margin-top: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+:host /deep/ .ui-widget-content {
+  border: none;
+
+}
+
+:host /deep/ .ui-grid-col-12 {
+  margin-left: 30%;
+}
+
+:host /deep/ .ui-carousel-page-links {
+  display: inline-block;
+  float: none;
+}
+
+:host /deep/ .ui-carousel-header {
+  width: 200px;
+  margin: auto;
+  background: none;
+  border: none;
+}
+
+.content-card {
+  min-height: 100px;
+  width: 100%;
+  border: 0.5px solid rgba(0,0,0,0.05);
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.04);
+  margin: 20px auto 20px auto;
+}
+
+.date-clock {
+  color: lightslategray;
+}
+
+#search-bar {
+  border: 1px solid lightgray;
+  width: 300px;
+  height: 50px;
+  margin-top: 80px;
+}
+
+#search-icon {
+  color: lightgray;
+  font-size: 24px;
+  margin-left: 15px;
+  margin-top: 93px;
+  position: absolute;
+  cursor: pointer;
+}
+
+#search-resources-title {
+  margin-top: 80px;
+  color: #294261;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 23px;
+  text-decoration: underline;
+}
+
+#search-resources-title:hover {
+  color: lightslategray;
+}
+
+:host /deep/ #user-name:hover {
+  cursor: pointer;
+  text-underline: #294261;
+  text-decoration: underline;
+}
+
+#project-basic-info {
+  display: inline-block;
+  margin-left: 25px;
+  margin-top: 20px;
+}
+
+#project-name {
+  color: #294261;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 25px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+#project-name:hover {
+  text-decoration: underline;
+}
+
+#project-date {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#date {
+  display: inline-block;
+}
+
+#start-date {
+  margin-left: 8px;
+  color: #5A6169;
+  font-size: 14px;
+  display: inline-block;
+}
+
+#end-date {
+  display: inline-block;
+  font-size: 14px;
+  color: #5A6169;
+}
+
+#date-hyphen {
+  color: #979595;
+}
+
+#resource-name {
+  font-size: 12px;
+  display: inline-block;
+}
+
+#resources-list {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+::placeholder {
+  color: lightgray;
+  font-size: 18px;
+}
+
+input {
+  padding-left: 60px;
+}
+
+p-carousel {
+  width: 100%;
+}

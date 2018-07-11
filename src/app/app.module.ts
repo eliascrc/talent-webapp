@@ -43,21 +43,21 @@ import {EditResourceInformationService} from '@services/technical-resource/edit-
 
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 
-import { HeaderComponent } from './components/header/header.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
-import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
-import { ProjectProfileComponent } from './components/project-profile/project-profile.component';
+import {HeaderComponent} from './components/header/header.component';
+import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {SignUpStepOneComponent} from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
+import {SignUpStepTwoComponent} from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
+import {ProjectProfileComponent} from './components/project-profile/project-profile.component';
 import {SignUpStepFourComponent} from './components/sign-up/sign-up-step-four/sign-up-step-four.component';
 import {AcceptInviteComponent} from './components/sign-up/accept-invite/accept-invite.component';
 import {CreateProjectComponent} from './components/create-project/create-project/create-project.component';
 import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 import {ProjectPositionService} from '@services/project-position/project-position.service';
-import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
+import {OrganizationProfileComponent} from './components/profile/organization-profile/organization-profile.component';
+import {CarouselModule} from 'primeng/primeng';
+import {EditProfileComponent} from './components/profile/edit-profile/edit-profile.component';
 import { OrganizationSkillsComponent } from './components/profile/organization-profile/organization-skills/organization-skills.component';
-import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
-
 
 @NgModule({
   declarations: [
@@ -99,6 +99,7 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
     HttpClientModule,
     HttpModule,
     NgbModule.forRoot(),
+    CarouselModule,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
@@ -112,7 +113,7 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
     SignupService,
     StepCommunicationService,
     ResourceInformationService,
-	EditResourceInformationService,
+    EditResourceInformationService,
     InvitationService,
     ProjectService,
     ProjectPositionService
