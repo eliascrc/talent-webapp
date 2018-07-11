@@ -20,9 +20,9 @@ export class Skill extends BasicEntity {
   constructor(skill: any) {
     super(skill);
     this.name = skill.name;
-    
-    this.resources = new Set(); 
-    for(let resource of skill.resources)
+
+    this.resources = new Set();
+    for (let resource of skill.resources)
       this.resources.add(resource);
 
     this.category = new SkillCategory(skill.category);

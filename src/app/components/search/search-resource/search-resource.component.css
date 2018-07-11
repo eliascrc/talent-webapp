@@ -1,0 +1,117 @@
+
+/* Tags */
+input::placeholder,
+input:-ms-input-placeholder,
+input::-ms-input-placeholder {
+  color: #B6B7B2;
+  font-family: "Source Sans Pro", serif;
+  font-size: 14px;
+}
+
+/* Classes */
+.margin-top {
+  margin-top: 2rem;
+}
+
+.search-result {
+  margin-bottom: 2rem;
+}
+
+.search-result .row {
+  width: 100%;
+  height: 14rem;
+  border: 1px solid #B6B7B2;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.search-img img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+}
+
+.search-img {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.search-info {
+  padding-left: 2rem;
+  border-left: 1px solid #B6B7B2;
+}
+
+.resource-name {
+  font-family: "Source Sans Pro", serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: #47525E;
+  cursor: pointer;
+}
+
+.job-position {
+  font-family: "Source Sans Pro", serif;
+  font-size: 24px;
+  color: #B9BBBE;
+}
+
+.skills .projects {
+  font-family: "Source Sans Pro", serif;
+  font-size: 20px;
+  color: #848c94;
+}
+
+.min-img-width {
+  width: 174px;
+  min-width: 174px;
+}
+
+/* Identifiers */
+#search-bar-wrapper {
+  height: 40px;
+  white-space: nowrap;
+}
+
+#search-icon {
+  padding: 9px 10px 8px 18px;
+  border: 1px solid #B6B7B2;
+  color: #B6B7B2;
+  border-right: none;
+  font-size: 14px;
+}
+
+#search-bar {
+  border: 1px solid #B6B7B2;
+  border-radius: 0;
+  border-left: none;
+  font-family: "Source Sans Pro", serif;
+  position: relative;
+  left: -5px;
+  width: 100%;
+}
+
+#search-bar:focus {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+#results-for-lbl {
+  font-family: "Source Sans Pro", serif;
+  color: #5A6169;
+  line-height: 18px;
+  font-size: 18px;
+  display: none;
+}

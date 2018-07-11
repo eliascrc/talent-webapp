@@ -10,6 +10,7 @@ export class OrganizationService {
   private organizationBasicInfoUrl = 'http://ws.talent.cr/ws/organization/get';
   private organizationProjectsUrl = 'http://ws.talent.cr/ws/organization/project/getProjects';
   private organizationMembersUrl = 'http://ws.talent.cr/ws/organization/technicalResource/getAll';
+  private organizationMembersForSearchUrl = 'http://ws.talent.cr/ws/organization/technicalResource/searchResults';
   private organizationCapabilitiesUrl = 'http://ws.talent.cr/ws/organization/capabilities/getAll';
 
   constructor(private http: HttpClient) {
@@ -50,6 +51,10 @@ export class OrganizationService {
    */
   getOrganizationMembers(): Promise<any> {
     return this.http.get(this.organizationMembersUrl, {withCredentials: true}).toPromise();
+  }
+
+  getOrganizationMembersForSearch(): Promise<any> {
+    return this.http.get(this.organizationMembersForSearchUrl, {withCredentials: true}).toPromise();
   }
 
   /**
