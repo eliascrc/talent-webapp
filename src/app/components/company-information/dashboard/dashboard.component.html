@@ -1,1 +1,43 @@
-<p style="padding: 10px;">Welcome, {{fullName}}</p>
+<div ng-if="displayDashboard" class="container-fluid">
+  <div class="row">
+    <!--<input type="text" id="search-bar" placeholder="Search">-->
+      <!--<i class="fas fa-search" id="search-icon"></i>-->
+    <a routerLink="/search/resource" routerLinkActive="active" id="search-resources-title">Search Resources</a>
+  </div>
+  <div class="row">
+    <div class="title">Organization Members</div>
+
+    <p-carousel [numVisible]="'4'" [circular]="'true'" [pageLinks]="totalPages" easing="easeOutStrong" [value]="organizationMembers">
+      <ng-template let-resource pTemplate="item">
+        <div class="ui-grid ui-grid-responsive">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12"><img src="{{resource.profilePicture}}" class="member-picture" (click)="onSeeUserProfile(resource.id)"></div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12" (click)="onSeeUserProfile(resource.id)"><div id="user-name">{{resource.name}}</div></div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+
+  </div>
+  <div class="row">
+    <div class="title">Active Projects</div>
+  </div>
+  <div *ngFor="let project of organizationActiveProjects" class="content-card">
+    <div id="project-basic-info">
+      <div id="project-name" (click)="onSeeProjectProfile(project.id)">{{project.name}}</div>
+      <div id="project-date">
+        <i class="far fa-clock date-clock" style="display: inline-block;"></i>
+        <div id="date">
+          <div id="start-date">{{project.startDate | date: 'dd-MM-yyyy'}}</div>
+          <span id="date-hyphen">-</span>
+          <div id="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date: 'dd-MM-yyyy'}}</div>
+        </div>
+      </div>
+      <div id="resources-list">
+        Resources: <div *ngFor="let resource of project.resources" id="resource-name">{{resource}}, &nbsp;</div>
+      </div>
+    </div>
+  </div>
+</div>

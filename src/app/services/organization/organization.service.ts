@@ -11,6 +11,7 @@ export class OrganizationService {
   private organizationProjectsUrl = 'http://ws.talent.cr/ws/organization/project/getProjects';
   private organizationMembersUrl = 'http://ws.talent.cr/ws/organization/technicalResource/getAll';
   private organizationMembersForSearchUrl = 'http://ws.talent.cr/ws/organization/technicalResource/searchResults';
+  private organizationCapabilitiesUrl = 'http://ws.talent.cr/ws/organization/capabilities/getAll';
 
   constructor(private http: HttpClient) {
   }
@@ -54,6 +55,14 @@ export class OrganizationService {
 
   getOrganizationMembersForSearch(): Promise<any> {
     return this.http.get(this.organizationMembersForSearchUrl, {withCredentials: true}).toPromise();
+  }
+
+  /**
+   * Returns a promise with the JSON containing the organization's capabilities.
+   * @returns {Promise<any>}
+   */
+  getOrganizationCapabilities(): Promise<any> {
+    return this.http.get(this.organizationCapabilitiesUrl, {withCredentials: true}).toPromise();
   }
 
 }
