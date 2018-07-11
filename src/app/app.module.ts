@@ -55,11 +55,12 @@ import {CreateProjectComponent} from './components/create-project/create-project
 import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 import {ProjectPositionService} from '@services/project-position/project-position.service';
-import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
-import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
-import { EditOrganizationProfileComponent } from './components/profile/edit-organization-profile/edit-organization-profile.component';
+import {EditOrganizationProfileComponent} from './components/profile/edit-organization-profile/edit-organization-profile.component';
+import {OrganizationProfileComponent} from './components/profile/organization-profile/organization-profile.component';
 import {CarouselModule} from 'primeng/primeng';
-import { OrganizationSkillsComponent } from './components/profile/organization-profile/organization-skills/organization-skills.component';
+import {EditProfileComponent} from './components/profile/edit-profile/edit-profile.component';
+import {SearchResourceComponent} from './components/search/search-resource/search-resource.component';
+import {OrganizationSkillsComponent} from './components/profile/organization-profile/organization-skills/organization-skills.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { OrganizationSkillsComponent } from './components/profile/organization-p
     UserProfileComponent,
     CreateProjectComponent,
     UserProfileComponent,
+    SearchResourceComponent,
     OrganizationProfileComponent,
     EditProfileComponent,
     EditOrganizationProfileComponent,

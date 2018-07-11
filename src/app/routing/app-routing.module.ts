@@ -24,6 +24,7 @@ import {CreateProjectComponent} from '../components/create-project/create-projec
 import {UserProfileComponent} from '../components/profile/user-profile/user-profile.component';
 import {EditProfileComponent} from '../components/profile/edit-profile/edit-profile.component';
 import {SignUpStepThreeComponent} from '../components/sign-up/sign-up-step-three/sign-up-step-three.component';
+import {SearchResourceComponent} from '../components/search/search-resource/search-resource.component';
 import {OrganizationProfileComponent} from '../components/profile/organization-profile/organization-profile.component';
 import {EditOrganizationProfileComponent} from '../components/profile/edit-organization-profile/edit-organization-profile.component';
 
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path: 'profile/user-profile/:userId', component: UserProfileComponent, canActivate: [AuthenticateGuard]},
   {path: 'profile/edit-profile/:userId', component: EditProfileComponent, canActivate: [AuthenticateGuard]},
   {path: 'create-project', component: CreateProjectComponent, canActivate: [AuthenticateGuard]},
+  {path: 'search/resource', component: SearchResourceComponent, canActivate: [AuthenticateGuard]},
   {path: 'organization-profile', component: OrganizationProfileComponent, canActivate: [AuthenticateGuard]},
   {path: 'edit-organization-profile', component: EditOrganizationProfileComponent, canActivate: [AuthenticateGuard]},
 ];
