@@ -3,6 +3,7 @@ import {OrganizationService} from '@services/organization/organization.service';
 import {Router} from '@angular/router';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {animate, style, transition, trigger} from '@angular/animations';
+import {consoleTestResultHandler} from 'tslint/lib/test';
 
 /**
  * Used to represent the attributes needed of an organization project.
@@ -34,8 +35,8 @@ class OrganizationResource {
  */
 class OrganizationCapability {
   name: string;
-  showCapabilities: boolean;
-  capabilityLevels: string[];
+  showCapabilityLevels: boolean;
+  capabilityLevels: {name: string} [];
 }
 
 @Component({
@@ -87,6 +88,7 @@ export class OrganizationProfileComponent implements OnInit {
 
     this.processProjects();
     this.processMembers();
+    this.parseOrganizationCapabilities();
 
     this.organizationLoaded = true;
   }
@@ -179,12 +181,6 @@ export class OrganizationProfileComponent implements OnInit {
     });
   }
 
-  parseOrganizationCapabilities(){
-    this.organizationService.getOrganizationCapabilities().then( capability=> {
-
-    });
-  }
-
   /**
    * Redirects the user to the project's profile.
    * @param {string} projectId
@@ -199,6 +195,30 @@ export class OrganizationProfileComponent implements OnInit {
    */
   onSeeUserProfile(userId: string) {
     this.router.navigate(['/profile/user-profile/', userId]);
+  }
+
+  /**
+   * Parses the JSON object received to display all the organization capabilities.
+   */
+  parseOrganizationCapabilities() {
+    this.organizationService.getOrganizationCapabilities().then(capabilities => {
+      capabilities.forEach(capability => {
+        const organizationCapability = new OrganizationCapability();
+        organizationCapability.name = capability.name;
+        organizationCapability.showCapabilityLevels = false;
+         capability.levelHierarchy.forEach(capabilityLevel => {
+           console.log(capabilityLevel.name);
+           organizationCapability.capabilityLevels.push(capabilityLevel.name);
+         });
+        this.organizationCapabilities.push(organizationCapability);
+      });
+    }, error => {
+    });
+  }
+
+  onShowCapabilityLevels(capability: OrganizationCapability){
+    const showCapabilityLevels = capability.showCapabilityLevels;
+    capability.showCapabilityLevels = !showCapabilityLevels;
   }
 
 }
