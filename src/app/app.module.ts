@@ -29,6 +29,7 @@ import {StepCommunicationService} from '@services/sign-up/step-communication.ser
 // For proof of concept sign-up
 import {OrganizationSelectComponent} from './components/authentication/organization-select/organization-select.component';
 import {OrganizationService} from '@services/organization/organization.service';
+import {EditOrganizationService} from '@services/organization/edit-organization.service';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {InvalidTokenComponent} from './components/authentication/invalid-token/invalid-token.component';
 import {ForgotPasswordService} from '@services/authentication/forgot-password.service';
@@ -54,9 +55,10 @@ import {CreateProjectComponent} from './components/create-project/create-project
 import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 import {ProjectPositionService} from '@services/project-position/project-position.service';
-import {OrganizationProfileComponent} from './components/profile/organization-profile/organization-profile.component';
+import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
+import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
+import { EditOrganizationProfileComponent } from './components/profile/edit-organization-profile/edit-organization-profile.component';
 import {CarouselModule} from 'primeng/primeng';
-import {EditProfileComponent} from './components/profile/edit-profile/edit-profile.component';
 import { OrganizationSkillsComponent } from './components/profile/organization-profile/organization-skills/organization-skills.component';
 
 @NgModule({
@@ -90,6 +92,7 @@ import { OrganizationSkillsComponent } from './components/profile/organization-p
     UserProfileComponent,
     OrganizationProfileComponent,
     EditProfileComponent,
+    EditOrganizationProfileComponent,
     OrganizationSkillsComponent,
   ],
   imports: [
@@ -105,6 +108,7 @@ import { OrganizationSkillsComponent } from './components/profile/organization-p
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     UserService,
     OrganizationService,
+    EditOrganizationService,
     PrivacyPolicyService,
     TermsOfUseService,
     AuthenticateService,

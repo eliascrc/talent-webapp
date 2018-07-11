@@ -8,7 +8,7 @@
         <div id="name">{{organizationName}}</div>
         <div id="unique-identifier">{{organizationUniqueIdentifier}}</div>
       </div>
-      <div *ngIf="isAdministrator" id="edit-name">
+      <div *ngIf="isAdministrator" id="edit-name" (click)="onEditProfile()">
         <i class="fas fa-pencil-alt"></i>
       </div>
     </div>
