@@ -18,6 +18,17 @@ class OrganizationProject {
   projectYellowStatus = false;
 }
 
+/**
+ * Used to represent the attributes needed of an organization resource.
+ */
+class OrganizationResource {
+
+  id: string;
+  name: string;
+  technicalPosition: string;
+  profilePicture: string;
+}
+
 @Component({
   selector: 'app-organization-profile',
   templateUrl: './organization-profile.component.html',
@@ -29,6 +40,7 @@ class OrganizationProject {
 export class OrganizationProfileComponent implements OnInit {
 
   organizationProjects: OrganizationProject[] = [];
+  organizationMembers: OrganizationResource[] = [];
 
   isAdministrator = false;
   organizationLoaded = true;
@@ -64,6 +76,7 @@ export class OrganizationProfileComponent implements OnInit {
     });
 
     this.processProjects();
+    this.processMembers();
 
     this.organizationLoaded = true;
   }
@@ -99,9 +112,22 @@ export class OrganizationProfileComponent implements OnInit {
 
   }
 
+  /**
+   * Communicates with the Organization service to request its projects and parse their information.
+   */
   processProjects() {
     this.organizationService.getOrganizationProjects().then(response => {
       this.parseOrganizationProjects(response);
+    }, error => {
+    });
+  }
+
+  /**
+   * Communicates with the Organization service to request its members and parse their information.
+   */
+  processMembers() {
+    this.organizationService.getOrganizationMembers().then(response => {
+      this.parseOrganizationMembers(response);
     }, error => {
     });
   }
@@ -128,11 +154,35 @@ export class OrganizationProfileComponent implements OnInit {
   }
 
   /**
+   * Parses the JSON object received to display all members and their basic information.
+   * @param {any[]} organizationMembers
+   */
+  parseOrganizationMembers(organizationMembers: any[]) {
+    organizationMembers.forEach(resource => {
+      let organizationResource = new OrganizationResource();
+      organizationResource.id = resource.id;
+      organizationResource.name = resource.firstName + ' ' + resource.lastName;
+      organizationResource.profilePicture = resource.profilePicture.link;
+      if (resource.technicalPosition != null)
+        organizationResource.technicalPosition = resource.technicalPosition.capabilityLevel.name + ' ' + resource.technicalPosition.capabilityLevel.capability.name;
+      this.organizationMembers.push(organizationResource);
+    });
+  }
+
+  /**
    * Redirects the user to the project's profile.
    * @param {string} projectId
    */
   onSeeProjectProfile(projectId: string) {
     this.router.navigate(['/project-profile', projectId]);
+  }
+
+  /**
+   * Triggered when clicking a resource's name or photo, to redirect to his profile.
+   * @param {string} userId
+   */
+  onSeeUserProfile(userId: string) {
+    this.router.navigate(['/profile/user-profile/', userId]);
   }
 
 }

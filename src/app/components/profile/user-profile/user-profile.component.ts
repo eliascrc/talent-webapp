@@ -18,6 +18,15 @@ class ResourceProject {
   resourcePosition: string;
 }
 
+/**
+ * Used to represent a feedback that the resource has received.
+ */
+class ResourceFeedback {
+  description: string;
+  feedbackType: string;
+  observer: string;
+}
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -36,8 +45,10 @@ export class UserProfileComponent implements OnInit {
   userProfilePicture: string;
   loggedIn = false;
   position: string;
-  canEdit: boolean;
+  canEdit = false;
   userProjects: ResourceProject[] = [];
+  userFeedbacks: ResourceFeedback[] = [];
+  noFeedbacks = false;
 
   constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
               private resourceService: ResourceInformationService, private router: Router,
@@ -50,18 +61,20 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(param => {
       this.userId = param['userId'];
-      this.checkEditPermission(this.userId);
+
       this.authenticateService.isLoggedIn()
         .then(response => {
             this.loggedIn = response;
             if (this.loggedIn) {
               this.resourceService.getTechnicalResourceBasicInfoWithId(this.userId)
                 .then(userInfo => {
+                  this.checkEditPermission(this.userId);
                   let name = userInfo.firstName;
                   name = name.concat(' ');
                   this.name = name.concat(userInfo.lastName);
                   this.userProfilePicture = userInfo.profilePicture.link;
                   this.getUsersProjects(userInfo.username);
+                  this.getUsersFeedback(userInfo.username);
                 }, error => {
                 });
             }
@@ -70,13 +83,11 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-
   /**
    * Checks that the user is able to edit.
    * @param {string} userId
    */
   checkEditPermission(userId: string) {
-    this.canEdit = false;
     this.authenticateService.isLoggedIn()
       .then(response => {
           this.loggedIn = response;
@@ -84,7 +95,8 @@ export class UserProfileComponent implements OnInit {
             this.authenticateService.getLoggedInUserInfo().then(userInfo => {
               const userInfoObject = JSON.parse(JSON.stringify(userInfo));
               const id = userInfoObject.id;
-              if (this.userId === id) {
+              const isAdmistrator = userInfoObject.administrator;
+              if (this.userId == id) {
                 this.canEdit = true;
               }
             });
@@ -99,7 +111,7 @@ export class UserProfileComponent implements OnInit {
    */
   getUsersProjects(username: string) {
     this.resourceService.getTechnicalResourceProjects(username).then(projects => {
-      projects.forEach( project => {
+      projects.forEach(project => {
         const userProject = new ResourceProject();
         userProject.id = project.id;
         userProject.name = project.name;
@@ -111,7 +123,7 @@ export class UserProfileComponent implements OnInit {
         } else if (userProject.projectStatus == 'END') {
           userProject.projectRedStatus = true;
         }
-        this.projectPositionService.getTechnicalResourceProjectPosition(username, project.id).then( response => {
+        this.projectPositionService.getTechnicalResourceProjectPosition(username, project.id).then(response => {
           userProject.resourcePosition = response.projectPosition.capabilityLevel.capability.name;
         }, error => {
         });
@@ -121,12 +133,32 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  // This method will be implemented when the edit profile component is ready
+  /**
+   * Saves the feedback of the resource in a list.
+   * @param {string} username
+   */
+  getUsersFeedback(username: string) {
+    this.resourceService.getTechnicalResourceFeedback(username).then(feedbacks => {
+      feedbacks.forEach(feedback => {
+        const userFeedback = new ResourceFeedback();
+        userFeedback.description = feedback.description + '.';
+        userFeedback.feedbackType = feedback.feedbackType;
+        let name = feedback.observer.firstName;
+        name = name.concat(' ');
+        userFeedback.observer = name.concat(feedback.observer.lastName);
+        this.userFeedbacks.push(userFeedback);
+      });
+    }, error => {
+      this.noFeedbacks = true;
+    });
+  }
+
   /**
    * Sends the user to the edit profile page.
    */
   onEditButton() {
-
+    const dir = '/profile/edit-profile/' + this.userId;
+    this.router.navigate([dir]);
   }
 
   /**
