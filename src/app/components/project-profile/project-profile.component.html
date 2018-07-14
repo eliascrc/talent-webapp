@@ -3,24 +3,29 @@
     <div id="top-content">
 
       <div id="project-title">
-        <div id="title">{{projectName}}</div><div id="edit-name"><i class="fas fa-pencil-alt edit-pencil"></i></div>
+        <div id="title">{{projectName}}</div>
+        <div id="edit-name"><i class="fas fa-pencil-alt edit-pencil"></i></div>
         <div id="project-date">
           <i class="far fa-clock date-clock" style="display: inline-block;"></i>
           <div id="date">
-            <div id="start-date">{{projectStartDate | date: 'dd-MM-yyyy'}}</div> -
+            <div id="start-date">{{projectStartDate | date: 'dd-MM-yyyy'}}</div>
+            -
             <div id="end-date">{{ projectEndDate == 'Present' ? 'Present' : projectEndDate | date: 'dd-MM-yyyy'}}</div>
           </div>
         </div>
       </div>
 
       <div class="right-content">
-        <div id="project-lead">
-          <div id="lead-label">Lead</div>
-          <div id="lead">Rodrigo Bartels</div>
-        </div>
-        <div class="vertical-line"></div>
+        <span *ngIf="projectLead != null">
+          <div id="project-lead">
+            <div id="lead-label">Lead</div>
+            <div id="lead">{{projectLead.firstName}} {{projectLead.lastName}}</div>
+          </div>
+          <div class="vertical-line"></div>
+        </span>
         <div id="project-status">
-          <div class="status-icon" [class.red-status-icon]="projectRedStatus" [class.yellow-status-icon]="projectYellowStatus"></div>
+          <div class="status-icon" [class.red-status-icon]="projectRedStatus"
+               [class.yellow-status-icon]="projectYellowStatus"></div>
           <div id="status">{{projectStatus | uppercase}}</div>
         </div>
       </div>
@@ -39,14 +44,18 @@
           <div class="row">
             <div *ngFor="let resource of projectResources" class="content-card">
               <div class="resource-profile-picture">
-                <img src="{{resource.profilePicture}}" alt="" class="profile-picture" (click)="onSeeUserProfile(resource.id)">
+                <img src="{{resource.profilePicture}}" alt="" class="profile-picture"
+                     (click)="onSeeUserProfile(resource.id)">
               </div>
               <div id="resource-basic-info">
                 <div id="resource-name" (click)="onSeeUserProfile(resource.id)">{{resource.name}}</div>
                 <div class="resource-capability">{{resource.technicalPosition}}</div>
                 <div class="resource-capability">Technical Resource</div>
-                <button class="kudo-btn" (click)="open(content, FeedbackType.Kudo, resource.id)">Give Kudo</button>
-                <button class="warning-btn">Give Warning</button>
+                <span *ngIf="resource.id != loggedInUser.id">
+                <button class="kudo-btn" (click)="openKudoModal(content, resource.id)">Give Kudo</button>
+                <button class="warning-btn"
+                        *ngIf="loggedInUser != null && projectLead != null && loggedInUser.id == projectLead.id">Give Warning</button>
+                </span>
               </div>
               <div class="cards-right-content">
                 <div class="vertical-line"></div>
@@ -54,7 +63,10 @@
                   <i class="far fa-clock date-clock" style="display: inline-block;"></i>
                   <div id="resource-date">
                     <div id="resource-start-date">{{resource.startDate | date: 'dd-MM-yyyy'}}</div>
-                    <span id="date-hyphen">-</span> <div id="resource-end-date">{{ resource.endDate == 'Present' ? 'Present' : resource.endDate | date: 'dd-MM-yyyy'}}</div>
+                    <span id="date-hyphen">-</span>
+                    <div id="resource-end-date">{{ resource.endDate == 'Present' ? 'Present' : resource.endDate | date:
+                      'dd-MM-yyyy'}}
+                    </div>
                   </div>
                 </div>
                 <div class="vertical-line"></div>
@@ -91,7 +103,8 @@
               </div>
               <div class="cards-right-content-positions">
                 <div *ngFor="let positionHolder of position.resources" class="resource-picture-positions">
-                  <img src="{{positionHolder.picture}}" alt="" class="profile-picture" (click)="onSeeUserProfile(positionHolder.id)"
+                  <img src="{{positionHolder.picture}}" alt="" class="profile-picture"
+                       (click)="onSeeUserProfile(positionHolder.id)"
                        data-toggle="tooltip" data-placement="top" title="{{positionHolder.name}}">
                 </div>
               </div>
@@ -103,7 +116,8 @@
               </div>
               <div class="cards-right-content-positions">
                 <div *ngFor="let resource of projectResources" class="resource-picture-positions">
-                  <img src="{{resource.profilePicture}}" alt="" class="profile-picture" (click)="onSeeUserProfile(resource.id)"
+                  <img src="{{resource.profilePicture}}" alt="" class="profile-picture"
+                       (click)="onSeeUserProfile(resource.id)"
                        data-toggle="tooltip" data-placement="top" title="{{resource.name}}">
                 </div>
                 <div id="add-position"><i class="fas fa-plus" id="addButton"></i></div>
@@ -121,26 +135,31 @@
     </ngb-tabset>
   </div>
 </div>
-<ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Give Kudo</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <div class="input-group">
-            <textarea id="description" class="form-control"></textarea>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn cancel-button" >Cancel</button>
-      <button type="button" class="btn confirm-button">Confirm</button>
-    </div>
-</ng-template>
 
+<ng-template #content let-c="close" let-d="dismiss()">
+  <div class="modal-header">
+    <h4 class="modal-title" *ngIf="modalIsForKudo">Give Kudo</h4>
+    <h4 class="modal-title" *ngIf="!modalIsForKudo">Give Warning</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form #feedbackForm="ngForm">
+  <div class="modal-body">
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <div class="input-group">
+          <input id="description" class="form-control" />
+        </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn cancel-button" (click)="d">Cancel</button>
+    <button type="button" class="btn confirm-button" (click)="confirmKudo(content, descriptionTextArea.value); d;"
+            *ngIf="modalIsForKudo" >Confirm
+    </button>
+    <button type="button" class="btn confirm-button" *ngIf="!modalIsForKudo">Confirm</button>
+  </div>
+  </form>
+</ng-template>

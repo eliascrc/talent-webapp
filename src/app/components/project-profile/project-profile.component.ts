@@ -3,6 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
 import {ProjectService} from '@services/project/project.service';
 import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {TechnicalResource} from '@model/TechnicalResource';
+import {User} from '@model/User';
+import {AuthenticateService} from '@services/authentication/authenticate.service';
+import {FeedbackService} from '@services/feedback/feedback.service';
 
 /**
  * Used to represent the resources that have been part of a project.
@@ -28,17 +32,13 @@ class ProjectPositionHolders {
   resources: {id: string, name: string, picture: string}[];
 }
 
-enum FeedbackType {
-  Kudo,
-  Warning,
-}
-
 /**
- * Used to represent project positions and its holders.
+ * Used to store information about feedback that will be used with the modal
  */
 class FeedbackModal extends NgbModalRef {
   feedbackReceiverId: string;
-  feedbackType: FeedbackType;
+  modalTitle: string;
+  description: string;
 }
 
 @Component({
@@ -64,11 +64,14 @@ export class ProjectProfileComponent implements OnInit {
   projectStatus: string;
   projectRedStatus = false;
   projectYellowStatus = false;
-  closeResult: string;
-  content: FeedbackModal;
+  projectLead: User;
+  loggedInUser: User;
+  modalIsForKudo: boolean;
+  modalDescription: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService,
-              private resourceService: ResourceInformationService, private modalService: NgbModal) {
+              private resourceService: ResourceInformationService, private modalService: NgbModal,
+              private authenticateService: AuthenticateService, private feedbackService: FeedbackService) {
   }
 
   /**
@@ -82,6 +85,7 @@ export class ProjectProfileComponent implements OnInit {
       this.projectStartDate = projectInfoObject.startDate;
       this.projectEndDate = projectInfoObject.endDate != null ? projectInfoObject.endDate : 'Present';
       this.projectStatus = projectInfoObject.state;
+      this.projectLead = projectInfoObject.projectLead;
       if (this.projectStatus == 'ON_HOLD') {
         this.projectYellowStatus = true;
       } else if (this.projectStatus == 'END') {
@@ -97,6 +101,7 @@ export class ProjectProfileComponent implements OnInit {
     }, error => {
       this.router.navigate(['/dashboard']);
     });
+    this.authenticateService.getLoggedInUserInfo().then(response => this.loggedInUser = response);
     this.projectLoaded = true;
   }
 
@@ -106,17 +111,17 @@ export class ProjectProfileComponent implements OnInit {
    */
   parseProjectResources(projectPositions: any[]) {
     projectPositions.forEach(position => {
-      let projectPositionHolders = new ProjectPositionHolders();
+      const projectPositionHolders = new ProjectPositionHolders();
       projectPositionHolders.resources = [];
       projectPositionHolders.capability = position.capabilityLevel.name + ' ' + position.capabilityLevel.capability.name;
 
       position.holderHistory.forEach(holder => {
-        let profilePicture = (holder.resource.profilePicture == null ?
+        const profilePicture = (holder.resource.profilePicture == null ?
           ProjectProfileComponent.DEFAULT_PROFILE_PICTURE : holder.resource.profilePicture);
-        let holderName = holder.resource.firstName + ' ' + holder.resource.lastName;
+        const holderName = holder.resource.firstName + ' ' + holder.resource.lastName;
         projectPositionHolders.resources.push({id: holder.resource.id, name: holderName, picture: profilePicture});
 
-        let projectResource = new ProjectResource();
+        const projectResource = new ProjectResource();
         projectResource.id = holder.resource.id;
         projectResource.name = holder.resource.firstName + ' ' + holder.resource.lastName;
         projectResource.technicalPosition = this.getProjectResourceTechnicalPosition(holder.resource.username);
@@ -158,25 +163,19 @@ export class ProjectProfileComponent implements OnInit {
     this.router.navigate(['/profile/user-profile/', userId]);
   }
 
-  open(content: FeedbackModal, feedbackType: FeedbackType, technicalResourceId: string) {
+  openKudoModal(content: FeedbackModal, technicalResourceId: string) {
     content.feedbackReceiverId = technicalResourceId;
-    content.feedbackType = feedbackType;
+    content.modalTitle = 'Give Kudo';
+    this.modalIsForKudo = true;
     this.modalService.open(content, {size: 'lg', centered: true});
   }
 
-  confirmKudo(technicalResourceId: string, description: string) {
-    alert('Id:' + technicalResourceId + ' Description: ' + description);
-    this.content.close();
+  confirmKudo(content: FeedbackModal, description: string) {
+    alert(this.modalDescription);
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+  updateModalDescription(description) {
+    alert(this.modalDescription.length);
   }
 
 }

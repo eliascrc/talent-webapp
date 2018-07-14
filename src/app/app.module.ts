@@ -54,6 +54,7 @@ import {UserProfileComponent} from './components/profile/user-profile/user-profi
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 import {ProjectPositionService} from '@services/project-position/project-position.service';
 import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
+import {FeedbackService} from '@services/feedback/feedback.service';
 
 
 @NgModule({
@@ -109,7 +110,8 @@ import { OrganizationProfileComponent } from './components/profile/organization-
     ResourceInformationService,
     InvitationService,
     ProjectService,
-    ProjectPositionService
+    ProjectPositionService,
+    FeedbackService,
   ],
   bootstrap: [AppComponent]
 })
