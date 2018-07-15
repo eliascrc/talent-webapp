@@ -22,6 +22,7 @@ class ProjectResource {
   position: string;
   hours: number;
   isActive: string;
+  username: string;
 }
 
 /**
@@ -36,9 +37,8 @@ class ProjectPositionHolders {
  * Used to store information about feedback that will be used with the modal
  */
 class FeedbackModal extends NgbModalRef {
-  feedbackReceiverId: string;
+  observeeUsername: string;
   modalTitle: string;
-  description: string;
 }
 
 @Component({
@@ -68,6 +68,7 @@ export class ProjectProfileComponent implements OnInit {
   loggedInUser: User;
   modalIsForKudo: boolean;
   modalDescription: string;
+  resourceBelongsToProject: boolean;
 
   constructor(private route: ActivatedRoute, private router: Router, private projectService: ProjectService,
               private resourceService: ResourceInformationService, private modalService: NgbModal,
@@ -78,7 +79,10 @@ export class ProjectProfileComponent implements OnInit {
    * Data querying of all the basic information and project positions history of the project.
    */
   ngOnInit() {
+    this.modalDescription = '';
+    this.resourceBelongsToProject = false;
     this.projectId = this.route.snapshot.paramMap.get('projectIdentifier');
+    this.authenticateService.getLoggedInUserInfo().then(response => this.loggedInUser = response);
     this.projectService.getProjectBasicInformation(this.projectId).then(response => {
       const projectInfoObject = JSON.parse(JSON.stringify(response));
       this.projectName = projectInfoObject.name.charAt(0).toUpperCase() + projectInfoObject.name.substr(1);
@@ -101,7 +105,6 @@ export class ProjectProfileComponent implements OnInit {
     }, error => {
       this.router.navigate(['/dashboard']);
     });
-    this.authenticateService.getLoggedInUserInfo().then(response => this.loggedInUser = response);
     this.projectLoaded = true;
   }
 
@@ -123,6 +126,9 @@ export class ProjectProfileComponent implements OnInit {
 
         const projectResource = new ProjectResource();
         projectResource.id = holder.resource.id;
+        if (projectResource.id === this.loggedInUser.id) {
+          this.resourceBelongsToProject = true;
+        }
         projectResource.name = holder.resource.firstName + ' ' + holder.resource.lastName;
         projectResource.technicalPosition = this.getProjectResourceTechnicalPosition(holder.resource.username);
         projectResource.profilePicture = holder.resource.profilePicture == null ?
@@ -132,6 +138,7 @@ export class ProjectProfileComponent implements OnInit {
         projectResource.position = position.capabilityLevel.name + ' ' + position.capabilityLevel.capability.name;
         projectResource.hours = holder.assignedHours;
         projectResource.isActive = holder.active ? 'ACTIVE' : 'INACTIVE';
+        projectResource.username = holder.resource.username;
 
         this.projectResources.push(projectResource);
       });
@@ -163,19 +170,52 @@ export class ProjectProfileComponent implements OnInit {
     this.router.navigate(['/profile/user-profile/', userId]);
   }
 
-  openKudoModal(content: FeedbackModal, technicalResourceId: string) {
-    content.feedbackReceiverId = technicalResourceId;
-    content.modalTitle = 'Give Kudo';
+  /**
+   * Used to open a modal to give a kudo to an specific technical resource
+   * @param {FeedbackModal} feedbackModal the modal for writing the description of the feedback
+   * @param {string} technicalResourceUsername the username of the technical resource that will receive the feedback
+   */
+  openKudoModal(feedbackModal: FeedbackModal, technicalResourceUsername: string) {
+    feedbackModal.observeeUsername = technicalResourceUsername;
     this.modalIsForKudo = true;
-    this.modalService.open(content, {size: 'lg', centered: true});
+    this.modalService.open(feedbackModal, {size: 'lg', centered: true});
   }
 
-  confirmKudo(content: FeedbackModal, description: string) {
-    alert(this.modalDescription);
+  /**
+   * Used to open a modal to give a warning to an specific technical resource
+   * @param {FeedbackModal} feedbackModal the modal for writing the description of the feedback
+   * @param {string} technicalResourceUsername the username of the technical resource that will receive the feedback
+   */
+  openWarningModal(feedbackModal: FeedbackModal, technicalResourceUsername: string) {
+    feedbackModal.observeeUsername = technicalResourceUsername;
+    this.modalIsForKudo = false;
+    this.modalService.open(feedbackModal, {size: 'lg', centered: true});
   }
 
+  /**
+   * Used to confirm the description of a kudo to a technical resource
+   * @param {FeedbackModal} feedbackModal the modal in which the description is written
+   */
+  confirmKudo(feedbackModal: FeedbackModal) {
+    this.feedbackService.giveKudo(this.modalDescription, feedbackModal.observeeUsername, this.projectId)
+      .toPromise();
+  }
+
+  /**
+   * Used to confirm the description of a warning to a technical resource
+   * @param {FeedbackModal} feedbackModal the modal in which the description is written
+   */
+  confirmWarning(feedbackModal: FeedbackModal) {
+    this.feedbackService.giveWarning(this.modalDescription, feedbackModal.observeeUsername, this.projectId)
+      .toPromise();
+  }
+
+  /**
+   * Updates modalDescription with what is being written to see if the confirm button should be enabled
+   * @param description the description that is being written
+   */
   updateModalDescription(description) {
-    alert(this.modalDescription.length);
+    this.modalDescription = description;
   }
 
 }

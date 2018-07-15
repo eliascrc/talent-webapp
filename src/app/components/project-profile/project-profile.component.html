@@ -52,8 +52,8 @@
                 <div class="resource-capability">{{resource.technicalPosition}}</div>
                 <div class="resource-capability">Technical Resource</div>
                 <span *ngIf="resource.id != loggedInUser.id">
-                <button class="kudo-btn" (click)="openKudoModal(content, resource.id)">Give Kudo</button>
-                <button class="warning-btn"
+                <button class="kudo-btn" (click)="openKudoModal(content, resource.username)" *ngIf="resourceBelongsToProject">Give Kudo</button>
+                <button class="warning-btn" (click)="openWarningModal(content, resource.username)"
                         *ngIf="loggedInUser != null && projectLead != null && loggedInUser.id == projectLead.id">Give Warning</button>
                 </span>
               </div>
@@ -150,16 +150,16 @@
       <div class="form-group">
         <label for="description">Description</label>
         <div class="input-group">
-          <input id="description" class="form-control" />
+          <textarea id="description" class="form-control" #descriptionTextArea (keyup)="updateModalDescription(descriptionTextArea.value)"></textarea>
         </div>
       </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn cancel-button" (click)="d">Cancel</button>
     <button type="button" class="btn confirm-button" (click)="confirmKudo(content, descriptionTextArea.value); d;"
-            *ngIf="modalIsForKudo" >Confirm
-    </button>
-    <button type="button" class="btn confirm-button" *ngIf="!modalIsForKudo">Confirm</button>
+            *ngIf="modalIsForKudo" [disabled]="modalDescription.length == 0">Confirm</button>
+    <button type="button" class="btn confirm-button" (click)="confirmWarning(content, descriptionTextArea.value); d;"
+            *ngIf="!modalIsForKudo">Confirm</button>
   </div>
   </form>
 </ng-template>
