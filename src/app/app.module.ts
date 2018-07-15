@@ -61,6 +61,8 @@ import {CarouselModule} from 'primeng/primeng';
 import {EditProfileComponent} from './components/profile/edit-profile/edit-profile.component';
 import {SearchResourceComponent} from './components/search/search-resource/search-resource.component';
 import {OrganizationSkillsComponent} from './components/profile/organization-profile/organization-skills/organization-skills.component';
+import {FeedbackService} from '@services/feedback/feedback.service';
+
 
 @NgModule({
   declarations: [
@@ -122,7 +124,8 @@ import {OrganizationSkillsComponent} from './components/profile/organization-pro
     EditResourceInformationService,
     InvitationService,
     ProjectService,
-    ProjectPositionService
+    ProjectPositionService,
+    FeedbackService,
   ],
   bootstrap: [AppComponent]
 })

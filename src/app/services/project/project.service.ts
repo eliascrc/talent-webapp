@@ -72,4 +72,13 @@ export class ProjectService {
     }).toPromise();
   }
 
+  getProjectLead(projectId: string): Promise<any> {
+    return this.http.get<any>(this.getBasicInformationUrl, {
+      params: {
+        'projectId': projectId
+      },
+      withCredentials: true
+    }).toPromise().then( () => alert('asdf'));
+  }
+
 }
