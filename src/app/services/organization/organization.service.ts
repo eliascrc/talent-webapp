@@ -8,8 +8,12 @@ export class OrganizationService {
 
   private url = 'http://ws.talent.cr/ws/login/organization';
   private organizationBasicInfoUrl = 'http://ws.talent.cr/ws/organization/get';
+  private getOrganizationSkillsUrl = 'http://ws.talent.cr/ws/organization/skill/get';
+  private createOrganizationSkillsUrl = 'http://ws.talent.cr/ws/organization/skill/create';
   private organizationProjectsUrl = 'http://ws.talent.cr/ws/organization/project/getProjects';
   private organizationMembersUrl = 'http://ws.talent.cr/ws/organization/technicalResource/getAll';
+  private organizationMembersForSearchUrl = 'http://ws.talent.cr/ws/organization/technicalResource/searchResults';
+  private organizationCapabilitiesUrl = 'http://ws.talent.cr/ws/organization/capabilities/getAll';
 
   constructor(private http: HttpClient) {
   }
@@ -35,6 +39,16 @@ export class OrganizationService {
       .toPromise();
   }
 
+  getOrganizationSkills(): Promise<any> {
+    return this.http.get(this.getOrganizationSkillsUrl, {withCredentials: true}).toPromise();
+  }
+
+  createOrganizationSkills(skillCategoryId: string, skillName: string, skillType: string) {
+    const bodyParameters = `skillCategoryId=${skillCategoryId}&skillName=${skillName}&skillType=${skillType}`;
+    return this.http.post(this.createOrganizationSkillsUrl, bodyParameters,
+      {headers: {'Content-Type': 'application/x-www-form-urlencoded'}, withCredentials: true}).toPromise();
+  }
+
   /**
    * Returns a promise with the JSON containing the organization's projects.
    * @returns {Promise<Object>}
@@ -49,6 +63,18 @@ export class OrganizationService {
    */
   getOrganizationMembers(): Promise<any> {
     return this.http.get(this.organizationMembersUrl, {withCredentials: true}).toPromise();
+  }
+
+  getOrganizationMembersForSearch(): Promise<any> {
+    return this.http.get(this.organizationMembersForSearchUrl, {withCredentials: true}).toPromise();
+  }
+
+  /**
+   * Returns a promise with the JSON containing the organization's capabilities.
+   * @returns {Promise<any>}
+   */
+  getOrganizationCapabilities(): Promise<any> {
+    return this.http.get(this.organizationCapabilitiesUrl, {withCredentials: true}).toPromise();
   }
 
 }

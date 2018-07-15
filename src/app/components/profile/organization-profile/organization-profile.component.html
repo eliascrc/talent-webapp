@@ -8,7 +8,7 @@
         <div id="name">{{organizationName}}</div>
         <div id="unique-identifier">{{organizationUniqueIdentifier}}</div>
       </div>
-      <div *ngIf="isAdministrator" id="edit-name">
+      <div *ngIf="isAdministrator" id="edit-name" (click)="onEditProfile()">
         <i class="fas fa-pencil-alt"></i>
       </div>
     </div>
@@ -17,11 +17,13 @@
   <div class="row" id="organization-accordions">
     <div class="accordion-card">
       <div class="accordion-title">Members</div>
-      <div class="accordion-arrow"><i class="arrow" (click)="onShowMembers()" [class.up]="showMembers" [class.down]="!showMembers"></i></div>
+      <div class="accordion-arrow"><i class="arrow" (click)="onShowMembers()" [class.up]="showMembers"
+                                      [class.down]="!showMembers"></i></div>
       <div class="accordion-content" [class.show]="showMembers" [class.hide]="!showMembers">
         <div *ngFor="let resource of organizationMembers" class="content-card members">
           <div class="resource-profile-picture">
-            <img src="{{resource.profilePicture}}" alt="" class="profile-picture" (click)="onSeeUserProfile(resource.id)">
+            <img src="{{resource.profilePicture}}" alt="" class="profile-picture"
+                 (click)="onSeeUserProfile(resource.id)">
           </div>
           <div id="resource-basic-info">
             <div id="resource-name" (click)="onSeeUserProfile(resource.id)">{{resource.name}}</div>
@@ -32,21 +34,38 @@
     </div>
     <div class="accordion-card">
       <div class="accordion-title">Capabilities</div>
-      <div class="accordion-arrow"><i class="arrow" (click)="onShowCapabilities()" [class.up]="showCapabilities" [class.down]="!showCapabilities"></i></div>
+      <div class="accordion-arrow"><i class="arrow" (click)="onShowCapabilities()" [class.up]="showCapabilities"
+                                      [class.down]="!showCapabilities"></i></div>
       <div class="accordion-content" [class.show]="showCapabilities" [class.hide]="!showCapabilities">
+        <div *ngFor="let capability of organizationCapabilities">
+          <div class="content-card capability-padding">
+            <div class="capability-level-name">{{capability.name}}</div>
+            <div class="accordion-arrow"><i class="arrow" (click)="onShowCapabilityLevels(capability)"
+                                            [class.up]="capability.showCapabilityLevels"
+                                            [class.down]="!capability.showCapabilityLevels"></i></div>
+            <div class="accordion-content" [class.show-capability]="capability.showCapabilityLevels"
+                 [class.hide]="!capability.showCapabilityLevels">
+              <div *ngFor="let capabilityLevel of capability.capabilityLevels" class="capability-content">
+                <div class="capability-name">{{capabilityLevel}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
     <div class="accordion-card">
       <div class="accordion-title">Skills</div>
-      <div class="accordion-arrow"><i class="arrow" (click)="onShowSkills()" [class.up]="showSkills" [class.down]="!showSkills"></i></div>
+      <div class="accordion-arrow"><i class="arrow" (click)="onShowSkills()" [class.up]="showSkills"
+                                      [class.down]="!showSkills"></i></div>
       <div class="accordion-content" [class.show]="showSkills" [class.hide]="!showSkills">
-
+        <app-organization-skills class="content-card"></app-organization-skills>
       </div>
     </div>
     <div class="accordion-card">
       <div class="accordion-title">Projects</div>
-      <div class="accordion-arrow"><i class="arrow" (click)="onShowProjects()" [class.up]="showProjects" [class.down]="!showProjects"></i></div>
+      <div class="accordion-arrow"><i class="arrow" (click)="onShowProjects()" [class.up]="showProjects"
+                                      [class.down]="!showProjects"></i></div>
       <div class="accordion-content" [class.show]="showProjects" [class.hide]="!showProjects">
         <div *ngFor="let project of organizationProjects" class="content-card">
           <div id="project-basic-info">
@@ -56,18 +75,23 @@
               <div id="date">
                 <div id="start-date">{{project.startDate | date: 'dd-MM-yyyy'}}</div>
                 <span id="date-hyphen">-</span>
-                <div id="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date: 'dd-MM-yyyy'}}</div>
+                <div id="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date:
+                  'dd-MM-yyyy'}}
+                </div>
               </div>
             </div>
           </div>
           <div class="cards-right-content">
             <div class="vertical-line"></div>
             <div class="block-info">
-              <div class="status-icon center" [class.red-status-icon]="project.projectRedStatus" [class.yellow-status-icon]="project.projectYellowStatus"></div>
+              <div class="status-icon center" [class.red-status-icon]="project.projectRedStatus"
+                   [class.yellow-status-icon]="project.projectYellowStatus"></div>
               <div id="project-status">{{project.state}}</div>
             </div>
             <div class="vertical-line"></div>
-            <button class="btn btn-primary" id="project-button" (click)="onSeeProjectProfile(project.id)"><div id="project-button-text">SEE PROJECT <i class="fas fa-angle-right" id="button-arrow"></i></div></button>
+            <button class="btn btn-primary" id="project-button" (click)="onSeeProjectProfile(project.id)">
+              <div id="project-button-text">SEE PROJECT <i class="fas fa-angle-right" id="button-arrow"></i></div>
+            </button>
           </div>
 
         </div>

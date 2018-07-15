@@ -7,6 +7,7 @@ import {Feedback} from '@model/Feedback';
 import {EmergencyContact} from '@model/EmergencyContact';
 import {LeadPosition} from '@model/LeadPosition';
 import {PreviousJob} from '@model/PreviousJob';
+import {JobPosition} from '@model/JobPosition';
 
 /**
  * Class that represents a Technical Resource within the Talent system. It contains the technical resource
@@ -31,6 +32,7 @@ export class TechnicalResource extends User {
   leadPositions: Set<LeadPosition>;
   description: string;
   previousJobs: Set<PreviousJob>;
+  jobPosition: JobPosition;
 
   constructor(technicalResource: any) {
     super(technicalResource);
@@ -38,12 +40,12 @@ export class TechnicalResource extends User {
     this.profilePicture = new ProfilePicture(technicalResource.profilePicture);
     this.organization = new Organization(technicalResource.organization);
 
-    this.skills = new Set(); 
+    this.skills = new Set();
     for (let skill of technicalResource.skills)
       this.skills.add(new Skill(skill));
 
     this.projectPositions = new Set();
-    for(let position of technicalResource.projectPositions)
+    for (let position of technicalResource.projectPositions)
       this.projectPositions.add(new ProjectPositionHolder(position));
 
     this.feedbackMade = new Set();
@@ -56,7 +58,7 @@ export class TechnicalResource extends User {
 
     this.timeZone = technicalResource.timeZone;
 
-    this.emergencyContacts = new Set(); 
+    this.emergencyContacts = new Set();
     for (let contact of technicalResource.emergencyContacts)
       this.emergencyContacts.add(new EmergencyContact(contact));
 
@@ -64,16 +66,18 @@ export class TechnicalResource extends User {
     this.lastLevelAssessment = new Date(technicalResource.lastLevelAssessment.getTime());
     this.lastPerformanceReview = new Date(technicalResource.lastPerformanceReview.getTime());
     this.isAdministrator = technicalResource.isAdministrator;
-    
-    this.leadPositions = new Set(); 
+
+    this.leadPositions = new Set();
     for (let leadPosition of technicalResource.leadPositions)
       this.leadPositions.add(new LeadPosition(leadPosition));
 
     this.description = technicalResource.description;
-    
-    this.previousJobs = new Set(); 
+
+    this.previousJobs = new Set();
     for (let previousJob of technicalResource.previousJobs)
       this.previousJobs.add(new PreviousJob(previousJob));
+
+    this.jobPosition = new JobPosition(technicalResource.jobPostion);
 
   }
 }

@@ -29,6 +29,7 @@ import {StepCommunicationService} from '@services/sign-up/step-communication.ser
 // For proof of concept sign-up
 import {OrganizationSelectComponent} from './components/authentication/organization-select/organization-select.component';
 import {OrganizationService} from '@services/organization/organization.service';
+import {EditOrganizationService} from '@services/organization/edit-organization.service';
 import {AuthenticateService} from '@services/authentication/authenticate.service';
 import {InvalidTokenComponent} from './components/authentication/invalid-token/invalid-token.component';
 import {ForgotPasswordService} from '@services/authentication/forgot-password.service';
@@ -39,21 +40,27 @@ import {ContactUsScreenComponent} from './components/company-information/contact
 import {ContactUsService} from '@services/company-information/contact-us.service';
 import {ProjectService} from '@services/project/project.service';
 import {ResourceInformationService} from '@services/technical-resource/resource-information.service';
+import {EditResourceInformationService} from '@services/technical-resource/edit-resource-information.service';
 
 import {SanitizeHtmlPipe} from './shared/sanitize-html.pipe';
 
-import { HeaderComponent } from './components/header/header.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SignUpStepOneComponent } from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
-import { SignUpStepTwoComponent } from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
-import { ProjectProfileComponent } from './components/project-profile/project-profile.component';
+import {HeaderComponent} from './components/header/header.component';
+import {SidebarComponent} from './components/sidebar/sidebar.component';
+import {SignUpStepOneComponent} from './components/sign-up/sign-up-step-one/sign-up-step-one.component';
+import {SignUpStepTwoComponent} from './components/sign-up/sign-up-step-two/sign-up-step-two.component';
+import {ProjectProfileComponent} from './components/project-profile/project-profile.component';
 import {SignUpStepFourComponent} from './components/sign-up/sign-up-step-four/sign-up-step-four.component';
 import {AcceptInviteComponent} from './components/sign-up/accept-invite/accept-invite.component';
 import {CreateProjectComponent} from './components/create-project/create-project/create-project.component';
 import {UserProfileComponent} from './components/profile/user-profile/user-profile.component';
 import {SignUpStepThreeComponent} from './components/sign-up/sign-up-step-three/sign-up-step-three.component';
 import {ProjectPositionService} from '@services/project-position/project-position.service';
-import { OrganizationProfileComponent } from './components/profile/organization-profile/organization-profile.component';
+import {EditOrganizationProfileComponent} from './components/profile/edit-organization-profile/edit-organization-profile.component';
+import {OrganizationProfileComponent} from './components/profile/organization-profile/organization-profile.component';
+import {CarouselModule} from 'primeng/primeng';
+import {EditProfileComponent} from './components/profile/edit-profile/edit-profile.component';
+import {SearchResourceComponent} from './components/search/search-resource/search-resource.component';
+import {OrganizationSkillsComponent} from './components/profile/organization-profile/organization-skills/organization-skills.component';
 import {FeedbackService} from '@services/feedback/feedback.service';
 
 
@@ -86,7 +93,11 @@ import {FeedbackService} from '@services/feedback/feedback.service';
     UserProfileComponent,
     CreateProjectComponent,
     UserProfileComponent,
+    SearchResourceComponent,
     OrganizationProfileComponent,
+    EditProfileComponent,
+    EditOrganizationProfileComponent,
+    OrganizationSkillsComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,11 +106,13 @@ import {FeedbackService} from '@services/feedback/feedback.service';
     HttpClientModule,
     HttpModule,
     NgbModule.forRoot(),
+    CarouselModule,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     UserService,
     OrganizationService,
+    EditOrganizationService,
     PrivacyPolicyService,
     TermsOfUseService,
     AuthenticateService,
@@ -108,6 +121,7 @@ import {FeedbackService} from '@services/feedback/feedback.service';
     SignupService,
     StepCommunicationService,
     ResourceInformationService,
+    EditResourceInformationService,
     InvitationService,
     ProjectService,
     ProjectPositionService,

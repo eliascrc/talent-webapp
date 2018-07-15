@@ -1,0 +1,55 @@
+<div *ngIf="organizationLoaded" class="container-fluid">
+  <div class="row" id="basic-info">
+    <div id="top-content">
+      <div id="image">
+        <div id="image-div">
+          <img *ngIf="organizationLogo != null" [src]="organizationLogo" alt="image" id="organizationLogo">
+        </div>
+      </div>
+      <div id="information">
+        <div class="name">{{organizationName}}</div>
+        <div class="info">{{uniqueIdentifier}}</div>
+      </div>
+	  
+	  
+	  <div class="row" id="basic-info-input">
+
+        <!-- Basic Information Form -->
+        <form (ngSubmit)="onSubmit(editForm)" #editForm="ngForm">
+		  <div class="form-group">
+            <label for="organizationName">Organization name</label>
+            <input type="text" class="form-control" placeholder={{organizationName}} id="organizationName" ngModel name="organizationNameInput" [disabled]="saving"/>
+          </div>
+
+          <div class="form-group">
+            <label for="uniqueIdentifier">Unique indentifier</label>
+            <input type="text" class="form-control" placeholder={{uniqueIdentifier}} id="uniqueIdentifier" ngModel name="uniqueIdentifierInput" 
+			(keyup)="hideMessage()" [disabled]="saving"/>
+		    <div class="error-message" id="error-message">Id must have at least 3 characters and only numbers or letters. 
+			  Hyphens are permitted if surrounded by these characters. It must be unique.
+            </div>
+          </div>
+		  
+          <label for="organizationLogo" id="organizationLogoTitle">Organization logo</label>
+		  <div  class="form-group">
+			<label class="custom-file">Choose Files
+				<input type="file" id="file" class="custom-file-input" [disabled]="saving" (change)="uploadFile($event)">
+			</label>
+		    <label class="custom-file-control" id="file-name">{{fileName}}</label>
+          </div>
+		  
+		  <div class="form-control" id="drag-picture">
+			<span id="drag-picture-contain">
+				<i class="far fa-copy"></i>Drag files here
+			</span>
+			<input type="file" id="drag-picture-input" ngModel name="dragPicture" [disabled]="saving" (change)="uploadFile($event)"/>					
+          </div>
+		  <label *ngIf="!validFile"  class="custom-file-control" id="file-message">The extension of the profile picture must be .jpg.</label>
+		  
+		  <button class="btn btn-secondary" id="cancel-button" (click)="onCancelButton()" type="button" [disabled]="saving">Cancel</button>
+		  <input class="btn btn-primary" id="save-button" type="submit" [disabled]="saving" value={{buttonMessage}} [disabled]="!validFile"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

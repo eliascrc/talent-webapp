@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Project} from '@model/Project';
-
 
 
 /**
@@ -16,8 +15,10 @@ export class ProjectService {
   private getPositionsHistoryUrl = 'http://ws.talent.cr/ws/organization/project/getHistory';
   private getBasicInformationUrl = 'http://ws.talent.cr/ws/organization/project/get';
   private createUrl = 'http://ws.talent.cr/ws/organization/project/create';
+  private getActiveProjectsUrl = 'http://ws.talent.cr/ws/organization/project/getActiveProjects';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   /**
    * Used to create a project with the given information
@@ -57,6 +58,16 @@ export class ProjectService {
       params: {
         'projectId': projectId
       },
+      withCredentials: true
+    }).toPromise();
+  }
+
+  /**
+   * Obtains the organization's active projects.
+   * @returns {Promise<any>}
+   */
+  getActiveProjects(): Promise<any> {
+    return this.http.get<any>(this.getActiveProjectsUrl, {
       withCredentials: true
     }).toPromise();
   }

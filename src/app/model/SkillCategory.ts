@@ -16,10 +16,16 @@ export class SkillCategory extends BasicEntity {
   constructor(skillCategory: any) {
     super(skillCategory);
     this.name = skillCategory.name;
-    this.organization = new Organization(skillCategory.organization);
-    
+
+    if (skillCategory.organization !== null && skillCategory.organization !== undefined) {
+      this.organization = new Organization(skillCategory.organization);
+    }
+
     this.skills = new Set();
-    for (let skill of skillCategory.skills)
-      this.skills.add(new Skill(skill));
+    if (skillCategory.skills !== null && skillCategory.skills !== undefined) {
+      for (let skill of skillCategory.skills)
+        this.skills.add(new Skill(skill));
+    }
+
   }
 }
