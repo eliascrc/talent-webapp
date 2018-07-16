@@ -13,6 +13,7 @@ export class ResourceInformationService {
   private getTechnicalResourceBasicInfoUrlWithId = 'http://ws.talent.cr/ws/technicalResource/basicInformation/id';
   private getTechnicalResourcesProjects = 'http://ws.talent.cr/ws/technicalResource/project/get?username=';
   private getTechnicalResourcesFeedback = 'http://ws.talent.cr/ws/technicalResource/receivedFeedback/get?technicalResource=';
+  private getTechnicalesourcesEducationRecords = 'http://ws.talent.cr/ws/technicalResource/educationRecord/get?technicalResourceId=';
 
   constructor(private http: HttpClient) {
   }
@@ -63,6 +64,17 @@ export class ResourceInformationService {
    */
   getTechnicalResourceFeedback(username: string): Promise<any> {
     return this.http.get<any>(this.getTechnicalResourcesFeedback + username , {
+      withCredentials: true
+    }).toPromise();
+  }
+
+  /**
+   * Obtains the education records.
+   * @param {string} id
+   * @returns {Promise<any>}
+   */
+  getTechnicalResourceEducationRecords(id: string): Promise<any> {
+    return this.http.get<any>(this.getTechnicalesourcesEducationRecords + id , {
       withCredentials: true
     }).toPromise();
   }

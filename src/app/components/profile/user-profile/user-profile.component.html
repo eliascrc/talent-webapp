@@ -36,9 +36,9 @@
                 </div>
                 <div class="project-basic-info">
                   <div><i class="far fa-clock date-clock" style="display: inline-block;"></i>
-                    <div id="start-date">{{project.startDate | date: 'dd-MM-yyyy'}}</div>
+                    <div class="start-date">{{project.startDate | date: 'dd-MM-yyyy'}}</div>
                     <span id="date-hyphen">-</span>
-                    <div id="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date:
+                    <div class="end-date">{{ project.endDate == 'Present' ? 'Present' : project.endDate | date:
                       'dd-MM-yyyy'}}
                     </div>
 
@@ -129,7 +129,16 @@
       </ngb-tab>
       <ngb-tab title="Education records">
         <ng-template ngbTabContent>
-          <p> Education records works!</p>
+          <div *ngFor="let educationRecord of userEducationRecords">
+            <div class="content-card">
+              <div class="project-basic-info">
+                <div id="education-record-name">{{educationRecord.title}}, {{educationRecord.institution}}</div>
+                <div><i class="far fa-clock date-clock" style="display: inline-block;"></i>
+                  <div class="start-date">14-10-2015 - Present</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </ng-template>
       </ngb-tab>
     </ngb-tabset>

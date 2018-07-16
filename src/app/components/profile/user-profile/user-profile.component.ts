@@ -27,6 +27,14 @@ class ResourceFeedback {
   observer: string;
 }
 
+class ResourceEducationRecord {
+  institution: string;
+  startDate: string;
+  endDate: string;
+  title: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -48,6 +56,7 @@ export class UserProfileComponent implements OnInit {
   canEdit = false;
   userProjects: ResourceProject[] = [];
   userFeedbacks: ResourceFeedback[] = [];
+  userEducationRecords: ResourceEducationRecord[] = [];
   noFeedbacks = false;
 
   constructor(private authenticateService: AuthenticateService, private activatedRoute: ActivatedRoute,
@@ -75,6 +84,7 @@ export class UserProfileComponent implements OnInit {
                   this.userProfilePicture = userInfo.profilePicture.link;
                   this.getUsersProjects(userInfo.username);
                   this.getUsersFeedback(userInfo.username);
+                  this.getUsersEducaionRecords(userInfo.id);
                 }, error => {
                 });
             }
@@ -147,6 +157,26 @@ export class UserProfileComponent implements OnInit {
         name = name.concat(' ');
         userFeedback.observer = name.concat(feedback.observer.lastName);
         this.userFeedbacks.push(userFeedback);
+      });
+    }, error => {
+      this.noFeedbacks = true;
+    });
+  }
+
+  /**
+   * Saves the education records of the resource in a list.
+   * @param {string} id
+   */
+  getUsersEducaionRecords(id: string) {
+    this.resourceService.getTechnicalResourceEducationRecords(id).then( educationRecords => {
+      educationRecords.forEach(educationRecord => {
+        const userEducationRecord = new ResourceEducationRecord();
+        userEducationRecord.description = educationRecord.description;
+        userEducationRecord.endDate = educationRecord.endDate;
+        userEducationRecord.startDate = educationRecord.startDate;
+        userEducationRecord.institution = educationRecord.institution;
+        userEducationRecord.title = educationRecord.title;
+        this.userEducationRecords.push(userEducationRecord);
       });
     }, error => {
       this.noFeedbacks = true;
